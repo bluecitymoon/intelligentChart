@@ -127,6 +127,7 @@
                                 title: null,
                                 identifier: null,
                                 logo: null,
+                                visibile: null,
                                 id: null
                             };
                         }

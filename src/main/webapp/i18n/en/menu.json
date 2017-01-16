@@ -18,7 +18,8 @@
             },
             "title": "Title",
             "identifier": "Identifier",
-            "logo": "Logo"
+            "logo": "Logo",
+            "visibile": "Visibile"
         }
     }
 }

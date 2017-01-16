@@ -13,6 +13,10 @@
         {
             "fieldName": "logo",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "visibile",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170116081301",

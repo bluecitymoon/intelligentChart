@@ -47,6 +47,9 @@ public class MenuResourceIntTest {
     private static final String DEFAULT_LOGO = "AAAAAAAAAA";
     private static final String UPDATED_LOGO = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_VISIBILE = false;
+    private static final Boolean UPDATED_VISIBILE = true;
+
     @Inject
     private MenuRepository menuRepository;
 
@@ -86,7 +89,8 @@ public class MenuResourceIntTest {
         Menu menu = new Menu()
                 .title(DEFAULT_TITLE)
                 .identifier(DEFAULT_IDENTIFIER)
-                .logo(DEFAULT_LOGO);
+                .logo(DEFAULT_LOGO)
+                .visibile(DEFAULT_VISIBILE);
         return menu;
     }
 
@@ -114,6 +118,7 @@ public class MenuResourceIntTest {
         assertThat(testMenu.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testMenu.getIdentifier()).isEqualTo(DEFAULT_IDENTIFIER);
         assertThat(testMenu.getLogo()).isEqualTo(DEFAULT_LOGO);
+        assertThat(testMenu.isVisibile()).isEqualTo(DEFAULT_VISIBILE);
     }
 
     @Test
@@ -149,7 +154,8 @@ public class MenuResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(menu.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER.toString())))
-            .andExpect(jsonPath("$.[*].logo").value(hasItem(DEFAULT_LOGO.toString())));
+            .andExpect(jsonPath("$.[*].logo").value(hasItem(DEFAULT_LOGO.toString())))
+            .andExpect(jsonPath("$.[*].visibile").value(hasItem(DEFAULT_VISIBILE.booleanValue())));
     }
 
     @Test
@@ -165,7 +171,8 @@ public class MenuResourceIntTest {
             .andExpect(jsonPath("$.id").value(menu.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER.toString()))
-            .andExpect(jsonPath("$.logo").value(DEFAULT_LOGO.toString()));
+            .andExpect(jsonPath("$.logo").value(DEFAULT_LOGO.toString()))
+            .andExpect(jsonPath("$.visibile").value(DEFAULT_VISIBILE.booleanValue()));
     }
 
     @Test
@@ -189,7 +196,8 @@ public class MenuResourceIntTest {
         updatedMenu
                 .title(UPDATED_TITLE)
                 .identifier(UPDATED_IDENTIFIER)
-                .logo(UPDATED_LOGO);
+                .logo(UPDATED_LOGO)
+                .visibile(UPDATED_VISIBILE);
 
         restMenuMockMvc.perform(put("/api/menus")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -203,6 +211,7 @@ public class MenuResourceIntTest {
         assertThat(testMenu.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testMenu.getIdentifier()).isEqualTo(UPDATED_IDENTIFIER);
         assertThat(testMenu.getLogo()).isEqualTo(UPDATED_LOGO);
+        assertThat(testMenu.isVisibile()).isEqualTo(UPDATED_VISIBILE);
     }
 
     @Test

@@ -30,6 +30,9 @@ public class Menu implements Serializable {
     @Column(name = "logo")
     private String logo;
 
+    @Column(name = "visibile")
+    private Boolean visibile;
+
     public Long getId() {
         return id;
     }
@@ -77,6 +80,19 @@ public class Menu implements Serializable {
         this.logo = logo;
     }
 
+    public Boolean isVisibile() {
+        return visibile;
+    }
+
+    public Menu visibile(Boolean visibile) {
+        this.visibile = visibile;
+        return this;
+    }
+
+    public void setVisibile(Boolean visibile) {
+        this.visibile = visibile;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -104,6 +120,7 @@ public class Menu implements Serializable {
             ", title='" + title + "'" +
             ", identifier='" + identifier + "'" +
             ", logo='" + logo + "'" +
+            ", visibile='" + visibile + "'" +
             '}';
     }
 }

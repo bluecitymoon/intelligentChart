@@ -80,7 +80,7 @@ class MenuGatlingTest extends Simulation {
             .exec(http("Create new menu")
             .post("/api/menus")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "identifier":"SAMPLE_TEXT", "logo":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "identifier":"SAMPLE_TEXT", "logo":"SAMPLE_TEXT", "visibile":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_menu_url"))).exitHereIfFailed
             .pause(10)
