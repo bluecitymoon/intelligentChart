@@ -14,7 +14,8 @@
                 "question": "确定要删除这个图表配置 {{ id }}?"
             },
             "detail": {
-                "title": "图表"
+                "title": "图表",
+                "preview": "一览"
             },
             "identifier": "标识码",
             "type": "类型",

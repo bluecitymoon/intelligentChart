@@ -3,6 +3,7 @@ package com.intelligent.chart.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.Chart;
 import com.intelligent.chart.service.ChartService;
+import com.intelligent.chart.vo.ChartData;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
 
@@ -17,6 +18,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -30,9 +34,12 @@ import java.util.Optional;
 public class ChartResource {
 
     private final Logger log = LoggerFactory.getLogger(ChartResource.class);
-        
+
     @Inject
     private ChartService chartService;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     /**
      * POST  /charts : Create a new chart.
@@ -74,6 +81,32 @@ public class ChartResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("chart", chart.getId().toString()))
             .body(result);
+    }
+
+    /**
+
+     * @return the ResponseEntity with status 200 (OK) and the list of charts in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/charts/{id}/data")
+    @Timed
+    public ResponseEntity<ChartData> getChartDataToDisplay(@PathVariable Long id)
+        throws URISyntaxException {
+
+        log.debug("REST request to get a page of Charts");
+
+        Chart chart = chartService.findOne(id);
+        ChartData chartData = new ChartData();
+        Query titleQuery = entityManager.createNativeQuery(chart.getTitleSql());
+        Query dataQuery = entityManager.createNativeQuery(chart.getDataSourceSql());
+
+        List<String> titleResult = titleQuery.getResultList();
+        List<Float> dataResult = dataQuery.getResultList();
+
+        chartData.setTitles(titleResult);
+        chartData.setNumbers(dataResult);
+
+        return new ResponseEntity<ChartData>(chartData, HttpStatus.OK);
     }
 
     /**

@@ -36,6 +36,12 @@
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
+                                    ui-sref="chart-preview({id:chart.id})"
+                                    class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm">预览</span>
+                            </button>
+                            <button type="submit"
                                     ui-sref="chart-detail({id:chart.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>

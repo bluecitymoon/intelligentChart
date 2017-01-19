@@ -20,7 +20,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'queryData': {
+                method: 'GET',
+                params: { id : '@id'},
+                url: 'api/charts/:id/data'
+            }
         });
     }
 })();
