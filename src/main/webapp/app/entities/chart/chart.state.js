@@ -102,14 +102,14 @@
                         $translatePartialLoader.addPart('chart');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'Chart', function($stateParams, Chart) {
-                        return Chart.get({id : $stateParams.id})
-
-                    }],
-                    numbers: ['$stateParams', 'Chart', function($stateParams, Chart) {
-                        return Chart.queryData({id : $stateParams.id})
-
-                    }],
+                    // entity: ['$stateParams', 'Chart', function($stateParams, Chart) {
+                    //     return Chart.get({id : $stateParams.id})
+                    //
+                    // }],
+                    // numbers: ['$stateParams', 'Chart', function($stateParams, Chart) {
+                    //     return Chart.queryData({id : $stateParams.id})
+                    //
+                    // }],
                     previousState: ["$state", function ($state) {
                         var currentStateData = {
                             name: $state.current.name || 'chart',

@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Menu'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, Menu) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -18,12 +18,23 @@
             vm.swaggerEnabled = response.swaggerEnabled;
         });
 
+        loadAllMenus();
+
         vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
+
+        vm.showSingleChart = showSingleChart;
         vm.$state = $state;
 
+        function showSingleChart(menu) {
+
+            collapseNavbar();
+
+            $state.go('chart-preview', {id: menu.id});
+            //ui-sref="chart-preview/{{menu.id}}"
+        }
         function login() {
             collapseNavbar();
             LoginService.open();
@@ -41,6 +52,21 @@
 
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
+        }
+
+        function loadAllMenus () {
+
+            Menu.query({}, onSuccess, onError);
+
+            function onSuccess(data, headers) {
+                // vm.links = ParseLinks.parse(headers('link'));
+                // vm.totalItems = headers('X-Total-Count');
+                // vm.queryCount = vm.totalItems;
+                vm.menus = data;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
         }
     }
 })();
