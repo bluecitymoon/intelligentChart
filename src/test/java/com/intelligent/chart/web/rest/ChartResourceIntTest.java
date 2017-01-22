@@ -50,6 +50,15 @@ public class ChartResourceIntTest {
     private static final String DEFAULT_TITLE_SQL = "AAAAAAAAAA";
     private static final String UPDATED_TITLE_SQL = "BBBBBBBBBB";
 
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SUBTITLE = "AAAAAAAAAA";
+    private static final String UPDATED_SUBTITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CANVAS_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_CANVAS_TITLE = "BBBBBBBBBB";
+
     @Inject
     private ChartRepository chartRepository;
 
@@ -90,7 +99,10 @@ public class ChartResourceIntTest {
                 .identifier(DEFAULT_IDENTIFIER)
                 .type(DEFAULT_TYPE)
                 .dataSourceSql(DEFAULT_DATA_SOURCE_SQL)
-                .titleSql(DEFAULT_TITLE_SQL);
+                .titleSql(DEFAULT_TITLE_SQL)
+                .title(DEFAULT_TITLE)
+                .subtitle(DEFAULT_SUBTITLE)
+                .canvasTitle(DEFAULT_CANVAS_TITLE);
         return chart;
     }
 
@@ -119,6 +131,9 @@ public class ChartResourceIntTest {
         assertThat(testChart.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testChart.getDataSourceSql()).isEqualTo(DEFAULT_DATA_SOURCE_SQL);
         assertThat(testChart.getTitleSql()).isEqualTo(DEFAULT_TITLE_SQL);
+        assertThat(testChart.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testChart.getSubtitle()).isEqualTo(DEFAULT_SUBTITLE);
+        assertThat(testChart.getCanvasTitle()).isEqualTo(DEFAULT_CANVAS_TITLE);
     }
 
     @Test
@@ -155,7 +170,10 @@ public class ChartResourceIntTest {
             .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].dataSourceSql").value(hasItem(DEFAULT_DATA_SOURCE_SQL.toString())))
-            .andExpect(jsonPath("$.[*].titleSql").value(hasItem(DEFAULT_TITLE_SQL.toString())));
+            .andExpect(jsonPath("$.[*].titleSql").value(hasItem(DEFAULT_TITLE_SQL.toString())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+            .andExpect(jsonPath("$.[*].subtitle").value(hasItem(DEFAULT_SUBTITLE.toString())))
+            .andExpect(jsonPath("$.[*].canvasTitle").value(hasItem(DEFAULT_CANVAS_TITLE.toString())));
     }
 
     @Test
@@ -172,7 +190,10 @@ public class ChartResourceIntTest {
             .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.dataSourceSql").value(DEFAULT_DATA_SOURCE_SQL.toString()))
-            .andExpect(jsonPath("$.titleSql").value(DEFAULT_TITLE_SQL.toString()));
+            .andExpect(jsonPath("$.titleSql").value(DEFAULT_TITLE_SQL.toString()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.subtitle").value(DEFAULT_SUBTITLE.toString()))
+            .andExpect(jsonPath("$.canvasTitle").value(DEFAULT_CANVAS_TITLE.toString()));
     }
 
     @Test
@@ -197,7 +218,10 @@ public class ChartResourceIntTest {
                 .identifier(UPDATED_IDENTIFIER)
                 .type(UPDATED_TYPE)
                 .dataSourceSql(UPDATED_DATA_SOURCE_SQL)
-                .titleSql(UPDATED_TITLE_SQL);
+                .titleSql(UPDATED_TITLE_SQL)
+                .title(UPDATED_TITLE)
+                .subtitle(UPDATED_SUBTITLE)
+                .canvasTitle(UPDATED_CANVAS_TITLE);
 
         restChartMockMvc.perform(put("/api/charts")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -212,6 +236,9 @@ public class ChartResourceIntTest {
         assertThat(testChart.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testChart.getDataSourceSql()).isEqualTo(UPDATED_DATA_SOURCE_SQL);
         assertThat(testChart.getTitleSql()).isEqualTo(UPDATED_TITLE_SQL);
+        assertThat(testChart.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testChart.getSubtitle()).isEqualTo(UPDATED_SUBTITLE);
+        assertThat(testChart.getCanvasTitle()).isEqualTo(UPDATED_CANVAS_TITLE);
     }
 
     @Test

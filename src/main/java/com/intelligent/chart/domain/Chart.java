@@ -33,6 +33,15 @@ public class Chart implements Serializable {
     @Column(name = "title_sql")
     private String titleSql;
 
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "subtitle")
+    private String subtitle;
+
+    @Column(name = "canvas_title")
+    private String canvasTitle;
+
     public Long getId() {
         return id;
     }
@@ -93,6 +102,45 @@ public class Chart implements Serializable {
         this.titleSql = titleSql;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Chart title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public Chart subtitle(String subtitle) {
+        this.subtitle = subtitle;
+        return this;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public String getCanvasTitle() {
+        return canvasTitle;
+    }
+
+    public Chart canvasTitle(String canvasTitle) {
+        this.canvasTitle = canvasTitle;
+        return this;
+    }
+
+    public void setCanvasTitle(String canvasTitle) {
+        this.canvasTitle = canvasTitle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -121,6 +169,9 @@ public class Chart implements Serializable {
             ", type='" + type + "'" +
             ", dataSourceSql='" + dataSourceSql + "'" +
             ", titleSql='" + titleSql + "'" +
+            ", title='" + title + "'" +
+            ", subtitle='" + subtitle + "'" +
+            ", canvasTitle='" + canvasTitle + "'" +
             '}';
     }
 }

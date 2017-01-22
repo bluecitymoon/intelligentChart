@@ -22,16 +22,15 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p data-translate="footer">MingRule</p>
-        </div>
+        <!--<div class="footer" ng-cloak style="text-align: center">-->
+            <!--<p data-translate="footer">MingRule</p>-->
+        <!--</div>-->
     </div>
 
     <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
@@ -107,13 +106,13 @@
     <script src="app/entities/director/director.state.js"></script>
     <script src="app/entities/director/director.service.js"></script>
     <script src="app/entities/director/director.controller.js"></script>
+    <script src="app/entities/chart/chart-preview.controller.js"></script>
     <script src="app/entities/chart/chart-dialog.controller.js"></script>
     <script src="app/entities/chart/chart-detail.controller.js"></script>
     <script src="app/entities/chart/chart-delete-dialog.controller.js"></script>
     <script src="app/entities/chart/chart.state.js"></script>
     <script src="app/entities/chart/chart.service.js"></script>
     <script src="app/entities/chart/chart.controller.js"></script>
-    <script src="app/entities/chart/chart-preview.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

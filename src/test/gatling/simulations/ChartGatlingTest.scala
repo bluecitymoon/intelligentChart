@@ -80,7 +80,7 @@ class ChartGatlingTest extends Simulation {
             .exec(http("Create new chart")
             .post("/api/charts")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "identifier":"SAMPLE_TEXT", "type":"SAMPLE_TEXT", "dataSourceSql":"SAMPLE_TEXT", "titleSql":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "identifier":"SAMPLE_TEXT", "type":"SAMPLE_TEXT", "dataSourceSql":"SAMPLE_TEXT", "titleSql":"SAMPLE_TEXT", "title":"SAMPLE_TEXT", "subtitle":"SAMPLE_TEXT", "canvasTitle":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_chart_url"))).exitHereIfFailed
             .pause(10)

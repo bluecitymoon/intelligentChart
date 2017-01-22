@@ -5,21 +5,23 @@
         .module('intelligentChartApp')
         .controller('ChartPreviewController', ChartPreviewController);
 
-    ChartPreviewController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'Chart'];
+    ChartPreviewController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'Chart', '$window'];
 
-    function ChartPreviewController($scope, $rootScope, $stateParams, previousState, Chart) {
+    function ChartPreviewController($scope, $rootScope, $stateParams, previousState, Chart, $window) {
         var vm = this;
 
         $scope.config = {
-            title: "柱图",
-            subtitle: 'Bar Chart Subtitle',
-            height: 500
+            title: "",
+            subtitle: '',
+            height: parseInt($window.innerHeight * 0.8)
         };
 
+        vm.chart = {};
         Chart.get({id : $stateParams.id}).$promise.then(function (entity) {
             vm.chart = entity;
 
-            $scope.config.title = entity.identifier;
+            $scope.config.title = entity.title;
+            $scope.config.subtitle = entity.subtitle;
 
             loadChartData();
         });
@@ -32,7 +34,7 @@
                 var dataSet = numbers.numbers;
 
                 var pageload = {
-                    name: "柱图",
+                    name: vm.chart.canvasTitle,
                     datapoints: []
                 };
 

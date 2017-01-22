@@ -17,6 +17,18 @@
         {
             "fieldName": "titleSql",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "subtitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "canvasTitle",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170116082048",

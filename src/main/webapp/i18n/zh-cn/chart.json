@@ -2,25 +2,27 @@
     "intelligentChartApp": {
         "chart" : {
             "home": {
-                "title": "图表",
-                "createLabel": "新建一个图表",
-                "createOrEditLabel": "新建并配置一个图表",
+                "title": "Charts",
+                "createLabel": "Create a new Chart",
+                "createOrEditLabel": "Create or edit a Chart",
                 "search": "Search for Chart"
             },
-            "created": "图表已创建 {{ param }}",
-            "updated": "图表已修改 {{ param }}",
-            "deleted": "图表已删除 {{ param }}",
+            "created": "A new Chart is created with identifier {{ param }}",
+            "updated": "A Chart is updated with identifier {{ param }}",
+            "deleted": "A Chart is deleted with identifier {{ param }}",
             "delete": {
-                "question": "确定要删除这个图表配置 {{ id }}?"
+                "question": "Are you sure you want to delete Chart {{ id }}?"
             },
             "detail": {
-                "title": "图表",
-                "preview": "一览"
+                "title": "Chart"
             },
-            "identifier": "标识码",
-            "type": "类型",
-            "dataSourceSql": "数据源SQL语句",
-            "titleSql": "标题SQL语句"
+            "identifier": "Identifier",
+            "type": "Type",
+            "dataSourceSql": "Data Source Sql",
+            "titleSql": "Title Sql",
+            "title": "Title",
+            "subtitle": "Subtitle",
+            "canvasTitle": "Canvas Title"
         }
     }
 }

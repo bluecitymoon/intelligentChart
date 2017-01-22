@@ -19,7 +19,10 @@
             "identifier": "Identifier",
             "type": "Type",
             "dataSourceSql": "Data Source Sql",
-            "titleSql": "Title Sql"
+            "titleSql": "Title Sql",
+            "title": "Title",
+            "subtitle": "Subtitle",
+            "canvasTitle": "Canvas Title"
         }
     }
 }

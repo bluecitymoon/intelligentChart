@@ -40,6 +40,18 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="subtitle" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="canvas_title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
