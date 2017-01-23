@@ -10,6 +10,7 @@
                 "menu": "Menu",
                 "chart": "Chart",
                 "director": "Director",
+                "chartMenu": "Chart Menu",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

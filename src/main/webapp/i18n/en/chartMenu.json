@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "chartMenu" : {
+            "home": {
+                "title": "Chart Menus",
+                "createLabel": "Create a new Chart Menu",
+                "createOrEditLabel": "Create or edit a Chart Menu",
+                "search": "Search for Chart Menu"
+            },
+            "created": "A new Chart Menu is created with identifier {{ param }}",
+            "updated": "A Chart Menu is updated with identifier {{ param }}",
+            "deleted": "A Chart Menu is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Chart Menu {{ id }}?"
+            },
+            "detail": {
+                "title": "Chart Menu"
+            },
+            "chart": "Chart",
+            "menu": "Menu"
+        }
+    }
+}

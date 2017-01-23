@@ -10,6 +10,7 @@
                 "menu": "菜单配置",
                 "chart": "图表配置",
                 "director": "导演",
+                "chartMenu": "Chart Menu",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

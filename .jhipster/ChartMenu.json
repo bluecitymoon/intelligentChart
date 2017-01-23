@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "chart",
+            "otherEntityName": "chart",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "identifier"
+        },
+        {
+            "relationshipName": "menu",
+            "otherEntityName": "menu",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "identifier"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170123015849",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "chart_menu",
+    "pagination": "pagination"
+}
