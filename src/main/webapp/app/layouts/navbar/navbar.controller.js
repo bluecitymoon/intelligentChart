@@ -28,6 +28,7 @@
         vm.showSingleChart = showSingleChart;
         vm.$state = $state;
 
+        //TODO show corresponding page for the url
         function showSingleChart(menu) {
 
             collapseNavbar();

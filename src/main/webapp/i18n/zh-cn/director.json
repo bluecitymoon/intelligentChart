@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "director" : {
             "home": {
-                "title": "Directors",
-                "createLabel": "Create a new Director",
-                "createOrEditLabel": "Create or edit a Director",
-                "search": "Search for Director"
+                "title": "导演",
+                "createLabel": "新建一条导演数据",
+                "createOrEditLabel": "管理导演",
+                "search": "搜索导演"
             },
-            "created": "A new Director is created with identifier {{ param }}",
-            "updated": "A Director is updated with identifier {{ param }}",
-            "deleted": "A Director is deleted with identifier {{ param }}",
+            "created": "导演数据已录入 param = {{ param }}",
+            "updated": "导演数据已更新 param = {{ param }}",
+            "deleted": "导演数据已删除 param = {{ param }}",
             "delete": {
-                "question": "Are you sure you want to delete Director {{ id }}?"
+                "question": "确定删除这条导演数据?"
             },
             "detail": {
-                "title": "Director"
+                "title": "导演"
             },
-            "name": "Name",
-            "totalBoxOffice": "Total Box Office",
-            "unit": "Unit"
+            "name": "名称",
+            "totalBoxOffice": "票房总收入",
+            "unit": "票房收入计量单位"
         }
     }
 }

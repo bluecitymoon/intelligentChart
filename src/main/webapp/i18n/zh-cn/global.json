@@ -7,9 +7,9 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "数据",
-                "menu": "Menu",
-                "chart": "Chart",
-                "director": "Director",
+                "menu": "菜单配置",
+                "chart": "图表配置",
+                "director": "导演",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -89,7 +89,7 @@
             "cancel": "取消",
             "delete": "删除",
             "edit": "编辑",
-            "open": "Open",
+            "open": "打开",
             "save": "保存",
             "view": "查看"
         },
@@ -115,7 +115,7 @@
     },
     "error": {
         "server.not.reachable": "服务器无法访问",
-        "url.not.found": "Not found",
+        "url.not.found": "链接不存在",
         "NotNull": "域 {{fieldName}} 不能为空!",
         "Size": "域 {{fieldName}} 不满足最大/最小值限制!",
         "userexists": "该用户名已存在!",
