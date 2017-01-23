@@ -5980,6 +5980,9 @@ button.close {
   .modal-sm {
     width: 300px;
   }
+  .modal-menu {
+    width: 150px;
+  }
 }
 @media (min-width: 992px) {
   .modal-lg {

@@ -4,7 +4,6 @@
     angular
         .module('intelligentChartApp')
         .directive('activeMenu', activeMenu);
-
     activeMenu.$inject = ['$translate', '$locale', 'tmhDynamicLocale'];
 
     function activeMenu($translate, $locale, tmhDynamicLocale) {
@@ -30,4 +29,5 @@
             });
         }
     }
+
 })();

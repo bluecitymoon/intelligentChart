@@ -27,6 +27,20 @@
                     return $translate.refresh();
                 }]
             }
+        })
+            .state('sidemenu', {
+            parent: 'app',
+            url: '/sidemenu',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/layouts/navbar/navbar.html',
+                    controller: 'NavbarController',
+                    controllerAs: 'vm'
+                }
+            }
         });
     }
 })();

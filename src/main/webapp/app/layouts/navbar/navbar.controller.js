@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Menu'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Menu', '$aside', '$scope', '$uibModalStack'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, Menu) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, Menu, $aside, $scope, $uibModalStack) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -25,16 +25,28 @@
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
 
-        vm.showSingleChart = showSingleChart;
+        $scope.showSingleChart = showSingleChart;
+        vm.showSideBar = showSideBar;
         vm.$state = $state;
 
+        var asideInstance = null;
         //TODO show corresponding page for the url
         function showSingleChart(menu) {
 
-            collapseNavbar();
+            $uibModalStack.dismissAll();
 
             $state.go('chart-preview', {id: menu.id});
             //ui-sref="chart-preview/{{menu.id}}"
+        }
+
+        function showSideBar() {
+
+             asideInstance = $aside.open({
+                templateUrl: 'app/layouts/navbar/sidemenu.html',
+                controller: 'NavbarController',
+                placement: 'left',
+                size: 'sm'
+            });
         }
         function login() {
             collapseNavbar();
@@ -59,11 +71,8 @@
 
             Menu.query({}, onSuccess, onError);
 
-            function onSuccess(data, headers) {
-                // vm.links = ParseLinks.parse(headers('link'));
-                // vm.totalItems = headers('X-Total-Count');
-                // vm.queryCount = vm.totalItems;
-                vm.menus = data;
+            function onSuccess(data) {
+                $scope.menus = data;
             }
             function onError(error) {
                 AlertService.error(error.data.message);
