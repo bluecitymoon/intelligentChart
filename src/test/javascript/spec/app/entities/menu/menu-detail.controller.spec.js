@@ -4,7 +4,7 @@ describe('Controller Tests', function() {
 
     describe('Menu Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockMenu;
+        var MockEntity, MockPreviousState, MockMenu, MockMenuGroup;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -13,6 +13,7 @@ describe('Controller Tests', function() {
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
             MockMenu = jasmine.createSpy('MockMenu');
+            MockMenuGroup = jasmine.createSpy('MockMenuGroup');
             
 
             var locals = {
@@ -20,7 +21,8 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'Menu': MockMenu
+                'Menu': MockMenu,
+                'MenuGroup': MockMenuGroup
             };
             createController = function() {
                 $injector.get('$controller')("MenuDetailController", locals);

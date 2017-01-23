@@ -33,6 +33,9 @@ public class Menu implements Serializable {
     @Column(name = "visibile")
     private Boolean visibile;
 
+    @ManyToOne
+    private MenuGroup menuGroup;
+
     public Long getId() {
         return id;
     }
@@ -91,6 +94,19 @@ public class Menu implements Serializable {
 
     public void setVisibile(Boolean visibile) {
         this.visibile = visibile;
+    }
+
+    public MenuGroup getMenuGroup() {
+        return menuGroup;
+    }
+
+    public Menu menuGroup(MenuGroup menuGroup) {
+        this.menuGroup = menuGroup;
+        return this;
+    }
+
+    public void setMenuGroup(MenuGroup menuGroup) {
+        this.menuGroup = menuGroup;
     }
 
     @Override

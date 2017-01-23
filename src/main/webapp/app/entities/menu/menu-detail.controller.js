@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('MenuDetailController', MenuDetailController);
 
-    MenuDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Menu'];
+    MenuDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Menu', 'MenuGroup'];
 
-    function MenuDetailController($scope, $rootScope, $stateParams, previousState, entity, Menu) {
+    function MenuDetailController($scope, $rootScope, $stateParams, previousState, entity, Menu, MenuGroup) {
         var vm = this;
 
         vm.menu = entity;

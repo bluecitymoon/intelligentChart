@@ -11,6 +11,8 @@
                 "chart": "图表配置",
                 "director": "导演",
                 "chartMenu": "Chart Menu",
+                "menuGroup": "Menu Group",
+                "menu": "Menu",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

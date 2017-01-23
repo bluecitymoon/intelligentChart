@@ -5,14 +5,15 @@
         .module('intelligentChartApp')
         .controller('MenuDialogController', MenuDialogController);
 
-    MenuDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Menu'];
+    MenuDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Menu', 'MenuGroup'];
 
-    function MenuDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Menu) {
+    function MenuDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Menu, MenuGroup) {
         var vm = this;
 
         vm.menu = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.menugroups = MenuGroup.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

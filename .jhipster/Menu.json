@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "menuGroup",
+            "otherEntityName": "menuGroup",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "title"
+        }
+    ],
     "fields": [
         {
             "fieldName": "title",

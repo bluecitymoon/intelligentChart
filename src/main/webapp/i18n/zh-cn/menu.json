@@ -19,7 +19,8 @@
             "title": "Title",
             "identifier": "Identifier",
             "logo": "Logo",
-            "visibile": "Visibile"
+            "visibile": "Visibile",
+            "menuGroup": "Menu Group"
         }
     }
 }
