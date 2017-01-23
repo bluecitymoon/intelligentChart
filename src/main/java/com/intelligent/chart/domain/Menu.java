@@ -1,5 +1,6 @@
 package com.intelligent.chart.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -34,6 +35,7 @@ public class Menu implements Serializable {
     private Boolean visibile;
 
     @ManyToOne
+    @JsonIgnore
     private MenuGroup menuGroup;
 
     public Long getId() {
