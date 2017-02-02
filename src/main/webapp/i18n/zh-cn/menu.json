@@ -2,25 +2,25 @@
     "intelligentChartApp": {
         "menu" : {
             "home": {
-                "title": "Menus",
-                "createLabel": "Create a new Menu",
-                "createOrEditLabel": "Create or edit a Menu",
+                "title": "菜单配置",
+                "createLabel": "创建一个菜单配置",
+                "createOrEditLabel": "管理菜单",
                 "search": "Search for Menu"
             },
-            "created": "A new Menu is created with identifier {{ param }}",
-            "updated": "A Menu is updated with identifier {{ param }}",
-            "deleted": "A Menu is deleted with identifier {{ param }}",
+            "created": "菜单已成功创建！",
+            "updated": "菜单已成功更行！",
+            "deleted": "菜单已成功删除！",
             "delete": {
-                "question": "Are you sure you want to delete Menu {{ id }}?"
+                "question": "你确定删除这个菜单?"
             },
             "detail": {
-                "title": "Menu"
+                "title": "菜单名称"
             },
-            "title": "Title",
-            "identifier": "Identifier",
-            "logo": "Logo",
-            "visibile": "Visibile",
-            "menuGroup": "Menu Group"
+            "title": "标题",
+            "identifier": "识别码",
+            "logo": "图标",
+            "visibile": "是否显示在菜单栏",
+            "menuGroup": "菜单分组"
         }
     }
 }

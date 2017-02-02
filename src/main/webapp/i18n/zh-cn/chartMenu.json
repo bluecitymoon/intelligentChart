@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "chartMenu" : {
             "home": {
-                "title": "Chart Menus",
-                "createLabel": "Create a new Chart Menu",
-                "createOrEditLabel": "Create or edit a Chart Menu",
+                "title": "图表菜单分配",
+                "createLabel": "新建配置",
+                "createOrEditLabel": "管理配置",
                 "search": "Search for Chart Menu"
             },
-            "created": "A new Chart Menu is created with identifier {{ param }}",
-            "updated": "A Chart Menu is updated with identifier {{ param }}",
-            "deleted": "A Chart Menu is deleted with identifier {{ param }}",
+            "created": "配置已成功创建！",
+            "updated": "配置已成功修改！",
+            "deleted": "配置已成功删除！",
             "delete": {
-                "question": "Are you sure you want to delete Chart Menu {{ id }}?"
+                "question": "你确定删除这个配置?"
             },
             "detail": {
-                "title": "Chart Menu"
+                "title": "图表显示的菜单"
             },
-            "chart": "Chart",
-            "menu": "Menu"
+            "chart": "图表",
+            "menu": "图表对应的菜单"
         }
     }
 }

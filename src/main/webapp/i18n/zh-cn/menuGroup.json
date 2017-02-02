@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "menuGroup" : {
             "home": {
-                "title": "Menu Groups",
-                "createLabel": "Create a new Menu Group",
-                "createOrEditLabel": "Create or edit a Menu Group",
+                "title": "菜单组",
+                "createLabel": "创建一个菜单组",
+                "createOrEditLabel": "管理菜单组",
                 "search": "Search for Menu Group"
             },
-            "created": "A new Menu Group is created with identifier {{ param }}",
-            "updated": "A Menu Group is updated with identifier {{ param }}",
-            "deleted": "A Menu Group is deleted with identifier {{ param }}",
+            "created": "菜单组已成功创建！",
+            "updated": "菜单组已成功更新！",
+            "deleted": "菜单组已成功删除！",
             "delete": {
-                "question": "Are you sure you want to delete Menu Group {{ id }}?"
+                "question": "你确定删除这个菜单组?"
             },
             "detail": {
-                "title": "Menu Group"
+                "title": "菜单组"
             },
-            "title": "Title",
-            "icon": "Icon",
-            "menu": "Menu"
+            "title": "标题",
+            "icon": "图标",
+            "menu": "菜单"
         }
     }
 }

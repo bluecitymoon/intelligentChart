@@ -8,11 +8,10 @@
             "entities": {
                 "main": "数据",
                 "menu": "菜单配置",
-                "chart": "图表配置",
+                "chart": "图表",
                 "director": "导演",
-                "chartMenu": "Chart Menu",
-                "menuGroup": "Menu Group",
-                "menu": "Menu",
+                "chartMenu": "图表菜单",
+                "menuGroup": "菜单组",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
