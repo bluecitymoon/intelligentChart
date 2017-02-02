@@ -48,11 +48,11 @@ public class MenuGroupServiceImpl implements MenuGroupService{
         log.debug("Request to get all MenuGroups");
         Page<MenuGroup> result = menuGroupRepository.findAll(pageable);
 
-        //TODO
-        List<MenuGroup> items = result.getContent();
-        for (MenuGroup menuGroup: items) {
-            menuGroup.setMenus(menuGroup.getMenus());
-        }
+//        //TODO
+//        List<MenuGroup> items = result.getContent();
+//        for (MenuGroup menuGroup: items) {
+//            menuGroup.setMenus(menuGroup.getMenus());
+//        }
 
         return result;
     }

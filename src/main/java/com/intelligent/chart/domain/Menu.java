@@ -35,7 +35,7 @@ public class Menu implements Serializable {
     private Boolean visibile;
 
     @ManyToOne
-    @JsonIgnore
+   // @JsonIgnore
     private MenuGroup menuGroup;
 
     public Long getId() {

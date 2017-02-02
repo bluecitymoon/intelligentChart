@@ -1,8 +1,13 @@
 package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.intelligent.chart.domain.Menu;
 import com.intelligent.chart.domain.MenuGroup;
+import com.intelligent.chart.repository.MenuGroupRepository;
+import com.intelligent.chart.repository.MenuRepository;
 import com.intelligent.chart.service.MenuGroupService;
+import com.intelligent.chart.vo.MenuGroupVo;
+import com.intelligent.chart.vo.MenuVo;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
 
@@ -19,8 +24,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing MenuGroup.
@@ -30,9 +37,15 @@ import java.util.Optional;
 public class MenuGroupResource {
 
     private final Logger log = LoggerFactory.getLogger(MenuGroupResource.class);
-        
+
     @Inject
     private MenuGroupService menuGroupService;
+
+    @Inject
+    private MenuGroupRepository menuGroupRepository;
+
+    @Inject
+    private MenuRepository menuRepository;
 
     /**
      * POST  /menu-groups : Create a new menuGroup.
@@ -92,6 +105,42 @@ public class MenuGroupResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/menu-groups");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+
+    @GetMapping("/menu-groups/with/menus")
+    @Timed
+    public ResponseEntity<Set<MenuGroupVo>> getMenusWithGroup()  {
+
+        List<MenuGroup> groups = menuGroupRepository.findAll();
+        Set<MenuGroupVo> vos = new HashSet<MenuGroupVo>();
+
+        for (MenuGroup menuGroup: groups) {
+
+            MenuGroupVo menuGroupVo = new MenuGroupVo();
+            menuGroupVo.setId(menuGroup.getId());
+            menuGroupVo.setTitle(menuGroup.getTitle());
+            menuGroupVo.setIcon(menuGroup.getIcon());
+
+            List<Menu> menus = menuRepository.findByMenuGroup_Id(menuGroup.getId());
+
+            Set<MenuVo> menuVos = new HashSet<>();
+            for (Menu menu: menus) {
+
+                MenuVo menuVo = new MenuVo();
+                menuVo.setTitle(menu.getTitle());
+                menuVo.setLogo(menu.getLogo());
+                menuVos.add(menuVo);
+            }
+
+            menuGroupVo.setMenus(menuVos);
+
+            vos.add(menuGroupVo);
+
+        }
+
+        return new ResponseEntity<>(vos, HttpStatus.OK);
+    }
+
 
     /**
      * GET  /menu-groups/:id : get the "id" menuGroup.
