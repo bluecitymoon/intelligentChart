@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Menu', '$aside', '$scope', '$uibModalStack'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', 'Menu', '$aside', '$scope', '$uibModalStack', 'MenuGroup'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, Menu, $aside, $scope, $uibModalStack) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, Menu, $aside, $scope, $uibModalStack, MenuGroup) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -17,6 +17,8 @@
             vm.inProduction = response.inProduction;
             vm.swaggerEnabled = response.swaggerEnabled;
         });
+
+        $scope.menuGroups = [];
 
         loadAllMenus();
 
@@ -68,6 +70,10 @@
         }
 
         function loadAllMenus () {
+
+            MenuGroup.groupsWithMenus().$promise.then(function (groups) {
+                $scope.menuGroups = groups;
+            });
 
             Menu.query({}, onSuccess, onError);
 

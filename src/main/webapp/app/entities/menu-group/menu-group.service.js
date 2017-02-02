@@ -20,7 +20,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'groupsWithMenus': {
+                method: 'GET',
+                url: 'api/menu-groups/with/menus',
+                isArray: true
+            }
         });
     }
 })();
