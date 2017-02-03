@@ -21,6 +21,7 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="title"><span data-translate="intelligentChartApp.menuGroup.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="icon"><span data-translate="intelligentChartApp.menuGroup.icon">Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="seqOrder"><span data-translate="intelligentChartApp.menuGroup.seqOrder">Seq Order</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                     <td><a ui-sref="menu-group-detail({id:menuGroup.id})">{{menuGroup.id}}</a></td>
                     <td>{{menuGroup.title}}</td>
                     <td>{{menuGroup.icon}}</td>
+                    <td>{{menuGroup.seqOrder}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

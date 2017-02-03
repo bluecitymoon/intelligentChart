@@ -13,7 +13,7 @@
     <div class="row">
         <uib-accordion close-others="false" style="border-radius: 0px !important; padding: 5px">
 
-            <uib-accordion-group is-open="true" ng-repeat="group in menuGroups" class="panel-default" style="border-radius: 0px !important;">
+            <uib-accordion-group is-open="false" ng-repeat="group in menuGroups | orderBy: 'seqOrder'" class="panel-default" style="border-radius: 0px !important;">
 
                 <uib-accordion-heading style="text-align: center">
                     {{group.title}} <i class="pull-right glyphicon {{group.icon}}"></i>

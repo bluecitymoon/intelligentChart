@@ -80,7 +80,7 @@ class MenuGroupGatlingTest extends Simulation {
             .exec(http("Create new menuGroup")
             .post("/api/menu-groups")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "icon":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "icon":"SAMPLE_TEXT", "seqOrder":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_menuGroup_url"))).exitHereIfFailed
             .pause(10)

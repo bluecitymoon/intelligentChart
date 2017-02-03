@@ -3,7 +3,6 @@ package com.intelligent.chart.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -30,6 +29,9 @@ public class MenuGroup implements Serializable {
 
     @Column(name = "icon")
     private String icon;
+
+    @Column(name = "seq_order")
+    private Integer seqOrder;
 
     @OneToMany(mappedBy = "menuGroup")
    // @JsonIgnore
@@ -68,6 +70,19 @@ public class MenuGroup implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Integer getSeqOrder() {
+        return seqOrder;
+    }
+
+    public MenuGroup seqOrder(Integer seqOrder) {
+        this.seqOrder = seqOrder;
+        return this;
+    }
+
+    public void setSeqOrder(Integer seqOrder) {
+        this.seqOrder = seqOrder;
     }
 
     public Set<Menu> getMenus() {
@@ -121,6 +136,7 @@ public class MenuGroup implements Serializable {
             "id=" + id +
             ", title='" + title + "'" +
             ", icon='" + icon + "'" +
+            ", seqOrder='" + seqOrder + "'" +
             '}';
     }
 }

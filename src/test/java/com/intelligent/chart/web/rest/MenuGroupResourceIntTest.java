@@ -44,6 +44,9 @@ public class MenuGroupResourceIntTest {
     private static final String DEFAULT_ICON = "AAAAAAAAAA";
     private static final String UPDATED_ICON = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_SEQ_ORDER = 1;
+    private static final Integer UPDATED_SEQ_ORDER = 2;
+
     @Inject
     private MenuGroupRepository menuGroupRepository;
 
@@ -82,7 +85,8 @@ public class MenuGroupResourceIntTest {
     public static MenuGroup createEntity(EntityManager em) {
         MenuGroup menuGroup = new MenuGroup()
                 .title(DEFAULT_TITLE)
-                .icon(DEFAULT_ICON);
+                .icon(DEFAULT_ICON)
+                .seqOrder(DEFAULT_SEQ_ORDER);
         return menuGroup;
     }
 
@@ -109,6 +113,7 @@ public class MenuGroupResourceIntTest {
         MenuGroup testMenuGroup = menuGroupList.get(menuGroupList.size() - 1);
         assertThat(testMenuGroup.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testMenuGroup.getIcon()).isEqualTo(DEFAULT_ICON);
+        assertThat(testMenuGroup.getSeqOrder()).isEqualTo(DEFAULT_SEQ_ORDER);
     }
 
     @Test
@@ -143,7 +148,8 @@ public class MenuGroupResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(menuGroup.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
-            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())));
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
+            .andExpect(jsonPath("$.[*].seqOrder").value(hasItem(DEFAULT_SEQ_ORDER)));
     }
 
     @Test
@@ -158,7 +164,8 @@ public class MenuGroupResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(menuGroup.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
-            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()));
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
+            .andExpect(jsonPath("$.seqOrder").value(DEFAULT_SEQ_ORDER));
     }
 
     @Test
@@ -181,7 +188,8 @@ public class MenuGroupResourceIntTest {
         MenuGroup updatedMenuGroup = menuGroupRepository.findOne(menuGroup.getId());
         updatedMenuGroup
                 .title(UPDATED_TITLE)
-                .icon(UPDATED_ICON);
+                .icon(UPDATED_ICON)
+                .seqOrder(UPDATED_SEQ_ORDER);
 
         restMenuGroupMockMvc.perform(put("/api/menu-groups")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -194,6 +202,7 @@ public class MenuGroupResourceIntTest {
         MenuGroup testMenuGroup = menuGroupList.get(menuGroupList.size() - 1);
         assertThat(testMenuGroup.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testMenuGroup.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testMenuGroup.getSeqOrder()).isEqualTo(UPDATED_SEQ_ORDER);
     }
 
     @Test
