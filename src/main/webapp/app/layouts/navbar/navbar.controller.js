@@ -37,8 +37,10 @@
 
             $uibModalStack.dismissAll();
 
-            $state.go('chart-preview', {id: menu.id});
-            //ui-sref="chart-preview/{{menu.id}}"
+            if (menu.chartId) {
+                $state.go('chart-preview', {id: menu.chartId});
+            }
+
         }
 
         function showSideBar() {
@@ -50,6 +52,7 @@
                 size: 'sm'
             });
         }
+
         function login() {
             collapseNavbar();
             LoginService.open();

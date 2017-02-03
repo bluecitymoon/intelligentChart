@@ -12,4 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface ChartMenuRepository extends JpaRepository<ChartMenu,Long> {
 
+    List<ChartMenu> findByMenu_Id(Long menuId);
 }

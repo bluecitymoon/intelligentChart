@@ -1,8 +1,10 @@
 package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.intelligent.chart.domain.ChartMenu;
 import com.intelligent.chart.domain.Menu;
 import com.intelligent.chart.domain.MenuGroup;
+import com.intelligent.chart.repository.ChartMenuRepository;
 import com.intelligent.chart.repository.MenuGroupRepository;
 import com.intelligent.chart.repository.MenuRepository;
 import com.intelligent.chart.service.MenuGroupService;
@@ -46,6 +48,9 @@ public class MenuGroupResource {
 
     @Inject
     private MenuRepository menuRepository;
+
+    @Inject
+    private ChartMenuRepository chartMenuRepository;
 
     /**
      * POST  /menu-groups : Create a new menuGroup.
@@ -130,6 +135,12 @@ public class MenuGroupResource {
                 menuVo.setTitle(menu.getTitle());
                 menuVo.setLogo(menu.getLogo());
                 menuVos.add(menuVo);
+
+                List<ChartMenu> chartMenus = chartMenuRepository.findByMenu_Id(menu.getId());
+                //TODO support multiple charts in one menu. No requirement right now.
+                if (!chartMenus.isEmpty()) {
+                    menuVo.setChartId(chartMenus.get(0).getId());
+                }
             }
 
             menuGroupVo.setMenus(menuVos);
