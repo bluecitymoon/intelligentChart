@@ -11,23 +11,24 @@
 <div class="container-fluid">
 
     <div class="row">
-        <uib-accordion close-others="false">
+        <uib-accordion close-others="false" style="border-radius: 0px !important; padding: 5px">
 
-            <div ng-repeat="group in menuGroups">
+            <uib-accordion-group is-open="true" ng-repeat="group in menuGroups" class="panel-default" style="border-radius: 0px !important;">
 
-                <div uib-accordion-group class="panel-primary" heading="{{group.title}}">
-                    <div class="row" ng-repeat="menu in group.menus">
+                <uib-accordion-heading style="text-align: center">
+                    {{group.title}} <i class="pull-right glyphicon {{group.icon}}"></i>
+                </uib-accordion-heading>
 
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-info btn-block" ng-click="showSingleChart(menu)"> {{menu.title}} </button>
-                        </div>
+                <div class="row" ng-repeat="menu in group.menus">
 
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-info btn-block" style="border-radius: 0px !important;" ng-click="showSingleChart(menu)"> {{menu.title}} </button>
                     </div>
+
                 </div>
-            </div>
+
+            </uib-accordion-group>
 
         </uib-accordion>
     </div>
 </div>
-
-

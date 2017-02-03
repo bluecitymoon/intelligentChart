@@ -6,8 +6,8 @@
             "home": "首页",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "数据",
-                "menu": "菜单配置",
+                "main": "管理",
+                "menu": "菜单",
                 "chart": "图表",
                 "director": "导演",
                 "chartMenu": "图表菜单",

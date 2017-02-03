@@ -33,35 +33,38 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
                         <li ui-sref-active="active">
-                            <a ui-sref="menu" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.menu">Menu</span>
+                            <a ui-sref="menu-group" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-menu-left"></span>&nbsp;
+                                <span data-translate="global.menu.entities.menuGroup">Menu Group</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
+                            <a ui-sref="menu" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-apple"></span>&nbsp;
+                                <span data-translate="global.menu.entities.menu">Menu</span>
+                            </a>
+                        </li>
+
+                        <li ui-sref-active="active">
                             <a ui-sref="chart" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span class="glyphicon glyphicon-phone"></span>&nbsp;
                                 <span data-translate="global.menu.entities.chart">Chart</span>
                             </a>
                         </li>
                         <li ui-sref-active="active">
-                            <a ui-sref="director" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.director">Director</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active">
                             <a ui-sref="chart-menu" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span class="glyphicon glyphicon-menu-hamburger "></span>&nbsp;
                                 <span data-translate="global.menu.entities.chartMenu">Chart Menu</span>
                             </a>
                         </li>
+
                         <li ui-sref-active="active">
-                            <a ui-sref="menu-group" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.menuGroup">Menu Group</span>
+                            <a ui-sref="director" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                <span data-translate="global.menu.entities.director">Director</span>
                             </a>
                         </li>
+
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
