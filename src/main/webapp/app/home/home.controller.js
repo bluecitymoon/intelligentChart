@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', '$window'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, $window) {
         var vm = this;
 
         vm.account = null;
@@ -17,6 +17,8 @@
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
+
+        $scope.labtopHeight = parseInt($window.innerHeight * 0.9);
 
         getAccount();
 
@@ -29,5 +31,7 @@
         function register () {
             $state.go('register');
         }
+
+
     }
 })();

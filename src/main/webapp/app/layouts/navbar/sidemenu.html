@@ -19,7 +19,7 @@
                     {{group.title}} <i class="pull-right glyphicon {{group.icon}}"></i>
                 </uib-accordion-heading>
 
-                <div class="row" ng-repeat="menu in group.menus">
+                <div class="row" ng-repeat="menu in group.menus" style="margin-top: 1px">
 
                     <div class="col-md-12">
                         <button type="button" class="btn btn-info btn-block" style="border-radius: 0px !important;" ng-click="showSingleChart(menu)"> {{menu.title}} </button>
