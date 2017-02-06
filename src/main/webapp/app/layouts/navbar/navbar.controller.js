@@ -35,12 +35,14 @@
         //TODO show corresponding page for the url
         function showSingleChart(menu) {
 
-            $uibModalStack.dismissAll();
+            if (vm.isAuthenticated) {
 
-            if (menu.chartId) {
-                $state.go('chart-preview', {id: menu.chartId});
+                $uibModalStack.dismissAll();
+
+                if (menu.chartId) {
+                    $state.go('chart-preview', {id: menu.chartId});
+                }
             }
-
         }
 
         function showSideBar() {
@@ -78,14 +80,6 @@
                 $scope.menuGroups = groups;
             });
 
-            Menu.query({}, onSuccess, onError);
-
-            function onSuccess(data) {
-                $scope.menus = data;
-            }
-            function onError(error) {
-                AlertService.error(error.data.message);
-            }
         }
     }
 })();
