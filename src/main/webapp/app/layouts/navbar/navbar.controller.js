@@ -77,6 +77,7 @@
         function loadAllMenus () {
 
             MenuGroup.groupsWithMenus().$promise.then(function (groups) {
+
                 $scope.menuGroups = groups;
             });
 

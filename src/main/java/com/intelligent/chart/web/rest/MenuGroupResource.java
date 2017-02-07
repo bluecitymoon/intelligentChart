@@ -125,6 +125,7 @@ public class MenuGroupResource {
             menuGroupVo.setId(menuGroup.getId());
             menuGroupVo.setTitle(menuGroup.getTitle());
             menuGroupVo.setIcon(menuGroup.getIcon());
+            menuGroupVo.setSeqOrder(menuGroup.getSeqOrder());
 
             List<Menu> menus = menuRepository.findByMenuGroup_Id(menuGroup.getId());
 

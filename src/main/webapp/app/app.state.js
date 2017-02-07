@@ -1,3 +1,4 @@
+var jquery = $.noConflict();
 (function() {
     'use strict';
 

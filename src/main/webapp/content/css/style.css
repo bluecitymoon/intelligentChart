@@ -42,15 +42,6 @@ a, a:hover, a:focus {
     height: 100%;
 }
 
-/* Bootstrap Modifications */
-.modal-header {
-	background: #68dff0;
-}
-
-.modal-title {
-	color: white;
-}
-
 .btn-round {
 	border-radius: 20px;
 	-webkit-border-radius: 20px;
@@ -428,8 +419,7 @@ ul.sidebar-menu li a.active i {
 }
 
 a.logo {
-    font-size: 20px;
-    color: #ffffff;
+    font-size: 1.5em;
     float: left;
 }
 
@@ -441,11 +431,6 @@ a.logo:hover, a.logo:focus {
     text-decoration: none;
     outline: none;
 }
-
-a.logo span {
-    color: #68dff0;
-}
-
 
 /*notification*/
 #top_menu .nav > li, ul.top-menu > li {

@@ -15,6 +15,8 @@ public class MenuGroupVo implements Serializable {
 
     private String icon;
 
+    private Integer seqOrder;
+
     private Set<MenuVo> menus = new HashSet<>();
 
     public Long getId() {
@@ -47,5 +49,13 @@ public class MenuGroupVo implements Serializable {
 
     public void setMenus(Set<MenuVo> menus) {
         this.menus = menus;
+    }
+
+    public Integer getSeqOrder() {
+        return seqOrder;
+    }
+
+    public void setSeqOrder(Integer seqOrder) {
+        this.seqOrder = seqOrder;
     }
 }
