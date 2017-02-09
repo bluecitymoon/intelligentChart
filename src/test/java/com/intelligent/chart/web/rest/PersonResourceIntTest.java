@@ -12,16 +12,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -48,22 +49,22 @@ public class PersonResourceIntTest {
     private static final String DEFAULT_SEX = "AAAAAAAAAA";
     private static final String UPDATED_SEX = "BBBBBBBBBB";
 
-    @Autowired
+    @Inject
     private PersonRepository personRepository;
 
-    @Autowired
+    @Inject
     private PersonMapper personMapper;
 
-    @Autowired
+    @Inject
     private PersonService personService;
 
-    @Autowired
+    @Inject
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
-    @Autowired
+    @Inject
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
-    @Autowired
+    @Inject
     private EntityManager em;
 
     private MockMvc restPersonMockMvc;
@@ -73,7 +74,8 @@ public class PersonResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        PersonResource personResource = new PersonResource(personService);
+        PersonResource personResource = new PersonResource();
+        ReflectionTestUtils.setField(personResource, "personService", personService);
         this.restPersonMockMvc = MockMvcBuilders.standaloneSetup(personResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -244,10 +246,5 @@ public class PersonResourceIntTest {
         // Validate the database is empty
         List<Person> personList = personRepository.findAll();
         assertThat(personList).hasSize(databaseSizeBeforeDelete - 1);
-    }
-
-    @Test
-    public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(Person.class);
     }
 }

@@ -1,10 +1,10 @@
 package com.intelligent.chart.service.dto;
 
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+
 
 /**
  * A DTO for the Person entity.
@@ -18,6 +18,7 @@ public class PersonDTO implements Serializable {
     private Integer age;
 
     private String sex;
+
 
     private Set<JobDTO> jobs = new HashSet<>();
 
@@ -69,7 +70,7 @@ public class PersonDTO implements Serializable {
 
         PersonDTO personDTO = (PersonDTO) o;
 
-        if ( ! Objects.equals(id, personDTO.id)) { return false; }
+        if ( ! Objects.equals(id, personDTO.id)) return false;
 
         return true;
     }

@@ -5,8 +5,8 @@ import com.intelligent.chart.service.PersonService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
 import com.intelligent.chart.service.dto.PersonDTO;
+
 import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.LinkedList;
@@ -31,14 +32,9 @@ import java.util.stream.Collectors;
 public class PersonResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonResource.class);
-
-    private static final String ENTITY_NAME = "person";
-
-    private final PersonService personService;
-
-    public PersonResource(PersonService personService) {
-        this.personService = personService;
-    }
+        
+    @Inject
+    private PersonService personService;
 
     /**
      * POST  /people : Create a new person.
@@ -52,11 +48,11 @@ public class PersonResource {
     public ResponseEntity<PersonDTO> createPerson(@RequestBody PersonDTO personDTO) throws URISyntaxException {
         log.debug("REST request to save Person : {}", personDTO);
         if (personDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new person cannot already have an ID")).body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("person", "idexists", "A new person cannot already have an ID")).body(null);
         }
         PersonDTO result = personService.save(personDTO);
         return ResponseEntity.created(new URI("/api/people/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert("person", result.getId().toString()))
             .body(result);
     }
 
@@ -78,7 +74,7 @@ public class PersonResource {
         }
         PersonDTO result = personService.save(personDTO);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, personDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert("person", personDTO.getId().toString()))
             .body(result);
     }
 
@@ -110,7 +106,11 @@ public class PersonResource {
     public ResponseEntity<PersonDTO> getPerson(@PathVariable Long id) {
         log.debug("REST request to get Person : {}", id);
         PersonDTO personDTO = personService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(personDTO));
+        return Optional.ofNullable(personDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**
@@ -124,7 +124,7 @@ public class PersonResource {
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
         log.debug("REST request to delete Person : {}", id);
         personService.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("person", id.toString())).build();
     }
 
 }

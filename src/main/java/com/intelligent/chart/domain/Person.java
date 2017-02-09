@@ -20,7 +20,7 @@ public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "chinese_name")
@@ -35,8 +35,8 @@ public class Person implements Serializable {
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "person_job",
-               joinColumns = @JoinColumn(name="people_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="jobs_id", referencedColumnName="id"))
+               joinColumns = @JoinColumn(name="people_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="jobs_id", referencedColumnName="ID"))
     private Set<Job> jobs = new HashSet<>();
 
     public Long getId() {
@@ -96,13 +96,13 @@ public class Person implements Serializable {
     }
 
     public Person addJob(Job job) {
-        this.jobs.add(job);
+        jobs.add(job);
         job.getPeople().add(this);
         return this;
     }
 
     public Person removeJob(Job job) {
-        this.jobs.remove(job);
+        jobs.remove(job);
         job.getPeople().remove(this);
         return this;
     }

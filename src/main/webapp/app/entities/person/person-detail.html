@@ -3,7 +3,7 @@
     <h2><span data-translate="intelligentChartApp.person.detail.title">Person</span> {{vm.person.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
+    <dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="intelligentChartApp.person.chineseName">Chinese Name</span></dt>
         <dd>
             <span>{{vm.person.chineseName}}</span>
@@ -32,6 +32,6 @@
 
     <button type="button" ui-sref="person-detail.edit({id:vm.person.id})" class="btn btn-primary">
         <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
     </button>
 </div>

@@ -27,15 +27,15 @@
             <column name="chinese_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="age" type="integer">
                 <constraints nullable="true" />
             </column>
-
+            
             <column name="sex" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-
+            
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

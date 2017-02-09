@@ -52,7 +52,7 @@
             }
         })
         .state('person-detail', {
-            parent: 'person',
+            parent: 'entity',
             url: '/person/{id}',
             data: {
                 authorities: ['ROLE_USER'],
