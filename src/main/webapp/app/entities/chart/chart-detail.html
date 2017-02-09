@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.chart.detail.title">Chart</span> {{vm.chart.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.chart.identifier">Identifier</span></dt>
+        <dd>
+            <span>{{vm.chart.identifier}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.type">Type</span></dt>
+        <dd>
+            <span>{{vm.chart.type}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.dataSourceSql">Data Source Sql</span></dt>
+        <dd>
+            <span>{{vm.chart.dataSourceSql}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.titleSql">Title Sql</span></dt>
+        <dd>
+            <span>{{vm.chart.titleSql}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.title">Title</span></dt>
+        <dd>
+            <span>{{vm.chart.title}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.subtitle">Subtitle</span></dt>
+        <dd>
+            <span>{{vm.chart.subtitle}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.chart.canvasTitle">Canvas Title</span></dt>
+        <dd>
+            <span>{{vm.chart.canvasTitle}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="chart-detail.edit({id:vm.chart.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

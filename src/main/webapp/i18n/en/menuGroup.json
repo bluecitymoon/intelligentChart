@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "menuGroup" : {
+            "home": {
+                "title": "Menu Groups",
+                "createLabel": "Create a new Menu Group",
+                "createOrEditLabel": "Create or edit a Menu Group",
+                "search": "Search for Menu Group"
+            },
+            "created": "A new Menu Group is created with identifier {{ param }}",
+            "updated": "A Menu Group is updated with identifier {{ param }}",
+            "deleted": "A Menu Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Menu Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Menu Group"
+            },
+            "title": "Title",
+            "icon": "Icon",
+            "seqOrder": "Seq Order",
+            "menu": "Menu"
+        }
+    }
+}

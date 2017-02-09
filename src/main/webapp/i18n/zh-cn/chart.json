@@ -1,0 +1,28 @@
+{
+    "intelligentChartApp": {
+        "chart" : {
+            "home": {
+                "title": "Charts",
+                "createLabel": "Create a new Chart",
+                "createOrEditLabel": "Create or edit a Chart",
+                "search": "Search for Chart"
+            },
+            "created": "A new Chart is created with identifier {{ param }}",
+            "updated": "A Chart is updated with identifier {{ param }}",
+            "deleted": "A Chart is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Chart {{ id }}?"
+            },
+            "detail": {
+                "title": "Chart"
+            },
+            "identifier": "Identifier",
+            "type": "Type",
+            "dataSourceSql": "Data Source Sql",
+            "titleSql": "Title Sql",
+            "title": "Title",
+            "subtitle": "Subtitle",
+            "canvasTitle": "Canvas Title"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "menu",
+            "otherEntityName": "menu",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "menuGroup"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seqOrder",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170123072346",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "menu_group",
+    "pagination": "pagination"
+}

@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "job",
+            "otherEntityName": "job",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "person"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "chineseName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "age",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sex",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170209063944",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "person",
+    "pagination": "pagination"
+}

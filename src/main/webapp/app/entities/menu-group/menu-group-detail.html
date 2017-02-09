@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.menuGroup.detail.title">Menu Group</span> {{vm.menuGroup.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.menuGroup.title">Title</span></dt>
+        <dd>
+            <span>{{vm.menuGroup.title}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.menuGroup.icon">Icon</span></dt>
+        <dd>
+            <span>{{vm.menuGroup.icon}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.menuGroup.seqOrder">Seq Order</span></dt>
+        <dd>
+            <span>{{vm.menuGroup.seqOrder}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="menu-group-detail.edit({id:vm.menuGroup.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

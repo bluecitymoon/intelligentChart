@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataSourceSql",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titleSql",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "subtitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "canvasTitle",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170116082048",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "chart",
+    "pagination": "pagination"
+}
