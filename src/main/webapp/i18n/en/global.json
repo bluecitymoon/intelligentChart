@@ -12,6 +12,8 @@
                 "director": "Director",
                 "chartMenu": "Chart Menu",
                 "menuGroup": "Menu Group",
+                "person": "Person",
+                "job": "Job",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

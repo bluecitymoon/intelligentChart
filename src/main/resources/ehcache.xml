@@ -32,5 +32,13 @@
 
     <cache alias="com.intelligent.chart.domain.MenuGroup.menus" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.Person" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.Person.jobs" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.Job" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.Job.people" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
