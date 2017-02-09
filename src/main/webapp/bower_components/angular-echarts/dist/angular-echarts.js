@@ -370,7 +370,7 @@ angular.module('angular-echarts.util', []).factory('util', function () {
                                 label: {
                                     position: 'inner',
                                     formatter: function (a, b, c, d) {
-                                        return (d - 0).toFixed(0) + '%';
+                                        return a.name + '\n' + a.percent + '%';
                                     }
                                 },
                                 labelLine: { show: false }
