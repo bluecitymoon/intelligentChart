@@ -12,6 +12,8 @@
                 "director": "导演",
                 "chartMenu": "图表菜单",
                 "menuGroup": "菜单组",
+                "job": "Job",
+                "person": "Person",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

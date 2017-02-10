@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="Jerry (generated)" id="1486704788622-1">
+      <createTable tableName="job">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="jobPK"/>
+         </column>
+         <column name="name" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-2">
+      <createTable tableName="person">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="personPK"/>
+         </column>
+         <column name="age" type="INT"/>
+         <column name="birthday" type="DATETIME"/>
+         <column name="birthplace" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)"/>
+         <column name="sex" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-3">
+      <createTable tableName="person_job">
+         <column name="people_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="jobs_id" type="BIGINT">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-4">
+      <addPrimaryKey columnNames="people_id, jobs_id" tableName="person_job"/>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-5">
+      <addForeignKeyConstraint baseColumnNames="jobs_id"
+                               baseTableName="person_job"
+                               constraintName="FKee54gjwyk2h1oqcpa59847gwj"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="job"/>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-6">
+      <addForeignKeyConstraint baseColumnNames="people_id"
+                               baseTableName="person_job"
+                               constraintName="FKi0gkryr44c7dilo2d8i0t27yh"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="person"/>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-7">
+      <dropDefaultValue columnDataType="int" columnName="seq_order" tableName="menu_group"/>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486704788622-8">
+      <dropDefaultValue columnDataType="boolean" columnName="visibile" tableName="menu"/>
+   </changeSet>
+</databaseChangeLog>

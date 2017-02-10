@@ -1,0 +1,45 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.person.detail.title">Person</span> {{vm.person.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.person.name">Name</span></dt>
+        <dd>
+            <span>{{vm.person.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.person.sex">Sex</span></dt>
+        <dd>
+            <span>{{vm.person.sex}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.person.age">Age</span></dt>
+        <dd>
+            <span>{{vm.person.age}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.person.birthday">Birthday</span></dt>
+        <dd>
+            <span>{{vm.person.birthday | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span></dt>
+        <dd>
+            <span>{{vm.person.birthplace}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.person.job">Job</span></dt>
+        <dd>
+            <span ng-repeat="job in vm.person.jobs">
+                <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-detail.edit({id:vm.person.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
