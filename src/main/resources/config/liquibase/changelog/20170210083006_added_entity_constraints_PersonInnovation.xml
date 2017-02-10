@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonInnovation.
+    -->
+    <changeSet id="20170210083006-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_innovation"
+                                 constraintName="fk_person_innovation_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="innovation_type_id"
+                                 baseTableName="person_innovation"
+                                 constraintName="fk_person_innovation_innovation_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="innovation_type"/>
+
+    </changeSet>
+</databaseChangeLog>

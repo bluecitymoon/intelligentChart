@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "innovationType" : {
+            "home": {
+                "title": "Innovation Types",
+                "createLabel": "Create a new Innovation Type",
+                "createOrEditLabel": "Create or edit a Innovation Type",
+                "search": "Search for Innovation Type"
+            },
+            "created": "A new Innovation Type is created with identifier {{ param }}",
+            "updated": "A Innovation Type is updated with identifier {{ param }}",
+            "deleted": "A Innovation Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Innovation Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Innovation Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

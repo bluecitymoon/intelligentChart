@@ -26,6 +26,8 @@
     <include file="classpath:config/liquibase/changelog/20170210081040_added_entity_PersonExperience.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210081715_added_entity_PopularityType.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210081910_added_entity_PersonPopularity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210082834_added_entity_InnovationType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210083006_added_entity_PersonInnovation.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -35,5 +37,6 @@
     <include file="classpath:config/liquibase/changelog/20170210070355_added_entity_constraints_PersonPrize.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210081040_added_entity_constraints_PersonExperience.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210081910_added_entity_constraints_PersonPopularity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210083006_added_entity_constraints_PersonInnovation.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

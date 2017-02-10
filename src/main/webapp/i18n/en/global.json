@@ -26,6 +26,8 @@
                 "personExperience": "Person Experience",
                 "popularityType": "Popularity Type",
                 "personPopularity": "Person Popularity",
+                "innovationType": "Innovation Type",
+                "personInnovation": "Person Innovation",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

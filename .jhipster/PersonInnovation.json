@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "innovationType",
+            "otherEntityName": "innovationType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "percentage",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170210083006",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_innovation",
+    "pagination": "pagination"
+}

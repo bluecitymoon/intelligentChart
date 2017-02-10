@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personInnovation" : {
+            "home": {
+                "title": "Person Innovations",
+                "createLabel": "Create a new Person Innovation",
+                "createOrEditLabel": "Create or edit a Person Innovation",
+                "search": "Search for Person Innovation"
+            },
+            "created": "A new Person Innovation is created with identifier {{ param }}",
+            "updated": "A Person Innovation is updated with identifier {{ param }}",
+            "deleted": "A Person Innovation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Innovation {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Innovation"
+            },
+            "percentage": "Percentage",
+            "person": "Person",
+            "innovationType": "Innovation Type"
+        }
+    }
+}
