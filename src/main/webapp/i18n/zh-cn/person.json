@@ -21,6 +21,8 @@
             "age": "Age",
             "birthday": "Birthday",
             "birthplace": "Birthplace",
+            "politicRole": "Politic Role",
+            "supportTaiwanIndepence": "Support Taiwan Indepence",
             "job": "Job"
         }
     }

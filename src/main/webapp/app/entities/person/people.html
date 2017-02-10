@@ -24,6 +24,8 @@
                     <th jh-sort-by="age"><span data-translate="intelligentChartApp.person.age">Age</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="birthday"><span data-translate="intelligentChartApp.person.birthday">Birthday</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="birthplace"><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="politicRole"><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supportTaiwanIndepence"><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,6 +37,8 @@
                     <td>{{person.age}}</td>
                         <td>{{person.birthday | date:'mediumDate'}}</td>
                     <td>{{person.birthplace}}</td>
+                    <td>{{person.politicRole}}</td>
+                    <td>{{person.supportTaiwanIndepence}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

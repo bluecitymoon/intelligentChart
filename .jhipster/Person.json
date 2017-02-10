@@ -30,6 +30,14 @@
         {
             "fieldName": "birthplace",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "politicRole",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "supportTaiwanIndepence",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170210023221",

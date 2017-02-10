@@ -129,6 +129,8 @@
                                 age: null,
                                 birthday: null,
                                 birthplace: null,
+                                politicRole: null,
+                                supportTaiwanIndepence: null,
                                 id: null
                             };
                         }

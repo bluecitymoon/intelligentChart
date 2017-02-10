@@ -55,6 +55,12 @@ public class PersonResourceIntTest {
     private static final String DEFAULT_BIRTHPLACE = "AAAAAAAAAA";
     private static final String UPDATED_BIRTHPLACE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_POLITIC_ROLE = "AAAAAAAAAA";
+    private static final String UPDATED_POLITIC_ROLE = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_SUPPORT_TAIWAN_INDEPENCE = false;
+    private static final Boolean UPDATED_SUPPORT_TAIWAN_INDEPENCE = true;
+
     @Inject
     private PersonRepository personRepository;
 
@@ -96,7 +102,9 @@ public class PersonResourceIntTest {
                 .sex(DEFAULT_SEX)
                 .age(DEFAULT_AGE)
                 .birthday(DEFAULT_BIRTHDAY)
-                .birthplace(DEFAULT_BIRTHPLACE);
+                .birthplace(DEFAULT_BIRTHPLACE)
+                .politicRole(DEFAULT_POLITIC_ROLE)
+                .supportTaiwanIndepence(DEFAULT_SUPPORT_TAIWAN_INDEPENCE);
         return person;
     }
 
@@ -126,6 +134,8 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getAge()).isEqualTo(DEFAULT_AGE);
         assertThat(testPerson.getBirthday()).isEqualTo(DEFAULT_BIRTHDAY);
         assertThat(testPerson.getBirthplace()).isEqualTo(DEFAULT_BIRTHPLACE);
+        assertThat(testPerson.getPoliticRole()).isEqualTo(DEFAULT_POLITIC_ROLE);
+        assertThat(testPerson.isSupportTaiwanIndepence()).isEqualTo(DEFAULT_SUPPORT_TAIWAN_INDEPENCE);
     }
 
     @Test
@@ -163,7 +173,9 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.[*].sex").value(hasItem(DEFAULT_SEX.toString())))
             .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
             .andExpect(jsonPath("$.[*].birthday").value(hasItem(DEFAULT_BIRTHDAY.toString())))
-            .andExpect(jsonPath("$.[*].birthplace").value(hasItem(DEFAULT_BIRTHPLACE.toString())));
+            .andExpect(jsonPath("$.[*].birthplace").value(hasItem(DEFAULT_BIRTHPLACE.toString())))
+            .andExpect(jsonPath("$.[*].politicRole").value(hasItem(DEFAULT_POLITIC_ROLE.toString())))
+            .andExpect(jsonPath("$.[*].supportTaiwanIndepence").value(hasItem(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue())));
     }
 
     @Test
@@ -181,7 +193,9 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.sex").value(DEFAULT_SEX.toString()))
             .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
             .andExpect(jsonPath("$.birthday").value(DEFAULT_BIRTHDAY.toString()))
-            .andExpect(jsonPath("$.birthplace").value(DEFAULT_BIRTHPLACE.toString()));
+            .andExpect(jsonPath("$.birthplace").value(DEFAULT_BIRTHPLACE.toString()))
+            .andExpect(jsonPath("$.politicRole").value(DEFAULT_POLITIC_ROLE.toString()))
+            .andExpect(jsonPath("$.supportTaiwanIndepence").value(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue()));
     }
 
     @Test
@@ -207,7 +221,9 @@ public class PersonResourceIntTest {
                 .sex(UPDATED_SEX)
                 .age(UPDATED_AGE)
                 .birthday(UPDATED_BIRTHDAY)
-                .birthplace(UPDATED_BIRTHPLACE);
+                .birthplace(UPDATED_BIRTHPLACE)
+                .politicRole(UPDATED_POLITIC_ROLE)
+                .supportTaiwanIndepence(UPDATED_SUPPORT_TAIWAN_INDEPENCE);
 
         restPersonMockMvc.perform(put("/api/people")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -223,6 +239,8 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getAge()).isEqualTo(UPDATED_AGE);
         assertThat(testPerson.getBirthday()).isEqualTo(UPDATED_BIRTHDAY);
         assertThat(testPerson.getBirthplace()).isEqualTo(UPDATED_BIRTHPLACE);
+        assertThat(testPerson.getPoliticRole()).isEqualTo(UPDATED_POLITIC_ROLE);
+        assertThat(testPerson.isSupportTaiwanIndepence()).isEqualTo(UPDATED_SUPPORT_TAIWAN_INDEPENCE);
     }
 
     @Test

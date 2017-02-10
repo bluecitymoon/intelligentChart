@@ -39,6 +39,12 @@ public class Person implements Serializable {
     @Column(name = "birthplace")
     private String birthplace;
 
+    @Column(name = "politic_role")
+    private String politicRole;
+
+    @Column(name = "support_taiwan_indepence")
+    private Boolean supportTaiwanIndepence;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "person_job",
@@ -119,6 +125,32 @@ public class Person implements Serializable {
         this.birthplace = birthplace;
     }
 
+    public String getPoliticRole() {
+        return politicRole;
+    }
+
+    public Person politicRole(String politicRole) {
+        this.politicRole = politicRole;
+        return this;
+    }
+
+    public void setPoliticRole(String politicRole) {
+        this.politicRole = politicRole;
+    }
+
+    public Boolean isSupportTaiwanIndepence() {
+        return supportTaiwanIndepence;
+    }
+
+    public Person supportTaiwanIndepence(Boolean supportTaiwanIndepence) {
+        this.supportTaiwanIndepence = supportTaiwanIndepence;
+        return this;
+    }
+
+    public void setSupportTaiwanIndepence(Boolean supportTaiwanIndepence) {
+        this.supportTaiwanIndepence = supportTaiwanIndepence;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -173,6 +205,8 @@ public class Person implements Serializable {
             ", age='" + age + "'" +
             ", birthday='" + birthday + "'" +
             ", birthplace='" + birthplace + "'" +
+            ", politicRole='" + politicRole + "'" +
+            ", supportTaiwanIndepence='" + supportTaiwanIndepence + "'" +
             '}';
     }
 }

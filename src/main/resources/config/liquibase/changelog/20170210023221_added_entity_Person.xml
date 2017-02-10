@@ -44,6 +44,14 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="politic_role" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="support_taiwan_indepence" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
