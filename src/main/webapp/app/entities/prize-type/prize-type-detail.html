@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.prizeType.detail.title">Prize Type</span> {{vm.prizeType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.prizeType.identifier">Identifier</span></dt>
+        <dd>
+            <span>{{vm.prizeType.identifier}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.prizeType.name">Name</span></dt>
+        <dd>
+            <span>{{vm.prizeType.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="prize-type-detail.edit({id:vm.prizeType.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

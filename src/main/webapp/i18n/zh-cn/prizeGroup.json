@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "prizeGroup" : {
+            "home": {
+                "title": "Prize Groups",
+                "createLabel": "Create a new Prize Group",
+                "createOrEditLabel": "Create or edit a Prize Group",
+                "search": "Search for Prize Group"
+            },
+            "created": "A new Prize Group is created with identifier {{ param }}",
+            "updated": "A Prize Group is updated with identifier {{ param }}",
+            "deleted": "A Prize Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prize Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Prize Group"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

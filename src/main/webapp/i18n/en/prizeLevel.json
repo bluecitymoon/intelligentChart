@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "prizeLevel" : {
+            "home": {
+                "title": "Prize Levels",
+                "createLabel": "Create a new Prize Level",
+                "createOrEditLabel": "Create or edit a Prize Level",
+                "search": "Search for Prize Level"
+            },
+            "created": "A new Prize Level is created with identifier {{ param }}",
+            "updated": "A Prize Level is updated with identifier {{ param }}",
+            "deleted": "A Prize Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prize Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Prize Level"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

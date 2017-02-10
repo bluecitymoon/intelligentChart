@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "prizeType" : {
+            "home": {
+                "title": "Prize Types",
+                "createLabel": "Create a new Prize Type",
+                "createOrEditLabel": "Create or edit a Prize Type",
+                "search": "Search for Prize Type"
+            },
+            "created": "A new Prize Type is created with identifier {{ param }}",
+            "updated": "A Prize Type is updated with identifier {{ param }}",
+            "deleted": "A Prize Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prize Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Prize Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

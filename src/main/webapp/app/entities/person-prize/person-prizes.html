@@ -1,0 +1,78 @@
+<div>
+    <h2 data-translate="intelligentChartApp.personPrize.home.title">Person Prizes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="person-prize.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.personPrize.home.createLabel">
+                        Create new Person Prize
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prizeDate"><span data-translate="intelligentChartApp.personPrize.prizeDate">Prize Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.personPrize.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prizeType.name"><span data-translate="intelligentChartApp.personPrize.prizeType">Prize Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prizeGroup.name"><span data-translate="intelligentChartApp.personPrize.prizeGroup">Prize Group</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prizeLevel.name"><span data-translate="intelligentChartApp.personPrize.prizeLevel">Prize Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personPrize.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personPrize in vm.personPrizes track by personPrize.id">
+                    <td><a ui-sref="person-prize-detail({id:personPrize.id})">{{personPrize.id}}</a></td>
+                        <td>{{personPrize.prizeDate | date:'mediumDate'}}</td>
+                    <td>{{personPrize.name}}</td>
+                    <td>
+                        <a ui-sref="prize-type-detail({id:personPrize.prizeType.id})">{{personPrize.prizeType.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="prize-group-detail({id:personPrize.prizeGroup.id})">{{personPrize.prizeGroup.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="prize-level-detail({id:personPrize.prizeLevel.id})">{{personPrize.prizeLevel.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="person-detail({id:personPrize.person.id})">{{personPrize.person.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-prize-detail({id:personPrize.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-prize.edit({id:personPrize.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-prize.delete({id:personPrize.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPersonPrizeLabel" data-translate="intelligentChartApp.personPrize.home.createOrEditLabel">Create or edit a Person Prize</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.personPrize.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.personPrize.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.personPrize.prizeDate" for="field_prizeDate">Prize Date</label>
+                <div class="input-group">
+                    <input id="field_prizeDate" type="text" class="form-control" name="prizeDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.personPrize.prizeDate" is-open="vm.datePickerOpenStatus.prizeDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('prizeDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.personPrize.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.personPrize.name"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personPrize.prizeType" for="field_prizeType">Prize Type</label>
+            <select class="form-control" id="field_prizeType" name="prizeType" ng-model="vm.personPrize.prizeType" ng-options="prizeType as prizeType.name for prizeType in vm.prizetypes track by prizeType.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personPrize.prizeGroup" for="field_prizeGroup">Prize Group</label>
+            <select class="form-control" id="field_prizeGroup" name="prizeGroup" ng-model="vm.personPrize.prizeGroup" ng-options="prizeGroup as prizeGroup.name for prizeGroup in vm.prizegroups track by prizeGroup.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personPrize.prizeLevel" for="field_prizeLevel">Prize Level</label>
+            <select class="form-control" id="field_prizeLevel" name="prizeLevel" ng-model="vm.personPrize.prizeLevel" ng-options="prizeLevel as prizeLevel.name for prizeLevel in vm.prizelevels track by prizeLevel.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personPrize.person" for="field_person">Person</label>
+            <select class="form-control" id="field_person" name="person" ng-model="vm.personPrize.person" ng-options="person as person.name for person in vm.people track by person.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

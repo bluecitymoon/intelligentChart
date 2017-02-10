@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170210065528",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "prize_type",
+    "pagination": "pagination"
+}

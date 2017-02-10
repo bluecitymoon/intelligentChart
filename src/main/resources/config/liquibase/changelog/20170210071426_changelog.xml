@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="Jerry (generated)" id="1486710871143-1">
+      <addColumn tableName="person_prize">
+         <column name="person_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="Jerry (generated)" id="1486710871143-2">
+      <addForeignKeyConstraint baseColumnNames="person_id"
+                               baseTableName="person_prize"
+                               constraintName="FKc1gg741vehbenjldfpe22q5an"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="person"/>
+   </changeSet>
+</databaseChangeLog>

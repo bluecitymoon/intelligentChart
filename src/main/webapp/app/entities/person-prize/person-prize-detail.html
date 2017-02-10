@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personPrize.detail.title">Person Prize</span> {{vm.personPrize.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personPrize.prizeDate">Prize Date</span></dt>
+        <dd>
+            <span>{{vm.personPrize.prizeDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personPrize.name">Name</span></dt>
+        <dd>
+            <span>{{vm.personPrize.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personPrize.prizeType">Prize Type</span></dt>
+        <dd>
+            <a ui-sref="prize-type-detail({id:vm.personPrize.prizeType.id})">{{vm.personPrize.prizeType.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personPrize.prizeGroup">Prize Group</span></dt>
+        <dd>
+            <a ui-sref="prize-group-detail({id:vm.personPrize.prizeGroup.id})">{{vm.personPrize.prizeGroup.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personPrize.prizeLevel">Prize Level</span></dt>
+        <dd>
+            <a ui-sref="prize-level-detail({id:vm.personPrize.prizeLevel.id})">{{vm.personPrize.prizeLevel.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personPrize.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personPrize.person.id})">{{vm.personPrize.person.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-prize-detail.edit({id:vm.personPrize.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

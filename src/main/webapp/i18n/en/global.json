@@ -19,6 +19,10 @@
                 "personAreaPercentage": "Person Area Percentage",
                 "educationBackgroundType": "Education Background Type",
                 "personEducationBackground": "Person Education Background",
+                "prizeLevel": "Prize Level",
+                "prizeType": "Prize Type",
+                "prizeGroup": "Prize Group",
+                "personPrize": "Person Prize",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonPrize.
+    -->
+    <changeSet id="20170210070355-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="prize_type_id"
+                                 baseTableName="person_prize"
+                                 constraintName="fk_person_prize_prize_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prize_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="prize_group_id"
+                                 baseTableName="person_prize"
+                                 constraintName="fk_person_prize_prize_group_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prize_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="prize_level_id"
+                                 baseTableName="person_prize"
+                                 constraintName="fk_person_prize_prize_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prize_level"/>
+
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_prize"
+                                 constraintName="fk_person_prize_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+    </changeSet>
+</databaseChangeLog>
