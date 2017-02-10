@@ -58,5 +58,7 @@
 
     <cache alias="com.intelligent.chart.domain.PersonPrize" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PersonExperience" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personExperience" : {
+            "home": {
+                "title": "Person Experiences",
+                "createLabel": "Create a new Person Experience",
+                "createOrEditLabel": "Create or edit a Person Experience",
+                "search": "Search for Person Experience"
+            },
+            "created": "A new Person Experience is created with identifier {{ param }}",
+            "updated": "A Person Experience is updated with identifier {{ param }}",
+            "deleted": "A Person Experience is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Experience {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Experience"
+            },
+            "expYear": "Exp Year",
+            "description": "Description",
+            "person": "Person"
+        }
+    }
+}
