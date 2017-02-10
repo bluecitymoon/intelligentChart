@@ -60,5 +60,11 @@
 
     <cache alias="com.intelligent.chart.domain.PersonExperience" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PopularityType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PopularityType.personPopularities" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonPopularity" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

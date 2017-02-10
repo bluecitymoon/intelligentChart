@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "popularityType" : {
+            "home": {
+                "title": "Popularity Types",
+                "createLabel": "Create a new Popularity Type",
+                "createOrEditLabel": "Create or edit a Popularity Type",
+                "search": "Search for Popularity Type"
+            },
+            "created": "A new Popularity Type is created with identifier {{ param }}",
+            "updated": "A Popularity Type is updated with identifier {{ param }}",
+            "deleted": "A Popularity Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Popularity Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Popularity Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name",
+            "personPopularity": "Person Popularity"
+        }
+    }
+}

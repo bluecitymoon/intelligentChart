@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "popularityType",
+            "otherEntityName": "popularityType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "percentage",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170210081910",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_popularity",
+    "pagination": "pagination"
+}

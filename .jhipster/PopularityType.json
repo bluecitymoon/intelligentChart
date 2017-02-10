@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "personPopularity",
+            "otherEntityName": "personPopularity",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "popularityType"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170210081715",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "popularity_type",
+    "pagination": "pagination"
+}

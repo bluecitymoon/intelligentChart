@@ -24,6 +24,8 @@
                 "prizeGroup": "Prize Group",
                 "personPrize": "Person Prize",
                 "personExperience": "Person Experience",
+                "popularityType": "Popularity Type",
+                "personPopularity": "Person Popularity",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
