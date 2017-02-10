@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personAreaPercentage.detail.title">Person Area Percentage</span> {{vm.personAreaPercentage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personAreaPercentage.percentage">Percentage</span></dt>
+        <dd>
+            <span>{{vm.personAreaPercentage.percentage}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personAreaPercentage.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personAreaPercentage.person.id})">{{vm.personAreaPercentage.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personAreaPercentage.mediaType">Media Type</span></dt>
+        <dd>
+            <a ui-sref="media-type-detail({id:vm.personAreaPercentage.mediaType.id})">{{vm.personAreaPercentage.mediaType.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personAreaPercentage.areaType">Area Type</span></dt>
+        <dd>
+            <a ui-sref="area-type-detail({id:vm.personAreaPercentage.areaType.id})">{{vm.personAreaPercentage.areaType.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-area-percentage-detail.edit({id:vm.personAreaPercentage.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

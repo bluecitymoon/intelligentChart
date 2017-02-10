@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "personAreaPercentage" : {
+            "home": {
+                "title": "Person Area Percentages",
+                "createLabel": "Create a new Person Area Percentage",
+                "createOrEditLabel": "Create or edit a Person Area Percentage",
+                "search": "Search for Person Area Percentage"
+            },
+            "created": "A new Person Area Percentage is created with identifier {{ param }}",
+            "updated": "A Person Area Percentage is updated with identifier {{ param }}",
+            "deleted": "A Person Area Percentage is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Area Percentage {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Area Percentage"
+            },
+            "percentage": "Percentage",
+            "person": "Person",
+            "mediaType": "Media Type",
+            "areaType": "Area Type"
+        }
+    }
+}

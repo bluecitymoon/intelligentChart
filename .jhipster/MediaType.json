@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20170210060848",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "media_type",
+    "pagination": "pagination"
+}

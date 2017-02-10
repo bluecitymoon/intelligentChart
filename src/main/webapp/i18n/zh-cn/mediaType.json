@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "mediaType" : {
+            "home": {
+                "title": "Media Types",
+                "createLabel": "Create a new Media Type",
+                "createOrEditLabel": "Create or edit a Media Type",
+                "search": "Search for Media Type"
+            },
+            "created": "A new Media Type is created with identifier {{ param }}",
+            "updated": "A Media Type is updated with identifier {{ param }}",
+            "deleted": "A Media Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Media Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Media Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

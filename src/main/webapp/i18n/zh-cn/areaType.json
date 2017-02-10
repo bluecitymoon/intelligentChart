@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "areaType" : {
+            "home": {
+                "title": "Area Types",
+                "createLabel": "Create a new Area Type",
+                "createOrEditLabel": "Create or edit a Area Type",
+                "search": "Search for Area Type"
+            },
+            "created": "A new Area Type is created with identifier {{ param }}",
+            "updated": "A Area Type is updated with identifier {{ param }}",
+            "deleted": "A Area Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Area Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Area Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

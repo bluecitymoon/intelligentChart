@@ -40,5 +40,11 @@
 
     <cache alias="com.intelligent.chart.domain.Person.jobs" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.MediaType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.AreaType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonAreaPercentage" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
