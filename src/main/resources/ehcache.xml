@@ -70,5 +70,13 @@
 
     <cache alias="com.intelligent.chart.domain.PersonInnovation" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.ConnectionLevel" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonConnectionLevel" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.Region" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonRegionConnection" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

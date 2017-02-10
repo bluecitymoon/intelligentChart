@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "connectionLevel",
+            "otherEntityName": "connectionLevel",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "percentage",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170210085834",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_connection_level",
+    "pagination": "pagination"
+}

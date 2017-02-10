@@ -28,6 +28,10 @@
                 "personPopularity": "Person Popularity",
                 "innovationType": "Innovation Type",
                 "personInnovation": "Person Innovation",
+                "connectionLevel": "Connection Level",
+                "personConnectionLevel": "Person Connection Level",
+                "region": "Region",
+                "personRegionConnection": "Person Region Connection",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

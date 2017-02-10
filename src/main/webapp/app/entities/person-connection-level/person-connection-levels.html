@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="intelligentChartApp.personConnectionLevel.home.title">Person Connection Levels</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="person-connection-level.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.personConnectionLevel.home.createLabel">
+                        Create new Person Connection Level
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="percentage"><span data-translate="intelligentChartApp.personConnectionLevel.percentage">Percentage</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personConnectionLevel.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="connectionLevel.name"><span data-translate="intelligentChartApp.personConnectionLevel.connectionLevel">Connection Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personConnectionLevel in vm.personConnectionLevels track by personConnectionLevel.id">
+                    <td><a ui-sref="person-connection-level-detail({id:personConnectionLevel.id})">{{personConnectionLevel.id}}</a></td>
+                    <td>{{personConnectionLevel.percentage}}</td>
+                    <td>
+                        <a ui-sref="person-detail({id:personConnectionLevel.person.id})">{{personConnectionLevel.person.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="connection-level-detail({id:personConnectionLevel.connectionLevel.id})">{{personConnectionLevel.connectionLevel.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-connection-level-detail({id:personConnectionLevel.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-connection-level.edit({id:personConnectionLevel.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-connection-level.delete({id:personConnectionLevel.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

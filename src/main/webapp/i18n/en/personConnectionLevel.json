@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personConnectionLevel" : {
+            "home": {
+                "title": "Person Connection Levels",
+                "createLabel": "Create a new Person Connection Level",
+                "createOrEditLabel": "Create or edit a Person Connection Level",
+                "search": "Search for Person Connection Level"
+            },
+            "created": "A new Person Connection Level is created with identifier {{ param }}",
+            "updated": "A Person Connection Level is updated with identifier {{ param }}",
+            "deleted": "A Person Connection Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Connection Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Connection Level"
+            },
+            "percentage": "Percentage",
+            "person": "Person",
+            "connectionLevel": "Connection Level"
+        }
+    }
+}

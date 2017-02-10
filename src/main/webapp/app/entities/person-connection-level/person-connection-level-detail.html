@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personConnectionLevel.detail.title">Person Connection Level</span> {{vm.personConnectionLevel.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personConnectionLevel.percentage">Percentage</span></dt>
+        <dd>
+            <span>{{vm.personConnectionLevel.percentage}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personConnectionLevel.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personConnectionLevel.person.id})">{{vm.personConnectionLevel.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personConnectionLevel.connectionLevel">Connection Level</span></dt>
+        <dd>
+            <a ui-sref="connection-level-detail({id:vm.personConnectionLevel.connectionLevel.id})">{{vm.personConnectionLevel.connectionLevel.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-connection-level-detail.edit({id:vm.personConnectionLevel.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

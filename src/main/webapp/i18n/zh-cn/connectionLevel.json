@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "connectionLevel" : {
+            "home": {
+                "title": "Connection Levels",
+                "createLabel": "Create a new Connection Level",
+                "createOrEditLabel": "Create or edit a Connection Level",
+                "search": "Search for Connection Level"
+            },
+            "created": "A new Connection Level is created with identifier {{ param }}",
+            "updated": "A Connection Level is updated with identifier {{ param }}",
+            "deleted": "A Connection Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Connection Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Connection Level"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

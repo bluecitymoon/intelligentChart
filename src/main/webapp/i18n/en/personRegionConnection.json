@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personRegionConnection" : {
+            "home": {
+                "title": "Person Region Connections",
+                "createLabel": "Create a new Person Region Connection",
+                "createOrEditLabel": "Create or edit a Person Region Connection",
+                "search": "Search for Person Region Connection"
+            },
+            "created": "A new Person Region Connection is created with identifier {{ param }}",
+            "updated": "A Person Region Connection is updated with identifier {{ param }}",
+            "deleted": "A Person Region Connection is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Region Connection {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Region Connection"
+            },
+            "count": "Count",
+            "person": "Person",
+            "region": "Region"
+        }
+    }
+}
