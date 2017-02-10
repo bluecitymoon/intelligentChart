@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "educationBackgroundType" : {
+            "home": {
+                "title": "Education Background Types",
+                "createLabel": "Create a new Education Background Type",
+                "createOrEditLabel": "Create or edit a Education Background Type",
+                "search": "Search for Education Background Type"
+            },
+            "created": "A new Education Background Type is created with identifier {{ param }}",
+            "updated": "A Education Background Type is updated with identifier {{ param }}",
+            "deleted": "A Education Background Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Education Background Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Education Background Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name"
+        }
+    }
+}

@@ -46,5 +46,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonAreaPercentage" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.EducationBackgroundType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonEducationBackground" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

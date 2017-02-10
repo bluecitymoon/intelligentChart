@@ -16,10 +16,13 @@
     <include file="classpath:config/liquibase/changelog/20170210060848_added_entity_MediaType.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210061005_added_entity_AreaType.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210061749_added_entity_PersonAreaPercentage.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210063458_added_entity_EducationBackgroundType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210064146_added_entity_PersonEducationBackground.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210023221_added_entity_constraints_Person.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210061749_added_entity_constraints_PersonAreaPercentage.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170210064146_added_entity_constraints_PersonEducationBackground.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -17,6 +17,8 @@
                 "mediaType": "Media Type",
                 "areaType": "Area Type",
                 "personAreaPercentage": "Person Area Percentage",
+                "educationBackgroundType": "Education Background Type",
+                "personEducationBackground": "Person Education Background",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

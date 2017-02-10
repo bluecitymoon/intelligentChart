@@ -1,0 +1,26 @@
+{
+    "intelligentChartApp": {
+        "personEducationBackground" : {
+            "home": {
+                "title": "Person Education Backgrounds",
+                "createLabel": "Create a new Person Education Background",
+                "createOrEditLabel": "Create or edit a Person Education Background",
+                "search": "Search for Person Education Background"
+            },
+            "created": "A new Person Education Background is created with identifier {{ param }}",
+            "updated": "A Person Education Background is updated with identifier {{ param }}",
+            "deleted": "A Person Education Background is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Education Background {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Education Background"
+            },
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "description": "Description",
+            "educationBackgroundType": "Education Background Type",
+            "person": "Person"
+        }
+    }
+}

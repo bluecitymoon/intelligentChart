@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170210063458",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "education_background_type",
+    "pagination": "pagination"
+}

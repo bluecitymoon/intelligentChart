@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personEducationBackground.detail.title">Person Education Background</span> {{vm.personEducationBackground.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personEducationBackground.startDate">Start Date</span></dt>
+        <dd>
+            <span>{{vm.personEducationBackground.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personEducationBackground.endDate">End Date</span></dt>
+        <dd>
+            <span>{{vm.personEducationBackground.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personEducationBackground.description">Description</span></dt>
+        <dd>
+            <span>{{vm.personEducationBackground.description}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personEducationBackground.educationBackgroundType">Education Background Type</span></dt>
+        <dd>
+            <a ui-sref="education-background-type-detail({id:vm.personEducationBackground.educationBackgroundType.id})">{{vm.personEducationBackground.educationBackgroundType.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personEducationBackground.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personEducationBackground.person.id})">{{vm.personEducationBackground.person.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-education-background-detail.edit({id:vm.personEducationBackground.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
