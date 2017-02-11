@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "educationBackgroundType" : {
             "home": {
-                "title": "Education Background Types",
-                "createLabel": "Create a new Education Background Type",
-                "createOrEditLabel": "Create or edit a Education Background Type",
+                "title": "教育背景类型",
+                "createLabel": "创建教育背景类型",
+                "createOrEditLabel": "管理教育背景类型",
                 "search": "Search for Education Background Type"
             },
-            "created": "A new Education Background Type is created with identifier {{ param }}",
-            "updated": "A Education Background Type is updated with identifier {{ param }}",
-            "deleted": "A Education Background Type is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Education Background Type {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Education Background Type"
+                "title": "教育背景类型"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

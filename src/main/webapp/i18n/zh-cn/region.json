@@ -2,21 +2,21 @@
     "intelligentChartApp": {
         "region" : {
             "home": {
-                "title": "Regions",
-                "createLabel": "Create a new Region",
-                "createOrEditLabel": "Create or edit a Region",
+                "title": "区域",
+                "createLabel": "创建区域",
+                "createOrEditLabel": "管理区域",
                 "search": "Search for Region"
             },
-            "created": "A new Region is created with identifier {{ param }}",
-            "updated": "A Region is updated with identifier {{ param }}",
-            "deleted": "A Region is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Region {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Region"
+                "title": "区域"
             },
-            "name": "Name"
+            "name": "名称"
         }
     }
 }

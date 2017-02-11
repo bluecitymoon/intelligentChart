@@ -2,24 +2,24 @@
     "intelligentChartApp": {
         "personAreaPercentage" : {
             "home": {
-                "title": "Person Area Percentages",
-                "createLabel": "Create a new Person Area Percentage",
-                "createOrEditLabel": "Create or edit a Person Area Percentage",
+                "title": "擅长领域",
+                "createLabel": "录入擅长领域数据",
+                "createOrEditLabel": "管理擅长领域",
                 "search": "Search for Person Area Percentage"
             },
-            "created": "A new Person Area Percentage is created with identifier {{ param }}",
-            "updated": "A Person Area Percentage is updated with identifier {{ param }}",
-            "deleted": "A Person Area Percentage is deleted with identifier {{ param }}",
+            "created": "擅长领域数据已创建",
+            "updated": "擅长领域数据已更新",
+            "deleted": "擅长领域数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Area Percentage {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Area Percentage"
+                "title": "擅长领域区域占比"
             },
-            "percentage": "Percentage",
-            "person": "Person",
-            "mediaType": "Media Type",
-            "areaType": "Area Type"
+            "percentage": "比例",
+            "person": "影视人",
+            "mediaType": "媒体类型",
+            "areaType": "领域"
         }
     }
 }

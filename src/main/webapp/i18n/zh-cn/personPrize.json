@@ -2,26 +2,26 @@
     "intelligentChartApp": {
         "personPrize" : {
             "home": {
-                "title": "Person Prizes",
-                "createLabel": "Create a new Person Prize",
-                "createOrEditLabel": "Create or edit a Person Prize",
+                "title": "影视人获奖情况",
+                "createLabel": "创建影视人获奖情况",
+                "createOrEditLabel": "管理获奖情况",
                 "search": "Search for Person Prize"
             },
-            "created": "A new Person Prize is created with identifier {{ param }}",
-            "updated": "A Person Prize is updated with identifier {{ param }}",
-            "deleted": "A Person Prize is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Prize {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Prize"
+                "title": "获奖情况"
             },
-            "prizeDate": "Prize Date",
-            "name": "Name",
-            "prizeType": "Prize Type",
-            "prizeGroup": "Prize Group",
-            "prizeLevel": "Prize Level",
-            "person": "Person"
+            "prizeDate": "获奖日期",
+            "name": "奖项名称",
+            "prizeType": "奖项类型",
+            "prizeGroup": "颁奖组织",
+            "prizeLevel": "获奖级别",
+            "person": "影视人"
         }
     }
 }

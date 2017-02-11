@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personPopularity" : {
             "home": {
-                "title": "Person Popularities",
-                "createLabel": "Create a new Person Popularity",
-                "createOrEditLabel": "Create or edit a Person Popularity",
+                "title": "行业影响力",
+                "createLabel": "创建行业影响力",
+                "createOrEditLabel": "管理行业影响力",
                 "search": "Search for Person Popularity"
             },
-            "created": "A new Person Popularity is created with identifier {{ param }}",
-            "updated": "A Person Popularity is updated with identifier {{ param }}",
-            "deleted": "A Person Popularity is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Popularity {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Popularity"
+                "title": "影视人行业影响力"
             },
-            "percentage": "Percentage",
-            "person": "Person",
-            "popularityType": "Popularity Type"
+            "percentage": "占比",
+            "person": "影视人",
+            "popularityType": "影响力类型"
         }
     }
 }

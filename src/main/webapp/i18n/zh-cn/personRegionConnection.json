@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personRegionConnection" : {
             "home": {
-                "title": "Person Region Connections",
-                "createLabel": "Create a new Person Region Connection",
-                "createOrEditLabel": "Create or edit a Person Region Connection",
+                "title": "影视人人脉分布",
+                "createLabel": "创建人脉分布",
+                "createOrEditLabel": "管理人脉分布",
                 "search": "Search for Person Region Connection"
             },
-            "created": "A new Person Region Connection is created with identifier {{ param }}",
-            "updated": "A Person Region Connection is updated with identifier {{ param }}",
-            "deleted": "A Person Region Connection is deleted with identifier {{ param }}",
+            "created": "人脉分布已创建",
+            "updated": "人脉分布已更新",
+            "deleted": "人脉分布已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Region Connection {{ id }}?"
+                "question": "你确定删除这条人脉分布数据?"
             },
             "detail": {
-                "title": "Person Region Connection"
+                "title": "影视人人脉分布"
             },
-            "count": "Count",
-            "person": "Person",
-            "region": "Region"
+            "count": "数量",
+            "person": "影视人",
+            "region": "区域"
         }
     }
 }

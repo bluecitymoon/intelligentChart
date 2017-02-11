@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "prizeType" : {
             "home": {
-                "title": "Prize Types",
-                "createLabel": "Create a new Prize Type",
-                "createOrEditLabel": "Create or edit a Prize Type",
+                "title": "获奖类型",
+                "createLabel": "创建获奖类型",
+                "createOrEditLabel": "管理获奖类型",
                 "search": "Search for Prize Type"
             },
-            "created": "A new Prize Type is created with identifier {{ param }}",
-            "updated": "A Prize Type is updated with identifier {{ param }}",
-            "deleted": "A Prize Type is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Prize Type {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Prize Type"
+                "title": "获奖类型"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

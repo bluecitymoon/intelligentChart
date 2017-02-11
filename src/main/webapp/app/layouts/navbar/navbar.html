@@ -34,6 +34,60 @@
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
                         <li ui-sref-active="active">
+                            <a ui-sref="person" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                <span data-translate="global.menu.entities.person">Person</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-area-percentage" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personAreaPercentage">Person Area Percentage</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-education-background" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personEducationBackground">Person Education Background</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-prize" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personPrize">Person Prize</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-experience" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personExperience">Person Experience</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-popularity" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personPopularity">Person Popularity</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-innovation" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personInnovation">Person Innovation</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-connection-level" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personConnectionLevel">Person Connection Level</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="person-region-connection" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                <span data-translate="global.menu.entities.personRegionConnection">Person Region Connection</span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active">
                             <a ui-sref="menu-group" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-menu-left"></span>&nbsp;
                                 <span data-translate="global.menu.entities.menuGroup">Menu Group</span>
@@ -72,12 +126,7 @@
                                 <span data-translate="global.menu.entities.job">Job</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.person">Person</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="media-type" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
@@ -90,24 +139,14 @@
                                 <span data-translate="global.menu.entities.areaType">Area Type</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-area-percentage" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personAreaPercentage">Person Area Percentage</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="education-background-type" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.educationBackgroundType">Education Background Type</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-education-background" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personEducationBackground">Person Education Background</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="prize-level" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
@@ -126,64 +165,32 @@
                                 <span data-translate="global.menu.entities.prizeGroup">Prize Group</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-prize" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personPrize">Person Prize</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-experience" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personExperience">Person Experience</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="popularity-type" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.popularityType">Popularity Type</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-popularity" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personPopularity">Person Popularity</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="innovation-type" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.innovationType">Innovation Type</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-innovation" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personInnovation">Person Innovation</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="connection-level" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.connectionLevel">Connection Level</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-connection-level" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personConnectionLevel">Person Connection Level</span>
-                            </a>
-                        </li>
+
                         <li ui-sref-active="active">
                             <a ui-sref="region" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                                 <span data-translate="global.menu.entities.region">Region</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active">
-                            <a ui-sref="person-region-connection" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
-                                <span data-translate="global.menu.entities.personRegionConnection">Person Region Connection</span>
                             </a>
                         </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

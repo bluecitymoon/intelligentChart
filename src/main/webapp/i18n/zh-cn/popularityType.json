@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "popularityType" : {
             "home": {
-                "title": "Popularity Types",
-                "createLabel": "Create a new Popularity Type",
-                "createOrEditLabel": "Create or edit a Popularity Type",
+                "title": "影响力类型",
+                "createLabel": "创建影响力类型",
+                "createOrEditLabel": "管理影响力类型",
                 "search": "Search for Popularity Type"
             },
-            "created": "A new Popularity Type is created with identifier {{ param }}",
-            "updated": "A Popularity Type is updated with identifier {{ param }}",
-            "deleted": "A Popularity Type is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Popularity Type {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Popularity Type"
+                "title": "影响力类型"
             },
-            "identifier": "Identifier",
-            "name": "Name",
-            "personPopularity": "Person Popularity"
+            "identifier": "识别码",
+            "name": "名称",
+            "personPopularity": "影视人影响力"
         }
     }
 }

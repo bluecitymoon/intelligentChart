@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "mediaType" : {
             "home": {
-                "title": "Media Types",
-                "createLabel": "Create a new Media Type",
-                "createOrEditLabel": "Create or edit a Media Type",
+                "title": "媒体类型",
+                "createLabel": "创建一个媒体类型",
+                "createOrEditLabel": "管理媒体类型",
                 "search": "Search for Media Type"
             },
-            "created": "A new Media Type is created with identifier {{ param }}",
-            "updated": "A Media Type is updated with identifier {{ param }}",
-            "deleted": "A Media Type is deleted with identifier {{ param }}",
+            "created": "媒体类型已创建",
+            "updated": "媒体类型已更新",
+            "deleted": "媒体类型已删除",
             "delete": {
-                "question": "Are you sure you want to delete Media Type {{ id }}?"
+                "question": "你确定删除这个媒体类型？"
             },
             "detail": {
-                "title": "Media Type"
+                "title": "媒体类型"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

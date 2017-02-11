@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personInnovation" : {
             "home": {
-                "title": "Person Innovations",
-                "createLabel": "Create a new Person Innovation",
-                "createOrEditLabel": "Create or edit a Person Innovation",
+                "title": "影视人创新力",
+                "createLabel": "录入创新力",
+                "createOrEditLabel": "管理创新力",
                 "search": "Search for Person Innovation"
             },
-            "created": "A new Person Innovation is created with identifier {{ param }}",
-            "updated": "A Person Innovation is updated with identifier {{ param }}",
-            "deleted": "A Person Innovation is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Innovation {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Innovation"
+                "title": "影视人创新力"
             },
-            "percentage": "Percentage",
-            "person": "Person",
-            "innovationType": "Innovation Type"
+            "percentage": "占比",
+            "person": "影视人",
+            "innovationType": "创新类型"
         }
     }
 }

@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "areaType" : {
             "home": {
-                "title": "Area Types",
-                "createLabel": "Create a new Area Type",
-                "createOrEditLabel": "Create or edit a Area Type",
+                "title": "领域类型",
+                "createLabel": "创建领域类型",
+                "createOrEditLabel": "管理领域类型",
                 "search": "Search for Area Type"
             },
-            "created": "A new Area Type is created with identifier {{ param }}",
-            "updated": "A Area Type is updated with identifier {{ param }}",
-            "deleted": "A Area Type is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Area Type {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Area Type"
+                "title": "领域类型"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

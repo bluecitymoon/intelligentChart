@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personConnectionLevel" : {
             "home": {
-                "title": "Person Connection Levels",
-                "createLabel": "Create a new Person Connection Level",
-                "createOrEditLabel": "Create or edit a Person Connection Level",
+                "title": "影视人人脉层次",
+                "createLabel": "创建一条人脉层次",
+                "createOrEditLabel": "管理人脉层次",
                 "search": "Search for Person Connection Level"
             },
-            "created": "A new Person Connection Level is created with identifier {{ param }}",
-            "updated": "A Person Connection Level is updated with identifier {{ param }}",
-            "deleted": "A Person Connection Level is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Connection Level {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Connection Level"
+                "title": "人脉层次"
             },
-            "percentage": "Percentage",
-            "person": "Person",
-            "connectionLevel": "Connection Level"
+            "percentage": "占比",
+            "person": "影视人",
+            "connectionLevel": "人脉层次"
         }
     }
 }

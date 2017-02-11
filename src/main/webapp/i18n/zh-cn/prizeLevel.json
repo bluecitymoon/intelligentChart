@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "prizeLevel" : {
             "home": {
-                "title": "Prize Levels",
-                "createLabel": "Create a new Prize Level",
-                "createOrEditLabel": "Create or edit a Prize Level",
+                "title": "获奖级别",
+                "createLabel": "创建获奖级别",
+                "createOrEditLabel": "管理获奖级别",
                 "search": "Search for Prize Level"
             },
-            "created": "A new Prize Level is created with identifier {{ param }}",
-            "updated": "A Prize Level is updated with identifier {{ param }}",
-            "deleted": "A Prize Level is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Prize Level {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Prize Level"
+                "title": "获奖级别"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

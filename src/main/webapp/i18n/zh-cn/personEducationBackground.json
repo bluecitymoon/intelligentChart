@@ -2,25 +2,25 @@
     "intelligentChartApp": {
         "personEducationBackground" : {
             "home": {
-                "title": "Person Education Backgrounds",
-                "createLabel": "Create a new Person Education Background",
-                "createOrEditLabel": "Create or edit a Person Education Background",
+                "title": "影视人教育背景",
+                "createLabel": "创建教育背景",
+                "createOrEditLabel": "管理教育背景",
                 "search": "Search for Person Education Background"
             },
-            "created": "A new Person Education Background is created with identifier {{ param }}",
-            "updated": "A Person Education Background is updated with identifier {{ param }}",
-            "deleted": "A Person Education Background is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Education Background {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Education Background"
+                "title": "教育背景"
             },
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "description": "Description",
-            "educationBackgroundType": "Education Background Type",
-            "person": "Person"
+            "startDate": "开始日期",
+            "endDate": "结束日期",
+            "description": "经历描述",
+            "educationBackgroundType": "类型",
+            "person": "影视人"
         }
     }
 }

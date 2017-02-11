@@ -2,28 +2,28 @@
     "intelligentChartApp": {
         "person" : {
             "home": {
-                "title": "People",
-                "createLabel": "Create a new Person",
-                "createOrEditLabel": "Create or edit a Person",
+                "title": "影视人",
+                "createLabel": "录入一个新的影视人",
+                "createOrEditLabel": "影视人信息管理",
                 "search": "Search for Person"
             },
-            "created": "A new Person is created with identifier {{ param }}",
-            "updated": "A Person is updated with identifier {{ param }}",
-            "deleted": "A Person is deleted with identifier {{ param }}",
+            "created": "影视人已创建",
+            "updated": "影视人已更新",
+            "deleted": "影视人已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person {{ id }}?"
+                "question": "你确定删除这个影视人?"
             },
             "detail": {
-                "title": "Person"
+                "title": "影视人"
             },
-            "name": "Name",
-            "sex": "Sex",
-            "age": "Age",
-            "birthday": "Birthday",
-            "birthplace": "Birthplace",
-            "politicRole": "Politic Role",
-            "supportTaiwanIndepence": "Support Taiwan Indepence",
-            "job": "Job"
+            "name": "姓名",
+            "sex": "性别",
+            "age": "年龄",
+            "birthday": "生日",
+            "birthplace": "出生地",
+            "politicRole": "政治面貌",
+            "supportTaiwanIndepence": "是否支持台独",
+            "job": "参与过的影视圈工作"
         }
     }
 }
