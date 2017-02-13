@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-innovation', {
             parent: 'entity',
-            url: '/person-innovation?page&sort&search',
+            url: '/person-innovation?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personInnovation.home.title'

@@ -2,6 +2,9 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonConnectionLevel;
+import com.intelligent.chart.domain.PersonEducationBackground;
+import com.intelligent.chart.repository.PersonConnectionLevelRepository;
+import com.intelligent.chart.repository.PersonEducationBackgroundRepository;
 import com.intelligent.chart.service.PersonConnectionLevelService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +33,23 @@ import java.util.Optional;
 public class PersonConnectionLevelResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonConnectionLevelResource.class);
-        
+
     @Inject
     private PersonConnectionLevelService personConnectionLevelService;
+
+    @Inject
+    private PersonConnectionLevelRepository personConnectionLevelRepository;
+
+    @GetMapping("/person-connection-levels/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonConnectionLevel>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonConnectionLevel> page = personConnectionLevelRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-connection-levels");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-connection-levels : Create a new personConnectionLevel.

@@ -39,6 +39,12 @@
                     copy.endDate = DateUtils.convertLocalDateToServer(copy.endDate);
                     return angular.toJson(copy);
                 }
+            },
+            'loadAllByPersonId' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-education-backgrounds/person/:id',
+                params: { id : '@id'}
             }
         });
     }

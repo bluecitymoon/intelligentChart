@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonExperience;
+import com.intelligent.chart.repository.PersonExperienceRepository;
 import com.intelligent.chart.service.PersonExperienceService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonExperienceResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonExperienceResource.class);
-        
+
     @Inject
     private PersonExperienceService personExperienceService;
+
+    @Inject
+    private PersonExperienceRepository personExperienceRepository;
+
+    @GetMapping("/person-experiences/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonExperience>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonExperience> page = personExperienceRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-connection-levels");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-experiences : Create a new personExperience.

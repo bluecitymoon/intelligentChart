@@ -1,7 +1,9 @@
 package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.intelligent.chart.domain.PersonInnovation;
 import com.intelligent.chart.domain.PersonPopularity;
+import com.intelligent.chart.repository.PersonPopularityRepository;
 import com.intelligent.chart.service.PersonPopularityService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +32,23 @@ import java.util.Optional;
 public class PersonPopularityResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonPopularityResource.class);
-        
+
     @Inject
     private PersonPopularityService personPopularityService;
+
+    @Inject
+    private PersonPopularityRepository personPopularityRepository;
+
+    @GetMapping("/person-popularities/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonPopularity>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonPopularity> page = personPopularityRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-popularities");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-popularities : Create a new personPopularity.

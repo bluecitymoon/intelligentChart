@@ -1,7 +1,10 @@
 package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.intelligent.chart.domain.PersonExperience;
 import com.intelligent.chart.domain.PersonInnovation;
+import com.intelligent.chart.repository.PersonExperienceRepository;
+import com.intelligent.chart.repository.PersonInnovationRepository;
 import com.intelligent.chart.service.PersonInnovationService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +33,23 @@ import java.util.Optional;
 public class PersonInnovationResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonInnovationResource.class);
-        
+
     @Inject
     private PersonInnovationService personInnovationService;
+
+    @Inject
+    private PersonInnovationRepository personInnovationRepository;
+
+    @GetMapping("/person-innovations/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonInnovation>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonInnovation> page = personInnovationRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-innovations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-innovations : Create a new personInnovation.

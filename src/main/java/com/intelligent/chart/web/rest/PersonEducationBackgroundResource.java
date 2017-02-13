@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonEducationBackground;
+import com.intelligent.chart.repository.PersonEducationBackgroundRepository;
 import com.intelligent.chart.service.PersonEducationBackgroundService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonEducationBackgroundResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonEducationBackgroundResource.class);
-        
+
     @Inject
     private PersonEducationBackgroundService personEducationBackgroundService;
+
+        @Inject
+        private PersonEducationBackgroundRepository personEducationBackgroundRepository;
+
+        @GetMapping("/person-education-backgrounds/person/{id}")
+        @Timed
+        public ResponseEntity<List<PersonEducationBackground>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+            throws URISyntaxException {
+
+            Page<PersonEducationBackground> page = personEducationBackgroundRepository.findByPerson_Id(id, pageable);
+
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-education-backgrounds");
+            return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        }
 
     /**
      * POST  /person-education-backgrounds : Create a new personEducationBackground.

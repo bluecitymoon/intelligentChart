@@ -20,7 +20,14 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+
+            'loadAllByPersonId' : {
+            method: 'GET',
+                isArray: true,
+                url: 'api/person-popularities/person/:id',
+                params: { id : '@id'}
+        }
         });
     }
 })();

@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-education-background', {
             parent: 'entity',
-            url: '/person-education-background?page&sort&search',
+            url: '/person-education-background?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personEducationBackground.home.title'

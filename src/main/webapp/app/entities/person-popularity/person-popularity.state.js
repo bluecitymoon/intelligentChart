@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-popularity', {
             parent: 'entity',
-            url: '/person-popularity?page&sort&search',
+            url: '/person-popularity?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personPopularity.home.title'

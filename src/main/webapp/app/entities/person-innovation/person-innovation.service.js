@@ -20,7 +20,13 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'loadAllByPersonId' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-innovations/person/:id',
+                params: { id : '@id'}
+            }
         });
     }
 })();

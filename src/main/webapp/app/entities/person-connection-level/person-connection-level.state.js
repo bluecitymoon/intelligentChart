@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-connection-level', {
             parent: 'entity',
-            url: '/person-connection-level?page&sort&search',
+            url: '/person-connection-level?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personConnectionLevel.home.title'
