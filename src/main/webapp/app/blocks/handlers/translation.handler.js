@@ -24,6 +24,8 @@
                     translateChangeSuccess();
                 }
             });
+
+            $translate.use('zh-cn');
         }
 
         // update the window title using params in the following

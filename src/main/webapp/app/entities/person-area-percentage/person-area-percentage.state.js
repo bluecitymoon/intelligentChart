@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-area-percentage', {
             parent: 'entity',
-            url: '/person-area-percentage?page&sort&search',
+            url: '/person-area-percentage?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personAreaPercentage.home.title'

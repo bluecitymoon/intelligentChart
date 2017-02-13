@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonAreaPercentage;
+import com.intelligent.chart.repository.PersonAreaPercentageRepository;
 import com.intelligent.chart.service.PersonAreaPercentageService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,24 @@ import java.util.Optional;
 public class PersonAreaPercentageResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonAreaPercentageResource.class);
-        
+
     @Inject
     private PersonAreaPercentageService personAreaPercentageService;
+
+    @Inject
+    private PersonAreaPercentageRepository personAreaPercentageRepository;
+
+    //
+    @GetMapping("/person-area-percentages/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonAreaPercentage>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of PersonAreaPercentages");
+        Page<PersonAreaPercentage> page = personAreaPercentageRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-area-percentages");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-area-percentages : Create a new personAreaPercentage.
