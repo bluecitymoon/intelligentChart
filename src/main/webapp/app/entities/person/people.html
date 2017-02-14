@@ -54,6 +54,13 @@
                             <span class="glyphicon glyphicon-cog"></span>
                             <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
                         </button>
+                        <button type="submit"
+                                ui-sref="person-prize({person_id:person.id})"
+                                class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-book"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+                        </button>
+
                     </div>
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -69,6 +76,12 @@
                             <span class="glyphicon glyphicon-adjust"></span>
                             <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
                         </button>
+                        <button type="submit"
+                                ui-sref="person-education-background({person_id:person.id})"
+                                class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-adjust"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+                        </button>
                     </div>
 
                 </td>
@@ -81,12 +94,7 @@
                             <span class="glyphicon glyphicon-baby-formula"></span>
                             <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
                         </button>
-                        <button type="submit"
-                                ui-sref="person-education-background({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-adjust"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
-                        </button>
+
                         <button type="submit"
                                 ui-sref="person-popularity({person_id:person.id})"
                                 class="btn btn-default btn-sm">

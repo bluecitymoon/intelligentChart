@@ -36,6 +36,12 @@
                     copy.prizeDate = DateUtils.convertLocalDateToServer(copy.prizeDate);
                     return angular.toJson(copy);
                 }
+            },
+            'loadAllByPersonId' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-prizes/person/:id',
+                params: { id : '@id'}
             }
         });
     }

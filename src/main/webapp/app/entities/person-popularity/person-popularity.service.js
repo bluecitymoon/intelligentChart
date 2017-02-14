@@ -23,11 +23,11 @@
             'update': { method:'PUT' },
 
             'loadAllByPersonId' : {
-            method: 'GET',
+                method: 'GET',
                 isArray: true,
                 url: 'api/person-popularities/person/:id',
                 params: { id : '@id'}
-        }
+            }
         });
     }
 })();

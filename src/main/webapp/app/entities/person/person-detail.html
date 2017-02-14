@@ -1,12 +1,65 @@
-
 <div>
-    <h2><span>{{vm.person.name}}</span></h2>
-    <hr>
+
     <jhi-alert-error></jhi-alert-error>
+
+    <h2><span>{{vm.person.name}}</span></h2>
+    <div>
+        <button type="submit"
+                ui-sref="person-area-percentage({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-leaf"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+        </button>
+        <button type="submit"
+                ui-sref="person-innovation({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-cog"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+        </button>
+        <button type="submit"
+                ui-sref="person-prize({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-book"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+        </button>
+        <button type="submit"
+                ui-sref="person-region-connection({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-gift"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+        </button>
+
+        <button type="submit"
+                ui-sref="person-connection-level({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-adjust"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+        </button>
+        <button type="submit"
+                ui-sref="person-education-background({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-adjust"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+        </button>
+        <button type="submit"
+                ui-sref="person-experience({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-baby-formula"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
+        </button>
+
+        <button type="submit"
+                ui-sref="person-popularity({person_id:vm.person.id})"
+                class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-comment"></span>
+            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+        </button>
+    </div>
+    <hr>
     <dl class="dl-horizontal jh-entity-details">
         <!--<dt><span data-translate="intelligentChartApp.person.name">Name</span></dt>-->
         <!--<dd>-->
-            <!--<span>{{vm.person.name}}</span>-->
+        <!--<span>{{vm.person.name}}</span>-->
         <!--</dd>-->
         <dt><span data-translate="intelligentChartApp.person.sex">Sex</span></dt>
         <dd>
