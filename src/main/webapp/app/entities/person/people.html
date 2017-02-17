@@ -1,17 +1,13 @@
 <div>
     <h2 data-translate="intelligentChartApp.person.home.title">People</h2>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="person.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="intelligentChartApp.person.home.createLabel">
+    <div class="container-fluid row text-right">
+        <button class="btn btn-primary" ui-sref="person.new" >
+            <span class="glyphicon glyphicon-plus"></span>
+            <span  data-translate="intelligentChartApp.person.home.createLabel">
                         Create new Person
                     </span>
-                </button>
-            </div>
-        </div>
+        </button>
     </div>
     <br/>
     <div class="table-responsive">
@@ -26,6 +22,7 @@
                 <th jh-sort-by="birthplace"><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="politicRole"><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span> <span class="glyphicon glyphicon-sort"></span></th>
                 <th jh-sort-by="supportTaiwanIndepence"><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
@@ -60,7 +57,12 @@
                             <span class="glyphicon glyphicon-book"></span>
                             <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
                         </button>
-
+                        <button type="submit"
+                                ui-sref="person-experience({person_id:person.id})"
+                                class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-baby-formula"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
+                        </button>
                     </div>
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -82,19 +84,6 @@
                             <span class="glyphicon glyphicon-adjust"></span>
                             <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
                         </button>
-                    </div>
-
-                </td>
-                <td>
-
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                ui-sref="person-experience({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-baby-formula"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
-                        </button>
-
                         <button type="submit"
                                 ui-sref="person-popularity({person_id:person.id})"
                                 class="btn btn-default btn-sm">
