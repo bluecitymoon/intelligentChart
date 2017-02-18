@@ -27,14 +27,14 @@
 
                     <!-- Profile Details -->
                     <li class="list-group-item list-item-sm">
-                        <i class="glyphicon fa-location-arrow"></i> {{vm.person.birthplace}}
+                        <i class="glyphicon glyphicon-glass"></i> {{vm.person.birthplace}}
                     </li>
                     <li class="list-group-item list-item-sm">
-                        <i class="glyphicon fa-location-arrow"></i> {{vm.person.birthday | date:'mediumDate'}}
+                        <i class="glyphicon glyphicon-calendar"></i> {{vm.person.birthday | date:'mediumDate'}}
                     </li>
                 </ul>
                 <div class="pad-hor mar-btm">
-                    <small class="text-muted">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</small>
+                    <small class="text-muted">{{vm.person.detail}}</small>
                 </div>
 
             </div>

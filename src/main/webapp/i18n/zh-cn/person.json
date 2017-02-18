@@ -23,7 +23,8 @@
             "birthplace": "出生地",
             "politicRole": "政治面貌",
             "supportTaiwanIndepence": "是否涉政",
-            "job": "参与过的影视圈工作"
+            "job": "参与过的影视圈工作",
+            "detail": "详细介绍",
         }
     }
 }

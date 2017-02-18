@@ -38,6 +38,10 @@
         {
             "fieldName": "supportTaiwanIndepence",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170210023221",

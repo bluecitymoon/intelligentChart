@@ -45,6 +45,9 @@ public class Person implements Serializable {
     @Column(name = "support_taiwan_indepence")
     private Boolean supportTaiwanIndepence;
 
+    @Column(name = "detail")
+    private String detail;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "person_job",
@@ -151,6 +154,19 @@ public class Person implements Serializable {
         this.supportTaiwanIndepence = supportTaiwanIndepence;
     }
 
+    public String getDetail() {
+        return detail;
+    }
+
+    public Person detail(String detail) {
+        this.detail = detail;
+        return this;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -207,6 +223,7 @@ public class Person implements Serializable {
             ", birthplace='" + birthplace + "'" +
             ", politicRole='" + politicRole + "'" +
             ", supportTaiwanIndepence='" + supportTaiwanIndepence + "'" +
+            ", detail='" + detail + "'" +
             '}';
     }
 }
