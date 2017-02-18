@@ -1,129 +1,131 @@
-<div>
-    <h2 data-translate="intelligentChartApp.person.home.title">People</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid row text-right">
-        <button class="btn btn-primary" ui-sref="person.new" >
-            <span class="glyphicon glyphicon-plus"></span>
-            <span  data-translate="intelligentChartApp.person.home.createLabel">
+<div class="panel">
+    <div class="panel-body">
+        <h2 data-translate="intelligentChartApp.person.home.title">People</h2>
+        <jhi-alert></jhi-alert>
+        <div class="container-fluid row text-right">
+            <button class="btn btn-primary" ui-sref="person.new" >
+                <span class="glyphicon glyphicon-plus"></span>
+                <span  data-translate="intelligentChartApp.person.home.createLabel">
                         Create new Person
                     </span>
-        </button>
-    </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="name"><span data-translate="intelligentChartApp.person.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="sex"><span data-translate="intelligentChartApp.person.sex">Sex</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="age"><span data-translate="intelligentChartApp.person.age">Age</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="birthday"><span data-translate="intelligentChartApp.person.birthday">Birthday</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="birthplace"><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="politicRole"><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th jh-sort-by="supportTaiwanIndepence"><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span> <span class="glyphicon glyphicon-sort"></span></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="person in vm.people track by person.id">
-                <td><a ui-sref="person-detail({id:person.id})">{{person.id}}</a></td>
-                <td>{{person.name}}</td>
-                <td>{{person.sex}}</td>
-                <td>{{person.age}}</td>
-                <td>{{person.birthday | date:'mediumDate'}}</td>
-                <td>{{person.birthplace}}</td>
-                <td>{{person.politicRole}}</td>
-                <td>{{person.supportTaiwanIndepence}}</td>
-                <td>
+            </button>
+        </div>
+        <br/>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.person.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sex"><span data-translate="intelligentChartApp.person.sex">Sex</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="age"><span data-translate="intelligentChartApp.person.age">Age</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="birthday"><span data-translate="intelligentChartApp.person.birthday">Birthday</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="birthplace"><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="politicRole"><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supportTaiwanIndepence"><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="person in vm.people track by person.id">
+                    <td><a ui-sref="person-detail({id:person.id})">{{person.id}}</a></td>
+                    <td>{{person.name}}</td>
+                    <td>{{person.sex}}</td>
+                    <td>{{person.age}}</td>
+                    <td>{{person.birthday | date:'mediumDate'}}</td>
+                    <td>{{person.birthplace}}</td>
+                    <td>{{person.politicRole}}</td>
+                    <td>{{person.supportTaiwanIndepence}}</td>
+                    <td>
 
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                ui-sref="person-area-percentage({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-leaf"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person-innovation({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-cog"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person-prize({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-book"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person-experience({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-baby-formula"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
-                        </button>
-                    </div>
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                ui-sref="person-region-connection({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-gift"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
-                        </button>
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-area-percentage({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-leaf"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-innovation({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-prize({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-book"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-experience({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-baby-formula"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
+                            </button>
+                        </div>
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-region-connection({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-gift"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+                            </button>
 
-                        <button type="submit"
-                                ui-sref="person-connection-level({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-adjust"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person-education-background({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-adjust"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person-popularity({person_id:person.id})"
-                                class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-comment"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
-                        </button>
-                    </div>
+                            <button type="submit"
+                                    ui-sref="person-connection-level({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-adjust"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-education-background({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-adjust"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-popularity({person_id:person.id})"
+                                    class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-comment"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+                            </button>
+                        </div>
 
-                </td>
+                    </td>
 
-                <td class="text-left">
+                    <td class="text-left">
 
-                    <div class="btn-group flex-btn-group-container">
+                        <div class="btn-group flex-btn-group-container">
 
-                        <button type="submit"
-                                ui-sref="person-detail({id:person.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person.edit({id:person.id})"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
-                        </button>
-                        <button type="submit"
-                                ui-sref="person.delete({id:person.id})"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>
-                            <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                            <button type="submit"
+                                    ui-sref="person-detail({id:person.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person.edit({id:person.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person.delete({id:person.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </div>
 </div>

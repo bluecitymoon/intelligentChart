@@ -1,106 +1,151 @@
-<div>
+<div style="padding: 1em">
+    <div class="fixed-fluid">
+        <div class="fixed-sm-200 fixed-lg-250 pull-sm-left">
+            <div class="panel">
+                <!-- Simple profile -->
+                <div class="text-center pad-all bord-btm">
+                    <div class="pad-ver">
+                        <img src="content/images/default-avatar.png" class="img-lg img-border img-circle" alt="Profile Picture">
+                    </div>
+                    <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
+                    <p class="text-sm text-muted">
+                        <span ng-repeat="job in vm.person.jobs">
+                            <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </p>
 
-    <jhi-alert-error></jhi-alert-error>
+                    <!--<div class="pad-ver btn-groups">-->
+                        <!--<a href="#" class="btn btn-hover-primary demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>-->
+                        <!--<a href="#" class="btn btn-hover-info demo-pli-twitter icon-lg add-tooltip" data-original-title="Twitter" data-container="body"></a>-->
+                        <!--<a href="#" class="btn btn-hover-danger demo-pli-google-plus icon-lg add-tooltip" data-original-title="Google+" data-container="body"></a>-->
+                        <!--<a href="#" class="btn btn-hover-purple demo-pli-instagram icon-lg add-tooltip" data-original-title="Instagram" data-container="body"></a>-->
+                    <!--</div>-->
+                    <!--<button class="btn btn-block btn-success">Follow</button>-->
+                </div>
+                <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
+                <ul class="list-group bg-trans text-sm">
 
-    <h2><span>{{vm.person.name}}</span></h2>
-    <div>
-        <button type="submit"
-                ui-sref="person-area-percentage({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-leaf"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
-        </button>
-        <button type="submit"
-                ui-sref="person-innovation({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-cog"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-        </button>
-        <button type="submit"
-                ui-sref="person-prize({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-book"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
-        </button>
-        <button type="submit"
-                ui-sref="person-region-connection({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-gift"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
-        </button>
+                    <!-- Profile Details -->
+                    <li class="list-group-item list-item-sm">
+                        <i class="glyphicon fa-location-arrow"></i> {{vm.person.birthplace}}
+                    </li>
+                    <li class="list-group-item list-item-sm">
+                        <i class="glyphicon fa-location-arrow"></i> {{vm.person.birthday | date:'mediumDate'}}
+                    </li>
+                </ul>
+                <div class="pad-hor mar-btm">
+                    <small class="text-muted">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</small>
+                </div>
 
-        <button type="submit"
-                ui-sref="person-connection-level({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-adjust"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
-        </button>
-        <button type="submit"
-                ui-sref="person-education-background({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-adjust"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
-        </button>
-        <button type="submit"
-                ui-sref="person-experience({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-baby-formula"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
-        </button>
-
-        <button type="submit"
-                ui-sref="person-popularity({person_id:vm.person.id})"
-                class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-comment"></span>
-            <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
-        </button>
+            </div>
+        </div>
     </div>
-    <hr>
-    <dl class="dl-horizontal jh-entity-details">
-        <!--<dt><span data-translate="intelligentChartApp.person.name">Name</span></dt>-->
-        <!--<dd>-->
-        <!--<span>{{vm.person.name}}</span>-->
-        <!--</dd>-->
-        <dt><span data-translate="intelligentChartApp.person.sex">Sex</span></dt>
-        <dd>
-            <span>{{vm.person.sex}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.age">Age</span></dt>
-        <dd>
-            <span>{{vm.person.age}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.birthday">Birthday</span></dt>
-        <dd>
-            <span>{{vm.person.birthday | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span></dt>
-        <dd>
-            <span>{{vm.person.birthplace}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span></dt>
-        <dd>
-            <span>{{vm.person.politicRole}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span></dt>
-        <dd>
-            <span>{{vm.person.supportTaiwanIndepence}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.person.job">Job</span></dt>
-        <dd>
+</div>
+<div class="panel">
+    <div class="panel-body">
+
+    </div>
+</div>
+<jhi-alert-error></jhi-alert-error>
+
+<h2><span>{{vm.person.name}}</span></h2>
+<div>
+    <button type="submit"
+            ui-sref="person-area-percentage({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-leaf"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+    </button>
+    <button type="submit"
+            ui-sref="person-innovation({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-cog"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+    </button>
+    <button type="submit"
+            ui-sref="person-prize({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-book"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+    </button>
+    <button type="submit"
+            ui-sref="person-region-connection({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-gift"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+    </button>
+
+    <button type="submit"
+            ui-sref="person-connection-level({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-adjust"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+    </button>
+    <button type="submit"
+            ui-sref="person-education-background({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-adjust"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+    </button>
+    <button type="submit"
+            ui-sref="person-experience({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-baby-formula"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
+    </button>
+
+    <button type="submit"
+            ui-sref="person-popularity({person_id:vm.person.id})"
+            class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-comment"></span>
+        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+    </button>
+</div>
+<hr>
+<dl class="dl-horizontal jh-entity-details">
+    <!--<dt><span data-translate="intelligentChartApp.person.name">Name</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.person.name}}</span>-->
+    <!--</dd>-->
+    <dt><span data-translate="intelligentChartApp.person.sex">Sex</span></dt>
+    <dd>
+        <span>{{vm.person.sex}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.age">Age</span></dt>
+    <dd>
+        <span>{{vm.person.age}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.birthday">Birthday</span></dt>
+    <dd>
+        <span>{{vm.person.birthday | date:'mediumDate'}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span></dt>
+    <dd>
+        <span>{{vm.person.birthplace}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span></dt>
+    <dd>
+        <span>{{vm.person.politicRole}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span></dt>
+    <dd>
+        <span>{{vm.person.supportTaiwanIndepence}}</span>
+    </dd>
+    <dt><span data-translate="intelligentChartApp.person.job">Job</span></dt>
+    <dd>
             <span ng-repeat="job in vm.person.jobs">
                 <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
             </span>
-        </dd>
-    </dl>
+    </dd>
+</dl>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
+<button type="submit"
+        ui-sref="{{ vm.previousState }}"
+        class="btn btn-info">
+    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+</button>
 
-    <button type="button" ui-sref="person-detail.edit({id:vm.person.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
-</div>
+<button type="button" ui-sref="person-detail.edit({id:vm.person.id})" class="btn btn-primary">
+    <span class="glyphicon glyphicon-pencil"></span>
+    <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+</button>
