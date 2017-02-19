@@ -1,6 +1,6 @@
 <div style="padding: 1em">
-    <div class="fixed-fluid">
-        <div class="fixed-sm-200 fixed-lg-250 pull-sm-left">
+    <div class="row">
+        <div class="col col-sm-4">
             <div class="panel">
                 <!-- Simple profile -->
                 <div class="text-center pad-all bord-btm">
@@ -15,10 +15,10 @@
                     </p>
 
                     <!--<div class="pad-ver btn-groups">-->
-                        <!--<a href="#" class="btn btn-hover-primary demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>-->
-                        <!--<a href="#" class="btn btn-hover-info demo-pli-twitter icon-lg add-tooltip" data-original-title="Twitter" data-container="body"></a>-->
-                        <!--<a href="#" class="btn btn-hover-danger demo-pli-google-plus icon-lg add-tooltip" data-original-title="Google+" data-container="body"></a>-->
-                        <!--<a href="#" class="btn btn-hover-purple demo-pli-instagram icon-lg add-tooltip" data-original-title="Instagram" data-container="body"></a>-->
+                    <!--<a href="#" class="btn btn-hover-primary demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>-->
+                    <!--<a href="#" class="btn btn-hover-info demo-pli-twitter icon-lg add-tooltip" data-original-title="Twitter" data-container="body"></a>-->
+                    <!--<a href="#" class="btn btn-hover-danger demo-pli-google-plus icon-lg add-tooltip" data-original-title="Google+" data-container="body"></a>-->
+                    <!--<a href="#" class="btn btn-hover-purple demo-pli-instagram icon-lg add-tooltip" data-original-title="Instagram" data-container="body"></a>-->
                     <!--</div>-->
                     <!--<button class="btn btn-block btn-success">Follow</button>-->
                 </div>
@@ -39,14 +39,40 @@
 
             </div>
         </div>
-    </div>
-</div>
-<div class="panel">
-    <div class="panel-body">
+        <div class="col col-sm-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <button type="submit"
+                            ui-sref="person-area-percentage({person_id:vm.person.id})"
+                            class="btn btn-block btn-sm">
+                        <span class="glyphicon glyphicon-leaf"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
 
+                    <donut-chart config="areaConfig" data="areaData"></donut-chart>
+
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <button type="submit"
+                            ui-sref="person-innovation({person_id:vm.person.id})"
+                            class="btn btn-block btn-sm">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<jhi-alert-error></jhi-alert-error>
 
 <h2><span>{{vm.person.name}}</span></h2>
 <div>
