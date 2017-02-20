@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('PersonDetailController', PersonDetailController);
 
-    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation'];
+    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground'];
 
-    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation) {
+    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation, PersonExperience, PersonEducationBackground) {
         var vm = this;
 
         vm.person = entity;
@@ -25,6 +25,9 @@
         };
 
 
+        function handleError(error) {
+            console.debug(error);
+        }
         PersonAreaPercentage.loadAllByPersonId({id: vm.person.id}).$promise.then(function (areas) {
             console.debug(areas);
 
@@ -42,12 +45,7 @@
                 });
 
                 $scope.areaData = [ pageload ];
-        },
-        function (error) {
-
-            console.debug(error);
-
-        });
+        }, handleError);
 
         PersonInnovation.loadAllByPersonId({id: vm.person.id}).$promise.then(function (innovations) {
 
@@ -80,9 +78,16 @@
                 $scope.innovationData[0].data[0].value.push(innovation.percentage);
             });
 
-        },function (error) {
-            console.debug(error);
-        });
+        }, handleError);
+
+        PersonExperience.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+            $scope.experiences = data;
+        }, handleError);
+
+        PersonEducationBackground.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            $scope.personEducationBackgrounds = data;
+        }, handleError);
 
         $scope.$on('$destroy', unsubscribe);
     }

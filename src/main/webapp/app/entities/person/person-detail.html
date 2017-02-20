@@ -72,6 +72,75 @@
             </div>
         </div>
     </div>
+
+    <hr class="new-section-sm">
+
+    <div class="row">
+        <div class="col col-sm-4">
+            <div class="panel-heading">
+                <button ui-sref="person-experience({person_id:vm.person.id})"
+                        class="btn btn-block btn-sm">
+                    <span class="glyphicon glyphicon-baby-formula"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="timeline">
+                    <div class="timeline-header">
+                        <div class="timeline-header-title bg-info">
+                            现在
+                        </div>
+                    </div>
+                    <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
+                        <div class="timeline-stat">
+
+                            <div class="timeline-icon">
+                                <img src="content/images/default-avatar.png" alt="Profile Picture">
+                            </div>
+                            <div class="timeline-time">
+                                {{exp.expYear}}
+                            </div>
+                        </div>
+                        <div class="timeline-label">{{exp.description}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-education-background({person_id:vm.person.id})"
+                            class="btn btn-block btn-sm">
+                        <span class="glyphicon glyphicon-adjust"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+
+                    <div ng-repeat="(key, value) in personEducationBackgrounds | groupBy: 'educationBackgroundType.name'">
+
+                        {{key}}
+
+
+                        <div class="table-responsive">
+                            <table class="jh-table table table-striped">
+                                <tbody>
+                                <tr ng-repeat="personEducationBackground in value track by value.id">
+
+                                    <td>{{personEducationBackground.startDate | date:'mediumDate'}}</td>
+                                    <td>{{personEducationBackground.endDate | date:'mediumDate'}}</td>
+                                    <td>{{personEducationBackground.description}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <h2><span>{{vm.person.name}}</span></h2>
