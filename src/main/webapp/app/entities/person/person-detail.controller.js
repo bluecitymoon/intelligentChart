@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('PersonDetailController', PersonDetailController);
 
-    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground'];
+    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel', 'PersonPopularity', 'PersonPrize'];
 
-    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation, PersonExperience, PersonEducationBackground) {
+    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel, PersonPopularity, PersonPrize) {
         var vm = this;
 
         vm.person = entity;
@@ -24,6 +24,19 @@
             width: 300
         };
 
+        $scope.connectionLevelConfig = {
+            title: "",
+            subtitle: '',
+            height:320,
+            width: 300
+        };
+
+        $scope.popularityConfig = {
+            title: "",
+            subtitle: '',
+            height:320,
+            width: 300
+        };
 
         function handleError(error) {
             console.debug(error);
@@ -88,6 +101,76 @@
 
             $scope.personEducationBackgrounds = data;
         }, handleError);
+
+        PersonPrize.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            $scope.prizes = data;
+        }, handleError);
+
+        PersonConnectionLevel.loadAllByPersonId({id: vm.person.id}).$promise.then(function (levels) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(levels, function (level) {
+
+                var number = level.percentage;
+                var title = level.connectionLevel.name;
+                pageload.datapoints.push({ x: title, y: number});
+
+            });
+
+            $scope.connectionLevelData = [ pageload ];
+
+        }, handleError);
+
+        PersonPopularity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (pops) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(pops, function (pop) {
+
+                var number = pop.percentage;
+                var title = pop.popularityType.name;
+                pageload.datapoints.push({ x: title, y: number});
+
+            });
+
+            $scope.popularityData = [ pageload ];
+
+        }, handleError);
+
+        $scope.connectionRegionConfig = {
+
+            width: 1000,
+            height: 660,
+            map: {
+                mapType: 'china',
+                selectedMode: 'single',
+                itemStyle:{
+                    normal:{label:{show:true}},
+                    emphasis:{label:{show:true}}
+                }
+            },
+            event: {
+                type: echarts.config.EVENT.MAP_SELECTED
+            }
+
+        };
+
+        $scope.connectionRegionData = {
+            nation: [
+                {name: "全国地图"}
+            ],
+            province: [
+                {name: "省地图"}
+            ]
+        };
 
         $scope.$on('$destroy', unsubscribe);
     }
