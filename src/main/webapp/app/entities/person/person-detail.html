@@ -220,30 +220,29 @@
                 <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
                 </button>
             </div>
-            <div class="panel-body">
+            <!--<div class="panel-body">-->
 
-                <div ng-repeat="(key, value) in prizes | groupBy: 'prizeType.name'">
+                <!--<div ng-repeat="(key, value) in prizes | groupBy: 'prizeType.name'">-->
 
-                    <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
-                        <strong>{{key}}</strong>
-                    </div>
-
-                    <div ng-repeat="(k, v) in value | groupBy: 'prizeType.name'"
-
-                    <!--<div class="table-responsive">-->
-                        <!--<table class="jh-table table table-striped">-->
-                            <!--<tbody>-->
-                            <!--<tr class="text-center" ng-repeat="prize in value track by $index">-->
-
-                                <!--<td>{{prize.prizeDate | date:'mediumDate'}}</td>-->
-                                <!--<td><strong>{{personEducationBackground.description}}</strong></td>-->
-                            <!--</tr>-->
-                            <!--</tbody>-->
-                        <!--</table>-->
+                    <!--<div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">-->
+                        <!--<strong>{{key}}</strong>-->
                     <!--</div>-->
-                </div>
 
-            </div>
+
+                    <!--&lt;!&ndash;<div class="table-responsive">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<table class="jh-table table table-striped">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<tr class="text-center" ng-repeat="prize in value track by $index">&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;<td>{{prize.prizeDate | date:'mediumDate'}}</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td><strong>{{personEducationBackground.description}}</strong></td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+
+            <!--</div>-->
     </div>
 
 </div>

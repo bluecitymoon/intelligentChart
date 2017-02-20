@@ -5,9 +5,9 @@
         .module('intelligentChartApp')
         .controller('PersonDetailController', PersonDetailController);
 
-    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel', 'PersonPopularity', 'PersonPrize'];
+    PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job', 'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel', 'PersonPopularity', 'PersonPrize', 'lodash'];
 
-    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel, PersonPopularity, PersonPrize) {
+    function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage, PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel, PersonPopularity, PersonPrize, lodash) {
         var vm = this;
 
         vm.person = entity;
@@ -104,7 +104,13 @@
 
         PersonPrize.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
 
-            $scope.prizes = data;
+            if (data && data.length > 0) {
+
+                $scope.prizes = lodash.groupBy(data, function (prize) {
+                    return prize.prizeType.name;
+                });
+                console.debug($scope.prizes);
+            }
         }, handleError);
 
         PersonConnectionLevel.loadAllByPersonId({id: vm.person.id}).$promise.then(function (levels) {

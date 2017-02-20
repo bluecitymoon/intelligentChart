@@ -19,7 +19,8 @@
             'angular-loading-bar',
             'angular-echarts',
             'ngAside',
-            'angular.filter'
+            'angular.filter',
+            'ngLodash'
         ])
         .run(run);
 
