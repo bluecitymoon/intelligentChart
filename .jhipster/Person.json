@@ -42,6 +42,10 @@
         {
             "fieldName": "detail",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "avatar",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170210023221",

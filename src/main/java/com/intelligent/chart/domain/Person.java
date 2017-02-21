@@ -48,6 +48,9 @@ public class Person implements Serializable {
     @Column(name = "detail")
     private String detail;
 
+    @Column(name = "avatar")
+    private String avatar;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "person_job",
@@ -167,6 +170,19 @@ public class Person implements Serializable {
         this.detail = detail;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public Person avatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -224,6 +240,7 @@ public class Person implements Serializable {
             ", politicRole='" + politicRole + "'" +
             ", supportTaiwanIndepence='" + supportTaiwanIndepence + "'" +
             ", detail='" + detail + "'" +
+            ", avatar='" + avatar + "'" +
             '}';
     }
 }

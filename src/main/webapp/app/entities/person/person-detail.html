@@ -4,7 +4,7 @@
             <div class="panel">
                 <div class="text-center pad-all bord-btm">
                     <div class="pad-ver">
-                        <img src="content/images/default-avatar.png" class="img-lg img-border img-circle" alt="Profile Picture">
+                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="img-lg img-border img-circle" alt="Profile Picture">
                     </div>
                     <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
                     <p class="text-sm text-muted">
@@ -53,7 +53,7 @@
                             <div class="timeline-stat">
 
                                 <div class="timeline-icon">
-                                    <img src="content/images/default-avatar.png" alt="Profile Picture">
+                                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
                                 </div>
                                 <div class="timeline-time">
                                     {{exp.expYear}}

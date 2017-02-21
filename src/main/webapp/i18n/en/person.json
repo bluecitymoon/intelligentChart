@@ -23,7 +23,8 @@
             "birthplace": "Birthplace",
             "politicRole": "Politic Role",
             "supportTaiwanIndepence": "Support Taiwan Indepence",
-            "detail": "Detail",
+            "detailDescription": "Detail",
+            "avatar": "Avatar",
             "job": "Job"
         }
     }

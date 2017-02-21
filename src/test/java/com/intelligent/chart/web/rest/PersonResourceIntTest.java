@@ -64,6 +64,9 @@ public class PersonResourceIntTest {
     private static final String DEFAULT_DETAIL = "AAAAAAAAAA";
     private static final String UPDATED_DETAIL = "BBBBBBBBBB";
 
+    private static final String DEFAULT_AVATAR = "AAAAAAAAAA";
+    private static final String UPDATED_AVATAR = "BBBBBBBBBB";
+
     @Inject
     private PersonRepository personRepository;
 
@@ -108,7 +111,8 @@ public class PersonResourceIntTest {
                 .birthplace(DEFAULT_BIRTHPLACE)
                 .politicRole(DEFAULT_POLITIC_ROLE)
                 .supportTaiwanIndepence(DEFAULT_SUPPORT_TAIWAN_INDEPENCE)
-                .detail(DEFAULT_DETAIL);
+                .detail(DEFAULT_DETAIL)
+                .avatar(DEFAULT_AVATAR);
         return person;
     }
 
@@ -141,6 +145,7 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getPoliticRole()).isEqualTo(DEFAULT_POLITIC_ROLE);
         assertThat(testPerson.isSupportTaiwanIndepence()).isEqualTo(DEFAULT_SUPPORT_TAIWAN_INDEPENCE);
         assertThat(testPerson.getDetail()).isEqualTo(DEFAULT_DETAIL);
+        assertThat(testPerson.getAvatar()).isEqualTo(DEFAULT_AVATAR);
     }
 
     @Test
@@ -181,7 +186,8 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.[*].birthplace").value(hasItem(DEFAULT_BIRTHPLACE.toString())))
             .andExpect(jsonPath("$.[*].politicRole").value(hasItem(DEFAULT_POLITIC_ROLE.toString())))
             .andExpect(jsonPath("$.[*].supportTaiwanIndepence").value(hasItem(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue())))
-            .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())));
+            .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
+            .andExpect(jsonPath("$.[*].avatar").value(hasItem(DEFAULT_AVATAR.toString())));
     }
 
     @Test
@@ -202,7 +208,8 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.birthplace").value(DEFAULT_BIRTHPLACE.toString()))
             .andExpect(jsonPath("$.politicRole").value(DEFAULT_POLITIC_ROLE.toString()))
             .andExpect(jsonPath("$.supportTaiwanIndepence").value(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue()))
-            .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()));
+            .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
+            .andExpect(jsonPath("$.avatar").value(DEFAULT_AVATAR.toString()));
     }
 
     @Test
@@ -231,7 +238,8 @@ public class PersonResourceIntTest {
                 .birthplace(UPDATED_BIRTHPLACE)
                 .politicRole(UPDATED_POLITIC_ROLE)
                 .supportTaiwanIndepence(UPDATED_SUPPORT_TAIWAN_INDEPENCE)
-                .detail(UPDATED_DETAIL);
+                .detail(UPDATED_DETAIL)
+                .avatar(UPDATED_AVATAR);
 
         restPersonMockMvc.perform(put("/api/people")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -250,6 +258,7 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getPoliticRole()).isEqualTo(UPDATED_POLITIC_ROLE);
         assertThat(testPerson.isSupportTaiwanIndepence()).isEqualTo(UPDATED_SUPPORT_TAIWAN_INDEPENCE);
         assertThat(testPerson.getDetail()).isEqualTo(UPDATED_DETAIL);
+        assertThat(testPerson.getAvatar()).isEqualTo(UPDATED_AVATAR);
     }
 
     @Test

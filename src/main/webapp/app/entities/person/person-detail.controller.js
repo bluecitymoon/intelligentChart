@@ -28,7 +28,7 @@
             title: "",
             subtitle: '',
             height:320,
-            width: 300
+            width: 350
 
         };
 
