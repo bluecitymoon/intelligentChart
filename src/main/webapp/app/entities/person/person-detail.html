@@ -1,8 +1,7 @@
-<div style="padding: 1em" class="container-fluid">
+<div>
     <div class="row">
         <div class="col col-sm-4">
             <div class="panel">
-                <!-- Simple profile -->
                 <div class="text-center pad-all bord-btm">
                     <div class="pad-ver">
                         <img src="content/images/default-avatar.png" class="img-lg img-border img-circle" alt="Profile Picture">
@@ -13,14 +12,6 @@
                             <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
                         </span>
                     </p>
-
-                    <!--<div class="pad-ver btn-groups">-->
-                    <!--<a href="#" class="btn btn-hover-primary demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>-->
-                    <!--<a href="#" class="btn btn-hover-info demo-pli-twitter icon-lg add-tooltip" data-original-title="Twitter" data-container="body"></a>-->
-                    <!--<a href="#" class="btn btn-hover-danger demo-pli-google-plus icon-lg add-tooltip" data-original-title="Google+" data-container="body"></a>-->
-                    <!--<a href="#" class="btn btn-hover-purple demo-pli-instagram icon-lg add-tooltip" data-original-title="Instagram" data-container="body"></a>-->
-                    <!--</div>-->
-                    <!--<button class="btn btn-block btn-success">Follow</button>-->
                 </div>
                 <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
                 <ul class="list-group bg-trans text-sm">
@@ -37,84 +28,50 @@
                     <small class="text-muted">{{vm.person.detail}}</small>
                 </div>
 
-            </div>
-        </div>
-        <div class="col col-sm-4">
 
-            <div class="panel">
-                <div class="panel-heading">
+                <!--<div class="panel-heading">-->
+                <!--<button ui-sref="person-experience({person_id:vm.person.id})"-->
+                <!--class="btn text-bold btn-block ">-->
+                <!--<span class="glyphicon glyphicon-baby-formula"></span>-->
+                <!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>-->
+                <!--</button>-->
+                <!--</div>-->
+                <hr>
+                <a ui-sref="person-experience({person_id:vm.person.id})" class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span></a>
 
-                    <button ui-sref="person-popularity({person_id:vm.person.id})"
-                            class="btn btn-block">
-                        <span class="glyphicon glyphicon-comment"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
-                    </button>
 
-                </div>
                 <div class="panel-body">
-                    <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
-                </div>
-            </div>
 
+                    <div class="timeline">
 
-        </div>
-        <div class="col col-sm-4">
-            <div class="panel">
-                <div class="panel-heading">
-                    <button type="submit"
-                            ui-sref="person-innovation({person_id:vm.person.id})"
-                            class="btn btn-block ">
-                        <span class="glyphicon glyphicon-cog"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-                    <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <!--<div class="timeline-header">-->
+                        <!--<div class="timeline-header-title bg-info">-->
+                        <!--现在-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
+                            <div class="timeline-stat">
 
-    <hr class="new-section-sm">
-
-    <div class="row">
-        <div class="col col-sm-4">
-            <div class="panel-heading">
-                <button ui-sref="person-experience({person_id:vm.person.id})"
-                        class="btn btn-block ">
-                    <span class="glyphicon glyphicon-baby-formula"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div class="timeline">
-                    <div class="timeline-header">
-                        <div class="timeline-header-title bg-info">
-                            现在
+                                <div class="timeline-icon">
+                                    <img src="content/images/default-avatar.png" alt="Profile Picture">
+                                </div>
+                                <div class="timeline-time">
+                                    {{exp.expYear}}
+                                </div>
+                            </div>
+                            <div class="timeline-label">{{exp.description}}</div>
                         </div>
                     </div>
-                    <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
-                        <div class="timeline-stat">
 
-                            <div class="timeline-icon">
-                                <img src="content/images/default-avatar.png" alt="Profile Picture">
-                            </div>
-                            <div class="timeline-time">
-                                {{exp.expYear}}
-                            </div>
-                        </div>
-                        <div class="timeline-label">{{exp.description}}</div>
-                    </div>
                 </div>
+
+
             </div>
-        </div>
-        <div class="col-sm-8">
 
             <div class="panel">
                 <div class="panel-heading">
                     <button ui-sref="person-education-background({person_id:vm.person.id})"
-                            class="btn btn-block ">
+                            class="btn text-bold btn-block">
                         <span class="glyphicon glyphicon-adjust"></span>
                         <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
                     </button>
@@ -144,207 +101,141 @@
 
                 </div>
             </div>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <button type="submit"
-                                    ui-sref="person-area-percentage({person_id:vm.person.id})"
-                                    class="btn btn-block ">
-                                <span class="glyphicon glyphicon-leaf"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
-                            </button>
-                        </div>
-                        <div class="panel-body">
-
-                            <donut-chart config="areaConfig" data="areaData"></donut-chart>
-
-                        </div>
-                    </div>
-
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                        <span class="glyphicon glyphicon-book"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+                    </button>
                 </div>
+                <div class="panel-body">
 
-                <div class="col-md-6">
+                    <div ng-repeat="(key, subPrizes) in prizes">
 
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <button ui-sref="person-connection-level({person_id:vm.person.id})"
-                                    class="btn btn-block">
-                                <span class="glyphicon glyphicon-adjust"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
-                            </button>
-                        </div>
-                        <div class="panel-body">
+                        <h4>
+                            <strong>{{key}}</strong>
+                        </h4>
 
-                            <pie-chart config="connectionLevelConfig" data="connectionLevelData"></pie-chart>
+                        <div ng-repeat="(group, element) in subPrizes | groupBy: 'prizeGroup.name'">
 
+                            <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
+                                <strong>{{group}}</strong>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="jh-table table table-striped">
+                                    <tbody>
+                                    <tr class="text-center" ng-repeat="sp in subPrizes track by $index">
+
+                                        <td>{{sp.prizeDate | date:'mediumDate'}}</td>
+                                        <td>{{sp.name}}</td>
+                                        <td><strong>{{sp.prizeLevel.name}}</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div>
-    </div>
 
-    <hr class="new-section-xs">
-
-    <div class="row">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-region-connection({person_id:vm.person.id})"
-                        class="btn btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
-
-            </div>
         </div>
 
+        <div class="col col-sm-4">
 
-    </div>
+            <div class="panel">
+                <div class="panel-heading">
 
-    <div class="row">
+                    <a ui-sref="person-popularity({person_id:vm.person.id})"
+                            class="btn btn-block text-bold">
+                        <span class="glyphicon glyphicon-comment"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+                    </a>
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-prize({person_id:vm.person.id})" class="btn btn-block ">
-                <span class="glyphicon glyphicon-book"></span>
-                <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
-                </button>
+                </div>
+                <div class="panel-body">
+                    <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
+                </div>
             </div>
-            <!--<div class="panel-body">-->
 
-                <!--<div ng-repeat="(key, value) in prizes | groupBy: 'prizeType.name'">-->
+            <div class="panel">
+                <div class="panel-heading">
+                    <button type="submit"
+                            ui-sref="person-area-percentage({person_id:vm.person.id})"
+                            class="btn text-bold btn-block ">
+                        <span class="glyphicon glyphicon-leaf"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
 
-                    <!--<div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">-->
-                        <!--<strong>{{key}}</strong>-->
-                    <!--</div>-->
+                    <donut-chart config="areaConfig" data="areaData"></donut-chart>
+
+                </div>
+            </div>
 
 
-                    <!--&lt;!&ndash;<div class="table-responsive">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<table class="jh-table table table-striped">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<tr class="text-center" ng-repeat="prize in value track by $index">&ndash;&gt;-->
+        </div>
+        <div class="col col-sm-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <button type="submit"
+                            ui-sref="person-innovation({person_id:vm.person.id})"
+                            class="btn text-bold btn-block ">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
+                </div>
+            </div>
 
-                                <!--&lt;!&ndash;<td>{{prize.prizeDate | date:'mediumDate'}}</td>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<td><strong>{{personEducationBackground.description}}</strong></td>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</table>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--</div>-->
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-connection-level({person_id:vm.person.id})"
+                            class="btn text-bold btn-block">
+                        <span class="glyphicon glyphicon-adjust"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
 
-            <!--</div>-->
+                    <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-region-connection({person_id:vm.person.id})"
+                            class="btn text-bold btn-block">
+                        <span class="glyphicon glyphicon-gift"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+
+                    <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
     </div>
 
 </div>
-
-<!--<h2><span>{{vm.person.name}}</span></h2>-->
-<!--<div>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-area-percentage({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-leaf"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>-->
-<!--</button>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-innovation({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-cog"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>-->
-<!--</button>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-prize({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-book"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>-->
-<!--</button>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-region-connection({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-gift"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>-->
-<!--</button>-->
-
-<!--<button type="submit"-->
-<!--ui-sref="person-connection-level({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-adjust"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>-->
-<!--</button>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-education-background({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-adjust"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>-->
-<!--</button>-->
-<!--<button type="submit"-->
-<!--ui-sref="person-experience({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-baby-formula"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span>-->
-<!--</button>-->
-
-<!--<button type="submit"-->
-<!--ui-sref="person-popularity({person_id:vm.person.id})"-->
-<!--class="btn btn-default ">-->
-<!--<span class="glyphicon glyphicon-comment"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>-->
-<!--</button>-->
-<!--</div>-->
-<!--<hr>-->
-<!--<dl class="dl-horizontal jh-entity-details">-->
-<!--&lt;!&ndash;<dt><span data-translate="intelligentChartApp.person.name">Name</span></dt>&ndash;&gt;-->
-<!--&lt;!&ndash;<dd>&ndash;&gt;-->
-<!--&lt;!&ndash;<span>{{vm.person.name}}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;</dd>&ndash;&gt;-->
-<!--<dt><span data-translate="intelligentChartApp.person.sex">Sex</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.sex}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.age">Age</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.age}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.birthday">Birthday</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.birthday | date:'mediumDate'}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.birthplace">Birthplace</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.birthplace}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.politicRole">Politic Role</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.politicRole}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.supportTaiwanIndepence">Support Taiwan Indepence</span></dt>-->
-<!--<dd>-->
-<!--<span>{{vm.person.supportTaiwanIndepence}}</span>-->
-<!--</dd>-->
-<!--<dt><span data-translate="intelligentChartApp.person.job">Job</span></dt>-->
-<!--<dd>-->
-<!--<span ng-repeat="job in vm.person.jobs">-->
-<!--<a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}-->
-<!--</span>-->
-<!--</dd>-->
-<!--</dl>-->
-
-<!--<button type="submit"-->
-<!--ui-sref="{{ vm.previousState }}"-->
-<!--class="btn btn-info">-->
-<!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
-<!--</button>-->
-
-<!--<button type="button" ui-sref="person-detail.edit({id:vm.person.id})" class="btn btn-primary">-->
-<!--<span class="glyphicon glyphicon-pencil"></span>-->
-<!--<span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>-->
-<!--</button>-->

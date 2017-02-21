@@ -29,6 +29,7 @@
             subtitle: '',
             height:320,
             width: 300
+
         };
 
         $scope.popularityConfig = {
@@ -42,7 +43,6 @@
             console.debug(error);
         }
         PersonAreaPercentage.loadAllByPersonId({id: vm.person.id}).$promise.then(function (areas) {
-            console.debug(areas);
 
                 var pageload = {
                     name: "",
@@ -109,7 +109,6 @@
                 $scope.prizes = lodash.groupBy(data, function (prize) {
                     return prize.prizeType.name;
                 });
-                console.debug($scope.prizes);
             }
         }, handleError);
 
@@ -128,6 +127,7 @@
 
             });
 
+            // pageload.datapoints = lodash.orderBy(pageload.datapoints, ['y', 'asc']);
             $scope.connectionLevelData = [ pageload ];
 
         }, handleError);
@@ -150,32 +150,71 @@
             $scope.popularityData = [ pageload ];
 
         }, handleError);
+        function randomData() {
+            return Math.round(Math.random()*1000);
+        }
 
         $scope.connectionRegionConfig = {
 
-            width: 1000,
-            height: 660,
+            width: 600,
+            height: 640,
             map: {
                 mapType: 'china',
                 selectedMode: 'single',
+                roam: true,
                 itemStyle:{
                     normal:{label:{show:true}},
                     emphasis:{label:{show:true}}
                 }
             },
-            event: {
-                type: echarts.config.EVENT.MAP_SELECTED
-            }
+            theme: 'blue'
+
 
         };
 
+        var pageload = {
+            name: "",
+            datapoints: []
+        };
+
         $scope.connectionRegionData = {
-            nation: [
-                {name: "全国地图"}
-            ],
-            province: [
-                {name: "省地图"}
-            ]
+            name: "",
+            datapoints: [
+            {x: '北京',y: randomData() },
+        {x: '天津',y: randomData() },
+        {x: '上海',y: randomData() },
+        {x: '重庆',y: randomData() },
+        {x: '河北',y: randomData() },
+        {x: '河南',y: randomData() },
+        {x: '云南',y: randomData() },
+        {x: '辽宁',y: randomData() },
+        {x: '黑龙江',y: randomData() },
+        {x: '湖南',y: randomData() },
+        {x: '安徽',y: randomData() },
+        {x: '山东',y: randomData() },
+        {x: '新疆',y: randomData() },
+        {x: '江苏',y: randomData() },
+        {x: '浙江',y: randomData() },
+        {x: '江西',y: randomData() },
+        {x: '湖北',y: randomData() },
+        {x: '广西',y: randomData() },
+        {x: '甘肃',y: randomData() },
+        {x: '山西',y: randomData() },
+        {x: '内蒙古',y: randomData() },
+        {x: '陕西',y: randomData() },
+        {x: '吉林',y: randomData() },
+        {x: '福建',y: randomData() },
+        {x: '贵州',y: randomData() },
+        {x: '广东',y: randomData() },
+        {x: '青海',y: randomData() },
+        {x: '西藏',y: randomData() },
+        {x: '四川',y: randomData() },
+        {x: '宁夏',y: randomData() },
+        {x: '海南',y: randomData() },
+        {x: '台湾',y: randomData() },
+        {x: '香港',y: randomData() },
+        {x: '澳门',y: randomData() }
+    ]
         };
 
         $scope.$on('$destroy', unsubscribe);

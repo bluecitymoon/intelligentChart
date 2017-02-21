@@ -27,6 +27,7 @@ function getLinkFunction($http, theme, util, type) {
                     orient: 'top',
                     axisLine: { show: false }
                 }, angular.isObject(config.xAxis) ? config.xAxis : {});
+            console.debug(JSON.stringify(xAxis));
             var yAxis = angular.extend({
                     type: 'value',
                     orient: 'right',
@@ -38,6 +39,8 @@ function getLinkFunction($http, theme, util, type) {
                         }
                     }
                 }, angular.isObject(config.yAxis) ? config.yAxis : {});
+
+            console.debug(JSON.stringify(yAxis));
             // basic config
             var options = {
                     title: util.getTitle(data, config, type),
@@ -83,7 +86,7 @@ function getLinkFunction($http, theme, util, type) {
             }
             return options;
         }
-        var isAjaxInProgress = false;
+
         var textStyle = {
                 color: 'red',
                 fontSize: 36,
@@ -114,63 +117,21 @@ function getLinkFunction($http, theme, util, type) {
                     });
                 }
             }
-            // string type for data param is assumed to ajax datarequests
-            if (angular.isString(scope.data)) {
-                if (isAjaxInProgress) {
-                    return;
-                }
-                isAjaxInProgress = true;
-                // show loading
+
+            options = getOptions(scope.data, scope.config, type);
+            if (scope.config.forceClear) {
+                chart.clear();
+            }
+            if (options.series.length) {
+                chart.setOption(options);
+                chart.resize();
+            } else {
                 chart.showLoading({
-                    text: scope.config.loading || '\u594B\u529B\u52A0\u8F7D\u4E2D...',
+                    text: scope.config.errorMsg || '\u6CA1\u6709\u6570\u636E',
                     textStyle: textStyle
                 });
-                // fire data request
-                $http.get(scope.data).success(function (response) {
-                    isAjaxInProgress = false;
-                    chart.hideLoading();
-                    if (response.data) {
-                        options = getOptions(response.data, scope.config, type);
-                        if (scope.config.forceClear) {
-                            chart.clear();
-                        }
-                        if (options.series.length) {
-                            chart.setOption(options);
-                            chart.resize();
-                        } else {
-                            chart.showLoading({
-                                text: scope.config.errorMsg || '\u6CA1\u6709\u6570\u636E',
-                                textStyle: textStyle
-                            });
-                        }
-                    } else {
-                        chart.showLoading({
-                            text: scope.config.emptyMsg || '\u6570\u636E\u52A0\u8F7D\u5931\u8D25',
-                            textStyle: textStyle
-                        });
-                    }
-                }).error(function (response) {
-                    isAjaxInProgress = false;
-                    chart.showLoading({
-                        text: scope.config.emptyMsg || '\u6570\u636E\u52A0\u8F7D\u5931\u8D25',
-                        textStyle: textStyle
-                    });
-                });    // if data is avaliable, render immediately
-            } else {
-                options = getOptions(scope.data, scope.config, type);
-                if (scope.config.forceClear) {
-                    chart.clear();
-                }
-                if (options.series.length) {
-                    chart.setOption(options);
-                    chart.resize();
-                } else {
-                    chart.showLoading({
-                        text: scope.config.errorMsg || '\u6CA1\u6709\u6570\u636E',
-                        textStyle: textStyle
-                    });
-                }
             }
+
         }
         // update when charts config changes
         scope.$watch(function () {
