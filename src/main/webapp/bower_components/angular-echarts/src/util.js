@@ -161,7 +161,9 @@ angular.module('angular-echarts.util', []).factory('util', function () {
                             normal : {
                                 label : {
                                     position : 'inner',
-                                    formatter : function (a,b,c,d) { return (d - 0).toFixed(0) + '%'; }
+                                    formatter : function (item) {
+                                        return (+item.percent).toFixed() + '%';
+                                    }
                                 },
                                 labelLine : {
                                     show : false
@@ -180,7 +182,7 @@ angular.module('angular-echarts.util', []).factory('util', function () {
 
             if (isMapChart(type)) {
                 conf.type = 'map';
-                conf = angular.extend(conf, {}, config.map || {});
+                conf = angular.extend(conf, serie, config.map || {});
             }
 
             // if stack set to true
@@ -212,7 +214,8 @@ angular.module('angular-echarts.util', []).factory('util', function () {
             legend.orient = 'verticle';
             legend.x = 'right';
             legend.y = 'center';
-
+        } else if (type === 'map') {
+            legend = {};
         } else {
             angular.forEach(data, function (serie) {
                 legend.data.push(serie.name);
