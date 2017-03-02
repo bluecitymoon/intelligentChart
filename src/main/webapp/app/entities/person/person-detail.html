@@ -37,7 +37,7 @@
                     <div class="timeline">
 
                         <div class="timeline-header">
-                            <div class="timeline-header-title bg-info">
+                            <div class="timeline-header-title bg-pink">
                                 现在
                             </div>
                         </div>
@@ -167,21 +167,6 @@
                 </div>
             </div>
 
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-region-connection({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-gift"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
-
-                </div>
-            </div>
-
         </div>
         <div class="col col-md-4">
             <div class="panel">
@@ -213,6 +198,23 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-region-connection({person_id:vm.person.id})"
+                            class="btn text-bold btn-block">
+                        <span class="glyphicon glyphicon-gift"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+
+                    <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+                </div>
+            </div>
         </div>
 
     </div>

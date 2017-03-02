@@ -163,8 +163,7 @@
 
         $scope.connectionRegionConfig = {
 
-            width: 300,
-            height: 320,
+            height: 640,
             tooltip : {
                 trigger: 'item'
             },
