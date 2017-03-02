@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonWordCloud.
+    -->
+    <changeSet id="20170302124008-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_word_cloud"
+                                 constraintName="fk_person_word_cloud_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="word_cloud_id"
+                                 baseTableName="person_word_cloud"
+                                 constraintName="fk_person_word_cloud_word_cloud_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="word_cloud"/>
+
+    </changeSet>
+</databaseChangeLog>

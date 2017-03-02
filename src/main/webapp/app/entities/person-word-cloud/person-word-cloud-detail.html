@@ -1,0 +1,31 @@
+
+<div class="panel">
+    <h2><span data-translate="intelligentChartApp.personWordCloud.detail.title">Person Word Cloud</span> {{vm.personWordCloud.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personWordCloud.count">Count</span></dt>
+        <dd>
+            <span>{{vm.personWordCloud.count}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personWordCloud.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personWordCloud.person.id})">{{vm.personWordCloud.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personWordCloud.wordCloud">Word Cloud</span></dt>
+        <dd>
+            <a ui-sref="word-cloud-detail({id:vm.personWordCloud.wordCloud.id})">{{vm.personWordCloud.wordCloud.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-word-cloud-detail.edit({id:vm.personWordCloud.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

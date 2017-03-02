@@ -78,5 +78,11 @@
 
     <cache alias="com.intelligent.chart.domain.PersonRegionConnection" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.WordCloud" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.WordCloud.personWordClouds" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonWordCloud" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "wordCloud" : {
+            "home": {
+                "title": "词云",
+                "createLabel": "创建词云",
+                "createOrEditLabel": "管理词云",
+                "search": "Search for Word Cloud"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "词云"
+            },
+            "name": "名称",
+            "personWordCloud": "人物词云"
+        }
+    }
+}

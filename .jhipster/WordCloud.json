@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "personWordCloud",
+            "otherEntityName": "personWordCloud",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "wordCloud"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170302123745",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "word_cloud",
+    "pagination": "pagination"
+}

@@ -32,6 +32,8 @@
                 "personConnectionLevel": "人脉层次",
                 "region": "人脉区域",
                 "personRegionConnection": "人脉分布",
+                "wordCloud": "词云",
+                "personWordCloud": "人物词云",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

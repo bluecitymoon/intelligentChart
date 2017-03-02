@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "wordCloud" : {
+            "home": {
+                "title": "Word Clouds",
+                "createLabel": "Create a new Word Cloud",
+                "createOrEditLabel": "Create or edit a Word Cloud",
+                "search": "Search for Word Cloud"
+            },
+            "created": "A new Word Cloud is created with identifier {{ param }}",
+            "updated": "A Word Cloud is updated with identifier {{ param }}",
+            "deleted": "A Word Cloud is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Word Cloud {{ id }}?"
+            },
+            "detail": {
+                "title": "Word Cloud"
+            },
+            "name": "Name",
+            "personWordCloud": "Person Word Cloud"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personWordCloud" : {
+            "home": {
+                "title": "词云",
+                "createLabel": "创建一条词云",
+                "createOrEditLabel": "管理词云",
+                "search": "Search for Person Word Cloud"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "词云"
+            },
+            "count": "数量",
+            "person": "影视人",
+            "wordCloud": "词云"
+        }
+    }
+}
