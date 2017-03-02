@@ -1,51 +1,14 @@
 {
   "name": "echarts",
-  "version": "2.2.7",
-  "homepage": "http://echarts.baidu.com",
-  "repository": "git://github.com/ecomfe/echarts",
-  "authors": [
-    {
-      "name": "Kener",
-      "email": "kener.linfeng@gmail.com"
-    },
-    {
-      "name": "Pissang",
-      "email": "shenyi.914@gmail.com"
-    },
-    {
-      "name": "Erik",
-      "email": "errorrik@gmail.com"
-    },
-    {
-      "name": "Yangji",
-      "email": "511415343@qq.com"
-    }
-  ],
-  "description": "Enterprise Charts 【Baidu Hi : 1379172 | Email : echarts@baidu.com】",
-  "main": [
-    "build/dist/echarts.js"
-  ],
-  "keywords": [
-    "baidu",
-    "echarts",
-    "canvas",
-    "data visualization"
-  ],
-  "license": "BSD",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "doc"
-  ],
-  "_release": "2.2.7",
+  "homepage": "https://github.com/ecomfe/echarts",
+  "version": "3.4.0",
+  "_release": "3.4.0",
   "_resolution": {
     "type": "version",
-    "tag": "2.2.7",
-    "commit": "8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e"
+    "tag": "3.4.0",
+    "commit": "10692d9c36ee8fee505b6ecf77442019df5ad4a0"
   },
   "_source": "https://github.com/ecomfe/echarts.git",
-  "_target": "~2.2.7",
+  "_target": ">=2.2.7",
   "_originalSource": "echarts"
 }

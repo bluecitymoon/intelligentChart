@@ -2271,8 +2271,9 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 1em;
+  padding: 8px;
   line-height: 1.42857143;
+  vertical-align: top;
   border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
@@ -5471,7 +5472,6 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 0;
   font-size: 16px;
   color: inherit;
-  text-align: center;
 }
 .panel-title > a,
 .panel-title > small,
@@ -5666,7 +5666,9 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 0;
   border-radius: 4px;
 }
-
+.panel-group .panel + .panel {
+  margin-top: 5px;
+}
 .panel-group .panel-heading {
   border-bottom: 0;
 }
@@ -5977,9 +5979,6 @@ button.close {
   }
   .modal-sm {
     width: 300px;
-  }
-  .modal-menu {
-    width: 150px;
   }
 }
 @media (min-width: 992px) {
