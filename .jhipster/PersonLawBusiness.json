@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "lawBusinessType",
+            "otherEntityName": "lawBusinessType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "descriptions",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170303055621",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_law_business",
+    "pagination": "pagination"
+}

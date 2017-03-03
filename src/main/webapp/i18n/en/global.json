@@ -32,6 +32,8 @@
                 "personConnectionLevel": "Person Connection Level",
                 "region": "Region",
                 "personRegionConnection": "Person Region Connection",
+                "lawBusinessType": "Law Business Type",
+                "personLawBusiness": "Person Law Business",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

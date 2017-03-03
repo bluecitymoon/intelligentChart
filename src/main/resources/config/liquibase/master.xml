@@ -37,6 +37,8 @@
     <include file="classpath:config/liquibase/changelog/20170221092823_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170302123745_added_entity_WordCloud.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170302124008_added_entity_PersonWordCloud.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303055301_added_entity_LawBusinessType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303055621_added_entity_PersonLawBusiness.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -50,5 +52,6 @@
     <include file="classpath:config/liquibase/changelog/20170210085834_added_entity_constraints_PersonConnectionLevel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210090146_added_entity_constraints_PersonRegionConnection.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170302124008_added_entity_constraints_PersonWordCloud.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303055621_added_entity_constraints_PersonLawBusiness.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

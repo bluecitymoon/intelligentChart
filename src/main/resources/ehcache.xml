@@ -84,5 +84,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonWordCloud" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.LawBusinessType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonLawBusiness" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

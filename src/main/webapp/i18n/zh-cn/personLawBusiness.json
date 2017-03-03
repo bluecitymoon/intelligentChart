@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personLawBusiness" : {
+            "home": {
+                "title": "影视人法务",
+                "createLabel": "录入法务数据",
+                "createOrEditLabel": "管理法务",
+                "search": "Search for Person Law Business"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "影视人法务"
+            },
+            "descriptions": "描述",
+            "person": "影视人",
+            "lawBusinessType": "法务类型"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "lawBusinessType" : {
+            "home": {
+                "title": "Law Business Types",
+                "createLabel": "Create a new Law Business Type",
+                "createOrEditLabel": "Create or edit a Law Business Type",
+                "search": "Search for Law Business Type"
+            },
+            "created": "A new Law Business Type is created with identifier {{ param }}",
+            "updated": "A Law Business Type is updated with identifier {{ param }}",
+            "deleted": "A Law Business Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Law Business Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Law Business Type"
+            },
+            "name": "Name"
+        }
+    }
+}
