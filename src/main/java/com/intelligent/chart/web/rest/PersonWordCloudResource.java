@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonWordCloud;
+import com.intelligent.chart.repository.PersonWordCloudRepository;
 import com.intelligent.chart.service.PersonWordCloudService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonWordCloudResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonWordCloudResource.class);
-        
+
     @Inject
     private PersonWordCloudService personWordCloudService;
+
+    @Inject
+    private PersonWordCloudRepository personWordCloudRepository;
+
+    @GetMapping("/person-word-clouds/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonWordCloud>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonWordCloud> page = personWordCloudRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-word-clouds");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-word-clouds : Create a new personWordCloud.

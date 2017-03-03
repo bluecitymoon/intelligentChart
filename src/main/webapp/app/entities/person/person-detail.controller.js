@@ -7,11 +7,11 @@
 
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
-        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection'];
+        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
-                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection) {
+                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud) {
         var vm = this;
 
         vm.person = entity;
@@ -235,6 +235,26 @@
             }
         ];
         //
+
+
+        $scope.wordCloud = {
+            width: 300,
+            height: 330
+        };
+
+        PersonWordCloud.loadAllByPersonId({id: vm.person.id}).$promise.then(function (words) {
+
+            var elements = [];
+            angular.forEach(words, function (word) {
+
+                elements.push({
+                    text: word.wordCloud.name,
+                    size: word.count
+                });
+            });
+
+            $scope.words = elements;
+        }, handleError);
 
         $scope.$on('$destroy', unsubscribe);
     }

@@ -20,7 +20,8 @@
             'angular-echarts',
             'ngAside',
             'angular.filter',
-            'ngLodash'
+            'ngLodash',
+            'angular-d3-word-cloud'
         ])
         .run(run);
 
