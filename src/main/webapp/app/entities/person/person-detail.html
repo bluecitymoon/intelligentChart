@@ -236,6 +236,33 @@
             </div>
 
         </div>
+
+        <div class="col-md-4">
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <button ui-sref="person-law-business({person_id:vm.person.id})"
+                            class="btn text-bold btn-block">
+                        <span class="glyphicon glyphicon-lamp"></span>
+                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
+                    </button>
+                </div>
+                <div class="panel-body" style="padding: 5px">
+
+                    <div class="list-group">
+                        <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
+                            <div class="list-group-item list-group-item-pink">
+                                {{lb.lawBusinessType.name}}
+                            </div>
+                            <div class="list-group-item">
+                                {{lb.descriptions}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 <!--
     <script type="text/javascript">

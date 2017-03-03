@@ -25,7 +25,7 @@
         }
 
         function loadAllByPersonId () {
-            PersonRegionConnection.loadAllByPersonId({
+            PersonWordCloud.loadAllByPersonId({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort(),

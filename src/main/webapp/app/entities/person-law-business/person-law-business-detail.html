@@ -1,31 +1,34 @@
+<div class="panel">
+    <div class="panel-body">
+        <div>
+            <h2><span data-translate="intelligentChartApp.personLawBusiness.detail.title">Person Law Business</span> {{vm.personLawBusiness.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="dl-horizontal jh-entity-details">
+                <dt><span data-translate="intelligentChartApp.personLawBusiness.descriptions">Descriptions</span></dt>
+                <dd>
+                    <span>{{vm.personLawBusiness.descriptions}}</span>
+                </dd>
+                <dt><span data-translate="intelligentChartApp.personLawBusiness.person">Person</span></dt>
+                <dd>
+                    <a ui-sref="person-detail({id:vm.personLawBusiness.person.id})">{{vm.personLawBusiness.person.name}}</a>
+                </dd>
+                <dt><span data-translate="intelligentChartApp.personLawBusiness.lawBusinessType">Law Business Type</span></dt>
+                <dd>
+                    <a ui-sref="law-business-type-detail({id:vm.personLawBusiness.lawBusinessType.id})">{{vm.personLawBusiness.lawBusinessType.name}}</a>
+                </dd>
+            </dl>
 
-<div>
-    <h2><span data-translate="intelligentChartApp.personLawBusiness.detail.title">Person Law Business</span> {{vm.personLawBusiness.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="intelligentChartApp.personLawBusiness.descriptions">Descriptions</span></dt>
-        <dd>
-            <span>{{vm.personLawBusiness.descriptions}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.personLawBusiness.person">Person</span></dt>
-        <dd>
-            <a ui-sref="person-detail({id:vm.personLawBusiness.person.id})">{{vm.personLawBusiness.person.name}}</a>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.personLawBusiness.lawBusinessType">Law Business Type</span></dt>
-        <dd>
-            <a ui-sref="law-business-type-detail({id:vm.personLawBusiness.lawBusinessType.id})">{{vm.personLawBusiness.lawBusinessType.name}}</a>
-        </dd>
-    </dl>
+            <button type="submit"
+                    ui-sref="{{ vm.previousState }}"
+                    class="btn btn-info">
+                <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+            </button>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="person-law-business-detail.edit({id:vm.personLawBusiness.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
+            <button type="button" ui-sref="person-law-business-detail.edit({id:vm.personLawBusiness.id})" class="btn btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span>
+                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
 </div>

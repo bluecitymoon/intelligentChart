@@ -11,7 +11,7 @@
         $stateProvider
         .state('person-word-cloud', {
             parent: 'entity',
-            url: '/person-word-cloud?page&sort&search',
+            url: '/person-word-cloud?page&sort&search&person_id={id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'intelligentChartApp.personWordCloud.home.title'

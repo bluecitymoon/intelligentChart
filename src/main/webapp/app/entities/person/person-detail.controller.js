@@ -7,11 +7,11 @@
 
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
-        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud'];
+        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
-                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud) {
+                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness) {
         var vm = this;
 
         vm.person = entity;
@@ -255,6 +255,12 @@
 
             $scope.words = elements;
         }, handleError);
+
+        PersonLawBusiness.loadAllByPersonId({id: vm.person.id}).$promise.then(function (lawBusinesses) {
+
+            $scope.lawBusinesses = lawBusinesses;
+        }, handleError);
+
 
         $scope.$on('$destroy', unsubscribe);
     }

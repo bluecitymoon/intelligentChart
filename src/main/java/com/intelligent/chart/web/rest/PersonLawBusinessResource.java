@@ -2,6 +2,8 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonLawBusiness;
+import com.intelligent.chart.domain.PersonWordCloud;
+import com.intelligent.chart.repository.PersonLawBusinessRepository;
 import com.intelligent.chart.service.PersonLawBusinessService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +32,23 @@ import java.util.Optional;
 public class PersonLawBusinessResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonLawBusinessResource.class);
-        
+
     @Inject
     private PersonLawBusinessService personLawBusinessService;
+
+    @Inject
+    private PersonLawBusinessRepository personLawBusinessRepository;
+
+    @GetMapping("/person-law-businesses/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonLawBusiness>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonLawBusiness> page = personLawBusinessRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-law-businesses");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-law-businesses : Create a new personLawBusiness.
