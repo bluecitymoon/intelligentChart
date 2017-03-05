@@ -34,6 +34,8 @@
                 "personRegionConnection": "Person Region Connection",
                 "lawBusinessType": "Law Business Type",
                 "personLawBusiness": "Person Law Business",
+                "creditCardActivityType": "Credit Card Activity Type",
+                "personCreditCardActivity": "Person Credit Card Activity",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -36,6 +36,8 @@
                 "personWordCloud": "人物词云",
                 "lawBusinessType": "法务类型",
                 "personLawBusiness": "法务",
+                "creditCardActivityType": "信用卡活动类型",
+                "personCreditCardActivity": "信用卡活动",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

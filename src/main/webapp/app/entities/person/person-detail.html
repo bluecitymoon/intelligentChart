@@ -1,415 +1,450 @@
 <div>
-    <div class="row">
-        <div class="col col-md-4">
-            <div class="panel">
-                <div class="text-center pad-all bord-btm">
-                    <div class="pad-ver">
-                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="img-lg img-border img-circle" alt="Profile Picture">
-                    </div>
-                    <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
-                    <p class="text-sm text-muted">
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="text-center pad-all bord-btm">
+                <div class="pad-ver">
+                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="img-lg img-border img-circle" alt="Profile Picture">
+                </div>
+                <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
+                <p class="text-sm text-muted">
                         <span ng-repeat="job in vm.person.jobs">
                             <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
                         </span>
-                    </p>
-                </div>
-                <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
-                <ul class="list-group bg-trans text-sm">
+                </p>
+            </div>
+            <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
+            <ul class="list-group bg-trans text-sm">
 
-                    <!-- Profile Details -->
-                    <li class="list-group-item list-item-sm">
-                        <i class="glyphicon glyphicon-glass"></i> {{vm.person.birthplace}}
-                    </li>
-                    <li class="list-group-item list-item-sm">
-                        <i class="glyphicon glyphicon-calendar"></i> {{vm.person.birthday | date:'mediumDate'}}
-                    </li>
-                </ul>
-                <div class="pad-hor mar-btm">
-                    <small class="text-muted">{{vm.person.detail}}</small>
-                </div>
+                <!-- Profile Details -->
+                <li class="list-group-item list-item-sm">
+                    <i class="glyphicon glyphicon-glass"></i> {{vm.person.birthplace}}
+                </li>
+                <li class="list-group-item list-item-sm">
+                    <i class="glyphicon glyphicon-calendar"></i> {{vm.person.birthday | date:'mediumDate'}}
+                </li>
+            </ul>
+            <div class="pad-hor mar-btm">
+                <small class="text-muted">{{vm.person.detail}}</small>
+            </div>
 
-                <hr>
-                <a ui-sref="person-experience({person_id:vm.person.id})" class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span></a>
+            <hr>
+            <a ui-sref="person-experience({person_id:vm.person.id})" class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span></a>
 
 
-                <div class="panel-body">
+            <div class="panel-body">
 
-                    <div class="timeline">
+                <div class="timeline">
 
-                        <div class="timeline-header">
-                            <div class="timeline-header-title bg-pink">
-                                现在
-                            </div>
-                        </div>
-                        <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
-                            <div class="timeline-stat">
-
-                                <div class="timeline-icon">
-                                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
-                                </div>
-                                <div class="timeline-time">
-                                    {{exp.expYear}}
-                                </div>
-                            </div>
-                            <div class="timeline-label">{{exp.description}}</div>
+                    <div class="timeline-header">
+                        <div class="timeline-header-title bg-pink">
+                            现在
                         </div>
                     </div>
+                    <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
+                        <div class="timeline-stat">
 
+                            <div class="timeline-icon">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                            </div>
+                            <div class="timeline-time">
+                                {{exp.expYear}}
+                            </div>
+                        </div>
+                        <div class="timeline-label">{{exp.description}}</div>
+                    </div>
                 </div>
-
 
             </div>
 
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-education-background({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-adjust"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
 
-                    <div ng-repeat="(key, value) in personEducationBackgrounds | groupBy: 'educationBackgroundType.name'">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-word-cloud({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-blackboard"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personWordCloud"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div id="wordsCloud">
+                    <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
+                    </word-cloud>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+
+                <a ui-sref="person-popularity({person_id:vm.person.id})"
+                   class="btn btn-block text-bold">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+                </a>
+
+            </div>
+            <div class="panel-body">
+                <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-innovation({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-connection-level({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-adjust"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <donut-chart config="areaConfig" data="areaData"></donut-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-education-background({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-adjust"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div ng-repeat="(key, value) in personEducationBackgrounds | groupBy: 'educationBackgroundType.name'">
+
+                    <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
+                        <strong>{{key}}</strong>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <tbody>
+                            <tr class="text-center" ng-repeat="personEducationBackground in value track by $index">
+
+                                <td>{{personEducationBackground.startDate | date:'mediumDate'}}</td>
+                                <td ng-if="personEducationBackground.endDate">至</td>
+                                <td>{{personEducationBackground.endDate | date:'mediumDate'}}</td>
+                                <td><strong>{{personEducationBackground.description}}</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-book"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div ng-repeat="(key, subPrizes) in prizes">
+
+                    <h4>
+                        <strong>{{key}}</strong>
+                    </h4>
+
+                    <div ng-repeat="(group, element) in subPrizes | groupBy: 'prizeGroup.name'">
 
                         <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
-                            <strong>{{key}}</strong>
+                            <strong>{{group}}</strong>
                         </div>
 
                         <div class="table-responsive">
                             <table class="jh-table table table-striped">
                                 <tbody>
-                                <tr class="text-center" ng-repeat="personEducationBackground in value track by $index">
+                                <tr class="text-center" ng-repeat="sp in subPrizes track by $index">
 
-                                    <td>{{personEducationBackground.startDate | date:'mediumDate'}}</td>
-                                    <td ng-if="personEducationBackground.endDate">至</td>
-                                    <td>{{personEducationBackground.endDate | date:'mediumDate'}}</td>
-                                    <td><strong>{{personEducationBackground.description}}</strong></td>
+                                    <td>{{sp.prizeDate | date:'mediumDate'}}</td>
+                                    <td>{{sp.name}}</td>
+                                    <td><strong>{{sp.prizeLevel.name}}</strong></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
+
             </div>
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
-                        <span class="glyphicon glyphicon-book"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <div ng-repeat="(key, subPrizes) in prizes">
-
-                        <h4>
-                            <strong>{{key}}</strong>
-                        </h4>
-
-                        <div ng-repeat="(group, element) in subPrizes | groupBy: 'prizeGroup.name'">
-
-                            <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
-                                <strong>{{group}}</strong>
-                            </div>
-
-                            <div class="table-responsive">
-                                <table class="jh-table table table-striped">
-                                    <tbody>
-                                    <tr class="text-center" ng-repeat="sp in subPrizes track by $index">
-
-                                        <td>{{sp.prizeDate | date:'mediumDate'}}</td>
-                                        <td>{{sp.name}}</td>
-                                        <td><strong>{{sp.prizeLevel.name}}</strong></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col col-md-4">
-
-            <div class="panel">
-                <div class="panel-heading">
-
-                    <a ui-sref="person-popularity({person_id:vm.person.id})"
-                       class="btn btn-block text-bold">
-                        <span class="glyphicon glyphicon-comment"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
-                    </a>
-
-                </div>
-                <div class="panel-body">
-                    <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
-                </div>
-            </div>
-
-            <div class="panel">
-                <div class="panel-heading">
-                    <button type="submit"
-                            ui-sref="person-area-percentage({person_id:vm.person.id})"
-                            class="btn text-bold btn-block ">
-                        <span class="glyphicon glyphicon-leaf"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <donut-chart config="areaConfig" data="areaData"></donut-chart>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="col col-md-4">
-            <div class="panel">
-                <div class="panel-heading">
-                    <button type="submit"
-                            ui-sref="person-innovation({person_id:vm.person.id})"
-                            class="btn text-bold btn-block ">
-                        <span class="glyphicon glyphicon-cog"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-                    <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
-                </div>
-            </div>
-
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-connection-level({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-adjust"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
-
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-8">
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-region-connection({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-gift"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-word-cloud({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-blackboard"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personWordCloud"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <div id="wordsCloud">
-                        <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
-                        </word-cloud>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-            <div class="panel">
-                <div class="panel-heading">
-                    <button ui-sref="person-law-business({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-lamp"></span>
-                        <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
-                    </button>
-                </div>
-                <div class="panel-body" style="padding: 5px">
-
-                    <div class="list-group">
-                        <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
-                            <div class="list-group-item list-group-item-pink">
-                                {{lb.lawBusinessType.name}}
-                            </div>
-                            <div class="list-group-item">
-                                {{lb.descriptions}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-<!--
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts图表
-        var myChart = echarts.init(document.getElementById('main'));
 
-        function createRandomItemStyle() {
-            return {
-                normal: {
-                    color: 'rgb(' + [
-                        Math.round(Math.random() * 160),
-                        Math.round(Math.random() * 160),
-                        Math.round(Math.random() * 160)
-                    ].join(',') + ')'
-                }
-            };
-        }
+    <div class="col-md-4">
 
-        var option = {
-            title: {
-                text: 'Google Trends',
-                link: 'http://www.google.com/trends/hottrends'
-            },
-            tooltip: {
-                show: true
-            },
-            series: [{
-                name: 'Google Trends',
-                type: 'wordCloud',
-                size: ['80%', '80%'],
-                textRotation : [0, 45, 90, -45],
-                textPadding: 0,
-                autoSize: {
-                    enable: true,
-                    minSize: 14
-                },
-                data: [
-                    {
-                        name: "Sam S Club",
-                        value: 10000,
-                        itemStyle: {
-                            normal: {
-                                color: 'black'
-                            }
-                        }
-                    },
-                    {
-                        name: "Macys",
-                        value: 6181,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Amy Schumer",
-                        value: 4386,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Jurassic World",
-                        value: 4055,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Charter Communications",
-                        value: 2467,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Chick Fil A",
-                        value: 2244,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Planet Fitness",
-                        value: 1898,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Pitch Perfect",
-                        value: 1484,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Express",
-                        value: 1112,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Home",
-                        value: 965,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Johnny Depp",
-                        value: 847,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Lena Dunham",
-                        value: 582,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Lewis Hamilton",
-                        value: 555,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "KXAN",
-                        value: 550,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Mary Ellen Mark",
-                        value: 462,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Farrah Abraham",
-                        value: 366,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Rita Ora",
-                        value: 360,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Serena Williams",
-                        value: 282,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "NCAA baseball tournament",
-                        value: 273,
-                        itemStyle: createRandomItemStyle()
-                    },
-                    {
-                        name: "Point Break",
-                        value: 265,
-                        itemStyle: createRandomItemStyle()
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-law-business({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-lamp"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
+                </button>
+            </div>
+            <div class="panel-body" style="padding: 5px">
+
+                <div class="list-group">
+                    <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
+                        <div class="list-group-item list-group-item-pink">
+                            {{lb.lawBusinessType.name}}
+                        </div>
+                        <div class="list-group-item">
+                            {{lb.descriptions}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="timeline">
+
+            <div class="timeline-header">
+                <div class="timeline-header-title bg-pink">
+                    现在
+                </div>
+            </div>
+            <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
+                <div class="timeline-stat">
+
+                    <div class="timeline-icon">
+                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                    </div>
+                    <div class="timeline-time">
+                        {{exp.expYear}}
+                    </div>
+                </div>
+                <div class="timeline-label">{{exp.description}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-region-connection({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <!--
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = echarts.init(document.getElementById('main'));
+
+            function createRandomItemStyle() {
+                return {
+                    normal: {
+                        color: 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')'
                     }
-                ]
-            }]
-        };
+                };
+            }
 
-        myChart.setOption(option);
+            var option = {
+                title: {
+                    text: 'Google Trends',
+                    link: 'http://www.google.com/trends/hottrends'
+                },
+                tooltip: {
+                    show: true
+                },
+                series: [{
+                    name: 'Google Trends',
+                    type: 'wordCloud',
+                    size: ['80%', '80%'],
+                    textRotation : [0, 45, 90, -45],
+                    textPadding: 0,
+                    autoSize: {
+                        enable: true,
+                        minSize: 14
+                    },
+                    data: [
+                        {
+                            name: "Sam S Club",
+                            value: 10000,
+                            itemStyle: {
+                                normal: {
+                                    color: 'black'
+                                }
+                            }
+                        },
+                        {
+                            name: "Macys",
+                            value: 6181,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Amy Schumer",
+                            value: 4386,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Jurassic World",
+                            value: 4055,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Charter Communications",
+                            value: 2467,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Chick Fil A",
+                            value: 2244,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Planet Fitness",
+                            value: 1898,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Pitch Perfect",
+                            value: 1484,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Express",
+                            value: 1112,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Home",
+                            value: 965,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Johnny Depp",
+                            value: 847,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Lena Dunham",
+                            value: 582,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Lewis Hamilton",
+                            value: 555,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "KXAN",
+                            value: 550,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Mary Ellen Mark",
+                            value: 462,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Farrah Abraham",
+                            value: 366,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Rita Ora",
+                            value: 360,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Serena Williams",
+                            value: 282,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "NCAA baseball tournament",
+                            value: 273,
+                            itemStyle: createRandomItemStyle()
+                        },
+                        {
+                            name: "Point Break",
+                            value: 265,
+                            itemStyle: createRandomItemStyle()
+                        }
+                    ]
+                }]
+            };
 
-    </script> -->
+            myChart.setOption(option);
+
+        </script> -->
 </div>
-

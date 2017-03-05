@@ -1,0 +1,38 @@
+<div class="panel">
+    <div class="panel-body">
+<div>
+    <h2><span data-translate="intelligentChartApp.personCreditCardActivity.detail.title">Person Credit Card Activity</span> {{vm.personCreditCardActivity.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personCreditCardActivity.amount">Amount</span></dt>
+        <dd>
+            <span>{{vm.personCreditCardActivity.amount}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personCreditCardActivity.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.personCreditCardActivity.createDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personCreditCardActivity.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personCreditCardActivity.person.id})">{{vm.personCreditCardActivity.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personCreditCardActivity.creditCardActivityType">Credit Card Activity Type</span></dt>
+        <dd>
+            <a ui-sref="credit-card-activity-type-detail({id:vm.personCreditCardActivity.creditCardActivityType.id})">{{vm.personCreditCardActivity.creditCardActivityType.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-credit-card-activity-detail.edit({id:vm.personCreditCardActivity.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>
+    </div>

@@ -1,0 +1,15 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170303070501",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "credit_card_activity_type",
+    "pagination": "pagination"
+}

@@ -39,6 +39,8 @@
     <include file="classpath:config/liquibase/changelog/20170302124008_added_entity_PersonWordCloud.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170303055301_added_entity_LawBusinessType.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170303055621_added_entity_PersonLawBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303070501_added_entity_CreditCardActivityType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303070742_added_entity_PersonCreditCardActivity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -53,5 +55,6 @@
     <include file="classpath:config/liquibase/changelog/20170210090146_added_entity_constraints_PersonRegionConnection.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170302124008_added_entity_constraints_PersonWordCloud.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170303055621_added_entity_constraints_PersonLawBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170303070742_added_entity_constraints_PersonCreditCardActivity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

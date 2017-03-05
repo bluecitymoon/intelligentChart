@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "personCreditCardActivity" : {
+            "home": {
+                "title": "Person Credit Card Activities",
+                "createLabel": "Create a new Person Credit Card Activity",
+                "createOrEditLabel": "Create or edit a Person Credit Card Activity",
+                "search": "Search for Person Credit Card Activity"
+            },
+            "created": "A new Person Credit Card Activity is created with identifier {{ param }}",
+            "updated": "A Person Credit Card Activity is updated with identifier {{ param }}",
+            "deleted": "A Person Credit Card Activity is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Credit Card Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Credit Card Activity"
+            },
+            "amount": "Amount",
+            "createDate": "Create Date",
+            "person": "Person",
+            "creditCardActivityType": "Credit Card Activity Type"
+        }
+    }
+}

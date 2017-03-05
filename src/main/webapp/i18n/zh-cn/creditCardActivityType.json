@@ -1,11 +1,11 @@
 {
     "intelligentChartApp": {
-        "connectionLevel" : {
+        "creditCardActivityType" : {
             "home": {
-                "title": "人脉层次",
-                "createLabel": "创建一个人脉层次",
-                "createOrEditLabel": "管理人脉层次",
-                "search": "Search for Connection Level"
+                "title": "信用卡活动类型",
+                "createLabel": "创建一个信用卡活动类型",
+                "createOrEditLabel": "管理类型",
+                "search": "Search for Credit Card Activity Type"
             },
             "created": "数据已创建",
             "updated": "数据已更新",
@@ -14,9 +14,8 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "人脉层次l"
+                "title": "信用卡类型"
             },
-            "identifier": "识别码",
             "name": "名称"
         }
     }

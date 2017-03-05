@@ -239,7 +239,7 @@
 
         $scope.wordCloud = {
             width: 300,
-            height: 330
+            height: 310
         };
 
         PersonWordCloud.loadAllByPersonId({id: vm.person.id}).$promise.then(function (words) {

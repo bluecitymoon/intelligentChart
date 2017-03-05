@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "creditCardActivityType",
+            "otherEntityName": "creditCardActivityType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170303070742",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_credit_card_activity",
+    "pagination": "pagination"
+}
