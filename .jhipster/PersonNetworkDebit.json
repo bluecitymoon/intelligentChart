@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "createDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170306021713",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_network_debit",
+    "pagination": "pagination"
+}

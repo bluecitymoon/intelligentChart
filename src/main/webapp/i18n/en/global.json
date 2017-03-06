@@ -36,6 +36,7 @@
                 "personLawBusiness": "Person Law Business",
                 "creditCardActivityType": "Credit Card Activity Type",
                 "personCreditCardActivity": "Person Credit Card Activity",
+                "personNetworkDebit": "Person Network Debit",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

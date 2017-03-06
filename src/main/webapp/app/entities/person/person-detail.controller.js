@@ -21,17 +21,19 @@
             vm.person = result;
         });
 
+        var singleChartWidth = 300;
+        var singleChartHeight = 320;
         $scope.areaConfig = {
             title: "",
             subtitle: '',
-            height: 320,
-            width: 300
+            height: singleChartHeight,
+            width: singleChartWidth
         };
 
         $scope.connectionLevelConfig = {
             title: "",
             subtitle: '',
-            height: 320,
+            height: singleChartHeight,
             width: 350
 
         };
@@ -39,8 +41,13 @@
         $scope.popularityConfig = {
             title: "",
             subtitle: '',
-            height: 320,
-            width: 300
+            height: singleChartHeight,
+            width: singleChartWidth
+        };
+
+        $scope.wordCloud = {
+            width: singleChartWidth,
+            height: singleChartHeight - 5
         };
 
         function handleError(error) {
@@ -68,8 +75,8 @@
         PersonInnovation.loadAllByPersonId({id: vm.person.id}).$promise.then(function (innovations) {
 
             $scope.innovationConfig = {
-                width: 300,
-                height: 320,
+                width: singleChartWidth,
+                height: singleChartHeight,
                 polar: [
                     {
                         indicator: []
@@ -234,13 +241,6 @@
                 ]
             }
         ];
-        //
-
-
-        $scope.wordCloud = {
-            width: 300,
-            height: 310
-        };
 
         PersonWordCloud.loadAllByPersonId({id: vm.person.id}).$promise.then(function (words) {
 
