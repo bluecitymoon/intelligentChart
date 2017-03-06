@@ -36,6 +36,18 @@
                     copy.createDate = DateUtils.convertLocalDateToServer(copy.createDate);
                     return angular.toJson(copy);
                 }
+            },
+            'loadAllByPersonId' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-network-shoppings/person/:id',
+                params: { id : '@id'}
+            },
+            'loadAllByPersonIdAndType' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-network-shoppings/person/:id/with/type/:type',
+                params: { id : '@id', type : '@type'}
             }
         });
     }

@@ -26,6 +26,12 @@
                 isArray: true,
                 url: 'api/person-area-percentages/person/:id',
                 params: { id : '@id'}
+            },
+            'loadAllByPersonIdAndType' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-area-percentages/person/:id/with/type/:type',
+                params: { id : '@id', type : '@type'}
             }
         });
     }

@@ -38,7 +38,17 @@ public class PersonAreaPercentageResource {
     @Inject
     private PersonAreaPercentageRepository personAreaPercentageRepository;
 
-    //
+    @GetMapping("/person-area-percentages/person/{id}/with/type/{type}")
+    @Timed
+    public ResponseEntity<List<PersonAreaPercentage>> getAllPersonAreaPercentagesByPersonIdAndType(@PathVariable Long id, @PathVariable String type, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of PersonAreaPercentages");
+        Page<PersonAreaPercentage> page = personAreaPercentageRepository.findByPerson_IdAndMediaType_Identifier(id, type, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-area-percentages");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     @GetMapping("/person-area-percentages/person/{id}")
     @Timed
     public ResponseEntity<List<PersonAreaPercentage>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)

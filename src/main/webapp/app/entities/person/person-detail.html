@@ -198,7 +198,29 @@
             </div>
         </div>
 
+        <!-- 法务-->
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-law-business({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-lamp"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
+                </button>
+            </div>
+            <div class="panel-body" style="padding: 5px">
 
+                <div class="list-group">
+                    <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
+                        <div class="list-group-item list-group-item-primary">
+                            {{lb.lawBusinessType.name}}
+                        </div>
+                        <div class="list-group-item">
+                            {{lb.descriptions}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--</div>-->
     </div>
 
@@ -284,12 +306,12 @@
                         ui-sref="person-area-percentage({person_id:vm.person.id})"
                         class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentage"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentageCinema"></span>
                 </button>
             </div>
             <div class="panel-body">
 
-                <donut-chart config="areaConfig" data="areaData"></donut-chart>
+                <pie-chart config="areaConfig" data="areaData"></pie-chart>
 
             </div>
         </div>
@@ -300,30 +322,21 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <button ui-sref="person-law-business({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-lamp"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
                 </button>
             </div>
-            <div class="panel-body" style="padding: 5px">
+            <div class="panel-body">
 
-                <div class="list-group">
-                    <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
-                        <div class="list-group-item list-group-item-primary">
-                            {{lb.lawBusinessType.name}}
-                        </div>
-                        <div class="list-group-item">
-                            {{lb.descriptions}}
-                        </div>
-                    </div>
-                </div>
+                <pie-chart config="areaNewMediaConfig" data="areaNewMediaData"></pie-chart>
+
             </div>
         </div>
 
     </div>
-
-
 
     <div class="col-md-8">
         <div class="panel">
@@ -337,6 +350,40 @@
             <div class="panel-body">
 
                 <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="outcomeShoppingConfig" data="outcomeShoppingData"></pie-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-bullhorn"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="incomeShoppingConfig" data="incomeShoppingData"></pie-chart>
 
             </div>
         </div>

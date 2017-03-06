@@ -15,4 +15,6 @@ import java.util.List;
 public interface PersonAreaPercentageRepository extends JpaRepository<PersonAreaPercentage,Long> {
 
     Page<PersonAreaPercentage> findByPerson_Id(Long id, Pageable pageable);
+
+    Page<PersonAreaPercentage> findByPerson_IdAndMediaType_Identifier(Long id, String type, Pageable pageable);
 }

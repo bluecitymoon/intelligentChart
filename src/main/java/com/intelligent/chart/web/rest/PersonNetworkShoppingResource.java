@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonNetworkShopping;
+import com.intelligent.chart.repository.PersonNetworkShoppingRepository;
 import com.intelligent.chart.service.PersonNetworkShoppingService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,34 @@ import java.util.Optional;
 public class PersonNetworkShoppingResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonNetworkShoppingResource.class);
-        
+
     @Inject
     private PersonNetworkShoppingService personNetworkShoppingService;
+
+    @Inject
+    private PersonNetworkShoppingRepository personNetworkShoppingRepository;
+
+    @GetMapping("/person-network-shoppings/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonNetworkShopping>> getAllPersonNetworkShoppingByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonNetworkShopping> page = personNetworkShoppingRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-network-shoppings");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/person-network-shoppings/person/{id}/with/type/{type}")
+    @Timed
+    public ResponseEntity<List<PersonNetworkShopping>> getAllPersonNetworkShoppingByPersonIdAndType(@PathVariable Long id, @PathVariable String type, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonNetworkShopping> page = personNetworkShoppingRepository.findByPerson_IdAndNetworkShoppingType_Identifier(id, type, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-network-shoppings");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-network-shoppings : Create a new personNetworkShopping.

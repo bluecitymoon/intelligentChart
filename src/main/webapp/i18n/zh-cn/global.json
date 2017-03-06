@@ -17,6 +17,8 @@
                 "mediaType": "媒体类型",
                 "areaType": "擅长领域类型",
                 "personAreaPercentage": "擅长领域",
+                "personAreaPercentageCinema": "擅长领域（院线）",
+                "personAreaPercentageNewMedia": "擅长领域（新媒体）",
                 "educationBackgroundType": "教育背景类型",
                 "personEducationBackground": "教育背景",
                 "prizeLevel": "获奖级别",
@@ -39,8 +41,10 @@
                 "creditCardActivityType": "信用卡活动类型",
                 "personCreditCardActivity": "信用卡活动",
                 "personNetworkDebit": "网络借贷",
-                "networkShoppingType": "Network Shopping Type",
-                "personNetworkShopping": "Person Network Shopping",
+                "networkShoppingType": "网络购物类型",
+                "personNetworkShopping": "网络购物",
+                "personOutcomeNetworkShopping": "网络购物（支出）",
+                "personIncomeNetworkShopping": "网络购物（收入）",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

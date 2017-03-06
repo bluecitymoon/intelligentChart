@@ -8,12 +8,12 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit'];
+        'PersonNetworkDebit', 'PersonNetworkShopping'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit) {
+                                    PersonNetworkDebit, PersonNetworkShopping) {
         var vm = this;
 
         vm.person = entity;
@@ -29,6 +29,14 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+        };
+
+        $scope.areaNewMediaConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
             width: singleChartWidth
         };
 
@@ -36,7 +44,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: 350
+            width: 350,
+            theme: 'macarons'
 
         };
 
@@ -45,6 +54,21 @@
             subtitle: '',
             height: singleChartHeight,
             width: singleChartWidth
+        };
+
+        $scope.outcomeShoppingConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth
+        };
+
+        $scope.incomeShoppingConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
         };
 
         $scope.wordCloud = {
@@ -56,7 +80,7 @@
             console.debug(error);
         }
 
-        PersonAreaPercentage.loadAllByPersonId({id: vm.person.id}).$promise.then(function (areas) {
+        PersonAreaPercentage.loadAllByPersonIdAndType({id: vm.person.id, type: 'cinema'}).$promise.then(function (areas) {
 
             var pageload = {
                 name: "",
@@ -73,6 +97,25 @@
 
             $scope.areaData = [pageload];
         }, handleError);
+
+        PersonAreaPercentage.loadAllByPersonIdAndType({id: vm.person.id, type: 'new_media'}).$promise.then(function (areas) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(areas, function (area) {
+
+                var number = area.percentage;
+                var title = area.areaType.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.areaNewMediaData = [pageload];
+        }, handleError);
+
 
         PersonInnovation.loadAllByPersonId({id: vm.person.id}).$promise.then(function (innovations) {
 
@@ -272,6 +315,45 @@
 
             $scope.networkDebits = networkDebits;
         }, handleError);
+
+        PersonNetworkShopping.loadAllByPersonIdAndType({id: vm.person.id, type: 'OUTCOME'}).$promise.then(function (outcomeShopping) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(outcomeShopping, function (shopping) {
+
+                var number = shopping.amount;
+                var title = shopping.description;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.outcomeShoppingData = [pageload];
+
+        }, handleError);
+
+        PersonNetworkShopping.loadAllByPersonIdAndType({id: vm.person.id, type: 'INCOME'}).$promise.then(function (outcomeShopping) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(outcomeShopping, function (shopping) {
+
+                var number = shopping.amount;
+                var title = shopping.description;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.incomeShoppingData = [pageload];
+
+        }, handleError);
+
 
         $scope.$on('$destroy', unsubscribe);
     }
