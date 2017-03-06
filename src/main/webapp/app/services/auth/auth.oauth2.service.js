@@ -32,7 +32,11 @@
                     'Accept': 'application/json',
                     'Authorization': 'Basic ' + Base64.encode('intelligentChartapp' + ':' + 'my-secret-token-to-change-in-production')
                 }
-            }).success(authSucess);
+            }).then(function (response) {
+
+                var realResponse = response.data;
+                return authSucess(realResponse);
+            });
 
             function authSucess (response) {
                 var expiredAt = new Date();
