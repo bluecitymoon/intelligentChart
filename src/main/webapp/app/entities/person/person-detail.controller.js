@@ -7,11 +7,13 @@
 
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
-        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity'];
+        'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
+        'PersonNetworkDebit'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
-                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity) {
+                                    PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
+                                    PersonNetworkDebit) {
         var vm = this;
 
         vm.person = entity;
@@ -264,6 +266,11 @@
         PersonCreditCardActivity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (creditCardActivities) {
 
             $scope.creditCardActivities = creditCardActivities;
+        }, handleError);
+
+        PersonNetworkDebit.loadAllByPersonId({id: vm.person.id}).$promise.then(function (networkDebits) {
+
+            $scope.networkDebits = networkDebits;
         }, handleError);
 
         $scope.$on('$destroy', unsubscribe);

@@ -38,7 +38,7 @@
                 "personLawBusiness": "法务",
                 "creditCardActivityType": "信用卡活动类型",
                 "personCreditCardActivity": "信用卡活动",
-                "personNetworkDebit": "Person Network Debit",
+                "personNetworkDebit": "网络借贷",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

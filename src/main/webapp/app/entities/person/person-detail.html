@@ -146,11 +146,6 @@
 
                 <div class="timeline">
 
-                    <!--<div class="timeline-header">-->
-                        <!--<div class="timeline-header-title bg-pink">-->
-                            <!--现在-->
-                        <!--</div>-->
-                    <!--</div>-->
                     <div class="timeline-entry" ng-repeat="cca in creditCardActivities | orderBy: 'createDate'">
                         <div class="timeline-stat">
 
@@ -170,6 +165,39 @@
 
             </div>
         </div>
+
+        <!-- 网络借贷记录-->
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-dashboard"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personNetworkDebit"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="timeline">
+
+                    <div class="timeline-entry" ng-repeat="debits in networkDebits | orderBy: 'createDate'">
+                        <div class="timeline-stat">
+
+                            <div class="timeline-icon">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                            </div>
+                            <div class="timeline-time">
+                                {{debits.createDate}}
+                            </div>
+                        </div>
+                        <div class="timeline-label">
+                            <small>借贷</small>
+                            <b>{{debits.amount}}</b>元
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
         <!--</div>-->
     </div>
