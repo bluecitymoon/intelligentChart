@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "networkShoppingType" : {
+            "home": {
+                "title": "Network Shopping Types",
+                "createLabel": "Create a new Network Shopping Type",
+                "createOrEditLabel": "Create or edit a Network Shopping Type",
+                "search": "Search for Network Shopping Type"
+            },
+            "created": "A new Network Shopping Type is created with identifier {{ param }}",
+            "updated": "A Network Shopping Type is updated with identifier {{ param }}",
+            "deleted": "A Network Shopping Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Network Shopping Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Network Shopping Type"
+            },
+            "identifier": "Identifier",
+            "name": "Name",
+            "createDate": "Create Date"
+        }
+    }
+}

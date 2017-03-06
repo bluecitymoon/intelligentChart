@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonNetworkShopping.
+    -->
+    <changeSet id="20170306030240-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_network_shopping"
+                                 constraintName="fk_person_network_shopping_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="network_shopping_type_id"
+                                 baseTableName="person_network_shopping"
+                                 constraintName="fk_person_network_shopping_network_shopping_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="network_shopping_type"/>
+
+    </changeSet>
+</databaseChangeLog>

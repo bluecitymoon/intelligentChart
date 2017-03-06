@@ -39,6 +39,8 @@
                 "creditCardActivityType": "信用卡活动类型",
                 "personCreditCardActivity": "信用卡活动",
                 "personNetworkDebit": "网络借贷",
+                "networkShoppingType": "Network Shopping Type",
+                "personNetworkShopping": "Person Network Shopping",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

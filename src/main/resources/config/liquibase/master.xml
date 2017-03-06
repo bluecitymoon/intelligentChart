@@ -42,6 +42,9 @@
     <include file="classpath:config/liquibase/changelog/20170303070501_added_entity_CreditCardActivityType.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170303070742_added_entity_PersonCreditCardActivity.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170306021713_added_entity_PersonNetworkDebit.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306030109_added_entity_NetworkShoppingType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306030240_added_entity_PersonNetworkShopping.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306031237_changelog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -58,5 +61,6 @@
     <include file="classpath:config/liquibase/changelog/20170303055621_added_entity_constraints_PersonLawBusiness.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170303070742_added_entity_constraints_PersonCreditCardActivity.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170306021713_added_entity_constraints_PersonNetworkDebit.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306030240_added_entity_constraints_PersonNetworkShopping.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -94,5 +94,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonNetworkDebit" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.NetworkShoppingType" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonNetworkShopping" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

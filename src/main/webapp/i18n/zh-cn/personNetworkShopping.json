@@ -1,0 +1,26 @@
+{
+    "intelligentChartApp": {
+        "personNetworkShopping" : {
+            "home": {
+                "title": "Person Network Shoppings",
+                "createLabel": "Create a new Person Network Shopping",
+                "createOrEditLabel": "Create or edit a Person Network Shopping",
+                "search": "Search for Person Network Shopping"
+            },
+            "created": "A new Person Network Shopping is created with identifier {{ param }}",
+            "updated": "A Person Network Shopping is updated with identifier {{ param }}",
+            "deleted": "A Person Network Shopping is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Network Shopping {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Network Shopping"
+            },
+            "createDate": "Create Date",
+            "amount": "Amount",
+            "description": "Description",
+            "person": "Person",
+            "networkShoppingType": "Network Shopping Type"
+        }
+    }
+}

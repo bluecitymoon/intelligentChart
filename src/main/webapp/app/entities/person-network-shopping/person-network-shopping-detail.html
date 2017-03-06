@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personNetworkShopping.detail.title">Person Network Shopping</span> {{vm.personNetworkShopping.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personNetworkShopping.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.personNetworkShopping.createDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personNetworkShopping.amount">Amount</span></dt>
+        <dd>
+            <span>{{vm.personNetworkShopping.amount}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personNetworkShopping.description">Description</span></dt>
+        <dd>
+            <span>{{vm.personNetworkShopping.description}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personNetworkShopping.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personNetworkShopping.person.id})">{{vm.personNetworkShopping.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personNetworkShopping.networkShoppingType">Network Shopping Type</span></dt>
+        <dd>
+            <a ui-sref="network-shopping-type-detail({id:vm.personNetworkShopping.networkShoppingType.id})">{{vm.personNetworkShopping.networkShoppingType.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-network-shopping-detail.edit({id:vm.personNetworkShopping.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
