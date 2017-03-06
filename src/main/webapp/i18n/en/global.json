@@ -39,6 +39,9 @@
                 "personNetworkDebit": "Person Network Debit",
                 "networkShoppingType": "Network Shopping Type",
                 "personNetworkShopping": "Person Network Shopping",
+                "socialMediaType": "Social Media Type",
+                "socialMediaAttributeName": "Social Media Attribute Name",
+                "personSocialMedia": "Person Social Media",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

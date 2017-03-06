@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonSocialMedia.
+    -->
+    <changeSet id="20170306090259-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_social_media"
+                                 constraintName="fk_person_social_media_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="social_media_type_id"
+                                 baseTableName="person_social_media"
+                                 constraintName="fk_person_social_media_social_media_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="social_media_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="social_media_attribute_name_id"
+                                 baseTableName="person_social_media"
+                                 constraintName="fk_person_social_media_social_media_attribute_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="social_media_attribute_name"/>
+
+    </changeSet>
+</databaseChangeLog>

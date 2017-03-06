@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "personSocialMedia" : {
+            "home": {
+                "title": "Person Social Medias",
+                "createLabel": "Create a new Person Social Media",
+                "createOrEditLabel": "Create or edit a Person Social Media",
+                "search": "Search for Person Social Media"
+            },
+            "created": "A new Person Social Media is created with identifier {{ param }}",
+            "updated": "A Person Social Media is updated with identifier {{ param }}",
+            "deleted": "A Person Social Media is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Social Media {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Social Media"
+            },
+            "attributeValue": "Attribute Value",
+            "person": "Person",
+            "socialMediaType": "Social Media Type",
+            "socialMediaAttributeName": "Social Media Attribute Name"
+        }
+    }
+}
