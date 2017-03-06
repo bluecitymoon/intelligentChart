@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonCreditCardActivity;
+import com.intelligent.chart.repository.PersonCreditCardActivityRepository;
 import com.intelligent.chart.service.PersonCreditCardActivityService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonCreditCardActivityResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonCreditCardActivityResource.class);
-        
+
     @Inject
     private PersonCreditCardActivityService personCreditCardActivityService;
+
+    @Inject
+    private PersonCreditCardActivityRepository personCreditCardActivityRepository;
+
+    @GetMapping("/person-credit-card-activities/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonCreditCardActivity>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonCreditCardActivity> page = personCreditCardActivityRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-credit-card-activities");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-credit-card-activities : Create a new personCreditCardActivity.
