@@ -45,9 +45,9 @@
                 "personNetworkShopping": "网络购物",
                 "personOutcomeNetworkShopping": "网络购物（支出）",
                 "personIncomeNetworkShopping": "网络购物（收入）",
-                "socialMediaType": "Social Media Type",
-                "socialMediaAttributeName": "Social Media Attribute Name",
-                "personSocialMedia": "Person Social Media",
+                "socialMediaType": "社交媒体类型",
+                "socialMediaAttributeName": "社交媒体属性名称",
+                "personSocialMedia": "社交媒体",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

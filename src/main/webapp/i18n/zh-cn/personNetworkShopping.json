@@ -2,25 +2,25 @@
     "intelligentChartApp": {
         "personNetworkShopping" : {
             "home": {
-                "title": "Person Network Shoppings",
-                "createLabel": "Create a new Person Network Shopping",
-                "createOrEditLabel": "Create or edit a Person Network Shopping",
+                "title": "网络购物",
+                "createLabel": "录入网络购物",
+                "createOrEditLabel": "管理网络购物",
                 "search": "Search for Person Network Shopping"
             },
-            "created": "A new Person Network Shopping is created with identifier {{ param }}",
-            "updated": "A Person Network Shopping is updated with identifier {{ param }}",
-            "deleted": "A Person Network Shopping is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Network Shopping {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Network Shopping"
+                "title": "人物网络购物详情"
             },
-            "createDate": "Create Date",
-            "amount": "Amount",
-            "description": "Description",
-            "person": "Person",
-            "networkShoppingType": "Network Shopping Type"
+            "createDate": "时间",
+            "amount": "金额",
+            "description": "描述",
+            "person": "人物",
+            "networkShoppingType": "网络购物类型"
         }
     }
 }

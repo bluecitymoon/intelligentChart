@@ -2,22 +2,22 @@
     "intelligentChartApp": {
         "socialMediaAttributeName" : {
             "home": {
-                "title": "Social Media Attribute Names",
-                "createLabel": "Create a new Social Media Attribute Name",
-                "createOrEditLabel": "Create or edit a Social Media Attribute Name",
+                "title": "社交媒体属性名称",
+                "createLabel": "创建属性",
+                "createOrEditLabel": "管理属性",
                 "search": "Search for Social Media Attribute Name"
             },
-            "created": "A new Social Media Attribute Name is created with identifier {{ param }}",
-            "updated": "A Social Media Attribute Name is updated with identifier {{ param }}",
-            "deleted": "A Social Media Attribute Name is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Social Media Attribute Name {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Social Media Attribute Name"
+                "title": "社交媒体属性名称"
             },
-            "identifier": "Identifier",
-            "name": "Name"
+            "identifier": "识别码",
+            "name": "名称"
         }
     }
 }

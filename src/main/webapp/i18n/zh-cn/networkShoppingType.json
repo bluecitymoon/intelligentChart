@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "networkShoppingType" : {
             "home": {
-                "title": "Network Shopping Types",
-                "createLabel": "Create a new Network Shopping Type",
-                "createOrEditLabel": "Create or edit a Network Shopping Type",
+                "title": "类型",
+                "createLabel": "录入一个网络购物类型",
+                "createOrEditLabel": "管理类型",
                 "search": "Search for Network Shopping Type"
             },
-            "created": "A new Network Shopping Type is created with identifier {{ param }}",
-            "updated": "A Network Shopping Type is updated with identifier {{ param }}",
-            "deleted": "A Network Shopping Type is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Network Shopping Type {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Network Shopping Type"
+                "title": "网络购物类型"
             },
-            "identifier": "Identifier",
-            "name": "Name",
-            "createDate": "Create Date"
+            "identifier": "识别码",
+            "name": "名称",
+            "createDate": "创建时间"
         }
     }
 }

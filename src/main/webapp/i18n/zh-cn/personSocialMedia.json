@@ -2,24 +2,24 @@
     "intelligentChartApp": {
         "personSocialMedia" : {
             "home": {
-                "title": "Person Social Medias",
-                "createLabel": "Create a new Person Social Media",
-                "createOrEditLabel": "Create or edit a Person Social Media",
+                "title": "社交媒体",
+                "createLabel": "录入一个社交媒体",
+                "createOrEditLabel": "管理社交媒体",
                 "search": "Search for Person Social Media"
             },
-            "created": "A new Person Social Media is created with identifier {{ param }}",
-            "updated": "A Person Social Media is updated with identifier {{ param }}",
-            "deleted": "A Person Social Media is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Social Media {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Social Media"
+                "title": "社交媒体"
             },
-            "attributeValue": "Attribute Value",
-            "person": "Person",
-            "socialMediaType": "Social Media Type",
-            "socialMediaAttributeName": "Social Media Attribute Name"
+            "attributeValue": "值或数量",
+            "person": "人物",
+            "socialMediaType": "社交媒体类型",
+            "socialMediaAttributeName": "属性名称"
         }
     }
 }
