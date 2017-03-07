@@ -1,23 +1,27 @@
+<div class="panel">
+    <div class="panel-body">
+        <h2><span data-translate="intelligentChartApp.lawBusinessType.detail.title">Law Business Type</span>
+            {{vm.lawBusinessType.id}}</h2>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="intelligentChartApp.lawBusinessType.name">Name</span></dt>
+            <dd>
+                <span>{{vm.lawBusinessType.name}}</span>
+            </dd>
+        </dl>
 
-<div>
-    <h2><span data-translate="intelligentChartApp.lawBusinessType.detail.title">Law Business Type</span> {{vm.lawBusinessType.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="intelligentChartApp.lawBusinessType.name">Name</span></dt>
-        <dd>
-            <span>{{vm.lawBusinessType.name}}</span>
-        </dd>
-    </dl>
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+                data-translate="entity.action.back"> Back</span>
+        </button>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="law-business-type-detail.edit({id:vm.lawBusinessType.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
+        <button type="button" ui-sref="law-business-type-detail.edit({id:vm.lawBusinessType.id})"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
 </div>

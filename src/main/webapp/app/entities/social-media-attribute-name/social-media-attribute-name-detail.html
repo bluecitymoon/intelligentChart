@@ -1,27 +1,32 @@
+<div class="panel">
+    <div class="panel-body">
+        <h2><span
+                data-translate="intelligentChartApp.socialMediaAttributeName.detail.title">Social Media Attribute Name</span>
+            {{vm.socialMediaAttributeName.id}}</h2>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="intelligentChartApp.socialMediaAttributeName.identifier">Identifier</span></dt>
+            <dd>
+                <span>{{vm.socialMediaAttributeName.identifier}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.socialMediaAttributeName.name">Name</span></dt>
+            <dd>
+                <span>{{vm.socialMediaAttributeName.name}}</span>
+            </dd>
+        </dl>
 
-<div>
-    <h2><span data-translate="intelligentChartApp.socialMediaAttributeName.detail.title">Social Media Attribute Name</span> {{vm.socialMediaAttributeName.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="intelligentChartApp.socialMediaAttributeName.identifier">Identifier</span></dt>
-        <dd>
-            <span>{{vm.socialMediaAttributeName.identifier}}</span>
-        </dd>
-        <dt><span data-translate="intelligentChartApp.socialMediaAttributeName.name">Name</span></dt>
-        <dd>
-            <span>{{vm.socialMediaAttributeName.name}}</span>
-        </dd>
-    </dl>
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+                data-translate="entity.action.back"> Back</span>
+        </button>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="social-media-attribute-name-detail.edit({id:vm.socialMediaAttributeName.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
+        <button type="button" ui-sref="social-media-attribute-name-detail.edit({id:vm.socialMediaAttributeName.id})"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
 </div>

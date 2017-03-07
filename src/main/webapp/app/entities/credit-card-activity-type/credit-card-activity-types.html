@@ -6,9 +6,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-4 no-padding-left">
-                        <button class="btn btn-primary" ui-sref="credit-card-activity-type.new" >
+                        <button class="btn btn-primary" ui-sref="credit-card-activity-type.new">
                             <span class="glyphicon glyphicon-plus"></span>
-                            <span  data-translate="intelligentChartApp.creditCardActivityType.home.createLabel">
+                            <span data-translate="intelligentChartApp.creditCardActivityType.home.createLabel">
                         Create new Credit Card Activity Type
                     </span>
                         </button>
@@ -20,14 +20,17 @@
                 <table class="jh-table table table-striped">
                     <thead>
                     <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                        <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                        <th jh-sort-by="name"><span data-translate="intelligentChartApp.creditCardActivityType.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span
+                                class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="name"><span data-translate="intelligentChartApp.creditCardActivityType.name">Name</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="creditCardActivityType in vm.creditCardActivityTypes track by creditCardActivityType.id">
-                        <td><a ui-sref="credit-card-activity-type-detail({id:creditCardActivityType.id})">{{creditCardActivityType.id}}</a></td>
+                        <td><a ui-sref="credit-card-activity-type-detail({id:creditCardActivityType.id})">{{creditCardActivityType.id}}</a>
+                        </td>
                         <td>{{creditCardActivityType.name}}</td>
                         <td class="text-right">
                             <div class="btn-group flex-btn-group-container">
@@ -57,7 +60,8 @@
             </div>
             <div class="text-center">
                 <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-                <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+                                ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
             </div>
         </div>
     </div>

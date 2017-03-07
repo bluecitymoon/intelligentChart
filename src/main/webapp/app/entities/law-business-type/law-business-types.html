@@ -1,29 +1,32 @@
-<div>
-    <h2 data-translate="intelligentChartApp.lawBusinessType.home.title">Law Business Types</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="law-business-type.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="intelligentChartApp.lawBusinessType.home.createLabel">
+<div class="panel">
+    <div class="panel-body">
+        <h2 data-translate="intelligentChartApp.lawBusinessType.home.title">Law Business Types</h2>
+        <jhi-alert></jhi-alert>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 no-padding-left">
+                    <button class="btn btn-primary" ui-sref="law-business-type.new">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span data-translate="intelligentChartApp.lawBusinessType.home.createLabel">
                         Create new Law Business Type
                     </span>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
+        <br/>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.lawBusinessType.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.lawBusinessType.name">Name</span>
+                        <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat="lawBusinessType in vm.lawBusinessTypes track by lawBusinessType.id">
                     <td><a ui-sref="law-business-type-detail({id:lawBusinessType.id})">{{lawBusinessType.id}}</a></td>
                     <td>{{lawBusinessType.name}}</td>
@@ -50,11 +53,13 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+                            ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </div>
 </div>
