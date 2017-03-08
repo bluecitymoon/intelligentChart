@@ -44,7 +44,7 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: 350,
+            width: singleChartWidth,
             theme: 'macarons'
 
         };
@@ -53,8 +53,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: 350,
-            theme: 'macarons'
+            width: singleChartWidth,
+            theme: 'roma'
 
         };
 
