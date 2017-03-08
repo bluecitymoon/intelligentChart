@@ -44,6 +44,7 @@
                 "personSocialMedia": "Person Social Media",
                 "networkTexiCompany": "Network Texi Company",
                 "personNetworkTexiActivity": "Person Network Texi Activity",
+                "personEndorsement": "Person Endorsement",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

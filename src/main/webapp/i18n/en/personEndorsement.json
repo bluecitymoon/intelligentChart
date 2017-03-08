@@ -1,0 +1,28 @@
+{
+    "intelligentChartApp": {
+        "personEndorsement" : {
+            "home": {
+                "title": "Person Endorsements",
+                "createLabel": "Create a new Person Endorsement",
+                "createOrEditLabel": "Create or edit a Person Endorsement",
+                "search": "Search for Person Endorsement"
+            },
+            "created": "A new Person Endorsement is created with identifier {{ param }}",
+            "updated": "A Person Endorsement is updated with identifier {{ param }}",
+            "deleted": "A Person Endorsement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Endorsement {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Endorsement"
+            },
+            "seqNumber": "Seq Number",
+            "paidAmount": "Paid Amount",
+            "createDate": "Create Date",
+            "address": "Address",
+            "behaviorDescription": "Behavior Description",
+            "createBy": "Create By",
+            "person": "Person"
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "intelligentChartApp": {
+        "personEndorsement" : {
+            "home": {
+                "title": "违章记录",
+                "createLabel": "录入一个违章记录",
+                "createOrEditLabel": "管理违章记录",
+                "search": "Search for Person Endorsement"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "违章记录"
+            },
+            "seqNumber": "序号",
+            "paidAmount": "罚款金额",
+            "createDate": "违法时间",
+            "address": "违法地址",
+            "behaviorDescription": "违章行为",
+            "createBy": "Create By",
+            "person": "人物"
+        }
+    }
+}

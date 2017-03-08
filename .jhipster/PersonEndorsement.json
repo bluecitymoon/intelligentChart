@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "seqNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "paidAmount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "behaviorDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createBy",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170308064126",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_endorsement",
+    "pagination": "pagination"
+}

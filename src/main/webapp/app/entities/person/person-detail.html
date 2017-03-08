@@ -4,7 +4,8 @@
         <div class="panel">
             <div class="text-center pad-all bord-btm">
                 <div class="pad-ver">
-                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="img-lg img-border img-circle" alt="Profile Picture">
+                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                         class="img-lg img-border img-circle" alt="Profile Picture">
                 </div>
                 <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
                 <p class="text-sm text-muted">
@@ -29,7 +30,9 @@
             </div>
 
             <hr>
-            <a ui-sref="person-experience({person_id:vm.person.id})" class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personExperience"></span></a>
+            <a ui-sref="person-experience({person_id:vm.person.id})"
+               class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm"
+                                                                    data-translate="global.menu.entities.personExperience"></span></a>
 
 
             <div class="panel-body">
@@ -45,7 +48,8 @@
                         <div class="timeline-stat">
 
                             <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                                     alt="Profile Picture">
                             </div>
                             <div class="timeline-time">
                                 {{exp.expYear}}
@@ -63,7 +67,8 @@
                 <button ui-sref="person-education-background({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personEducationBackground"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personEducationBackground"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -148,9 +153,11 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <button ui-sref="person-credit-card-activity({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                <button ui-sref="person-credit-card-activity({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-credit-card"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personCreditCardActivity"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personCreditCardActivity"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -161,7 +168,8 @@
                         <div class="timeline-stat">
 
                             <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                                     alt="Profile Picture">
                             </div>
                             <div class="timeline-time">
                                 {{cca.createDate}}
@@ -193,7 +201,8 @@
                         <div class="timeline-stat">
 
                             <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" alt="Profile Picture">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                                     alt="Profile Picture">
                             </div>
                             <div class="timeline-time">
                                 {{debits.createDate}}
@@ -209,7 +218,8 @@
             </div>
         </div>
 
-        <div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}" ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
+        <div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}"
+             ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
             <div class="media-left pad-all">
                 <div style="width: 48px; height: 48px" class="text-lg">
                     <b>{{socialMediaTypeName}}</b>
@@ -225,6 +235,47 @@
             </div>
         </div>
 
+        <!-- 违章记录 -->
+        <div ng-repeat="endorsement in endorsements">
+
+            <div class="panel">
+
+                <div class="panel-heading">
+                    <button ui-sref="person-endorsement({person_id:vm.person.id})"
+                            class="btn text-bold btn-block">
+                        <span class="glyphicon glyphicon-flag"></span>
+                        <span class="hidden-xs hidden-sm"
+                              data-translate="global.menu.entities.personEndorsement"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+
+                    <div class="list-group row">
+                        <div class="list-group-item col-md-3 disabled">序号</div>
+                        <div class="list-group-item col-md-3">{{endorsement.seqNumber}}</div>
+                        <div class="list-group-item col-md-3 disabled">金额</div>
+                        <div class="list-group-item col-md-3">{{endorsement.paidAmount}}</div>
+
+                    </div>
+                    <div class="list-group row">
+                        <div class="list-group-item col-md-3 disabled">时间</div>
+                        <div class="list-group-item col-md-9">{{endorsement.createDate}}</div>
+
+                    </div>
+                    <div class="list-group row">
+                        <div class="list-group-item col-md-3 disabled">地址</div>
+                        <div class="list-group-item col-md-9">{{endorsement.address}}</div>
+
+                    </div>
+                    <div class="list-group row">
+                        <div class="list-group-item col-md-3 disabled">行为</div>
+                        <div class="list-group-item col-md-9">{{endorsement.behaviorDescription}}</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <!--</div>-->
     </div>
 
@@ -290,7 +341,8 @@
                 <button ui-sref="person-connection-level({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personConnectionLevel"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personConnectionLevel"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -310,7 +362,8 @@
                         ui-sref="person-area-percentage({person_id:vm.person.id})"
                         class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentageCinema"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentageCinema"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -330,7 +383,8 @@
                         ui-sref="person-area-percentage({person_id:vm.person.id})"
                         class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -348,7 +402,8 @@
                 <button ui-sref="person-region-connection({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personRegionConnection"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personRegionConnection"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -365,7 +420,8 @@
                 <button ui-sref="person-network-shopping({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-earphone"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -382,7 +438,8 @@
                 <button ui-sref="person-network-shopping({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-bullhorn"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -400,7 +457,8 @@
                 <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
                     <span class="glyphicon glyphicon-bishop"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personNetworkTexiActivity"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personNetworkTexiActivity"></span>
                 </button>
             </div>
             <div class="panel-body">
@@ -411,7 +469,6 @@
         </div>
 
     </div>
-
     <!--
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts图表
