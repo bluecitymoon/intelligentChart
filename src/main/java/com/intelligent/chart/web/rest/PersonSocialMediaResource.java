@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonSocialMedia;
+import com.intelligent.chart.repository.PersonSocialMediaRepository;
 import com.intelligent.chart.service.PersonSocialMediaService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonSocialMediaResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonSocialMediaResource.class);
-        
+
     @Inject
     private PersonSocialMediaService personSocialMediaService;
+
+    @Inject
+    private PersonSocialMediaRepository personSocialMediaRepository;
+
+    @GetMapping("/person-social-medias/person/{id}")
+    @Timed
+    public ResponseEntity<List<PersonSocialMedia>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonSocialMedia> page = personSocialMediaRepository.findByPerson_Id(id, pageable);
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-social-medias");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 
     /**
      * POST  /person-social-medias : Create a new personSocialMedia.

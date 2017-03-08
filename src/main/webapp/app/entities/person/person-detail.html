@@ -91,6 +91,17 @@
 
             </div>
         </div>
+        <!-- 法务-->
+        <div class="panel media middle" ng-repeat="lb in lawBusinesses">
+            <div class="media-left bg-primary pad-all">
+                <div style="width: 48px; height: 48px">
+                    <b>{{lb.lawBusinessType.name}}</b>
+                </div>
+            </div>
+            <div class="media-body pad-lft">
+                <p class="text-muted mar-no">{{lb.descriptions}}</p>
+            </div>
+        </div>
 
         <!-- 获奖记录 -->
         <div class="panel">
@@ -198,29 +209,18 @@
             </div>
         </div>
 
-        <!-- 法务-->
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-law-business({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-lamp"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personLawBusiness"></span>
-                </button>
-            </div>
-            <div class="panel-body" style="padding: 5px">
-
-                <div class="list-group">
-                    <div ng-repeat="lb in lawBusinesses" style="margin-bottom: 5px">
-                        <div class="list-group-item list-group-item-primary">
-                            {{lb.lawBusinessType.name}}
-                        </div>
-                        <div class="list-group-item">
-                            {{lb.descriptions}}
-                        </div>
-                    </div>
+        <div class="panel media middle panel-colorful panel-danger" ng-repeat="(key, attributes) in socialMediaAttributes">
+            <div class="media-left pad-all">
+                <div style="width: 48px; height: 48px">
+                    {{key}}
                 </div>
             </div>
+            <div class="media-body">
+                <p class="text-2x mar-no">25°</p>
+                <p class="mar-no">Partly Cloudy Day</p>
+            </div>
         </div>
+
         <!--</div>-->
     </div>
 

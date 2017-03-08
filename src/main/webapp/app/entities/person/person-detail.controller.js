@@ -8,12 +8,12 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit', 'PersonNetworkShopping'];
+        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit, PersonNetworkShopping) {
+                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia) {
         var vm = this;
 
         vm.person = entity;
@@ -354,6 +354,15 @@
 
         }, handleError);
 
+        PersonSocialMedia.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            if (data && data.length > 0) {
+
+                $scope.socialMediaAttributes = lodash.groupBy(data, function (media) {
+                    return media.socialMediaType.name;
+                });
+            }
+        }, handleError);
 
         $scope.$on('$destroy', unsubscribe);
     }

@@ -2,6 +2,8 @@ package com.intelligent.chart.repository;
 
 import com.intelligent.chart.domain.PersonSocialMedia;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -12,4 +14,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface PersonSocialMediaRepository extends JpaRepository<PersonSocialMedia,Long> {
 
+    Page<PersonSocialMedia> findByPerson_Id(Long id, Pageable pageable);
 }
