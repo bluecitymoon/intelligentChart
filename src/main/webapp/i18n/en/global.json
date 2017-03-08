@@ -42,6 +42,8 @@
                 "socialMediaType": "Social Media Type",
                 "socialMediaAttributeName": "Social Media Attribute Name",
                 "personSocialMedia": "Person Social Media",
+                "networkTexiCompany": "Network Texi Company",
+                "personNetworkTexiActivity": "Person Network Texi Activity",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

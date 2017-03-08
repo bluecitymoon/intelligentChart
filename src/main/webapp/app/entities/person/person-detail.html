@@ -393,6 +393,25 @@
         </div>
     </div>
 
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-bishop"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personNetworkTexiActivity"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="networkTaxiConfig" data="networkTexiData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
     <!--
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts图表

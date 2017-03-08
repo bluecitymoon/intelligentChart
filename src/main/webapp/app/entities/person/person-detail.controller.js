@@ -8,12 +8,12 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia'];
+        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia) {
+                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity) {
         var vm = this;
 
         vm.person = entity;
@@ -41,6 +41,15 @@
         };
 
         $scope.connectionLevelConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: 350,
+            theme: 'macarons'
+
+        };
+
+        $scope.networkTaxiConfig = {
             title: "",
             subtitle: '',
             height: singleChartHeight,
@@ -184,7 +193,6 @@
 
             });
 
-            // pageload.datapoints = lodash.orderBy(pageload.datapoints, ['y', 'asc']);
             $scope.connectionLevelData = [pageload];
 
         }, handleError);
@@ -364,6 +372,26 @@
             }
 
             console.debug($scope.socialMediaAttributes);
+
+        }, handleError);
+
+        PersonNetworkTexiActivity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (activities) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(activities, function (activity) {
+
+                var number = activity.count;
+                var title = activity.networkTexiCompany.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            pageload.datapoints = lodash.sortBy(pageload.datapoints, ['y']);
+            $scope.networkTexiData = [pageload];
 
         }, handleError);
 

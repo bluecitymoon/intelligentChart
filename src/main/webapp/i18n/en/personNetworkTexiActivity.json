@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personNetworkTexiActivity" : {
+            "home": {
+                "title": "Person Network Texi Activities",
+                "createLabel": "Create a new Person Network Texi Activity",
+                "createOrEditLabel": "Create or edit a Person Network Texi Activity",
+                "search": "Search for Person Network Texi Activity"
+            },
+            "created": "A new Person Network Texi Activity is created with identifier {{ param }}",
+            "updated": "A Person Network Texi Activity is updated with identifier {{ param }}",
+            "deleted": "A Person Network Texi Activity is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Network Texi Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Network Texi Activity"
+            },
+            "count": "Count",
+            "person": "Person",
+            "networkTexiCompany": "Network Texi Company"
+        }
+    }
+}

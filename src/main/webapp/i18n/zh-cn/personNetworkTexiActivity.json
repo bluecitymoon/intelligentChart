@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personNetworkTexiActivity" : {
+            "home": {
+                "title": "网络叫车",
+                "createLabel": "录入网络叫车记录",
+                "createOrEditLabel": "管理网络叫车记录",
+                "search": "Search for Person Network Texi Activity"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "网络叫车记录"
+            },
+            "count": "次数",
+            "person": "人物",
+            "networkTexiCompany": "网络出租车公司"
+        }
+    }
+}

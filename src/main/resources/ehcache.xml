@@ -104,5 +104,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonSocialMedia" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.NetworkTexiCompany" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonNetworkTexiActivity" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

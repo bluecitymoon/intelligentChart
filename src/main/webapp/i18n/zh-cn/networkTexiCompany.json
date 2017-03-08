@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "networkTexiCompany" : {
+            "home": {
+                "title": "网络打车公司",
+                "createLabel": "录入一个网络打车公司",
+                "createOrEditLabel": "管理网络打车公司",
+                "search": "Search for Network Texi Company"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "网络打车公司"
+            },
+            "name": "名称"
+        }
+    }
+}

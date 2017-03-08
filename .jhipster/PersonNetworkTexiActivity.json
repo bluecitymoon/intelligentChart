@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "networkTexiCompany",
+            "otherEntityName": "networkTexiCompany",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "count",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170308054234",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_network_texi_activity",
+    "pagination": "pagination"
+}

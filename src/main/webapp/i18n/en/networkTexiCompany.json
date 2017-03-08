@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "networkTexiCompany" : {
+            "home": {
+                "title": "Network Texi Companies",
+                "createLabel": "Create a new Network Texi Company",
+                "createOrEditLabel": "Create or edit a Network Texi Company",
+                "search": "Search for Network Texi Company"
+            },
+            "created": "A new Network Texi Company is created with identifier {{ param }}",
+            "updated": "A Network Texi Company is updated with identifier {{ param }}",
+            "deleted": "A Network Texi Company is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Network Texi Company {{ id }}?"
+            },
+            "detail": {
+                "title": "Network Texi Company"
+            },
+            "name": "Name"
+        }
+    }
+}

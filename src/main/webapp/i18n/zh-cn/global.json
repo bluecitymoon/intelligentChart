@@ -48,7 +48,8 @@
                 "socialMediaType": "社交媒体类型",
                 "socialMediaAttributeName": "社交媒体属性名称",
                 "personSocialMedia": "社交媒体",
-                "socialMediaType": "Social Media Type",
+                "networkTexiCompany": "O2O类型",
+                "personNetworkTexiActivity": "网络叫车",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

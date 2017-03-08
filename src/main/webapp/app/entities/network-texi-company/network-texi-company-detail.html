@@ -1,0 +1,27 @@
+<div class="panel">
+    <div class="panel-body">
+        <h2><span data-translate="intelligentChartApp.networkTexiCompany.detail.title">Network Texi Company</span>
+            {{vm.networkTexiCompany.id}}</h2>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="intelligentChartApp.networkTexiCompany.name">Name</span></dt>
+            <dd>
+                <span>{{vm.networkTexiCompany.name}}</span>
+            </dd>
+        </dl>
+
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+                data-translate="entity.action.back"> Back</span>
+        </button>
+
+        <button type="button" ui-sref="network-texi-company-detail.edit({id:vm.networkTexiCompany.id})"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
+</div>
