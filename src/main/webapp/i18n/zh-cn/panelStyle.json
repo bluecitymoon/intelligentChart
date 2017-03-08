@@ -1,0 +1,14 @@
+{
+    "intelligentChartApp": {
+        "PanelStyle" : {
+            "null": "",
+            "danger": "danger",
+            "dark": "dark",
+            "pink": "pink",
+            "info": "info",
+            "primary": "primary",
+            "success": "success",
+            "warning": "warning"
+        }
+    }
+}
