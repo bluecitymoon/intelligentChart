@@ -24,7 +24,7 @@
         });
 
         var singleChartWidth = 300;
-        var singleChartHeight = 320;
+        var singleChartHeight = 300;
         $scope.areaConfig = {
             title: "",
             subtitle: '',
