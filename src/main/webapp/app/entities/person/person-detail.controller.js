@@ -362,7 +362,11 @@
                     return media.socialMediaType.name;
                 });
             }
+
+            console.debug($scope.socialMediaAttributes);
+
         }, handleError);
+
 
         $scope.$on('$destroy', unsubscribe);
     }

@@ -29,6 +29,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.intelligent.chart.domain.enumeration.PanelStyle;
 /**
  * Test class for the SocialMediaTypeResource REST controller.
  *
@@ -43,6 +44,9 @@ public class SocialMediaTypeResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final PanelStyle DEFAULT_STYLE = PanelStyle.danger;
+    private static final PanelStyle UPDATED_STYLE = PanelStyle.dark;
 
     @Inject
     private SocialMediaTypeRepository socialMediaTypeRepository;
@@ -82,7 +86,8 @@ public class SocialMediaTypeResourceIntTest {
     public static SocialMediaType createEntity(EntityManager em) {
         SocialMediaType socialMediaType = new SocialMediaType()
                 .identifier(DEFAULT_IDENTIFIER)
-                .name(DEFAULT_NAME);
+                .name(DEFAULT_NAME)
+                .style(DEFAULT_STYLE);
         return socialMediaType;
     }
 
@@ -109,6 +114,7 @@ public class SocialMediaTypeResourceIntTest {
         SocialMediaType testSocialMediaType = socialMediaTypeList.get(socialMediaTypeList.size() - 1);
         assertThat(testSocialMediaType.getIdentifier()).isEqualTo(DEFAULT_IDENTIFIER);
         assertThat(testSocialMediaType.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testSocialMediaType.getStyle()).isEqualTo(DEFAULT_STYLE);
     }
 
     @Test
@@ -143,7 +149,8 @@ public class SocialMediaTypeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(socialMediaType.getId().intValue())))
             .andExpect(jsonPath("$.[*].identifier").value(hasItem(DEFAULT_IDENTIFIER.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].style").value(hasItem(DEFAULT_STYLE.toString())));
     }
 
     @Test
@@ -158,7 +165,8 @@ public class SocialMediaTypeResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(socialMediaType.getId().intValue()))
             .andExpect(jsonPath("$.identifier").value(DEFAULT_IDENTIFIER.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.style").value(DEFAULT_STYLE.toString()));
     }
 
     @Test
@@ -181,7 +189,8 @@ public class SocialMediaTypeResourceIntTest {
         SocialMediaType updatedSocialMediaType = socialMediaTypeRepository.findOne(socialMediaType.getId());
         updatedSocialMediaType
                 .identifier(UPDATED_IDENTIFIER)
-                .name(UPDATED_NAME);
+                .name(UPDATED_NAME)
+                .style(UPDATED_STYLE);
 
         restSocialMediaTypeMockMvc.perform(put("/api/social-media-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -194,6 +203,7 @@ public class SocialMediaTypeResourceIntTest {
         SocialMediaType testSocialMediaType = socialMediaTypeList.get(socialMediaTypeList.size() - 1);
         assertThat(testSocialMediaType.getIdentifier()).isEqualTo(UPDATED_IDENTIFIER);
         assertThat(testSocialMediaType.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testSocialMediaType.getStyle()).isEqualTo(UPDATED_STYLE);
     }
 
     @Test

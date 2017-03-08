@@ -1,31 +1,31 @@
-<div class="panel">
-    <div class="panel-body">
-        <h2><span data-translate="intelligentChartApp.socialMediaType.detail.title">Social Media Type</span>
-            {{vm.socialMediaType.id}}</h2>
-        <hr>
-        <jhi-alert-error></jhi-alert-error>
-        <dl class="dl-horizontal jh-entity-details">
-            <dt><span data-translate="intelligentChartApp.socialMediaType.identifier">Identifier</span></dt>
-            <dd>
-                <span>{{vm.socialMediaType.identifier}}</span>
-            </dd>
-            <dt><span data-translate="intelligentChartApp.socialMediaType.name">Name</span></dt>
-            <dd>
-                <span>{{vm.socialMediaType.name}}</span>
-            </dd>
-        </dl>
 
-        <button type="submit"
-                ui-sref="{{ vm.previousState }}"
-                class="btn btn-info">
-            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
-                data-translate="entity.action.back"> Back</span>
-        </button>
+<div>
+    <h2><span data-translate="intelligentChartApp.socialMediaType.detail.title">Social Media Type</span> {{vm.socialMediaType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.socialMediaType.identifier">Identifier</span></dt>
+        <dd>
+            <span>{{vm.socialMediaType.identifier}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.socialMediaType.name">Name</span></dt>
+        <dd>
+            <span>{{vm.socialMediaType.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.socialMediaType.style">Style</span></dt>
+        <dd>
+            <span data-translate="{{'intelligentChartApp.PanelStyle.' + vm.socialMediaType.style}}">{{vm.socialMediaType.style}}</span>
+        </dd>
+    </dl>
 
-        <button type="button" ui-sref="social-media-type-detail.edit({id:vm.socialMediaType.id})"
-                class="btn btn-primary">
-            <span class="glyphicon glyphicon-pencil"></span>
-            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-        </button>
-    </div>
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="social-media-type-detail.edit({id:vm.socialMediaType.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
 </div>

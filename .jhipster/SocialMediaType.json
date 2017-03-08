@@ -9,6 +9,11 @@
         {
             "fieldName": "name",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "style",
+            "fieldType": "PanelStyle",
+            "fieldValues": "danger,dark,pink,info,primary,success,warning"
         }
     ],
     "changelogDate": "20170306085912",

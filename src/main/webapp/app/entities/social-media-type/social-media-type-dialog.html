@@ -25,6 +25,18 @@
                     ng-model="vm.socialMediaType.name"
                      />
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.socialMediaType.style" for="field_style">Style</label>
+            <select class="form-control" name="style" ng-model="vm.socialMediaType.style" id="field_style">
+                <option value="danger" data-translate="intelligentChartApp.PanelStyle.danger">danger</option>
+                <option value="dark" data-translate="intelligentChartApp.PanelStyle.dark">dark</option>
+                <option value="pink" data-translate="intelligentChartApp.PanelStyle.pink">pink</option>
+                <option value="info" data-translate="intelligentChartApp.PanelStyle.info">info</option>
+                <option value="primary" data-translate="intelligentChartApp.PanelStyle.primary">primary</option>
+                <option value="success" data-translate="intelligentChartApp.PanelStyle.success">success</option>
+                <option value="warning" data-translate="intelligentChartApp.PanelStyle.warning">warning</option>
+            </select>
+        </div>
 
     </div>
     <div class="modal-footer">

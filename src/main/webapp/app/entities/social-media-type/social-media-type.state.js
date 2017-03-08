@@ -46,6 +46,7 @@
                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('socialMediaType');
+                    $translatePartialLoader.addPart('panelStyle');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -68,6 +69,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('socialMediaType');
+                    $translatePartialLoader.addPart('panelStyle');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'SocialMediaType', function($stateParams, SocialMediaType) {
@@ -126,6 +128,7 @@
                             return {
                                 identifier: null,
                                 name: null,
+                                style: null,
                                 id: null
                             };
                         }

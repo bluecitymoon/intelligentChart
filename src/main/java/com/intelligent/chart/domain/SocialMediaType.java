@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.intelligent.chart.domain.enumeration.PanelStyle;
+
 /**
  * A SocialMediaType.
  */
@@ -26,6 +28,10 @@ public class SocialMediaType implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "style")
+    private PanelStyle style;
 
     public Long getId() {
         return id;
@@ -61,6 +67,19 @@ public class SocialMediaType implements Serializable {
         this.name = name;
     }
 
+    public PanelStyle getStyle() {
+        return style;
+    }
+
+    public SocialMediaType style(PanelStyle style) {
+        this.style = style;
+        return this;
+    }
+
+    public void setStyle(PanelStyle style) {
+        this.style = style;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -87,6 +106,7 @@ public class SocialMediaType implements Serializable {
             "id=" + id +
             ", identifier='" + identifier + "'" +
             ", name='" + name + "'" +
+            ", style='" + style + "'" +
             '}';
     }
 }

@@ -17,7 +17,8 @@
                 "title": "Social Media Type"
             },
             "identifier": "Identifier",
-            "name": "Name"
+            "name": "Name",
+            "style": "Style"
         }
     }
 }

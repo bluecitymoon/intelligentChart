@@ -80,7 +80,7 @@ class SocialMediaTypeGatlingTest extends Simulation {
             .exec(http("Create new socialMediaType")
             .post("/api/social-media-types")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "identifier":"SAMPLE_TEXT", "name":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "identifier":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "style":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_socialMediaType_url"))).exitHereIfFailed
             .pause(10)

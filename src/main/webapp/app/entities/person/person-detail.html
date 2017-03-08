@@ -209,15 +209,19 @@
             </div>
         </div>
 
-        <div class="panel media middle panel-colorful panel-danger" ng-repeat="(key, attributes) in socialMediaAttributes">
+        <div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}" ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
             <div class="media-left pad-all">
-                <div style="width: 48px; height: 48px">
-                    {{key}}
+                <div style="width: 48px; height: 48px" class="text-lg">
+                    <b>{{socialMediaTypeName}}</b>
                 </div>
             </div>
             <div class="media-body">
-                <p class="text-2x mar-no">25°</p>
-                <p class="mar-no">Partly Cloudy Day</p>
+
+                <div ng-repeat="attribute in attributes" class="col-md-6">
+                    <p class="text-lg mar-no text-bold">{{attribute.socialMediaAttributeName.name}}</p>
+                    <p class="mar-no">{{attribute.attributeValue}}</p>
+                </div>
+
             </div>
         </div>
 

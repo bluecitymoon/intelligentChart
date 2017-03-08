@@ -2,22 +2,23 @@
     "intelligentChartApp": {
         "socialMediaType" : {
             "home": {
-                "title": "社交媒体类型",
-                "createLabel": "录入一个社交媒体类型",
-                "createOrEditLabel": "管理社交媒体类型",
+                "title": "Social Media Types",
+                "createLabel": "Create a new Social Media Type",
+                "createOrEditLabel": "Create or edit a Social Media Type",
                 "search": "Search for Social Media Type"
             },
-            "created": "数据已创建",
-            "updated": "数据已更新",
-            "deleted": "数据已删除",
+            "created": "A new Social Media Type is created with identifier {{ param }}",
+            "updated": "A Social Media Type is updated with identifier {{ param }}",
+            "deleted": "A Social Media Type is deleted with identifier {{ param }}",
             "delete": {
-                "question": "你确定删除这条数据?"
+                "question": "Are you sure you want to delete Social Media Type {{ id }}?"
             },
             "detail": {
-                "title": "社交媒体类型"
+                "title": "Social Media Type"
             },
-            "identifier": "识别码",
-            "name": "名称"
+            "identifier": "Identifier",
+            "name": "Name",
+            "style": "Style"
         }
     }
 }
