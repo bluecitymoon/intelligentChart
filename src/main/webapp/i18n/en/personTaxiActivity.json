@@ -1,0 +1,26 @@
+{
+    "intelligentChartApp": {
+        "personTaxiActivity" : {
+            "home": {
+                "title": "Person Taxi Activities",
+                "createLabel": "Create a new Person Taxi Activity",
+                "createOrEditLabel": "Create or edit a Person Taxi Activity",
+                "search": "Search for Person Taxi Activity"
+            },
+            "created": "A new Person Taxi Activity is created with identifier {{ param }}",
+            "updated": "A Person Taxi Activity is updated with identifier {{ param }}",
+            "deleted": "A Person Taxi Activity is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Taxi Activity {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Taxi Activity"
+            },
+            "startPlace": "Start Place",
+            "destination": "Destination",
+            "createDate": "Create Date",
+            "paidAmount": "Paid Amount",
+            "person": "Person"
+        }
+    }
+}

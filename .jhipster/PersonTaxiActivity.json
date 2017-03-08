@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "startPlace",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "destination",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "paidAmount",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170308092413",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_taxi_activity",
+    "pagination": "pagination"
+}

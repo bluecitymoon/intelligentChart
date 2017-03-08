@@ -52,6 +52,7 @@
     <include file="classpath:config/liquibase/changelog/20170308054112_added_entity_NetworkTexiCompany.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170308054234_added_entity_PersonNetworkTexiActivity.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170308064126_added_entity_PersonEndorsement.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170308092413_added_entity_PersonTaxiActivity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -72,5 +73,6 @@
     <include file="classpath:config/liquibase/changelog/20170306090259_added_entity_constraints_PersonSocialMedia.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170308054234_added_entity_constraints_PersonNetworkTexiActivity.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170308064126_added_entity_constraints_PersonEndorsement.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170308092413_added_entity_constraints_PersonTaxiActivity.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

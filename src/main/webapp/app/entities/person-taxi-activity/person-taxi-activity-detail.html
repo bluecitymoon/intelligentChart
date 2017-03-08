@@ -1,0 +1,43 @@
+<div class="panel">
+    <div class="panel-body">
+        <h2><span data-translate="intelligentChartApp.personTaxiActivity.detail.title">Person Taxi Activity</span>
+            {{vm.personTaxiActivity.id}}</h2>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="intelligentChartApp.personTaxiActivity.startPlace">Start Place</span></dt>
+            <dd>
+                <span>{{vm.personTaxiActivity.startPlace}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTaxiActivity.destination">Destination</span></dt>
+            <dd>
+                <span>{{vm.personTaxiActivity.destination}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTaxiActivity.createDate">Create Date</span></dt>
+            <dd>
+                <span>{{vm.personTaxiActivity.createDate | date:'medium'}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTaxiActivity.paidAmount">Paid Amount</span></dt>
+            <dd>
+                <span>{{vm.personTaxiActivity.paidAmount}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTaxiActivity.person">Person</span></dt>
+            <dd>
+                <a ui-sref="person-detail({id:vm.personTaxiActivity.person.id})">{{vm.personTaxiActivity.person.name}}</a>
+            </dd>
+        </dl>
+
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span
+                data-translate="entity.action.back"> Back</span>
+        </button>
+
+        <button type="button" ui-sref="person-taxi-activity-detail.edit({id:vm.personTaxiActivity.id})"
+                class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
+</div>
