@@ -1,7 +1,7 @@
 <div>
 
     <div class="col-md-6">
-        <div class="panel">
+        <div class="panel panel-trans">
             <div class="text-center pad-all bord-btm">
                 <div class="pad-ver">
                     <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
@@ -30,18 +30,23 @@
             </div>
 
             <hr>
-            <a ui-sref="person-experience({person_id:vm.person.id})"
-               class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm"
-                                                                    data-translate="global.menu.entities.personExperience"></span></a>
 
+        </div>
 
+        <div class="panel">
+            <div class="panel-heading">
+
+            </div>
             <div class="panel-body">
 
                 <div class="timeline">
 
                     <div class="timeline-header">
                         <div class="timeline-header-title bg-pink">
-                            现在
+                            <a ui-sref="person-experience({person_id:vm.person.id})"
+                               class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm"
+                                                                                    data-translate="global.menu.entities.personExperience"></span></a>
+
                         </div>
                     </div>
                     <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
@@ -61,8 +66,7 @@
 
             </div>
         </div>
-
-        <div class="panel">
+        <div class="panel panel-trans">
             <div class="panel-heading">
                 <button ui-sref="person-education-background({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
@@ -109,7 +113,7 @@
         </div>
 
         <!-- 获奖记录 -->
-        <div class="panel">
+        <div class="panel panel-trans">
             <div class="panel-heading">
                 <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-book"></span>
@@ -347,7 +351,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="panel">
+        <div class="panel ">
             <div class="panel-heading">
                 <button ui-sref="person-word-cloud({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
