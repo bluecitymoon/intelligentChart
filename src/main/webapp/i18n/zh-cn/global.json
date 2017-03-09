@@ -52,6 +52,7 @@
                 "personNetworkTexiActivity": "网络叫车",
                 "personEndorsement": "违章记录",
                 "personTaxiActivity": "打车记录",
+                "personPaidNetworkDebit": "还贷记录",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

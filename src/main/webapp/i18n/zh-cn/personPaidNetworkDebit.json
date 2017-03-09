@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personPaidNetworkDebit" : {
+            "home": {
+                "title": "网络还贷",
+                "createLabel": "录入一个网络还贷",
+                "createOrEditLabel": "管理网络还贷",
+                "search": "Search for Person Network Debit"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "人物网络还贷"
+            },
+            "createDate": "时间",
+            "amount": "金额",
+            "person": "人物"
+        }
+    }
+}

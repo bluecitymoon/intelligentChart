@@ -46,6 +46,7 @@
                 "personNetworkTexiActivity": "Person Network Texi Activity",
                 "personEndorsement": "Person Endorsement",
                 "personTaxiActivity": "Person Taxi Activity",
+                "personPaidNetworkDebit": "Person Paid Network Debit",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

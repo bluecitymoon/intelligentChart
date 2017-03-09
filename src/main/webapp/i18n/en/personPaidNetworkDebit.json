@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personPaidNetworkDebit" : {
+            "home": {
+                "title": "Person Paid Network Debits",
+                "createLabel": "Create a new Person Paid Network Debit",
+                "createOrEditLabel": "Create or edit a Person Paid Network Debit",
+                "search": "Search for Person Paid Network Debit"
+            },
+            "created": "A new Person Paid Network Debit is created with identifier {{ param }}",
+            "updated": "A Person Paid Network Debit is updated with identifier {{ param }}",
+            "deleted": "A Person Paid Network Debit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Paid Network Debit {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Paid Network Debit"
+            },
+            "createDate": "Create Date",
+            "amount": "Amount",
+            "person": "Person"
+        }
+    }
+}

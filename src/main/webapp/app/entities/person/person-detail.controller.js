@@ -8,12 +8,12 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity'];
+        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity', 'PersonPaidNetworkDebit'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity) {
+                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity, PersonPaidNetworkDebit) {
         var vm = this;
 
         vm.person = entity;
@@ -322,6 +322,11 @@
         PersonNetworkDebit.loadAllByPersonId({id: vm.person.id}).$promise.then(function (networkDebits) {
 
             $scope.networkDebits = networkDebits;
+        }, handleError);
+
+        PersonPaidNetworkDebit.loadAllByPersonId({id: vm.person.id}).$promise.then(function (paidNetworkDebits) {
+
+            $scope.paidNetworkDebits = paidNetworkDebits;
         }, handleError);
 
         PersonNetworkShopping.loadAllByPersonIdAndType({id: vm.person.id, type: 'OUTCOME'}).$promise.then(function (outcomeShopping) {

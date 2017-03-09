@@ -218,6 +218,39 @@
             </div>
         </div>
 
+        <!-- 网络还贷记录-->
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-paid-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-education"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPaidNetworkDebit"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div class="timeline">
+
+                    <div class="timeline-entry" ng-repeat="debits in paidNetworkDebits | orderBy: 'createDate'">
+                        <div class="timeline-stat">
+
+                            <div class="timeline-icon">
+                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                                     alt="Profile Picture">
+                            </div>
+                            <div class="timeline-time">
+                                {{debits.createDate}}
+                            </div>
+                        </div>
+                        <div class="timeline-label">
+                            <small>还贷</small>
+                            <b>{{debits.amount}}</b>元
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}"
              ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
             <div class="media-left pad-all">

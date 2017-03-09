@@ -112,5 +112,7 @@
 
     <cache alias="com.intelligent.chart.domain.PersonTaxiActivity" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PersonPaidNetworkDebit" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
