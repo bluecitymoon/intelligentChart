@@ -1,6 +1,6 @@
 <div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel">
             <div class="text-center pad-all bord-btm">
                 <div class="pad-ver">
@@ -276,10 +276,44 @@
 
             </div>
         </div>
+
+        <!-- 打车记录  taxiActivities -->
+        <div class="panel">
+
+            <div class="panel-heading">
+                <button ui-sref="person-taxi-activity({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-flag"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personTaxiActivity"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div ng-repeat="activity in taxiActivities" style="margin-top: 5px">
+
+                    <b class="text-3x col-md-3">
+                        ￥{{activity.paidAmount}}
+                    </b>
+                    <div class="col-md-8 col-md-offset-1">
+                        <small>{{activity.createDate | date :'medium'}}</small>
+                        <ul>
+                            <li><b>{{activity.startPlace}}</b></li>
+                            <li><b>{{activity.destination}}</b></li>
+                        </ul>
+                    </div>
+
+                    <label class="label-mint col-md-12"></label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- dynamic ends -->
         <!--</div>-->
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-word-cloud({person_id:vm.person.id})"
@@ -299,7 +333,7 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         <div class="panel">
             <div class="panel-heading">
@@ -318,7 +352,7 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
                 <button type="submit"
@@ -334,7 +368,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         <div class="panel">
             <div class="panel-heading">
@@ -354,7 +388,7 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         <div class="panel">
             <div class="panel-heading">
@@ -375,7 +409,7 @@
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         <div class="panel">
             <div class="panel-heading">
@@ -396,7 +430,7 @@
 
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-region-connection({person_id:vm.person.id})"
@@ -414,7 +448,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-network-shopping({person_id:vm.person.id})"
@@ -432,7 +466,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-network-shopping({person_id:vm.person.id})"
@@ -450,7 +484,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         <div class="panel">
             <div class="panel-heading">

@@ -8,12 +8,12 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement'];
+        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement) {
+                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity) {
         var vm = this;
 
         vm.person = entity;
@@ -23,8 +23,8 @@
             vm.person = result;
         });
 
-        var singleChartWidth = 300;
-        var singleChartHeight = 300;
+        var singleChartWidth = 450;
+        var singleChartHeight = 450;
         $scope.areaConfig = {
             title: "",
             subtitle: '',
@@ -223,7 +223,7 @@
 
         $scope.connectionRegionConfig = {
 
-            height: 640,
+            height: 450,
             tooltip : {
                 trigger: 'item'
             },
@@ -398,6 +398,11 @@
 
         PersonEndorsement.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
             $scope.endorsements = data;
+
+        }, handleError);
+
+        PersonTaxiActivity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+            $scope.taxiActivities = data;
 
         }, handleError);
 
