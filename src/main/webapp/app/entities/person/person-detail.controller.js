@@ -8,12 +8,14 @@
     PersonDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Person', 'Job',
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
-        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity', 'PersonPaidNetworkDebit'];
+        'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
+        'PersonPaidNetworkDebit', 'PersonIncome'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
-                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity, PersonPaidNetworkDebit) {
+                                    PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
+                                    PersonPaidNetworkDebit, PersonIncome) {
         var vm = this;
 
         vm.person = entity;
@@ -48,6 +50,15 @@
             theme: 'macarons'
 
         };
+        $scope.incomeConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+
+        };
+
 
         $scope.networkTaxiConfig = {
             title: "",
@@ -196,6 +207,7 @@
             $scope.connectionLevelData = [pageload];
 
         }, handleError);
+
 
         PersonPopularity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (pops) {
 
@@ -408,6 +420,42 @@
 
         PersonTaxiActivity.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
             $scope.taxiActivities = data;
+
+        }, handleError);
+
+        PersonIncome.loadAllByPersonId({id: vm.person.id}).$promise.then(function (incomes) {
+
+            var first = {
+                name: "",
+                datapoints: []
+            };
+
+            var second = {
+                name: "",
+                datapoints: []
+            };
+
+            var third = {
+                name: "",
+                datapoints: []
+            };
+
+            var fourth = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(incomes, function (income) {
+
+                var title = income.year;
+                first.datapoints.push({x: title, y: income.inCountrySalaryTotal});
+                second.datapoints.push({x: title, y: income.inCountryPlusBoxTotal});
+                third.datapoints.push({x: title, y: income.outCountrySalaryTotal});
+                fourth.datapoints.push({x: title, y: income.outCountryPlusBoxTotal});
+
+            });
+
+            $scope.incomeData = [first, second, third, fourth];
 
         }, handleError);
 

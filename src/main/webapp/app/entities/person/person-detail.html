@@ -540,6 +540,27 @@
         </div>
 
     </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-income({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-adjust"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personIncome"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="incomeConfig" data="incomeData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
     <!--
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts图表

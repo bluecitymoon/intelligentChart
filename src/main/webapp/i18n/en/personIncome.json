@@ -1,0 +1,27 @@
+{
+    "intelligentChartApp": {
+        "personIncome" : {
+            "home": {
+                "title": "Person Incomes",
+                "createLabel": "Create a new Person Income",
+                "createOrEditLabel": "Create or edit a Person Income",
+                "search": "Search for Person Income"
+            },
+            "created": "A new Person Income is created with identifier {{ param }}",
+            "updated": "A Person Income is updated with identifier {{ param }}",
+            "deleted": "A Person Income is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Income {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Income"
+            },
+            "year": "Year",
+            "inCountrySalaryTotal": "In Country Salary Total",
+            "inCountryPlusBoxTotal": "In Country Plus Box Total",
+            "outCountrySalaryTotal": "Out Country Salary Total",
+            "outCountryPlusBoxTotal": "Out Country Plus Box Total",
+            "person": "Person"
+        }
+    }
+}

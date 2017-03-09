@@ -1,0 +1,88 @@
+<div class="panel">
+    <div class="panel-body">
+        <div>
+            <h2 data-translate="intelligentChartApp.personIncome.home.title">Person Incomes</h2>
+            <jhi-alert></jhi-alert>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-4 no-padding-left">
+                        <button class="btn btn-primary" ui-sref="person-income.new">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span data-translate="intelligentChartApp.personIncome.home.createLabel">
+                        Create new Person Income
+                    </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                    <thead>
+                    <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                        <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span
+                                class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="year"><span data-translate="intelligentChartApp.personIncome.year">Year</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="inCountrySalaryTotal"><span
+                                data-translate="intelligentChartApp.personIncome.inCountrySalaryTotal">In Country Salary Total</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="inCountryPlusBoxTotal"><span
+                                data-translate="intelligentChartApp.personIncome.inCountryPlusBoxTotal">In Country Plus Box Total</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="outCountrySalaryTotal"><span
+                                data-translate="intelligentChartApp.personIncome.outCountrySalaryTotal">Out Country Salary Total</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="outCountryPlusBoxTotal"><span
+                                data-translate="intelligentChartApp.personIncome.outCountryPlusBoxTotal">Out Country Plus Box Total</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personIncome.person">Person</span>
+                            <span class="glyphicon glyphicon-sort"></span></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="personIncome in vm.personIncomes track by personIncome.id">
+                        <td><a ui-sref="person-income-detail({id:personIncome.id})">{{personIncome.id}}</a></td>
+                        <td>{{personIncome.year}}</td>
+                        <td>{{personIncome.inCountrySalaryTotal}}</td>
+                        <td>{{personIncome.inCountryPlusBoxTotal}}</td>
+                        <td>{{personIncome.outCountrySalaryTotal}}</td>
+                        <td>{{personIncome.outCountryPlusBoxTotal}}</td>
+                        <td>
+                            <a ui-sref="person-detail({id:personIncome.person.id})">{{personIncome.person.name}}</a>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group flex-btn-group-container">
+                                <button type="submit"
+                                        ui-sref="person-income-detail({id:personIncome.id})"
+                                        class="btn btn-info btn-sm">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="person-income.edit({id:personIncome.id})"
+                                        class="btn btn-primary btn-sm">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                                </button>
+                                <button type="submit"
+                                        ui-sref="person-income.delete({id:personIncome.id})"
+                                        class="btn btn-danger btn-sm">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                    <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+                <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+                                ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+            </div>
+        </div>
+    </div>
+</div>

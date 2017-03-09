@@ -1,0 +1,27 @@
+{
+    "intelligentChartApp": {
+        "personIncome" : {
+            "home": {
+                "title": "薪酬",
+                "createLabel": "录入薪酬",
+                "createOrEditLabel": "管理薪酬",
+                "search": "Search for Person Income"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "薪酬"
+            },
+            "year": "年份",
+            "inCountrySalaryTotal": "国内票房分账",
+            "inCountryPlusBoxTotal": "国内票房分账+薪酬",
+            "outCountrySalaryTotal": "国外票房分账",
+            "outCountryPlusBoxTotal": "国外票房分账+薪酬",
+            "person": "人物"
+        }
+    }
+}

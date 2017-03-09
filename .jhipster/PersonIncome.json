@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "year",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inCountrySalaryTotal",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "inCountryPlusBoxTotal",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "outCountrySalaryTotal",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "outCountryPlusBoxTotal",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20170309083707",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_income",
+    "pagination": "pagination"
+}
