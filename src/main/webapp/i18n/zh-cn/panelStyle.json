@@ -2,13 +2,15 @@
     "intelligentChartApp": {
         "PanelStyle" : {
             "null": "",
-            "danger": "danger",
-            "dark": "dark",
-            "pink": "pink",
-            "info": "info",
-            "primary": "primary",
-            "success": "success",
-            "warning": "warning"
+            "danger": "红色",
+            "dark": "黑色",
+            "pink": "粉红色",
+            "info": "信息色",
+            "primary": "主要色",
+            "success": "成功色",
+            "warning": "警告色",
+            "mint": "薄荷色",
+            "purple": "紫色"
         }
     }
 }

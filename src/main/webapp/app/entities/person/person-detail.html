@@ -24,6 +24,9 @@
                 <li class="list-group-item list-item-sm">
                     <i class="glyphicon glyphicon-calendar"></i> {{vm.person.birthday | date:'mediumDate'}}
                 </li>
+                <li class="list-group-item list-item-sm" ng-if="vm.person.politicRole">
+                    <i class="glyphicon glyphicon-road"></i> {{vm.person.politicRole}}
+                </li>
             </ul>
             <div class="pad-hor mar-btm">
                 <small class="text-muted">{{vm.person.detail}}</small>
@@ -561,6 +564,9 @@
 
     </div>
 
+    <div class="col-md-6">
+        <gauge-chart config="config" data="data"></gauge-chart>
+    </div>
     <!--
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts图表
