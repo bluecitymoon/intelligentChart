@@ -565,7 +565,22 @@
     </div>
 
     <div class="col-md-6">
-        <gauge-chart config="config" data="data"></gauge-chart>
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.overviewPopularity"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <gauge-chart config="overviewPopularityConfig" data="overviewPopularityData"></gauge-chart>
+
+            </div>
+        </div>
+
     </div>
     <!--
         <script type="text/javascript">

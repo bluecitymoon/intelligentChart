@@ -51,6 +51,9 @@ public class Person implements Serializable {
     @Column(name = "avatar")
     private String avatar;
 
+    @Column(name = "popularity")
+    private Float popularity;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "person_job",
@@ -183,6 +186,19 @@ public class Person implements Serializable {
         this.avatar = avatar;
     }
 
+    public Float getPopularity() {
+        return popularity;
+    }
+
+    public Person popularity(Float popularity) {
+        this.popularity = popularity;
+        return this;
+    }
+
+    public void setPopularity(Float popularity) {
+        this.popularity = popularity;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -241,6 +257,7 @@ public class Person implements Serializable {
             ", supportTaiwanIndepence='" + supportTaiwanIndepence + "'" +
             ", detail='" + detail + "'" +
             ", avatar='" + avatar + "'" +
+            ", popularity='" + popularity + "'" +
             '}';
     }
 }

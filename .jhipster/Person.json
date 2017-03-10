@@ -46,6 +46,10 @@
         {
             "fieldName": "avatar",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "popularity",
+            "fieldType": "Float"
         }
     ],
     "changelogDate": "20170210023221",

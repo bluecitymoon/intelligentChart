@@ -55,6 +55,7 @@
     <include file="classpath:config/liquibase/changelog/20170308092413_added_entity_PersonTaxiActivity.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170309065001_added_entity_PersonPaidNetworkDebit.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170309083707_added_entity_PersonIncome.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170310020937_changelog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>

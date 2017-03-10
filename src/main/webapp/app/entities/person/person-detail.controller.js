@@ -21,6 +21,11 @@
         vm.person = entity;
         vm.previousState = previousState.name;
 
+        $scope.overviewPopularityData = [{
+            name: "",
+            datapoints: [ {x: '人气指数', y: vm.person.popularity}]
+        }];
+
         var unsubscribe = $rootScope.$on('intelligentChartApp:personUpdate', function (event, result) {
             vm.person = result;
         });
@@ -59,6 +64,14 @@
 
         };
 
+        $scope.overviewPopularityConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+
+        };
 
         $scope.networkTaxiConfig = {
             title: "",

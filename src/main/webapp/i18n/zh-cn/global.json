@@ -54,6 +54,7 @@
                 "personTaxiActivity": "打车记录",
                 "personPaidNetworkDebit": "还贷记录",
                 "personIncome": "薪酬",
+                "overviewPopularity": "人气指数",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

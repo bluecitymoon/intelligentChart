@@ -21,14 +21,9 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.sex" for="field_sex">Sex</label>
-            <select name="sex" class="form-control" id="field_sex" ng-model="vm.person.sex">
-                <option value="男">男</option>
-                <option value="女">女</option>
-                <option value="未知">未知</option>
-            </select>
-            <!--<input type="text" class="form-control" name="sex" id="field_sex"-->
-                    <!--ng-model="vm.person.sex"-->
-                     <!--/>-->
+            <input type="text" class="form-control" name="sex" id="field_sex"
+                    ng-model="vm.person.sex"
+                     />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.age" for="field_age">Age</label>
@@ -54,14 +49,9 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.politicRole" for="field_politicRole">Politic Role</label>
-            <select name="politicRole" class="form-control" id="field_politicRole" ng-model="vm.person.politicRole">
-                <option value="群众">群众</option>
-                <option value="团员">团员</option>
-                <option value="党员">党员</option>
-            </select>
-            <!--<input type="text" class="form-control" name="politicRole" id="field_politicRole"-->
-                    <!--ng-model="vm.person.politicRole"-->
-                     <!--/>-->
+            <input type="text" class="form-control" name="politicRole" id="field_politicRole"
+                    ng-model="vm.person.politicRole"
+                     />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.supportTaiwanIndepence" for="field_supportTaiwanIndepence">Support Taiwan Indepence</label>
@@ -70,7 +60,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.person.detailDescription" for="field_detail">Detail</label>
+            <label class="control-label" data-translate="intelligentChartApp.person.detail" for="field_detail">Detail</label>
             <input type="text" class="form-control" name="detail" id="field_detail"
                     ng-model="vm.person.detail"
                      />
@@ -79,6 +69,12 @@
             <label class="control-label" data-translate="intelligentChartApp.person.avatar" for="field_avatar">Avatar</label>
             <input type="text" class="form-control" name="avatar" id="field_avatar"
                     ng-model="vm.person.avatar"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.person.popularity" for="field_popularity">Popularity</label>
+            <input type="number" class="form-control" name="popularity" id="field_popularity"
+                    ng-model="vm.person.popularity"
                      />
         </div>
 
