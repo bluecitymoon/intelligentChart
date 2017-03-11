@@ -1,0 +1,26 @@
+{
+    "intelligentChartApp": {
+        "personSocialHotDiscuss" : {
+            "home": {
+                "title": "Person Social Hot Discusses",
+                "createLabel": "Create a new Person Social Hot Discuss",
+                "createOrEditLabel": "Create or edit a Person Social Hot Discuss",
+                "search": "Search for Person Social Hot Discuss"
+            },
+            "created": "A new Person Social Hot Discuss is created with identifier {{ param }}",
+            "updated": "A Person Social Hot Discuss is updated with identifier {{ param }}",
+            "deleted": "A Person Social Hot Discuss is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Social Hot Discuss {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Social Hot Discuss"
+            },
+            "articleTitle": "Article Title",
+            "mediaName": "Media Name",
+            "createDate": "Create Date",
+            "articleCount": "Article Count",
+            "person": "Person"
+        }
+    }
+}

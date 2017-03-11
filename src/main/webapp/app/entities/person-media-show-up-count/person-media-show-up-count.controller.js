@@ -28,7 +28,8 @@
                     PersonMediaShowUpCount.loadAllByPersonId({
                         page: pagingParams.page - 1,
                         size: vm.itemsPerPage,
-                        sort: sort()
+                        sort: sort(),
+                        id: personId
                     }, onSuccess, onError);
                     function sort() {
                         var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];

@@ -3,11 +3,11 @@
 
     angular
         .module('intelligentChartApp')
-        .controller('PersonSearchCountController', PersonSearchCountController);
+        .controller('PersonSocialHotDiscussController', PersonSocialHotDiscussController);
 
-    PersonSearchCountController.$inject = ['$scope', '$stateParams', '$state', 'PersonSearchCount', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    PersonSocialHotDiscussController.$inject = ['$scope', '$stateParams', '$state', 'PersonSocialHotDiscuss', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function PersonSearchCountController ($scope, $stateParams, $state, PersonSearchCount, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function PersonSocialHotDiscussController ($scope, $stateParams, $state, PersonSocialHotDiscuss, ParseLinks, AlertService, paginationConstants, pagingParams) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -25,7 +25,7 @@
         }
 
                 function loadAllByPersonId () {
-                    PersonSearchCount.loadAllByPersonId({
+                    PersonSocialHotDiscuss.loadAllByPersonId({
                         page: pagingParams.page - 1,
                         size: vm.itemsPerPage,
                         sort: sort(),
@@ -42,7 +42,7 @@
                         vm.links = ParseLinks.parse(headers('link'));
                         vm.totalItems = headers('X-Total-Count');
                         vm.queryCount = vm.totalItems;
-                        vm.personSearchCounts = data;
+                        vm.personSocialHotDiscusses = data;
                         vm.page = pagingParams.page;
                     }
                     function onError(error) {
@@ -52,7 +52,7 @@
 
 
         function loadAll () {
-            PersonSearchCount.query({
+            PersonSocialHotDiscuss.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -68,7 +68,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.personSearchCounts = data;
+                vm.personSocialHotDiscusses = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {
