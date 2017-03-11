@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "showUpDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "count",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170311135816",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_media_show_up_count",
+    "pagination": "pagination"
+}

@@ -56,6 +56,7 @@
                 "personIncome": "薪酬",
                 "overviewPopularity": "人气指数",
                 "personSearchCount": "Person Search Count",
+                "personMediaShowUpCount": "Person Media Show Up Count",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

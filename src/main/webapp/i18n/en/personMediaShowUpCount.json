@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personMediaShowUpCount" : {
+            "home": {
+                "title": "Person Media Show Up Counts",
+                "createLabel": "Create a new Person Media Show Up Count",
+                "createOrEditLabel": "Create or edit a Person Media Show Up Count",
+                "search": "Search for Person Media Show Up Count"
+            },
+            "created": "A new Person Media Show Up Count is created with identifier {{ param }}",
+            "updated": "A Person Media Show Up Count is updated with identifier {{ param }}",
+            "deleted": "A Person Media Show Up Count is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Media Show Up Count {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Media Show Up Count"
+            },
+            "showUpDate": "Show Up Date",
+            "count": "Count",
+            "person": "Person"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+
+<div class="panel">
+    <div class="panel-body">
+    <h2><span data-translate="intelligentChartApp.personMediaShowUpCount.detail.title">Person Media Show Up Count</span> {{vm.personMediaShowUpCount.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personMediaShowUpCount.showUpDate">Show Up Date</span></dt>
+        <dd>
+            <span>{{vm.personMediaShowUpCount.showUpDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personMediaShowUpCount.count">Count</span></dt>
+        <dd>
+            <span>{{vm.personMediaShowUpCount.count}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personMediaShowUpCount.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personMediaShowUpCount.person.id})">{{vm.personMediaShowUpCount.person.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-media-show-up-count-detail.edit({id:vm.personMediaShowUpCount.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>
