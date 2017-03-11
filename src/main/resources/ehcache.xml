@@ -126,5 +126,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonFansPucharsingPower" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.EducationLevel" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonFansEducationLevel" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

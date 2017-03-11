@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonFansEducationLevel.
+    -->
+    <changeSet id="20170311151738-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_fans_education_level"
+                                 constraintName="fk_person_fans_education_level_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="education_level_id"
+                                 baseTableName="person_fans_education_level"
+                                 constraintName="fk_person_fans_education_level_education_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="education_level"/>
+
+    </changeSet>
+</databaseChangeLog>

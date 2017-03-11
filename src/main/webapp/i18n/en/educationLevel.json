@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "educationLevel" : {
+            "home": {
+                "title": "Education Levels",
+                "createLabel": "Create a new Education Level",
+                "createOrEditLabel": "Create or edit a Education Level",
+                "search": "Search for Education Level"
+            },
+            "created": "A new Education Level is created with identifier {{ param }}",
+            "updated": "A Education Level is updated with identifier {{ param }}",
+            "deleted": "A Education Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Education Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Education Level"
+            },
+            "name": "Name"
+        }
+    }
+}

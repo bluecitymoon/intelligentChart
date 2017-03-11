@@ -1,0 +1,70 @@
+<div class="panel">
+    <div class="panel-body">
+    <h2 data-translate="intelligentChartApp.personFansEducationLevel.home.title">Person Fans Education Levels</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="person-fans-education-level.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.personFansEducationLevel.home.createLabel">
+                        Create new Person Fans Education Level
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="count"><span data-translate="intelligentChartApp.personFansEducationLevel.count">Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personFansEducationLevel.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="educationLevel.name"><span data-translate="intelligentChartApp.personFansEducationLevel.educationLevel">Education Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personFansEducationLevel in vm.personFansEducationLevels track by personFansEducationLevel.id">
+                    <td><a ui-sref="person-fans-education-level-detail({id:personFansEducationLevel.id})">{{personFansEducationLevel.id}}</a></td>
+                    <td>{{personFansEducationLevel.count}}</td>
+                    <td>
+                        <a ui-sref="person-detail({id:personFansEducationLevel.person.id})">{{personFansEducationLevel.person.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="education-level-detail({id:personFansEducationLevel.educationLevel.id})">{{personFansEducationLevel.educationLevel.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-fans-education-level-detail({id:personFansEducationLevel.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fans-education-level.edit({id:personFansEducationLevel.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fans-education-level.delete({id:personFansEducationLevel.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
+</div>

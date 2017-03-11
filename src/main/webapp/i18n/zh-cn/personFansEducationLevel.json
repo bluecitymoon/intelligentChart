@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personFansEducationLevel" : {
+            "home": {
+                "title": "Person Fans Education Levels",
+                "createLabel": "Create a new Person Fans Education Level",
+                "createOrEditLabel": "Create or edit a Person Fans Education Level",
+                "search": "Search for Person Fans Education Level"
+            },
+            "created": "A new Person Fans Education Level is created with identifier {{ param }}",
+            "updated": "A Person Fans Education Level is updated with identifier {{ param }}",
+            "deleted": "A Person Fans Education Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fans Education Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fans Education Level"
+            },
+            "count": "Count",
+            "person": "Person",
+            "educationLevel": "Education Level"
+        }
+    }
+}

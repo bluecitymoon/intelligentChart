@@ -53,6 +53,8 @@
                 "personSocialHotDiscuss": "Person Social Hot Discuss",
                 "fansPurchasingSection": "Fans Purchasing Section",
                 "personFansPucharsingPower": "Person Fans Pucharsing Power",
+                "educationLevel": "Education Level",
+                "personFansEducationLevel": "Person Fans Education Level",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

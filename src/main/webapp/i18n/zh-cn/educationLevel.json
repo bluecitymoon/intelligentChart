@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "educationLevel" : {
+            "home": {
+                "title": "教育层次",
+                "createLabel": "录入教育层次",
+                "createOrEditLabel": "管理",
+                "search": "Search for Education Level"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "教育层次"
+            },
+            "name": "名称"
+        }
+    }
+}
