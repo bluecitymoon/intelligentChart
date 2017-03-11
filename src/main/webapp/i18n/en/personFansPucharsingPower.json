@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personFansPucharsingPower" : {
+            "home": {
+                "title": "Person Fans Pucharsing Powers",
+                "createLabel": "Create a new Person Fans Pucharsing Power",
+                "createOrEditLabel": "Create or edit a Person Fans Pucharsing Power",
+                "search": "Search for Person Fans Pucharsing Power"
+            },
+            "created": "A new Person Fans Pucharsing Power is created with identifier {{ param }}",
+            "updated": "A Person Fans Pucharsing Power is updated with identifier {{ param }}",
+            "deleted": "A Person Fans Pucharsing Power is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fans Pucharsing Power {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fans Pucharsing Power"
+            },
+            "count": "Count",
+            "person": "Person",
+            "fansPurchasingSection": "Fans Purchasing Section"
+        }
+    }
+}

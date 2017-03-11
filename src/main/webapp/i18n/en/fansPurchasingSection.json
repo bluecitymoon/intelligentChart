@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "fansPurchasingSection" : {
+            "home": {
+                "title": "Fans Purchasing Sections",
+                "createLabel": "Create a new Fans Purchasing Section",
+                "createOrEditLabel": "Create or edit a Fans Purchasing Section",
+                "search": "Search for Fans Purchasing Section"
+            },
+            "created": "A new Fans Purchasing Section is created with identifier {{ param }}",
+            "updated": "A Fans Purchasing Section is updated with identifier {{ param }}",
+            "deleted": "A Fans Purchasing Section is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fans Purchasing Section {{ id }}?"
+            },
+            "detail": {
+                "title": "Fans Purchasing Section"
+            },
+            "name": "Name"
+        }
+    }
+}

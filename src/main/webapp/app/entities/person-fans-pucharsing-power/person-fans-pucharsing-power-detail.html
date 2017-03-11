@@ -1,0 +1,33 @@
+
+<div class="panel">
+    <div class="panel-body">
+    <h2><span data-translate="intelligentChartApp.personFansPucharsingPower.detail.title">Person Fans Pucharsing Power</span> {{vm.personFansPucharsingPower.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personFansPucharsingPower.count">Count</span></dt>
+        <dd>
+            <span>{{vm.personFansPucharsingPower.count}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFansPucharsingPower.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personFansPucharsingPower.person.id})">{{vm.personFansPucharsingPower.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFansPucharsingPower.fansPurchasingSection">Fans Purchasing Section</span></dt>
+        <dd>
+            <a ui-sref="fans-purchasing-section-detail({id:vm.personFansPucharsingPower.fansPurchasingSection.id})">{{vm.personFansPucharsingPower.fansPurchasingSection.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-fans-pucharsing-power-detail.edit({id:vm.personFansPucharsingPower.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>

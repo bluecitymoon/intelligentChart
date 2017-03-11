@@ -1,0 +1,70 @@
+<div class="panel">
+    <div class="panel-body">
+    <h2 data-translate="intelligentChartApp.personFansPucharsingPower.home.title">Person Fans Pucharsing Powers</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="person-fans-pucharsing-power.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.personFansPucharsingPower.home.createLabel">
+                        Create new Person Fans Pucharsing Power
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="count"><span data-translate="intelligentChartApp.personFansPucharsingPower.count">Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personFansPucharsingPower.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fansPurchasingSection.name"><span data-translate="intelligentChartApp.personFansPucharsingPower.fansPurchasingSection">Fans Purchasing Section</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personFansPucharsingPower in vm.personFansPucharsingPowers track by personFansPucharsingPower.id">
+                    <td><a ui-sref="person-fans-pucharsing-power-detail({id:personFansPucharsingPower.id})">{{personFansPucharsingPower.id}}</a></td>
+                    <td>{{personFansPucharsingPower.count}}</td>
+                    <td>
+                        <a ui-sref="person-detail({id:personFansPucharsingPower.person.id})">{{personFansPucharsingPower.person.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="fans-purchasing-section-detail({id:personFansPucharsingPower.fansPurchasingSection.id})">{{personFansPucharsingPower.fansPurchasingSection.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-fans-pucharsing-power-detail({id:personFansPucharsingPower.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fans-pucharsing-power.edit({id:personFansPucharsingPower.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fans-pucharsing-power.delete({id:personFansPucharsingPower.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
+</div>

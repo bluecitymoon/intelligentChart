@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "fansPurchasingSection",
+            "otherEntityName": "fansPurchasingSection",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "count",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170311143215",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_fans_pucharsing_power",
+    "pagination": "pagination"
+}

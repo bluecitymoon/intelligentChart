@@ -122,5 +122,9 @@
 
     <cache alias="com.intelligent.chart.domain.PersonSocialHotDiscuss" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.FansPurchasingSection" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonFansPucharsingPower" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
