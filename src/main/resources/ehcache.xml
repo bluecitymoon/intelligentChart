@@ -116,5 +116,7 @@
 
     <cache alias="com.intelligent.chart.domain.PersonIncome" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PersonSearchCount" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

@@ -48,6 +48,7 @@
                 "personTaxiActivity": "Person Taxi Activity",
                 "personPaidNetworkDebit": "Person Paid Network Debit",
                 "personIncome": "Person Income",
+                "personSearchCount": "Person Search Count",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
