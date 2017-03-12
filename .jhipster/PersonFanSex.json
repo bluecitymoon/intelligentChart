@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "sex",
+            "otherEntityName": "sex",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "count",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170312013312",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_fan_sex",
+    "pagination": "pagination"
+}

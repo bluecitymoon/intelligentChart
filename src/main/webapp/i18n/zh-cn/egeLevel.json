@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "egeLevel" : {
+            "home": {
+                "title": "Ege Levels",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
+                "search": "Search for Ege Level"
+            },
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "Ege Level"
+            },
+            "name": "Name"
+        }
+    }
+}

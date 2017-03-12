@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonFansEgeLevel.
+    -->
+    <changeSet id="20170311153356-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_fans_ege_level"
+                                 constraintName="fk_person_fans_ege_level_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="ege_level_id"
+                                 baseTableName="person_fans_ege_level"
+                                 constraintName="fk_person_fans_ege_level_ege_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ege_level"/>
+
+    </changeSet>
+</databaseChangeLog>

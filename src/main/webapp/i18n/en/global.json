@@ -55,6 +55,10 @@
                 "personFansPucharsingPower": "Person Fans Pucharsing Power",
                 "educationLevel": "Education Level",
                 "personFansEducationLevel": "Person Fans Education Level",
+                "egeLevel": "Ege Level",
+                "personFansEgeLevel": "Person Fans Ege Level",
+                "sex": "Sex",
+                "personFanSex": "Person Fan Sex",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

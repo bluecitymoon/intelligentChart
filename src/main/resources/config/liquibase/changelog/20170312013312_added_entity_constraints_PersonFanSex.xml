@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonFanSex.
+    -->
+    <changeSet id="20170312013312-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_fan_sex"
+                                 constraintName="fk_person_fan_sex_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="sex_id"
+                                 baseTableName="person_fan_sex"
+                                 constraintName="fk_person_fan_sex_sex_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sex"/>
+
+    </changeSet>
+</databaseChangeLog>

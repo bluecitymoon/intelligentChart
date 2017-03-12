@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personFanSex" : {
+            "home": {
+                "title": "Person Fan Sexes",
+                "createLabel": "Create a new Person Fan Sex",
+                "createOrEditLabel": "Create or edit a Person Fan Sex",
+                "search": "Search for Person Fan Sex"
+            },
+            "created": "A new Person Fan Sex is created with identifier {{ param }}",
+            "updated": "A Person Fan Sex is updated with identifier {{ param }}",
+            "deleted": "A Person Fan Sex is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fan Sex {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fan Sex"
+            },
+            "count": "Count",
+            "person": "Person",
+            "sex": "Sex"
+        }
+    }
+}

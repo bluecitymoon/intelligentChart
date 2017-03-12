@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "egeLevel" : {
+            "home": {
+                "title": "Ege Levels",
+                "createLabel": "Create a new Ege Level",
+                "createOrEditLabel": "Create or edit a Ege Level",
+                "search": "Search for Ege Level"
+            },
+            "created": "A new Ege Level is created with identifier {{ param }}",
+            "updated": "A Ege Level is updated with identifier {{ param }}",
+            "deleted": "A Ege Level is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ege Level {{ id }}?"
+            },
+            "detail": {
+                "title": "Ege Level"
+            },
+            "name": "Name"
+        }
+    }
+}
