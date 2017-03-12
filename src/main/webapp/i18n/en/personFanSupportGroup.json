@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "personFanSupportGroup" : {
+            "home": {
+                "title": "Person Fan Support Groups",
+                "createLabel": "Create a new Person Fan Support Group",
+                "createOrEditLabel": "Create or edit a Person Fan Support Group",
+                "search": "Search for Person Fan Support Group"
+            },
+            "created": "A new Person Fan Support Group is created with identifier {{ param }}",
+            "updated": "A Person Fan Support Group is updated with identifier {{ param }}",
+            "deleted": "A Person Fan Support Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fan Support Group {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fan Support Group"
+            },
+            "name": "Name",
+            "leader": "Leader",
+            "fansCount": "Fans Count",
+            "person": "Person"
+        }
+    }
+}

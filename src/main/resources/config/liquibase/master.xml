@@ -69,6 +69,9 @@
     <include file="classpath:config/liquibase/changelog/20170312013312_added_entity_PersonFanSex.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312014255_added_entity_Hobby.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312014359_added_entity_PersonFansHobby.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312015218_added_entity_PaymentTool.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312015438_added_entity_PersonFanPaymentTool.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312021549_added_entity_PersonFanSupportGroup.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -100,5 +103,7 @@
     <include file="classpath:config/liquibase/changelog/20170311153356_added_entity_constraints_PersonFansEgeLevel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312013312_added_entity_constraints_PersonFanSex.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312014359_added_entity_constraints_PersonFansHobby.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312015438_added_entity_constraints_PersonFanPaymentTool.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312021549_added_entity_constraints_PersonFanSupportGroup.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

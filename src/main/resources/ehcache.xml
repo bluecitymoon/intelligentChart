@@ -142,5 +142,11 @@
 
     <cache alias="com.intelligent.chart.domain.PersonFansHobby" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PaymentTool" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonFanPaymentTool" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.PersonFanSupportGroup" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

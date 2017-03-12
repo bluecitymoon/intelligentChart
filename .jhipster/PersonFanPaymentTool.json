@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "paymentTool",
+            "otherEntityName": "paymentTool",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "count",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170312015438",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_fan_payment_tool",
+    "pagination": "pagination"
+}

@@ -68,6 +68,9 @@
                 "personFanSex": "Person Fan Sex",
                 "hobby": "Hobby",
                 "personFansHobby": "Person Fans Hobby",
+                "paymentTool": "Payment Tool",
+                "personFanPaymentTool": "Person Fan Payment Tool",
+                "personFanSupportGroup": "Person Fan Support Group",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "leader",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fansCount",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170312021549",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "person_fan_support_group",
+    "pagination": "pagination"
+}

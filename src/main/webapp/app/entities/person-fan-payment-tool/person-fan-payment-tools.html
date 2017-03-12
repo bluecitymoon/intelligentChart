@@ -1,0 +1,70 @@
+<div class="panel">
+    <div class="panel-body">
+    <h2 data-translate="intelligentChartApp.personFanPaymentTool.home.title">Person Fan Payment Tools</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="person-fan-payment-tool.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.personFanPaymentTool.home.createLabel">
+                        Create new Person Fan Payment Tool
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="count"><span data-translate="intelligentChartApp.personFanPaymentTool.count">Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.personFanPaymentTool.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentTool.name"><span data-translate="intelligentChartApp.personFanPaymentTool.paymentTool">Payment Tool</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="personFanPaymentTool in vm.personFanPaymentTools track by personFanPaymentTool.id">
+                    <td><a ui-sref="person-fan-payment-tool-detail({id:personFanPaymentTool.id})">{{personFanPaymentTool.id}}</a></td>
+                    <td>{{personFanPaymentTool.count}}</td>
+                    <td>
+                        <a ui-sref="person-detail({id:personFanPaymentTool.person.id})">{{personFanPaymentTool.person.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="payment-tool-detail({id:personFanPaymentTool.paymentTool.id})">{{personFanPaymentTool.paymentTool.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="person-fan-payment-tool-detail({id:personFanPaymentTool.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fan-payment-tool.edit({id:personFanPaymentTool.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="person-fan-payment-tool.delete({id:personFanPaymentTool.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>
+</div>

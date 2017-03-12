@@ -1,0 +1,33 @@
+
+<div class="panel">
+    <div class="panel-body">
+    <h2><span data-translate="intelligentChartApp.personFanPaymentTool.detail.title">Person Fan Payment Tool</span> {{vm.personFanPaymentTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personFanPaymentTool.count">Count</span></dt>
+        <dd>
+            <span>{{vm.personFanPaymentTool.count}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFanPaymentTool.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personFanPaymentTool.person.id})">{{vm.personFanPaymentTool.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFanPaymentTool.paymentTool">Payment Tool</span></dt>
+        <dd>
+            <a ui-sref="payment-tool-detail({id:vm.personFanPaymentTool.paymentTool.id})">{{vm.personFanPaymentTool.paymentTool.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-fan-payment-tool-detail.edit({id:vm.personFanPaymentTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>
