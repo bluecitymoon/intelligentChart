@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personFansHobby" : {
+            "home": {
+                "title": "Person Fans Hobbies",
+                "createLabel": "Create a new Person Fans Hobby",
+                "createOrEditLabel": "Create or edit a Person Fans Hobby",
+                "search": "Search for Person Fans Hobby"
+            },
+            "created": "A new Person Fans Hobby is created with identifier {{ param }}",
+            "updated": "A Person Fans Hobby is updated with identifier {{ param }}",
+            "deleted": "A Person Fans Hobby is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fans Hobby {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fans Hobby"
+            },
+            "count": "Count",
+            "person": "Person",
+            "hobby": "Hobby"
+        }
+    }
+}

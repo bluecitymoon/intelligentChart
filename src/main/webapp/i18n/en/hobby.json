@@ -1,0 +1,22 @@
+{
+    "intelligentChartApp": {
+        "hobby" : {
+            "home": {
+                "title": "Hobbies",
+                "createLabel": "Create a new Hobby",
+                "createOrEditLabel": "Create or edit a Hobby",
+                "search": "Search for Hobby"
+            },
+            "created": "A new Hobby is created with identifier {{ param }}",
+            "updated": "A Hobby is updated with identifier {{ param }}",
+            "deleted": "A Hobby is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Hobby {{ id }}?"
+            },
+            "detail": {
+                "title": "Hobby"
+            },
+            "name": "Name"
+        }
+    }
+}

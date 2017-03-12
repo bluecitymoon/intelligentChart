@@ -1,0 +1,33 @@
+
+<div class="panel">
+    <div class="panel-body">
+    <h2><span data-translate="intelligentChartApp.personFansHobby.detail.title">Person Fans Hobby</span> {{vm.personFansHobby.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personFansHobby.count">Count</span></dt>
+        <dd>
+            <span>{{vm.personFansHobby.count}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFansHobby.person">Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personFansHobby.person.id})">{{vm.personFansHobby.person.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personFansHobby.hobby">Hobby</span></dt>
+        <dd>
+            <a ui-sref="hobby-detail({id:vm.personFansHobby.hobby.id})">{{vm.personFansHobby.hobby.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-fans-hobby-detail.edit({id:vm.personFansHobby.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
+</div>

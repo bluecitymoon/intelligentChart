@@ -59,6 +59,8 @@
                 "personFansEgeLevel": "Person Fans Ege Level",
                 "sex": "Sex",
                 "personFanSex": "Person Fan Sex",
+                "hobby": "Hobby",
+                "personFansHobby": "Person Fans Hobby",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

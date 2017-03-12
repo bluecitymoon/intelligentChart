@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity PersonFansHobby.
+    -->
+    <changeSet id="20170312014359-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_fans_hobby"
+                                 constraintName="fk_person_fans_hobby_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="hobby_id"
+                                 baseTableName="person_fans_hobby"
+                                 constraintName="fk_person_fans_hobby_hobby_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hobby"/>
+
+    </changeSet>
+</databaseChangeLog>

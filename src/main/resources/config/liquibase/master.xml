@@ -67,6 +67,8 @@
     <include file="classpath:config/liquibase/changelog/20170311153356_added_entity_PersonFansEgeLevel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312013137_added_entity_Sex.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312013312_added_entity_PersonFanSex.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312014255_added_entity_Hobby.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312014359_added_entity_PersonFansHobby.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -97,5 +99,6 @@
     <include file="classpath:config/liquibase/changelog/20170311151738_added_entity_constraints_PersonFansEducationLevel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170311153356_added_entity_constraints_PersonFansEgeLevel.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170312013312_added_entity_constraints_PersonFanSex.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170312014359_added_entity_constraints_PersonFansHobby.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
