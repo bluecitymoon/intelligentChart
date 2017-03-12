@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "personFanSex" : {
             "home": {
-                "title": "Person Fan Sexes",
+                "title": "粉丝数量",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Person Fan Sex"
@@ -14,11 +14,11 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fan Sex"
+                "title": "粉丝数量"
             },
-            "count": "Count",
-            "person": "Person",
-            "sex": "Sex"
+            "count": "数量",
+            "person": "人物",
+            "sex": "性别"
         }
     }
 }

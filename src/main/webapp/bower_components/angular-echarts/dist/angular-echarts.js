@@ -193,7 +193,7 @@ function getLinkFunction($http, theme, util, type) {
  * add directives
  */
 var app = angular.module('angular-echarts', ['angular-echarts.theme', 'angular-echarts.util']);
-var types = ['line', 'bar', 'area', 'pie', 'donut', 'gauge', 'map', 'radar'];
+var types = ['line', 'bar', 'area', 'pie', 'donut', 'gauge', 'map', 'radar', 'funnel'];
 for (var i = 0, n = types.length; i < n; i++) {
     (function (type) {
         app.directive(type + 'Chart', ['$http', 'theme', 'util', function ($http, theme, util) {

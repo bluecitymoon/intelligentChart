@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personFansPucharsingPower" : {
             "home": {
-                "title": "Person Fans Pucharsing Powers",
-                "createLabel": "Create a new Person Fans Pucharsing Power",
-                "createOrEditLabel": "Create or edit a Person Fans Pucharsing Power",
+                "title": "粉丝购买力",
+                "createLabel": "录入粉丝购买力",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Fans Pucharsing Power"
             },
-            "created": "A new Person Fans Pucharsing Power is created with identifier {{ param }}",
-            "updated": "A Person Fans Pucharsing Power is updated with identifier {{ param }}",
-            "deleted": "A Person Fans Pucharsing Power is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Fans Pucharsing Power {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fans Pucharsing Power"
+                "title": "购买力"
             },
-            "count": "Count",
-            "person": "Person",
-            "fansPurchasingSection": "Fans Purchasing Section"
+            "count": "数量",
+            "person": "人物",
+            "fansPurchasingSection": "购买力层级"
         }
     }
 }

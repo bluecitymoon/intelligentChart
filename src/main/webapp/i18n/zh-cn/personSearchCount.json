@@ -7,11 +7,11 @@
                 "createOrEditLabel": "管理",
                 "search": "Search for Person Search Count"
             },
-            "created": "人脉分布已创建",
-            "updated": "人脉分布已更新",
-            "deleted": "人脉分布已删除",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "你确定删除这条人脉分布数据?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
                 "title": "搜索指数"

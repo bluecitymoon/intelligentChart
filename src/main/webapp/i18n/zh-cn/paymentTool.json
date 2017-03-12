@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "paymentTool" : {
             "home": {
-                "title": "Payment Tools",
+                "title": "支付方式",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Payment Tool"
@@ -14,9 +14,9 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Payment Tool"
+                "title": "支付工具"
             },
-            "name": "Name"
+            "name": "名称"
         }
     }
 }

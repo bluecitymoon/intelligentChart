@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "sex" : {
             "home": {
-                "title": "Sexes",
+                "title": "性别",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Sex"
@@ -14,10 +14,10 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Sex"
+                "title": "性别"
             },
-            "name": "Name",
-            "identifier": "Identifier"
+            "name": "名称",
+            "identifier": "识别码"
         }
     }
 }

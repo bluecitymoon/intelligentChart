@@ -2,21 +2,21 @@
     "intelligentChartApp": {
         "fansPurchasingSection" : {
             "home": {
-                "title": "Fans Purchasing Sections",
-                "createLabel": "Create a new Fans Purchasing Section",
-                "createOrEditLabel": "Create or edit a Fans Purchasing Section",
+                "title": "购买力层级",
+                "createLabel": "录入一个层级",
+                "createOrEditLabel": "管理层级",
                 "search": "Search for Fans Purchasing Section"
             },
-            "created": "A new Fans Purchasing Section is created with identifier {{ param }}",
-            "updated": "A Fans Purchasing Section is updated with identifier {{ param }}",
-            "deleted": "A Fans Purchasing Section is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Fans Purchasing Section {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Fans Purchasing Section"
+                "title": "购买力层级"
             },
-            "name": "Name"
+            "name": "名称"
         }
     }
 }

@@ -9,13 +9,15 @@
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
-        'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount'];
+        'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
+        'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
-                                    PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount) {
+                                    PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
+                                    PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex) {
         var vm = this;
 
         vm.person = entity;
@@ -55,12 +57,39 @@
             theme: 'macarons'
 
         };
+
+        $scope.fansPurchasingConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+
+        };
+
         $scope.incomeConfig = {
             title: "",
             subtitle: '',
             height: singleChartHeight,
             width: singleChartWidth,
             theme: 'macarons'
+
+        };
+
+        $scope.fansPaymentToolConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+
+        };
+
+        $scope.fansCountConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth
 
         };
 
@@ -108,8 +137,7 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth,
-            theme: 'macarons'
+            width: singleChartWidth
         };
 
         $scope.wordCloud = {
@@ -511,10 +539,103 @@
                 var title = income.showUpDate;
                 first.datapoints.push({x: title, y: income.count});
 
-
             });
 
             $scope.mediaShowupData = [first];
+
+        }, handleError);
+
+        PersonSocialHotDiscuss.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+            $scope.hotDiscusses = data;
+
+        }, handleError);
+
+        PersonFansPucharsingPower.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(data, function (level) {
+
+                var number = level.count;
+                var title = level.fansPurchasingSection.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.fansPuchasingPowerData = [pageload];
+
+        }, handleError);
+
+        PersonFansHobby.loadAllByPersonId({id: vm.person.id}).$promise.then(function (innovations) {
+
+            $scope.fansHobbyConfig = {
+                width: singleChartWidth,
+                height: singleChartHeight,
+                polar: [
+                    {
+                        indicator: []
+                    }
+                ]
+            };
+
+            $scope.fansHobbyData = [
+                {
+                    name: '',
+                    type: 'radar',
+                    data: [
+                        {
+                            value: [],
+                            name: ''
+                        }
+                    ]
+                }
+            ];
+
+            angular.forEach(innovations, function (innovation) {
+
+                $scope.fansHobbyConfig.polar[0].indicator.push({text: innovation.hobby.name, max: 100});
+                $scope.fansHobbyData[0].data[0].value.push(innovation.count);
+            });
+
+        }, handleError);
+
+        PersonFanPaymentTool.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(data, function (level) {
+
+                var number = level.count;
+                var title = level.paymentTool.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.fansPayments = [pageload];
+
+        }, handleError);
+
+        PersonFanSex.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(data, function (level) {
+
+                var number = level.count;
+                var title = level.sex.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.fansCount = [pageload];
 
         }, handleError);
 

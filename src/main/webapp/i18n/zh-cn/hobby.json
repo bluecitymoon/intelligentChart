@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "hobby" : {
             "home": {
-                "title": "Hobbies",
+                "title": "喜好",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Hobby"
@@ -14,9 +14,9 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Hobby"
+                "title": "喜好"
             },
-            "name": "Name"
+            "name": "名称"
         }
     }
 }

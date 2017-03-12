@@ -349,6 +349,55 @@
 
         </div>
 
+        <!-- 社交热议 -->
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-media-show-up-count({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personMediaShowUpCount"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <area-chart config="searchCountConfig" data="mediaShowupData"></area-chart>
+
+                <div class="list-group">
+                    <a ui-sref="person-social-hot-discuss({person_id:vm.person.id})" class="list-group-item" ng-repeat="disscuss in hotDiscusses">
+                        <h4 class="list-group-item-heading">{{disscuss.articleTitle}}<p class="text-xs" style="float: right">{{disscuss.articleCount}}条相关</p></h4>
+                        <p class="list-group-item-text">{{disscuss.mediaName}} {{disscuss.createDate | date: 'medium'}}</p>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div class="panel">-->
+
+            <!--<div class="panel-heading">-->
+                <!--<button ui-sref="person-social-hot-discuss({person_id:vm.person.id})"-->
+                        <!--class="btn text-bold btn-block">-->
+                    <!--<span class="glyphicon glyphicon-user"></span>-->
+                    <!--<span class="hidden-xs hidden-sm"-->
+                          <!--data-translate="global.menu.entities.personSocialHotDiscuss"></span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+
+                <!--<div class="list-group">-->
+                    <!--<a href="#" class="list-group-item" ng-repeat="disscuss in hotDiscusses">-->
+                        <!--<h4 class="list-group-item-heading">{{disscuss.articleTitle}}<p class="text-xs" style="float: right">{{disscuss.articleCount}}条相关</p></h4>-->
+                        <!--<p class="list-group-item-text">{{disscuss.mediaName}} {{disscuss.createDate | date: 'medium'}}</p>-->
+                    <!--</a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
         <!-- dynamic ends -->
         <!--</div>-->
     </div>
@@ -607,166 +656,73 @@
 
         <div class="panel">
             <div class="panel-heading">
-                <button ui-sref="person-media-show-up-count({person_id:vm.person.id})"
+                <button ui-sref="person-fans-pucharsing-power({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="glyphicon glyphicon-bullhorn"></span>
                     <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personMediaShowUpCount"></span>
+                          data-translate="global.menu.entities.personFansPucharsingPower"></span>
                 </button>
             </div>
             <div class="panel-body">
 
-                <area-chart config="searchCountConfig" data="mediaShowupData"></area-chart>
+                <bar-chart config="fansPurchasingConfig" data="fansPuchasingPowerData"></bar-chart>
 
             </div>
         </div>
 
     </div>
-    <!--
-        <script type="text/javascript">
-            // 基于准备好的dom，初始化echarts图表
-            var myChart = echarts.init(document.getElementById('main'));
 
-            function createRandomItemStyle() {
-                return {
-                    normal: {
-                        color: 'rgb(' + [
-                            Math.round(Math.random() * 160),
-                            Math.round(Math.random() * 160),
-                            Math.round(Math.random() * 160)
-                        ].join(',') + ')'
-                    }
-                };
-            }
+    <div class="col-md-6">
 
-            var option = {
-                title: {
-                    text: 'Google Trends',
-                    link: 'http://www.google.com/trends/hottrends'
-                },
-                tooltip: {
-                    show: true
-                },
-                series: [{
-                    name: 'Google Trends',
-                    type: 'wordCloud',
-                    size: ['80%', '80%'],
-                    textRotation : [0, 45, 90, -45],
-                    textPadding: 0,
-                    autoSize: {
-                        enable: true,
-                        minSize: 14
-                    },
-                    data: [
-                        {
-                            name: "Sam S Club",
-                            value: 10000,
-                            itemStyle: {
-                                normal: {
-                                    color: 'black'
-                                }
-                            }
-                        },
-                        {
-                            name: "Macys",
-                            value: 6181,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Amy Schumer",
-                            value: 4386,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Jurassic World",
-                            value: 4055,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Charter Communications",
-                            value: 2467,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Chick Fil A",
-                            value: 2244,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Planet Fitness",
-                            value: 1898,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Pitch Perfect",
-                            value: 1484,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Express",
-                            value: 1112,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Home",
-                            value: 965,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Johnny Depp",
-                            value: 847,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Lena Dunham",
-                            value: 582,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Lewis Hamilton",
-                            value: 555,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "KXAN",
-                            value: 550,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Mary Ellen Mark",
-                            value: 462,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Farrah Abraham",
-                            value: 366,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Rita Ora",
-                            value: 360,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Serena Williams",
-                            value: 282,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "NCAA baseball tournament",
-                            value: 273,
-                            itemStyle: createRandomItemStyle()
-                        },
-                        {
-                            name: "Point Break",
-                            value: 265,
-                            itemStyle: createRandomItemStyle()
-                        }
-                    ]
-                }]
-            };
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fans-hobby({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-hourglass"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansHobby"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <radar-chart config="fansHobbyConfig" data="fansHobbyData"></radar-chart>
+            </div>
+        </div>
 
-            myChart.setOption(option);
+    </div>
 
-        </script> -->
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-payment-tool({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-btc"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanPaymentTool"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansPaymentToolConfig" data="fansPayments"></pie-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanSex"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansCountConfig" data="fansCount"></pie-chart>
+            </div>
+        </div>
+
+    </div>
 </div>

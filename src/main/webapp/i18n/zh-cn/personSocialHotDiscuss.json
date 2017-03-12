@@ -2,25 +2,25 @@
     "intelligentChartApp": {
         "personSocialHotDiscuss" : {
             "home": {
-                "title": "Person Social Hot Discusses",
-                "createLabel": "Create a new Person Social Hot Discuss",
-                "createOrEditLabel": "Create or edit a Person Social Hot Discuss",
+                "title": "社交热议",
+                "createLabel": "录入社交热议数据",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Social Hot Discuss"
             },
-            "created": "A new Person Social Hot Discuss is created with identifier {{ param }}",
-            "updated": "A Person Social Hot Discuss is updated with identifier {{ param }}",
-            "deleted": "A Person Social Hot Discuss is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Social Hot Discuss {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Social Hot Discuss"
+                "title": "社交热议"
             },
-            "articleTitle": "Article Title",
-            "mediaName": "Media Name",
-            "createDate": "Create Date",
-            "articleCount": "Article Count",
-            "person": "Person"
+            "articleTitle": "文章",
+            "mediaName": "媒体",
+            "createDate": "日期",
+            "articleCount": "数量",
+            "person": "人物"
         }
     }
 }
