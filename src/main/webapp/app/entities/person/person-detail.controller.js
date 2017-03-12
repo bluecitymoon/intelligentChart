@@ -10,14 +10,14 @@
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
-        'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex'];
+        'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
-                                    PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex) {
+                                    PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel) {
         var vm = this;
 
         vm.person = entity;
@@ -86,6 +86,22 @@
         };
 
         $scope.fansCountConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth
+
+        };
+
+        $scope.fansAgeLevelConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth
+
+        };
+
+        $scope.fansEducationBackgroundConfig = {
             title: "",
             subtitle: '',
             height: singleChartHeight,
@@ -636,6 +652,44 @@
             });
 
             $scope.fansCount = [pageload];
+
+        }, handleError);
+
+        PersonFansEgeLevel.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(data, function (level) {
+
+                var number = level.count;
+                var title = level.egeLevel.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.fansAgeLevel = [pageload];
+
+        }, handleError);
+
+        PersonFansEducationLevel.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            var pageload = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(data, function (level) {
+
+                var number = level.count;
+                var title = level.educationLevel.name;
+                pageload.datapoints.push({x: title, y: number});
+
+            });
+
+            $scope.fansEducationData = [pageload];
 
         }, handleError);
 

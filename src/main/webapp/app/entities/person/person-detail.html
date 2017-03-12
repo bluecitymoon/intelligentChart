@@ -720,9 +720,44 @@
                 </button>
             </div>
             <div class="panel-body">
-                <pie-chart config="fansCountConfig" data="fansCount"></pie-chart>
+                <pie-chart config="fansAgeLevelConfig" data="fansCount"></pie-chart>
             </div>
         </div>
 
     </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansEgeLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansAgeLevelConfig" data="fansAgeLevel"></pie-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-education"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansEducationLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <bar-chart config="fansEducationBackgroundConfig" data="fansEducationData"></bar-chart>
+            </div>
+        </div>
+    </div>
+
 </div>

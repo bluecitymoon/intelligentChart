@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personFansEducationLevel" : {
             "home": {
-                "title": "Person Fans Education Levels",
-                "createLabel": "Create a new Person Fans Education Level",
-                "createOrEditLabel": "Create or edit a Person Fans Education Level",
+                "title": "粉丝教育背景",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Fans Education Level"
             },
-            "created": "A new Person Fans Education Level is created with identifier {{ param }}",
-            "updated": "A Person Fans Education Level is updated with identifier {{ param }}",
-            "deleted": "A Person Fans Education Level is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Fans Education Level {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fans Education Level"
+                "title": "粉丝教育背景"
             },
-            "count": "Count",
-            "person": "Person",
-            "educationLevel": "Education Level"
+            "count": "数量",
+            "person": "人物",
+            "educationLevel": "教育程度"
         }
     }
 }
