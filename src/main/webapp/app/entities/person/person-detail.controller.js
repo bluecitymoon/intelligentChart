@@ -9,13 +9,13 @@
         'PersonAreaPercentage', 'PersonInnovation', 'PersonExperience', 'PersonEducationBackground', 'PersonConnectionLevel',
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
-        'PersonPaidNetworkDebit', 'PersonIncome'];
+        'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
-                                    PersonPaidNetworkDebit, PersonIncome) {
+                                    PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount) {
         var vm = this;
 
         vm.person = entity;
@@ -97,6 +97,14 @@
         };
 
         $scope.incomeShoppingConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+        };
+
+        $scope.searchCountConfig = {
             title: "",
             subtitle: '',
             height: singleChartHeight,
@@ -469,6 +477,44 @@
             });
 
             $scope.incomeData = [first, second, third, fourth];
+
+        }, handleError);
+
+        PersonSearchCount.loadAllByPersonId({id: vm.person.id}).$promise.then(function (counts) {
+
+            var first = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(counts, function (income) {
+
+                var title = income.searchDate;
+                first.datapoints.push({x: title, y: income.count});
+
+
+            });
+
+            $scope.searchCountData = [first];
+
+        }, handleError);
+
+        PersonMediaShowUpCount.loadAllByPersonId({id: vm.person.id}).$promise.then(function (counts) {
+
+            var first = {
+                name: "",
+                datapoints: []
+            };
+
+            angular.forEach(counts, function (income) {
+
+                var title = income.showUpDate;
+                first.datapoints.push({x: title, y: income.count});
+
+
+            });
+
+            $scope.mediaShowupData = [first];
 
         }, handleError);
 

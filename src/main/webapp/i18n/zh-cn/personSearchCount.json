@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personSearchCount" : {
             "home": {
-                "title": "Person Search Counts",
-                "createLabel": "Create a new Person Search Count",
-                "createOrEditLabel": "Create or edit a Person Search Count",
+                "title": "搜索指数",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Search Count"
             },
-            "created": "A new Person Search Count is created with identifier {{ param }}",
-            "updated": "A Person Search Count is updated with identifier {{ param }}",
-            "deleted": "A Person Search Count is deleted with identifier {{ param }}",
+            "created": "人脉分布已创建",
+            "updated": "人脉分布已更新",
+            "deleted": "人脉分布已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Search Count {{ id }}?"
+                "question": "你确定删除这条人脉分布数据?"
             },
             "detail": {
-                "title": "Person Search Count"
+                "title": "搜索指数"
             },
-            "searchDate": "Search Date",
-            "count": "Count",
-            "person": "Person"
+            "searchDate": "搜索日期",
+            "count": "数量",
+            "person": "人物"
         }
     }
 }

@@ -582,6 +582,46 @@
         </div>
 
     </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-search-count({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personSearchCount"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <area-chart config="searchCountConfig" data="searchCountData"></area-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-media-show-up-count({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personMediaShowUpCount"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <area-chart config="searchCountConfig" data="mediaShowupData"></area-chart>
+
+            </div>
+        </div>
+
+    </div>
     <!--
         <script type="text/javascript">
             // 基于准备好的dom，初始化echarts图表

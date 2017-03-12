@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personMediaShowUpCount" : {
             "home": {
-                "title": "Person Media Show Up Counts",
-                "createLabel": "Create a new Person Media Show Up Count",
-                "createOrEditLabel": "Create or edit a Person Media Show Up Count",
+                "title": "媒体曝光度",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Media Show Up Count"
             },
-            "created": "A new Person Media Show Up Count is created with identifier {{ param }}",
-            "updated": "A Person Media Show Up Count is updated with identifier {{ param }}",
-            "deleted": "A Person Media Show Up Count is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Media Show Up Count {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Media Show Up Count"
+                "title": "媒体曝光度"
             },
-            "showUpDate": "Show Up Date",
-            "count": "Count",
-            "person": "Person"
+            "showUpDate": "日期",
+            "count": "数量",
+            "person": "人物"
         }
     }
 }
