@@ -1,0 +1,44 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPersonFanDisbributionLabel" data-translate="intelligentChartApp.personFanDisbribution.home.createOrEditLabel">Create or edit a Person Fan Disbribution</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.personFanDisbribution.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.personFanDisbribution.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.personFanDisbribution.count" for="field_count">Count</label>
+            <input type="number" class="form-control" name="count" id="field_count"
+                    ng-model="vm.personFanDisbribution.count"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personFanDisbribution.person" for="field_person">Person</label>
+            <select class="form-control" id="field_person" name="person" ng-model="vm.personFanDisbribution.person" ng-options="person as person.name for person in vm.people track by person.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.personFanDisbribution.region" for="field_region">Region</label>
+            <select class="form-control" id="field_region" name="region" ng-model="vm.personFanDisbribution.region" ng-options="region as region.name for region in vm.regions track by region.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -64,6 +64,7 @@
                 "paymentTool": "Payment Tool",
                 "personFanPaymentTool": "Person Fan Payment Tool",
                 "personFanSupportGroup": "Person Fan Support Group",
+                "personFanDisbribution": "Person Fan Disbribution",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

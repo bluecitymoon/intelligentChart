@@ -760,4 +760,21 @@
         </div>
     </div>
 
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanDisbribution"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <map-chart config="fansDistributionConfig" data="fansDistributionData"></map-chart>
+
+            </div>
+        </div>
+    </div>
 </div>

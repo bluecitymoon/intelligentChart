@@ -1,0 +1,24 @@
+{
+    "intelligentChartApp": {
+        "personFanDisbribution" : {
+            "home": {
+                "title": "Person Fan Disbributions",
+                "createLabel": "Create a new Person Fan Disbribution",
+                "createOrEditLabel": "Create or edit a Person Fan Disbribution",
+                "search": "Search for Person Fan Disbribution"
+            },
+            "created": "A new Person Fan Disbribution is created with identifier {{ param }}",
+            "updated": "A Person Fan Disbribution is updated with identifier {{ param }}",
+            "deleted": "A Person Fan Disbribution is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Fan Disbribution {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Fan Disbribution"
+            },
+            "count": "Count",
+            "person": "Person",
+            "region": "Region"
+        }
+    }
+}

@@ -10,14 +10,16 @@
         'PersonPopularity', 'PersonPrize', 'lodash', 'PersonRegionConnection', 'PersonWordCloud', 'PersonLawBusiness', 'PersonCreditCardActivity',
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
-        'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel'];
+        'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel',
+        'PersonFanDisbribution'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
                                     PersonPopularity, PersonPrize, lodash, PersonRegionConnection, PersonWordCloud, PersonLawBusiness, PersonCreditCardActivity,
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
-                                    PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel) {
+                                    PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel,
+                                    PersonFanDisbribution) {
         var vm = this;
 
         vm.person = entity;
@@ -347,6 +349,62 @@
             ];
 
             console.debug($scope.connectionRegionData);
+
+        }, handleError);
+
+        PersonFanDisbribution.loadAllByPersonId({id: vm.person.id}).$promise.then(function (connections) {
+
+            var regionData = [];
+            var maxCount = 0;
+            angular.forEach(connections, function (connection) {
+
+                var count = connection.count;
+                if (count > maxCount) {
+                    maxCount = count;
+                }
+
+                regionData.push({name: connection.region.name, value: count});
+            });
+
+            $scope.fansDistributionConfig = {
+
+                height: 450,
+                tooltip : {
+                    trigger: 'item'
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data:['粉丝分布']
+                },
+                visualMap: {
+                    min: 0,
+                    max: maxCount,
+                    left: 'left',
+                    top: 'bottom',
+                    text:['高','低'],
+                    calculable : true
+                },
+                theme: 'infographic'
+            };
+
+            $scope.fansDistributionData = [
+                {
+                    name: '粉丝分布',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        normal: {
+                            show: false
+                        },
+                        emphasis: {
+                            show: true
+                        }
+                    },
+                    data: regionData
+                }
+            ];
 
         }, handleError);
 

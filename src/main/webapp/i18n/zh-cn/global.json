@@ -71,6 +71,7 @@
                 "paymentTool": "支付方式",
                 "personFanPaymentTool": "粉丝消费习惯",
                 "personFanSupportGroup": "粉丝应援团",
+                "personFanDisbribution": "粉丝分布",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

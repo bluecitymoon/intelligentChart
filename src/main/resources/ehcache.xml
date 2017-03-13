@@ -148,5 +148,7 @@
 
     <cache alias="com.intelligent.chart.domain.PersonFanSupportGroup" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PersonFanDisbribution" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
