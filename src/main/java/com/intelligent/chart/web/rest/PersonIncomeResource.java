@@ -40,13 +40,12 @@ public class PersonIncomeResource {
 
     @GetMapping("/person-incomes/person/{id}")
     @Timed
-    public ResponseEntity<List<PersonIncome>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+    public List<PersonIncome> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id)
         throws URISyntaxException {
 
-        Page<PersonIncome> page = personIncomeRepository.findByPerson_Id(id, pageable);
+        List<PersonIncome> page = personIncomeRepository.findByPerson_Id(id);
 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-incomes");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return page;
     }
 
     /**

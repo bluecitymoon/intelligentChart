@@ -14,5 +14,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface PersonRegionConnectionRepository extends JpaRepository<PersonRegionConnection,Long> {
 
-    Page<PersonRegionConnection> findByPerson_Id(Long id, Pageable pageable);
+    List<PersonRegionConnection> findByPerson_Id(Long id);
 }

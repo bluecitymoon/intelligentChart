@@ -30,7 +30,7 @@ import java.util.Optional;
 public class PersonFansPucharsingPowerResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonFansPucharsingPowerResource.class);
-        
+
     @Inject
     private PersonFansPucharsingPowerService personFansPucharsingPowerService;
 
@@ -40,13 +40,12 @@ public class PersonFansPucharsingPowerResource {
 
     @GetMapping("/person-fans-pucharsing-powers/person/{id}")
     @Timed
-    public ResponseEntity<List<PersonFansPucharsingPower>> getAllPersonPersonFansPucharsingPowerByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+    public List<PersonFansPucharsingPower> getAllPersonPersonFansPucharsingPowerByPersonId(@PathVariable Long id)
     throws URISyntaxException {
 
-    Page<PersonFansPucharsingPower> page = personFansPucharsingPowerRepository.findByPerson_Id(id, pageable);
+        List<PersonFansPucharsingPower> page = personFansPucharsingPowerRepository.findByPerson_Id(id);
 
-    HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-fans-pucharsing-powers");
-    return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return page;
     }
 
     /**

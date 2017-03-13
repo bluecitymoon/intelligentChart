@@ -42,13 +42,12 @@ public class PersonRegionConnectionResource {
 
     @GetMapping("/person-region-connections/person/{id}")
     @Timed
-    public ResponseEntity<List<PersonRegionConnection>> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+    public List<PersonRegionConnection> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id)
         throws URISyntaxException {
 
-        Page<PersonRegionConnection> page = personRegionConnectionRepository.findByPerson_Id(id, pageable);
+        List<PersonRegionConnection> page = personRegionConnectionRepository.findByPerson_Id(id);
 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-region-connections");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        return page;
     }
 
     /**

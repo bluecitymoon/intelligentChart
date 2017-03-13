@@ -2,8 +2,6 @@ package com.intelligent.chart.repository;
 
 import com.intelligent.chart.domain.PersonIncome;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -14,5 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface PersonIncomeRepository extends JpaRepository<PersonIncome,Long> {
 
-    Page<PersonIncome> findByPerson_Id(Long id, Pageable pageable);
+    List<PersonIncome> findByPerson_Id(Long id);
 }

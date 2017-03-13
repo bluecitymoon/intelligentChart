@@ -30,7 +30,7 @@ import java.util.Optional;
 public class PersonSearchCountResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonSearchCountResource.class);
-        
+
     @Inject
     private PersonSearchCountService personSearchCountService;
 
@@ -40,13 +40,11 @@ public class PersonSearchCountResource {
 
     @GetMapping("/person-search-counts/person/{id}")
     @Timed
-    public ResponseEntity<List<PersonSearchCount>> getAllPersonPersonSearchCountByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+    public List<PersonSearchCount> getAllPersonPersonSearchCountByPersonId(@PathVariable Long id)
     throws URISyntaxException {
 
-    Page<PersonSearchCount> page = personSearchCountRepository.findByPerson_Id(id, pageable);
-
-    HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-search-counts");
-    return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    List<PersonSearchCount> page = personSearchCountRepository.findByPerson_Id(id);
+    return page;
     }
 
     /**

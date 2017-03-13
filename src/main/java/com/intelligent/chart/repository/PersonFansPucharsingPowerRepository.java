@@ -1,6 +1,6 @@
 package com.intelligent.chart.repository;
 
-import com.intelligent.chart.domain.PersonFansPucharsingPower;import org.springframework.data.domain.Page;import org.springframework.data.domain.Pageable;
+import com.intelligent.chart.domain.PersonFansPucharsingPower;
 
 import org.springframework.data.jpa.repository.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface PersonFansPucharsingPowerRepository extends JpaRepository<PersonFansPucharsingPower,Long> {
-    Page<PersonFansPucharsingPower> findByPerson_Id(Long id, Pageable pageable);
+    List<PersonFansPucharsingPower> findByPerson_Id(Long id);
 
 
 }
