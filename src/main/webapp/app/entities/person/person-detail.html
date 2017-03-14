@@ -398,6 +398,36 @@
 
         <!--</div>-->
 
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-support-group({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-copyright-mark"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanSupportGroup"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                            <th>排名</th>
+                            <th>粉丝团名称</th>
+                            <th>团长</th>
+                            <th>粉丝数量</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="group in fanGroups track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td><b>{{group.name}}</b></td>
+                            <td>{{group.leader}}</td>
+                            <td>{{group.fansCount}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <!-- dynamic ends -->
         <!--</div>-->
     </div>

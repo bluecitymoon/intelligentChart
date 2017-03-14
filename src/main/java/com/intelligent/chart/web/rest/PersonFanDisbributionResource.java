@@ -47,6 +47,7 @@ public class PersonFanDisbributionResource {
 
         return page;
     }
+
     /**
      * POST  /person-fan-disbributions : Create a new personFanDisbribution.
      *

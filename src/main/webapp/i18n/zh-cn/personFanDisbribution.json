@@ -2,23 +2,23 @@
     "intelligentChartApp": {
         "personFanDisbribution" : {
             "home": {
-                "title": "Person Fan Disbributions",
-                "createLabel": "Create a new Person Fan Disbribution",
-                "createOrEditLabel": "Create or edit a Person Fan Disbribution",
+                "title": "粉丝分布",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Fan Disbribution"
             },
-            "created": "A new Person Fan Disbribution is created with identifier {{ param }}",
-            "updated": "A Person Fan Disbribution is updated with identifier {{ param }}",
-            "deleted": "A Person Fan Disbribution is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Fan Disbribution {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fan Disbribution"
+                "title": "粉丝分布"
             },
-            "count": "Count",
-            "person": "Person",
-            "region": "Region"
+            "count": "数量",
+            "person": "人物",
+            "region": "区域"
         }
     }
 }

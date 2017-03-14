@@ -22,6 +22,15 @@
 
         <div class="form-group">
             <label data-translate="intelligentChartApp.personAreaPercentage.person" for="field_person">Person</label>
+            <!--<ui-select ng-model="vm.personAreaPercentage.person"-->
+                       <!--theme="bootstrap"-->
+                       <!--reset-search-input="false"-->
+                       <!--title="选择影视人">-->
+                <!--<ui-select-match placeholder="选择影视人">{{$select.selected.name}}</ui-select-match>-->
+                <!--<ui-select-choices repeat="user.id as user in vm.people">-->
+                    <!--<div ng-bind-html="person.name | highlight: $select.search"></div>-->
+                <!--</ui-select-choices>-->
+            <!--</ui-select>-->
             <select class="form-control" id="field_person" name="person" ng-model="vm.personAreaPercentage.person" ng-options="person as person.name for person in vm.people track by person.id">
                 <option value=""></option>
             </select>

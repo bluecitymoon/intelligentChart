@@ -21,7 +21,8 @@
             'ngAside',
             'angular.filter',
             'ngLodash',
-            'angular-d3-word-cloud'
+            'angular-d3-word-cloud',
+            'ui.select'
         ])
         .run(run);
 

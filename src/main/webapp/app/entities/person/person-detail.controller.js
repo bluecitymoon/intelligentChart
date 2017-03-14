@@ -11,7 +11,7 @@
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
         'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel',
-        'PersonFanDisbribution'];
+        'PersonFanDisbribution', 'PersonFanSupportGroup'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
@@ -19,7 +19,7 @@
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
                                     PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel,
-                                    PersonFanDisbribution) {
+                                    PersonFanDisbribution, PersonFanSupportGroup) {
         var vm = this;
 
         vm.person = entity;
@@ -724,6 +724,12 @@
             });
 
             $scope.fansEducationData = [pageload];
+
+        }, handleError);
+
+        PersonFanSupportGroup.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            $scope.fanGroups = data;
 
         }, handleError);
 

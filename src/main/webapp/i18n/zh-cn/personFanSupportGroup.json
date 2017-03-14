@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "personFanSupportGroup" : {
             "home": {
-                "title": "Person Fan Support Groups",
+                "title": "粉丝应援团建设",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Person Fan Support Group"
@@ -14,12 +14,12 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fan Support Group"
+                "title": "粉丝应援团"
             },
-            "name": "Name",
-            "leader": "Leader",
-            "fansCount": "Fans Count",
-            "person": "Person"
+            "name": "名称",
+            "leader": "团长",
+            "fansCount": "粉丝数量",
+            "person": "人物"
         }
     }
 }
