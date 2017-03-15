@@ -70,6 +70,9 @@ public class PersonResourceIntTest {
     private static final Float DEFAULT_POPULARITY = 1F;
     private static final Float UPDATED_POPULARITY = 2F;
 
+    private static final String DEFAULT_SOCIAL_GOOD_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_SOCIAL_GOOD_NAME = "BBBBBBBBBB";
+
     @Inject
     private PersonRepository personRepository;
 
@@ -116,7 +119,8 @@ public class PersonResourceIntTest {
                 .supportTaiwanIndepence(DEFAULT_SUPPORT_TAIWAN_INDEPENCE)
                 .detail(DEFAULT_DETAIL)
                 .avatar(DEFAULT_AVATAR)
-                .popularity(DEFAULT_POPULARITY);
+                .popularity(DEFAULT_POPULARITY)
+                .socialGoodName(DEFAULT_SOCIAL_GOOD_NAME);
         return person;
     }
 
@@ -151,6 +155,7 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getDetail()).isEqualTo(DEFAULT_DETAIL);
         assertThat(testPerson.getAvatar()).isEqualTo(DEFAULT_AVATAR);
         assertThat(testPerson.getPopularity()).isEqualTo(DEFAULT_POPULARITY);
+        assertThat(testPerson.getSocialGoodName()).isEqualTo(DEFAULT_SOCIAL_GOOD_NAME);
     }
 
     @Test
@@ -193,7 +198,8 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.[*].supportTaiwanIndepence").value(hasItem(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue())))
             .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
             .andExpect(jsonPath("$.[*].avatar").value(hasItem(DEFAULT_AVATAR.toString())))
-            .andExpect(jsonPath("$.[*].popularity").value(hasItem(DEFAULT_POPULARITY.doubleValue())));
+            .andExpect(jsonPath("$.[*].popularity").value(hasItem(DEFAULT_POPULARITY.doubleValue())))
+            .andExpect(jsonPath("$.[*].socialGoodName").value(hasItem(DEFAULT_SOCIAL_GOOD_NAME.toString())));
     }
 
     @Test
@@ -216,7 +222,8 @@ public class PersonResourceIntTest {
             .andExpect(jsonPath("$.supportTaiwanIndepence").value(DEFAULT_SUPPORT_TAIWAN_INDEPENCE.booleanValue()))
             .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
             .andExpect(jsonPath("$.avatar").value(DEFAULT_AVATAR.toString()))
-            .andExpect(jsonPath("$.popularity").value(DEFAULT_POPULARITY.doubleValue()));
+            .andExpect(jsonPath("$.popularity").value(DEFAULT_POPULARITY.doubleValue()))
+            .andExpect(jsonPath("$.socialGoodName").value(DEFAULT_SOCIAL_GOOD_NAME.toString()));
     }
 
     @Test
@@ -247,7 +254,8 @@ public class PersonResourceIntTest {
                 .supportTaiwanIndepence(UPDATED_SUPPORT_TAIWAN_INDEPENCE)
                 .detail(UPDATED_DETAIL)
                 .avatar(UPDATED_AVATAR)
-                .popularity(UPDATED_POPULARITY);
+                .popularity(UPDATED_POPULARITY)
+                .socialGoodName(UPDATED_SOCIAL_GOOD_NAME);
 
         restPersonMockMvc.perform(put("/api/people")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -268,6 +276,7 @@ public class PersonResourceIntTest {
         assertThat(testPerson.getDetail()).isEqualTo(UPDATED_DETAIL);
         assertThat(testPerson.getAvatar()).isEqualTo(UPDATED_AVATAR);
         assertThat(testPerson.getPopularity()).isEqualTo(UPDATED_POPULARITY);
+        assertThat(testPerson.getSocialGoodName()).isEqualTo(UPDATED_SOCIAL_GOOD_NAME);
     }
 
     @Test

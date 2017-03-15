@@ -1,0 +1,40 @@
+<div class="panel">
+    <div class="panel-body">
+
+        <div>
+            <h2><span data-translate="intelligentChartApp.personWechatArticle.detail.title">Person Wechat Article</span> {{vm.personWechatArticle.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="dl-horizontal jh-entity-details">
+                <dt><span data-translate="intelligentChartApp.personWechatArticle.count">Count</span></dt>
+                <dd>
+                    <span>{{vm.personWechatArticle.count}}</span>
+                </dd>
+                <dt><span data-translate="intelligentChartApp.personWechatArticle.increadByLastMonth">Incread By Last Month</span></dt>
+                <dd>
+                    <span>{{vm.personWechatArticle.increadByLastMonth}}</span>
+                </dd>
+                <dt><span data-translate="intelligentChartApp.personWechatArticle.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{vm.personWechatArticle.createDate | date:'mediumDate'}}</span>
+                </dd>
+                <dt><span data-translate="intelligentChartApp.personWechatArticle.person">Person</span></dt>
+                <dd>
+                    <a ui-sref="person-detail({id:vm.personWechatArticle.person.id})">{{vm.personWechatArticle.person.name}}</a>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    ui-sref="{{ vm.previousState }}"
+                    class="btn btn-info">
+                <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button" ui-sref="person-wechat-article-detail.edit({id:vm.personWechatArticle.id})" class="btn btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span>
+                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+
+    </div>
+</div>

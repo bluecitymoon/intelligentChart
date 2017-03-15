@@ -1,7 +1,7 @@
 <div>
 
     <div class="col-md-6">
-        <div class="panel panel-trans">
+        <div class="panel">
             <div class="text-center pad-all bord-btm">
                 <div class="pad-ver">
                     <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
@@ -17,22 +17,43 @@
             <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
             <ul class="list-group bg-trans text-sm">
 
-                <!-- Profile Details -->
-                <li class="list-group-item list-item-sm">
-                    <i class="glyphicon glyphicon-glass"></i> {{vm.person.birthplace}}
+
+                <li class="row list-group-item list-item-sm">
+                    <div class="col-md-3">
+                        <b>出生地</b><i class="glyphicon glyphicon-glass"></i>
+                    </div>
+                    <div class="col-md-9">{{vm.person.birthplace}}</div>
                 </li>
-                <li class="list-group-item list-item-sm">
-                    <i class="glyphicon glyphicon-calendar"></i> {{vm.person.birthday | date:'mediumDate'}}
+                <li class="row list-group-item list-item-sm">
+                    <div class="col-md-3">
+                        <b>生日</b><i class="glyphicon glyphicon-calendar"></i>
+                    </div>
+                    <div class="col-md-9">
+                        {{vm.person.birthday | date:'mediumDate'}}
+                    </div>
+
                 </li>
-                <li class="list-group-item list-item-sm" ng-if="vm.person.politicRole">
-                    <i class="glyphicon glyphicon-road"></i> {{vm.person.politicRole}}
+                <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
+                    <div class="col-md-3">
+                        <b>政治面貌</b><i class="glyphicon glyphicon-road"></i>
+                    </div>
+                    <div class="col-md-9">
+                        {{vm.person.politicRole}}
+                    </div>
+
+                </li>
+                <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
+                    <div class="col-md-3">
+                        <b>社交美誉</b><i class="glyphicon glyphicon-music"></i>
+                    </div>
+                    <div class="col-md-9">
+                        {{vm.person.socialGoodName}}
+                    </div>
                 </li>
             </ul>
-            <div class="pad-hor mar-btm">
+            <div class="pad-hor mar-btm row">
                 <small class="text-muted">{{vm.person.detail}}</small>
             </div>
-
-            <hr>
 
         </div>
 
@@ -69,6 +90,7 @@
 
             </div>
         </div>
+
         <div class="panel panel-trans">
             <div class="panel-heading">
                 <button ui-sref="person-education-background({person_id:vm.person.id})"
@@ -398,6 +420,7 @@
 
         <!--</div>-->
 
+        <!-- 粉丝应援团建设 -->
         <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-fan-support-group({person_id:vm.person.id})"
@@ -428,12 +451,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- 微信公众号文章刊发量 -->
+        <div class="panel panel-bordered-purple">
+            <div class="panel-heading">
+                <button ui-sref="person-wechat-article({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-qrcode"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personWechatArticle"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="list-group">
+                    <div class="list-group-item text-center" style="border-width: 0px">
+                        <p class="text-warning text-5x text-bold">{{lastestWechatAriticle.count}}</p> <p class="list-group-item-text">比上个月增加了<b>{{lastestWechatAriticle.increadByLastMonth}}</b>人</p>
+                    </div>
+                    <div class="list-group-item text-center" style="border-width: 0px">
+                        <p class="list-group-item-text">评估时间 : {{lastestWechatAriticle.createDate | date: 'yyyy年MM月dd日'}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- dynamic ends -->
         <!--</div>-->
     </div>
 
     <div class="col-md-6">
-        <div class="panel ">
+        <div class="panel">
             <div class="panel-heading">
                 <button ui-sref="person-word-cloud({person_id:vm.person.id})"
                         class="btn text-bold btn-block">

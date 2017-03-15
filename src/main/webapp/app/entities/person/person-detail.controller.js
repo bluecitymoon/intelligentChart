@@ -11,7 +11,7 @@
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
         'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel',
-        'PersonFanDisbribution', 'PersonFanSupportGroup'];
+        'PersonFanDisbribution', 'PersonFanSupportGroup', 'PersonWechatArticle'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
@@ -19,7 +19,7 @@
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
                                     PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel,
-                                    PersonFanDisbribution, PersonFanSupportGroup) {
+                                    PersonFanDisbribution, PersonFanSupportGroup, PersonWechatArticle) {
         var vm = this;
 
         vm.person = entity;
@@ -733,6 +733,14 @@
 
         }, handleError);
 
+        PersonWechatArticle.loadLatestWechatArticleCount({id: vm.person.id}).$promise.then(function (data) {
+
+            if (data) {
+
+                $scope.lastestWechatAriticle = data;
+            }
+
+        }, handleError);
         $scope.$on('$destroy', unsubscribe);
     }
 })();

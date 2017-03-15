@@ -150,5 +150,7 @@
 
     <cache alias="com.intelligent.chart.domain.PersonFanDisbribution" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.PersonWechatArticle" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

@@ -26,6 +26,7 @@
             "detail": "Detail",
             "avatar": "Avatar",
             "popularity": "Popularity",
+            "socialGoodName": "Social Good Name",
             "job": "Job"
         }
     }

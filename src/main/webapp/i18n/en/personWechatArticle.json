@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "personWechatArticle" : {
+            "home": {
+                "title": "Person Wechat Articles",
+                "createLabel": "Create a new Person Wechat Article",
+                "createOrEditLabel": "Create or edit a Person Wechat Article",
+                "search": "Search for Person Wechat Article"
+            },
+            "created": "A new Person Wechat Article is created with identifier {{ param }}",
+            "updated": "A Person Wechat Article is updated with identifier {{ param }}",
+            "deleted": "A Person Wechat Article is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Wechat Article {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Wechat Article"
+            },
+            "count": "Count",
+            "increadByLastMonth": "Incread By Last Month",
+            "createDate": "Create Date",
+            "person": "Person"
+        }
+    }
+}

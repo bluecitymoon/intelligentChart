@@ -50,6 +50,10 @@
         {
             "fieldName": "popularity",
             "fieldType": "Float"
+        },
+        {
+            "fieldName": "socialGoodName",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170210023221",
