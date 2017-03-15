@@ -74,6 +74,7 @@
                 "personFanDisbribution": "粉丝分布",
                 "person": "Person",
                 "personWechatArticle": "微信公众号文章刊发量",
+                "personTieBa": "Person Tie Ba",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

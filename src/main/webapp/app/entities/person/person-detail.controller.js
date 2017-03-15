@@ -11,7 +11,7 @@
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
         'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel',
-        'PersonFanDisbribution', 'PersonFanSupportGroup', 'PersonWechatArticle'];
+        'PersonFanDisbribution', 'PersonFanSupportGroup', 'PersonWechatArticle', 'PersonTieBa'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
@@ -19,7 +19,7 @@
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
                                     PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel,
-                                    PersonFanDisbribution, PersonFanSupportGroup, PersonWechatArticle) {
+                                    PersonFanDisbribution, PersonFanSupportGroup, PersonWechatArticle, PersonTieBa) {
         var vm = this;
 
         vm.person = entity;
@@ -741,6 +741,16 @@
             }
 
         }, handleError);
+
+        PersonTieBa.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            if (data) {
+
+                $scope.tiebas = data;
+            }
+
+        }, handleError);
+
         $scope.$on('$destroy', unsubscribe);
     }
 })();

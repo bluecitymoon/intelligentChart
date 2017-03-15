@@ -1,0 +1,28 @@
+{
+    "intelligentChartApp": {
+        "personTieBa" : {
+            "home": {
+                "title": "贴吧热度",
+                "createLabel": "录入贴吧热度",
+                "createOrEditLabel": "管理",
+                "search": "Search for Person Tie Ba"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "贴吧热度"
+            },
+            "name": "贴吧名称",
+            "userCount": "用户数量",
+            "postCount": "帖子数量",
+            "shortDescription": "贴吧描述",
+            "rankDescription": "排名内容",
+            "rank": "排名",
+            "person": "人物"
+        }
+    }
+}

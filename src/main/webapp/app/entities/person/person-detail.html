@@ -474,6 +474,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- 贴吧热度 -->
+        <div class="panel widget" ng-repeat="tieba in tiebas">
+            <div class="widget-header bg-warning text-center">
+                <h4 class="mar-no pad-top">{{tieba.name}}</h4>
+                <p class="mar-btm">{{tieba.shortDescription}}</p>
+            </div>
+            <div class="widget-body">
+                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="widget-img img-circle img-border-light">
+                <div class="list-group bg-trans mar-no">
+                    <a class="list-group-item list-item-sm" href="#">
+                        <span class="label label-primary pull-right">{{tieba.userCount}}</span>
+                        贴吧用户数
+                    </a>
+                    <a class="list-group-item list-item-sm" href="#">
+                        <span class="label label-success pull-right">{{tieba.postCount}}</span>
+                        帖子数
+                    </a>
+                    <a class="list-group-item list-item-sm" href="#">
+                        <span class="label label-danger pull-right">{{tieba.rank}}</span>
+                        {{tieba.rankDescription}}
+                    </a>
+                </div>
+            </div>
+        </div>
         <!-- dynamic ends -->
         <!--</div>-->
     </div>

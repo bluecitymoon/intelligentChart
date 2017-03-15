@@ -1,0 +1,49 @@
+
+<div class="panel">
+    <div class="panel-body">
+        <h2><span data-translate="intelligentChartApp.personTieBa.detail.title">Person Tie Ba</span> {{vm.personTieBa.id}}</h2>
+        <hr>
+        <jhi-alert-error></jhi-alert-error>
+        <dl class="dl-horizontal jh-entity-details">
+            <dt><span data-translate="intelligentChartApp.personTieBa.name">Name</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.name}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.userCount">User Count</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.userCount}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.postCount">Post Count</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.postCount}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.shortDescription">Short Description</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.shortDescription}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.rankDescription">Rank Description</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.rankDescription}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.rank">Rank</span></dt>
+            <dd>
+                <span>{{vm.personTieBa.rank}}</span>
+            </dd>
+            <dt><span data-translate="intelligentChartApp.personTieBa.person">Person</span></dt>
+            <dd>
+                <a ui-sref="person-detail({id:vm.personTieBa.person.id})">{{vm.personTieBa.person.name}}</a>
+            </dd>
+        </dl>
+
+        <button type="submit"
+                ui-sref="{{ vm.previousState }}"
+                class="btn btn-info">
+            <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+        </button>
+
+        <button type="button" ui-sref="person-tie-ba-detail.edit({id:vm.personTieBa.id})" class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+    "intelligentChartApp": {
+        "personTieBa" : {
+            "home": {
+                "title": "Person Tie Bas",
+                "createLabel": "Create a new Person Tie Ba",
+                "createOrEditLabel": "Create or edit a Person Tie Ba",
+                "search": "Search for Person Tie Ba"
+            },
+            "created": "A new Person Tie Ba is created with identifier {{ param }}",
+            "updated": "A Person Tie Ba is updated with identifier {{ param }}",
+            "deleted": "A Person Tie Ba is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Tie Ba {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Tie Ba"
+            },
+            "name": "Name",
+            "userCount": "User Count",
+            "postCount": "Post Count",
+            "shortDescription": "Short Description",
+            "rankDescription": "Rank Description",
+            "rank": "Rank",
+            "person": "Person"
+        }
+    }
+}

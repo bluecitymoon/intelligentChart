@@ -2,24 +2,24 @@
     "intelligentChartApp": {
         "personWechatArticle" : {
             "home": {
-                "title": "Person Wechat Articles",
-                "createLabel": "Create a new Person Wechat Article",
-                "createOrEditLabel": "Create or edit a Person Wechat Article",
+                "title": "微信公众号刊发量",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Person Wechat Article"
             },
-            "created": "A new Person Wechat Article is created with identifier {{ param }}",
-            "updated": "A Person Wechat Article is updated with identifier {{ param }}",
-            "deleted": "A Person Wechat Article is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Person Wechat Article {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Wechat Article"
+                "title": "微信公众号刊发量"
             },
-            "count": "Count",
-            "increadByLastMonth": "Incread By Last Month",
-            "createDate": "Create Date",
-            "person": "Person"
+            "count": "数量",
+            "increadByLastMonth": "比上月增长",
+            "createDate": "录入日期",
+            "person": "日期"
         }
     }
 }
