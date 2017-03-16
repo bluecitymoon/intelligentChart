@@ -32,7 +32,13 @@
                 isArray: true,
                 url: 'api/person-area-percentages/person/:id/with/type/:type',
                 params: { id : '@id', type : '@type'}
-            }
+            },
+            'loadAllTypesData': {
+            method: 'GET',
+                isArray: true,
+                url: 'api/person-area-percentages/person/total/:id',
+                params: { id : '@id'}
+        }
         });
     }
 })();

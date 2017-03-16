@@ -167,6 +167,19 @@
             console.debug(error);
         }
 
+        PersonAreaPercentage.loadAllTypesData({id: vm.person.id}).$promise.then(function (areas) {
+
+            console.debug(areas);
+            
+            var pageload = {
+                name: "",
+                datapoints: areas
+            };
+
+            $scope.totalAreaData = [pageload];
+
+        }, handleError);
+
         PersonAreaPercentage.loadAllByPersonIdAndType({id: vm.person.id, type: 'cinema'}).$promise.then(function (areas) {
 
             var pageload = {

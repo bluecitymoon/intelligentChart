@@ -587,6 +587,27 @@
                         class="btn text-bold btn-block ">
                     <span class="glyphicon glyphicon-leaf"></span>
                     <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentage"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="areaConfig" data="totalAreaData"></pie-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm"
                           data-translate="global.menu.entities.personAreaPercentageCinema"></span>
                 </button>
             </div>

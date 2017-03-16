@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonAreaPercentage;
 import com.intelligent.chart.repository.PersonAreaPercentageRepository;
 import com.intelligent.chart.service.PersonAreaPercentageService;
+import com.intelligent.chart.vo.CommonChartData;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
 
@@ -18,8 +19,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +41,31 @@ public class PersonAreaPercentageResource {
     @Inject
     private PersonAreaPercentageRepository personAreaPercentageRepository;
 
+    @Inject
+    private EntityManager entityManager;
+
+    //SELECT sum(a.percentage), b.name FROM person_area_percentage a left join area_type b on a.area_type_id = b.id where person_id = 1 GROUP BY a.area_type_id
+    @GetMapping("/person-area-percentages/person/total/{id}")
+    @Timed
+    public ResponseEntity<List<CommonChartData>> getTotalChartData(@PathVariable Long id)
+        throws URISyntaxException {
+
+        String sql = "SELECT sum(a.percentage) as x, b.name  as y FROM person_area_percentage a left join area_type b on a.area_type_id = b.id where person_id = " + id + " GROUP BY a.area_type_id";
+        List<List<Object>> result =  entityManager.createNativeQuery(sql).getResultList();
+        List<CommonChartData> transformedList = new ArrayList<>();
+        for (List<Object> object: result) {
+
+            Integer x = (Integer) object.get(0);
+            String y = (String) object.get(1);
+
+            CommonChartData commonChartData = new CommonChartData();
+            commonChartData.setX(x);
+            commonChartData.setY(y);
+            transformedList.add(commonChartData);
+        }
+        return new ResponseEntity<>(transformedList, HttpStatus.OK);
+    }
+
     @GetMapping("/person-area-percentages/person/{id}/with/type/{type}")
     @Timed
     public ResponseEntity<List<PersonAreaPercentage>> getAllPersonAreaPercentagesByPersonIdAndType(@PathVariable Long id, @PathVariable String type, @ApiParam Pageable pageable)
@@ -46,6 +74,7 @@ public class PersonAreaPercentageResource {
         Page<PersonAreaPercentage> page = personAreaPercentageRepository.findByPerson_IdAndMediaType_Identifier(id, type, pageable);
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-area-percentages");
+
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
