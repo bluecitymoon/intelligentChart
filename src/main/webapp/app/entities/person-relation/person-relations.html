@@ -1,30 +1,31 @@
-<div>
-    <h2 data-translate="intelligentChartApp.personRelation.home.title">Person Relations</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="person-relation.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="intelligentChartApp.personRelation.home.createLabel">
+<div class="panel">
+    <div class="panel-body">
+        <h2 data-translate="intelligentChartApp.personRelation.home.title">Person Relations</h2>
+        <jhi-alert></jhi-alert>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 no-padding-left">
+                    <button class="btn btn-primary" ui-sref="person-relation.new" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span  data-translate="intelligentChartApp.personRelation.home.createLabel">
                         Create new Person Relation
                     </span>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
+        <br/>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="thePerson.name"><span data-translate="intelligentChartApp.personRelation.thePerson">The Person</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="hasRelationWith.name"><span data-translate="intelligentChartApp.personRelation.hasRelationWith">Has Relation With</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat="personRelation in vm.personRelations track by personRelation.id">
                     <td><a ui-sref="person-relation-detail({id:personRelation.id})">{{personRelation.id}}</a></td>
                     <td>
@@ -56,11 +57,12 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </div>
 </div>

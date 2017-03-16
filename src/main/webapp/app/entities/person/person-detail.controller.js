@@ -11,7 +11,7 @@
         'PersonNetworkDebit', 'PersonNetworkShopping', 'PersonSocialMedia', 'PersonNetworkTexiActivity', 'PersonEndorsement', 'PersonTaxiActivity',
         'PersonPaidNetworkDebit', 'PersonIncome', 'PersonSearchCount', 'PersonMediaShowUpCount', 'PersonSocialHotDiscuss',
         'PersonFansPucharsingPower', 'PersonFansHobby', 'PersonFanPaymentTool', 'PersonFanSex', 'PersonFansEgeLevel', 'PersonFansEducationLevel',
-        'PersonFanDisbribution', 'PersonFanSupportGroup', 'PersonWechatArticle', 'PersonTieBa'];
+        'PersonFanDisbribution', 'PersonFanSupportGroup', 'PersonWechatArticle', 'PersonTieBa', 'PersonRelation'];
 
     function PersonDetailController($scope, $rootScope, $stateParams, previousState, entity, Person, Job, PersonAreaPercentage,
                                     PersonInnovation, PersonExperience, PersonEducationBackground, PersonConnectionLevel,
@@ -19,7 +19,7 @@
                                     PersonNetworkDebit, PersonNetworkShopping, PersonSocialMedia, PersonNetworkTexiActivity, PersonEndorsement, PersonTaxiActivity,
                                     PersonPaidNetworkDebit, PersonIncome, PersonSearchCount, PersonMediaShowUpCount, PersonSocialHotDiscuss,
                                     PersonFansPucharsingPower, PersonFansHobby, PersonFanPaymentTool, PersonFanSex, PersonFansEgeLevel, PersonFansEducationLevel,
-                                    PersonFanDisbribution, PersonFanSupportGroup, PersonWechatArticle, PersonTieBa) {
+                                    PersonFanDisbribution, PersonFanSupportGroup, PersonWechatArticle, PersonTieBa, PersonRelation) {
         var vm = this;
 
         vm.person = entity;
@@ -751,25 +751,42 @@
 
         }, handleError);
 
-        var color = d3.scale.category20()
-        $scope.options = {
-            chart: {
-                type: 'forceDirectedGraph',
-                height: 450,
-                width: 450,
-                color: function(d){
-                    return color(d.group)
-                },
-                nodeExtras: function(node) {
-                    node && node
-                        .append("text")
-                        .attr("dx", 8)
-                        .attr("dy", "1em")
-                        .text(function(d) { return d.name })
-                        .style('font-size', '1em');
+        PersonRelation.loadAllByPersonId({id: vm.person.id}).$promise.then(function (data) {
+
+            var color = d3.scale.category20()
+            $scope.options = {
+                chart: {
+                    type: 'forceDirectedGraph',
+                    height: 450,
+                    width: singleChartHeight,
+                    color: function(d){
+                        return color(d.group)
+                    },
+                    nodeExtras: function(node) {
+                        node && node
+                            .append("text")
+                            .attr("dx", 8)
+                            .attr("dy", "1em")
+                            .text(function(d) { return d.name })
+                            .style('font-size', '1em');
+                    }
                 }
-            }
-        };
+            };
+
+            var relations = {
+                "nodes": [{name: data[0].thePerson.name, group: 1}],
+                "links": []
+            };
+            angular.forEach(data, function (relation, index) {
+
+                relations.nodes.push({name: relation.hasRelationWith.name, group: 1});
+                relations.links.push({source: index + 1, target: 0, value: 1});
+            });
+
+            $scope.personRelationData = relations;
+        }, handleError);
+
+
 
         $scope.data = {
             "nodes":[

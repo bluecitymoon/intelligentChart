@@ -882,16 +882,16 @@
     <div class="col-md-6">
         <div class="panel">
             <div class="panel-heading">
-                <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
+                <button ui-sref="person-relation({person_id:vm.person.id})"
                         class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
+                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
                     <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanDisbribution"></span>
+                          data-translate="global.menu.entities.personRelation"></span>
                 </button>
             </div>
             <div class="panel-body">
 
-                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                <nvd3 options="options" data="personRelationData" class="with-3d-shadow with-transitions"></nvd3>
 
             </div>
         </div>

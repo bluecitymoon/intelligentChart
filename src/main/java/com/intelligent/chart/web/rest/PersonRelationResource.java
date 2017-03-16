@@ -2,6 +2,7 @@ package com.intelligent.chart.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.intelligent.chart.domain.PersonRelation;
+import com.intelligent.chart.repository.PersonRelationRepository;
 import com.intelligent.chart.service.PersonRelationService;
 import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
@@ -30,9 +31,23 @@ import java.util.Optional;
 public class PersonRelationResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonRelationResource.class);
-        
+
     @Inject
     private PersonRelationService personRelationService;
+
+
+    @Inject
+    private PersonRelationRepository personRelationRepository;
+
+    @GetMapping("/person-relations/person/{id}")
+    @Timed
+    public List<PersonRelation> getAllPersonAreaPercentagesByPersonId(@PathVariable Long id)
+        throws URISyntaxException {
+
+        List<PersonRelation> page = personRelationRepository.findByThePerson_Id(id);
+
+        return page;
+    }
 
     /**
      * POST  /person-relations : Create a new personRelation.
