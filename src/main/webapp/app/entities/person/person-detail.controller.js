@@ -751,6 +751,54 @@
 
         }, handleError);
 
+        var color = d3.scale.category20()
+        $scope.options = {
+            chart: {
+                type: 'forceDirectedGraph',
+                height: 450,
+                width: 450,
+                color: function(d){
+                    return color(d.group)
+                },
+                nodeExtras: function(node) {
+                    node && node
+                        .append("text")
+                        .attr("dx", 8)
+                        .attr("dy", "1em")
+                        .text(function(d) { return d.name })
+                        .style('font-size', '1em');
+                }
+            }
+        };
+
+        $scope.data = {
+            "nodes":[
+                {"name":"Myriel","group":1},
+                {"name":"Napoleon","group":1},
+                {"name":"Mlle.Baptistine","group":1},
+                {"name":"Mme.Magloire","group":1},
+                {"name":"CountessdeLo","group":1},
+                {"name":"Geborand","group":1},
+                {"name":"Champtercier","group":1},
+                {"name":"Cravatte","group":1},
+                {"name":"Count","group":1},
+                {"name":"OldMan","group":1}
+
+            ],
+            "links":[
+                {"source":1,"target":0,"value":1},
+                {"source":2,"target":0,"value":1},
+                {"source":3,"target":0,"value":1},
+                {"source":4,"target":0,"value":1},
+                {"source":5,"target":0,"value":1},
+                {"source":6,"target":0,"value":1},
+                {"source":7,"target":0,"value":1},
+                {"source":8,"target":0,"value":1},
+                {"source":9,"target":0,"value":1}
+
+            ]
+        };
+
         $scope.$on('$destroy', unsubscribe);
     }
 })();

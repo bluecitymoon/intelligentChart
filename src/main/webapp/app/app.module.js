@@ -22,7 +22,8 @@
             'angular.filter',
             'ngLodash',
             'angular-d3-word-cloud',
-            'ui.select'
+            'ui.select',
+            'nvd3'
         ])
         .run(run);
 
