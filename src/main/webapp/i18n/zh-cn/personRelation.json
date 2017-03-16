@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "personRelation" : {
+            "home": {
+                "title": "人物关系",
+                "createLabel": "录入人物关系",
+                "createOrEditLabel": "管理",
+                "search": "Search for Person Relation"
+            },
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
+            "delete": {
+                "question": "你确定删除这条数据?"
+            },
+            "detail": {
+                "title": "人物关系"
+            },
+            "thePerson": "人物",
+            "hasRelationWith": "和谁有关系"
+        }
+    }
+}

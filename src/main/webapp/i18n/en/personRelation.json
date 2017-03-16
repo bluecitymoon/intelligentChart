@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "personRelation" : {
+            "home": {
+                "title": "Person Relations",
+                "createLabel": "Create a new Person Relation",
+                "createOrEditLabel": "Create or edit a Person Relation",
+                "search": "Search for Person Relation"
+            },
+            "created": "A new Person Relation is created with identifier {{ param }}",
+            "updated": "A Person Relation is updated with identifier {{ param }}",
+            "deleted": "A Person Relation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Person Relation {{ id }}?"
+            },
+            "detail": {
+                "title": "Person Relation"
+            },
+            "thePerson": "The Person",
+            "hasRelationWith": "Has Relation With"
+        }
+    }
+}

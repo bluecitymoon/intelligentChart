@@ -45,7 +45,7 @@ public class Person implements Serializable {
     @Column(name = "support_taiwan_indepence")
     private Boolean supportTaiwanIndepence;
 
-    @Column(name = "detail")
+    @Column(name = "detail", length = 20000)
     private String detail;
 
     @Column(name = "avatar")

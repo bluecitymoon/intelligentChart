@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.personRelation.detail.title">Person Relation</span> {{vm.personRelation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.personRelation.thePerson">The Person</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personRelation.thePerson.id})">{{vm.personRelation.thePerson.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.personRelation.hasRelationWith">Has Relation With</span></dt>
+        <dd>
+            <a ui-sref="person-detail({id:vm.personRelation.hasRelationWith.id})">{{vm.personRelation.hasRelationWith.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="person-relation-detail.edit({id:vm.personRelation.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

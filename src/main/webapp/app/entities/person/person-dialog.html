@@ -21,9 +21,11 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.sex" for="field_sex">Sex</label>
-            <input type="text" class="form-control" name="sex" id="field_sex"
-                    ng-model="vm.person.sex"
-                     />
+            <select name="sex" class="form-control" id="field_sex" ng-model="vm.person.sex">
+                <option value="男">男</option>
+                <option value="女">女</option>
+                <option value="未知">未知</option>
+            </select>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.age" for="field_age">Age</label>
@@ -49,21 +51,21 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.politicRole" for="field_politicRole">Politic Role</label>
-            <input type="text" class="form-control" name="politicRole" id="field_politicRole"
-                    ng-model="vm.person.politicRole"
-                     />
+            <select name="politicRole" class="form-control" id="field_politicRole" ng-model="vm.person.politicRole">
+                <option value="群众">群众</option>
+                <option value="团员">团员</option>
+                <option value="党员">党员</option>
+            </select>
         </div>
+
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.person.supportTaiwanIndepence" for="field_supportTaiwanIndepence">Support Taiwan Indepence</label>
-            <input type="checkbox" class="form-control" name="supportTaiwanIndepence" id="field_supportTaiwanIndepence"
-                    ng-model="vm.person.supportTaiwanIndepence"
-                     />
+            <label data-translate="intelligentChartApp.person.supportTaiwanIndepence" for="field_supportTaiwanIndepence">Support Taiwan Indepence</label>
+            <input type="checkbox" class="magic-checkbox" name="supportTaiwanIndepence" id="field_supportTaiwanIndepence" ng-model="vm.person.supportTaiwanIndepence" />
         </div>
+
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.person.detail" for="field_detail">Detail</label>
-            <input type="text" class="form-control" name="detail" id="field_detail"
-                    ng-model="vm.person.detail"
-                     />
+            <label class="control-label" data-translate="intelligentChartApp.person.detailDescription" for="field_detail">Detail</label>
+            <textarea type="text" class="form-control" name="detail" id="field_detail" ng-model="vm.person.detail"/>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.person.avatar" for="field_avatar">Avatar</label>
