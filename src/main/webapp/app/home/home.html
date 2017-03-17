@@ -1,495 +1,948 @@
-<style>
-    .laptop-container {
-        position: relative;
-        margin: auto;
-        top: 20px;
-        background: none;
-    }
-    .laptop {
-        position: absolute;
-        width: 84%;
-        height: 60%;
-        top: 16%;
-        left: 8%;
-        background: #19232e;
-        border-radius: 18px 18px 0 0;
-        border: 2px solid #9bb1c8;
-    }
-    .laptop::after {
-        content: "";
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        top: 3%;
-        left: 49.5%;
-        background: #000;
-        border-radius: 50%;
-    }
-    .laptop-base {
-        position: absolute;
-        width: 100%;
-        height: 5%;
-        bottom: 19%;
-        background: #9bb1c8;
-        border-radius: 0 0 12px 12px;
-    }
-    .laptop-base::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        background: #587ba0;
-    }
-    .laptop-base::after {
-        content: "";
-        position: absolute;
-        width: 14%;
-        height: 50%;
-        left: 44%;
-        background: #3f5873;
-        border-radius: 0 0 16px 16px;
-    }
-    .screen {
-        position: absolute;
-        width: 94%;
-        height: 89%;
-        left: 3%;
-        bottom: 4%;
-        background: #dbe3ec;
-    }
-    .screen::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        background: #382716;
-    }
-    .screen::after {
-        content: "";
-        position: absolute;
-        width: 80%;
-        height: 42%;
-        bottom: 52%;
-        right: 0%;
-        background: #95683b;
-    }
-    .sidebar {
-        position: absolute;
-        width: 42%;
-        height: 42%;
-        left: 0%;
-        top: 5.9%;
-        background: none;
-    }
-    .text-1 {
-        position: absolute;
-        width: 40%;
-        height: 5%;
-        left: 2.5%;
-        top: 5%;
-        background: #95683b;
-        z-index: 2;
-    }
-    .text-2 {
-        position: absolute;
-        width: 20%;
-        height: 5%;
-        left: 2.5%;
-        top: 17%;
-        background: #95683b;
-        z-index: 2;
-    }
-    .text-3 {
-        position: absolute;
-        width: 35%;
-        height: 5%;
-        left: 2.5%;
-        top: 29%;
-        background: #95683b;
-        z-index: 2;
-    }
-    .text-4 {
-        position: absolute;
-        width: 15%;
-        height: 5%;
-        left: 2.5%;
-        top: 41%;
-        background: #95683b;
-        z-index: 2;
-    }
-    .code-content {
-        position: absolute;
-        width: 42%;
-        height: 42%;
-        left: 20%;
-        top: 5.9%;
-        background: none;
-        z-index: 1;
-    }
-    .row-number-1 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 5%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-2 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 17%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-3 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 29%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-4 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 41%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-5 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 53%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-6 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 65%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-7 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 77%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-number-8 {
-        position: absolute;
-        width: 4%;
-        height: 5%;
-        left: 2.5%;
-        top: 89%;
-        background: #bc8854;
-        z-index: 2;
-    }
-    .row-text-1 {
-        position: absolute;
-        width: 20%;
-        height: 5%;
-        left: 12%;
-        top: 5%;
-        background: #382716;
-        z-index: 2;
-    }
-    .row-text-2 {
-        position: absolute;
-        width: 25%;
-        height: 5%;
-        left: 18%;
-        top: 17%;
-        background: #eddfd0;
-        z-index: 2;
-    }
-    .row-text-3 {
-        position: absolute;
-        width: 40%;
-        height: 5%;
-        left: 24%;
-        top: 29%;
-        background: #28384b;
-        z-index: 2;
-    }
-    .row-text-4 {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 24%;
-        top: 41%;
-        background: #382716;
-        z-index: 2;
-    }
-    .row-text-4a {
-        position: absolute;
-        width: 10%;
-        height: 5%;
-        left: 58%;
-        top: 41%;
-        background: #eddfd0;
-        z-index: 2;
-    }
-    .row-text-5 {
-        position: absolute;
-        width: 15%;
-        height: 5%;
-        left: 30%;
-        top: 53%;
-        background: #eddfd0;
-        z-index: 2;
-    }
-    .row-text-5a {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 49%;
-        top: 53%;
-        background: #28384b;
-        z-index: 2;
-    }
-    .row-text-6 {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 30%;
-        top: 65%;
-        background: #28384b;
-        z-index: 2;
-    }
-    .row-text-6a {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 64%;
-        top: 65%;
-        background: #382716;
-        z-index: 2;
-    }
-    .row-text-7 {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 18%;
-        top: 77%;
-        background: #eddfd0;
-        z-index: 2;
-    }
-    .row-text-8 {
-        position: absolute;
-        width: 30%;
-        height: 5%;
-        left: 12%;
-        top: 89%;
-        background: #382716;
-        z-index: 2;
-    }
-    .button-editor-1 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 1%;
-        top: 1.2%;
-        background: #f3e9e0;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-editor-2 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 3%;
-        top: 1.2%;
-        background: #f3e9e0;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-editor-3 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 5%;
-        top: 1.2%;
-        background: #f3e9e0;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-browser-1 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 1%;
-        top: 51%;
-        background: #10161e;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-browser-2 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 3%;
-        top: 51%;
-        background: #10161e;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-browser-3 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 5%;
-        top: 51%;
-        background: #10161e;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .browser-window {
-        position: absolute;
-        width: 80%;
-        height: 44%;
-        left: 10%;
-        bottom: 0%;
-        background: #4f7095;
-    }
-    .browser-window::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 20%;
-        background: #28384b;
-    }
-    .browser-window::after {
-        content: "";
-        position: absolute;
-        width: 20%;
-        height: 12%;
-        top: 4.5%;
-        left: 1.5%;
-        background: #4f7095;
-    }
-    .jumbo {
-        position: absolute;
-        width: 60%;
-        height: 22%;
-        left: 20%;
-        bottom: 12%;
-        background: #90a9c4;
-    }
-    .button-jumbo-1 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 47%;
-        top: 85%;
-        background: #dae2eb;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-jumbo-2 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 49.5%;
-        top: 85%;
-        background: #28384b;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .button-jumbo-3 {
-        position: absolute;
-        width: 1%;
-        height: 1.4%;
-        left: 52%;
-        top: 85%;
-        background: #28384b;
-        z-index: 2;
-        border-radius: 50%;
-    }
-    .thumb-1 {
-        position: absolute;
-        width: 19%;
-        height: 10.5%;
-        left: 20%;
-        bottom: 0%;
-        background: #b5c6d8;
-    }
-    .thumb-2 {
-        position: absolute;
-        width: 19%;
-        height: 10.5%;
-        right: 20%;
-        bottom: 0%;
-        background: #7e9bbb;
-    }
-    .thumb-3 {
-        position: absolute;
-        width: 19%;
-        height: 10.5%;
-        left: 40.5%;
-        bottom: 0%;
-        background: #dae2eb;
-    }
-</style>
-<div class="laptop-container" style="width: {{labtopHeight}}px; height: {{labtopHeight}}px;">
-    <div class="laptop">
-        <div class="screen">
-            <div class="sidebar">
-                <div class="text-1"></div>
-                <div class="text-2"></div>
-                <div class="text-3"></div>
-                <div class="text-4"></div>
-            </div>
-            <div class="code-content">
-                <div class="row-number-1"></div>
-                <div class="row-text-1"></div>
-                <div class="row-number-2"></div>
-                <div class="row-text-2"></div>
-                <div class="row-number-3"></div>
-                <div class="row-text-3"></div>
-                <div class="row-number-4"></div>
-                <div class="row-text-4"></div>
-                <div class="row-text-4a"></div>
-                <div class="row-number-5"></div>
-                <div class="row-text-5"></div>
-                <div class="row-text-5a"></div>
-                <div class="row-number-6"></div>
-                <div class="row-text-6"></div>
-                <div class="row-text-6a"></div>
-                <div class="row-number-7"></div>
-                <div class="row-text-7"></div>
-                <div class="row-number-8"></div>
-                <div class="row-text-8"></div>
-            </div>
-            <div class="button-editor-1"></div>
-            <div class="button-editor-2"></div>
-            <div class="button-editor-3"></div>
-            <div class="button-browser-1"></div>
-            <div class="button-browser-2"></div>
-            <div class="button-browser-3"></div>
-            <div class="browser-window"></div>
-            <div class="jumbo"></div>
-            <div class="button-jumbo-1"></div>
-            <div class="button-jumbo-2"></div>
-            <div class="button-jumbo-3"></div>
-            <div class="thumb-1"></div>
-            <div class="thumb-2"></div>
-            <div class="thumb-3"></div>
+<!--<style>-->
+<!--.laptop-container {-->
+<!--position: relative;-->
+<!--margin: auto;-->
+<!--top: 20px;-->
+<!--background: none;-->
+<!--}-->
+<!--.laptop {-->
+<!--position: absolute;-->
+<!--width: 84%;-->
+<!--height: 60%;-->
+<!--top: 16%;-->
+<!--left: 8%;-->
+<!--background: #19232e;-->
+<!--border-radius: 18px 18px 0 0;-->
+<!--border: 2px solid #9bb1c8;-->
+<!--}-->
+<!--.laptop::after {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--top: 3%;-->
+<!--left: 49.5%;-->
+<!--background: #000;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.laptop-base {-->
+<!--position: absolute;-->
+<!--width: 100%;-->
+<!--height: 5%;-->
+<!--bottom: 19%;-->
+<!--background: #9bb1c8;-->
+<!--border-radius: 0 0 12px 12px;-->
+<!--}-->
+<!--.laptop-base::before {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 100%;-->
+<!--height: 50%;-->
+<!--background: #587ba0;-->
+<!--}-->
+<!--.laptop-base::after {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 14%;-->
+<!--height: 50%;-->
+<!--left: 44%;-->
+<!--background: #3f5873;-->
+<!--border-radius: 0 0 16px 16px;-->
+<!--}-->
+<!--.screen {-->
+<!--position: absolute;-->
+<!--width: 94%;-->
+<!--height: 89%;-->
+<!--left: 3%;-->
+<!--bottom: 4%;-->
+<!--background: #dbe3ec;-->
+<!--}-->
+<!--.screen::before {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 100%;-->
+<!--height: 50%;-->
+<!--background: #382716;-->
+<!--}-->
+<!--.screen::after {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 80%;-->
+<!--height: 42%;-->
+<!--bottom: 52%;-->
+<!--right: 0%;-->
+<!--background: #95683b;-->
+<!--}-->
+<!--.sidebar {-->
+<!--position: absolute;-->
+<!--width: 42%;-->
+<!--height: 42%;-->
+<!--left: 0%;-->
+<!--top: 5.9%;-->
+<!--background: none;-->
+<!--}-->
+<!--.text-1 {-->
+<!--position: absolute;-->
+<!--width: 40%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 5%;-->
+<!--background: #95683b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.text-2 {-->
+<!--position: absolute;-->
+<!--width: 20%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 17%;-->
+<!--background: #95683b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.text-3 {-->
+<!--position: absolute;-->
+<!--width: 35%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 29%;-->
+<!--background: #95683b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.text-4 {-->
+<!--position: absolute;-->
+<!--width: 15%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 41%;-->
+<!--background: #95683b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.code-content {-->
+<!--position: absolute;-->
+<!--width: 42%;-->
+<!--height: 42%;-->
+<!--left: 20%;-->
+<!--top: 5.9%;-->
+<!--background: none;-->
+<!--z-index: 1;-->
+<!--}-->
+<!--.row-number-1 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 5%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-2 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 17%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-3 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 29%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-4 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 41%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-5 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 53%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-6 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 65%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-7 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 77%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-number-8 {-->
+<!--position: absolute;-->
+<!--width: 4%;-->
+<!--height: 5%;-->
+<!--left: 2.5%;-->
+<!--top: 89%;-->
+<!--background: #bc8854;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-1 {-->
+<!--position: absolute;-->
+<!--width: 20%;-->
+<!--height: 5%;-->
+<!--left: 12%;-->
+<!--top: 5%;-->
+<!--background: #382716;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-2 {-->
+<!--position: absolute;-->
+<!--width: 25%;-->
+<!--height: 5%;-->
+<!--left: 18%;-->
+<!--top: 17%;-->
+<!--background: #eddfd0;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-3 {-->
+<!--position: absolute;-->
+<!--width: 40%;-->
+<!--height: 5%;-->
+<!--left: 24%;-->
+<!--top: 29%;-->
+<!--background: #28384b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-4 {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 24%;-->
+<!--top: 41%;-->
+<!--background: #382716;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-4a {-->
+<!--position: absolute;-->
+<!--width: 10%;-->
+<!--height: 5%;-->
+<!--left: 58%;-->
+<!--top: 41%;-->
+<!--background: #eddfd0;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-5 {-->
+<!--position: absolute;-->
+<!--width: 15%;-->
+<!--height: 5%;-->
+<!--left: 30%;-->
+<!--top: 53%;-->
+<!--background: #eddfd0;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-5a {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 49%;-->
+<!--top: 53%;-->
+<!--background: #28384b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-6 {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 30%;-->
+<!--top: 65%;-->
+<!--background: #28384b;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-6a {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 64%;-->
+<!--top: 65%;-->
+<!--background: #382716;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-7 {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 18%;-->
+<!--top: 77%;-->
+<!--background: #eddfd0;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.row-text-8 {-->
+<!--position: absolute;-->
+<!--width: 30%;-->
+<!--height: 5%;-->
+<!--left: 12%;-->
+<!--top: 89%;-->
+<!--background: #382716;-->
+<!--z-index: 2;-->
+<!--}-->
+<!--.button-editor-1 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 1%;-->
+<!--top: 1.2%;-->
+<!--background: #f3e9e0;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-editor-2 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 3%;-->
+<!--top: 1.2%;-->
+<!--background: #f3e9e0;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-editor-3 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 5%;-->
+<!--top: 1.2%;-->
+<!--background: #f3e9e0;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-browser-1 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 1%;-->
+<!--top: 51%;-->
+<!--background: #10161e;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-browser-2 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 3%;-->
+<!--top: 51%;-->
+<!--background: #10161e;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-browser-3 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 5%;-->
+<!--top: 51%;-->
+<!--background: #10161e;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.browser-window {-->
+<!--position: absolute;-->
+<!--width: 80%;-->
+<!--height: 44%;-->
+<!--left: 10%;-->
+<!--bottom: 0%;-->
+<!--background: #4f7095;-->
+<!--}-->
+<!--.browser-window::before {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 100%;-->
+<!--height: 20%;-->
+<!--background: #28384b;-->
+<!--}-->
+<!--.browser-window::after {-->
+<!--content: "";-->
+<!--position: absolute;-->
+<!--width: 20%;-->
+<!--height: 12%;-->
+<!--top: 4.5%;-->
+<!--left: 1.5%;-->
+<!--background: #4f7095;-->
+<!--}-->
+<!--.jumbo {-->
+<!--position: absolute;-->
+<!--width: 60%;-->
+<!--height: 22%;-->
+<!--left: 20%;-->
+<!--bottom: 12%;-->
+<!--background: #90a9c4;-->
+<!--}-->
+<!--.button-jumbo-1 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 47%;-->
+<!--top: 85%;-->
+<!--background: #dae2eb;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-jumbo-2 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 49.5%;-->
+<!--top: 85%;-->
+<!--background: #28384b;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.button-jumbo-3 {-->
+<!--position: absolute;-->
+<!--width: 1%;-->
+<!--height: 1.4%;-->
+<!--left: 52%;-->
+<!--top: 85%;-->
+<!--background: #28384b;-->
+<!--z-index: 2;-->
+<!--border-radius: 50%;-->
+<!--}-->
+<!--.thumb-1 {-->
+<!--position: absolute;-->
+<!--width: 19%;-->
+<!--height: 10.5%;-->
+<!--left: 20%;-->
+<!--bottom: 0%;-->
+<!--background: #b5c6d8;-->
+<!--}-->
+<!--.thumb-2 {-->
+<!--position: absolute;-->
+<!--width: 19%;-->
+<!--height: 10.5%;-->
+<!--right: 20%;-->
+<!--bottom: 0%;-->
+<!--background: #7e9bbb;-->
+<!--}-->
+<!--.thumb-3 {-->
+<!--position: absolute;-->
+<!--width: 19%;-->
+<!--height: 10.5%;-->
+<!--left: 40.5%;-->
+<!--bottom: 0%;-->
+<!--background: #dae2eb;-->
+<!--}-->
+<!--</style>-->
+<!--&lt;!&ndash;<div class="laptop-container" style="width: {{labtopHeight}}px; height: {{labtopHeight}}px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="laptop">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="screen">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="sidebar">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="text-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="text-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="text-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="text-4"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="code-content">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-4"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-4"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-4a"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-5"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-5"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-5a"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-6"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-6"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-6a"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-7"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-7"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-number-8"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row-text-8"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-editor-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-editor-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-editor-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-browser-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-browser-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-browser-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="browser-window"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="jumbo"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-jumbo-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-jumbo-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="button-jumbo-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="thumb-1"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="thumb-2"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="thumb-3"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="laptop-base"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<canvas id='q' />&ndash;&gt;-->
+
+<div class="panel">
+    <div class="panel-heading">
+        <div class="panel-title text-primary">
+            影视人物
         </div>
     </div>
-    <div class="laptop-base"></div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+
+                <a ui-sref="person" class="text-danger">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;
+                    <b data-translate="global.menu.entities.person">Person</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-education-background" class="text-dark">
+                    <span class="glyphicon glyphicon-adjust"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personEducationBackground">Person Education Background</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-prize" class="text-dark">
+                    <span class="glyphicon glyphicon-book"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personPrize">Person Prize</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-experience" class="text-dark">
+                    <span class="glyphicon glyphicon-baby-formula"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personExperience">Person Experience</b>
+                </a>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-popularity" class="text-dark">
+                    <span class="glyphicon glyphicon-comment"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personPopularity">Person Popularity</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-innovation" class="text-dark">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personInnovation">Person Innovation</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-connection-level" class="text-dark">
+                    <span class="glyphicon glyphicon-facetime-video"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personConnectionLevel">Person Connection Level</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-region-connection" class="text-dark">
+                    <span class="glyphicon glyphicon-gift"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personRegionConnection">Person Region Connection</b>
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-network-debit" class="text-dark">
+                    <span class="glyphicon glyphicon-dashboard "></span>&nbsp;
+                    <b data-translate="global.menu.entities.personNetworkDebit">Person Network Debit</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-word-cloud" class="text-dark">
+                    <span class="glyphicon glyphicon-blackboard"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personWordCloud">Word Cloud</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-law-business" class="text-dark">
+                    <span class="glyphicon glyphicon-lamp"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personLawBusiness">Person Law Business</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-credit-card-activity" class="text-dark">
+                    <span class="glyphicon glyphicon-credit-card"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personCreditCardActivity">Person Credit Card Activity</b>
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-area-percentage" class="text-dark">
+                    <span class="glyphicon glyphicon-leaf"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personAreaPercentage">Person Area Percentage</b>
+                </a>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-relation" class="text-dark">
+                    <span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personRelation">Person Relation</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-wechat-article" class="text-dark">
+                    <span class="glyphicon glyphicon-flash"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personWechatArticle">Person Wechat Article</b>
+                </a>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-tie-ba" class="text-dark">
+                    <span class="glyphicon glyphicon-bullhorn"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personTieBa">Person Tie Ba</b>
+                </a>
+
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fan-disbribution" class="text-dark">
+                    <span class="glyphicon glyphicon-gift"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFanDisbribution">Person Fan Disbribution</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fan-support-group" class="text-dark">
+                    <span class="glyphicon glyphicon-grain"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFanSupportGroup">Person Fan Support Group</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fan-payment-tool" class="text-dark">
+                    <span class="glyphicon glyphicon-film"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFanPaymentTool">Person Fan Payment Tool</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fans-hobby" class="text-dark">
+                    <span class="glyphicon glyphicon-facetime-video"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFansHobby">Person Fans Hobby</b>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fan-sex" class="text-dark">
+                    <span class="glyphicon glyphicon-knight"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFanSex">Person Fan Sex</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fans-ege-level" class="text-dark">
+                    <span class="glyphicon glyphicon-subscript"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFansEgeLevel">Person Fans Ege Level</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fans-education-level" class="text-dark">
+                    <span class="glyphicon glyphicon-star"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFansEducationLevel">Person Fans Education Level</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-fans-pucharsing-power" class="text-dark">
+                    <span class="glyphicon glyphicon-ice-lolly"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personFansPucharsingPower">Person Fans Pucharsing Power</b>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="fans-purchasing-section" class="text-dark">
+                    <span class="glyphicon glyphicon-briefcase"></span>&nbsp;
+                    <b data-translate="global.menu.entities.fansPurchasingSection">Fans Purchasing Section</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-social-hot-discuss" class="text-dark">
+                    <span class="glyphicon glyphicon-registration-mark"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personSocialHotDiscuss">Person Social Hot Discuss</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-media-show-up-count" class="text-dark">
+                    <span class="glyphicon glyphicon-random"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personMediaShowUpCount">Person Media Show Up Count</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-search-count" class="text-dark">
+                    <span class="glyphicon glyphicon-search"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personSearchCount">Person Search Count</b>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-income" class="text-dark">
+                    <span class="glyphicon glyphicon-usd"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personIncome">Person Income</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-paid-network-debit" class="text-dark">
+                    <span class="glyphicon glyphicon-cd"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personPaidNetworkDebit">Person Paid Network Debit</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-taxi-activity" class="text-dark">
+                    <span class="glyphicon glyphicon-tags"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personTaxiActivity">Person Taxi Activity</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-endorsement" class="text-dark">
+                    <span class="glyphicon glyphicon-credit-card"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personEndorsement">Person Endorsement</b>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-network-texi-activity" class="text-dark">
+                    <span class="glyphicon glyphicon-book"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personNetworkTexiActivity">Person Network Texi Activity</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="network-texi-company" class="text-dark">
+                    <span class="glyphicon glyphicon-blackboard"></span>&nbsp;
+                    <b data-translate="global.menu.entities.networkTexiCompany">Network Texi Company</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-social-media" class="text-dark">
+                    <span class="glyphicon glyphicon-bitcoin"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personSocialMedia">Person Social Media</b>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="person-network-shopping" class="text-dark">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;
+                    <b data-translate="global.menu.entities.personNetworkShopping">Person Network Shopping</b>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-<!--<canvas id='q' />-->
+
+<div class="panel">
+    <div class="panel-heading">
+        <div class="panel-title text-primary">
+            影视人物配置
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="job" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-erase"></span>&nbsp;
+                    <span data-translate="global.menu.entities.job">Job</span>
+                </a>
+
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="media-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-film"></span>&nbsp;
+                    <span data-translate="global.menu.entities.mediaType">Media Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="area-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-ruble"></span>&nbsp;
+                    <span data-translate="global.menu.entities.areaType">Area Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="education-background-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-lock"></span>&nbsp;
+                    <span data-translate="global.menu.entities.educationBackgroundType">Education Background Type</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="prize-level" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-road"></span>&nbsp;
+                    <span data-translate="global.menu.entities.prizeLevel">Prize Level</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="prize-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-subscript"></span>&nbsp;
+                    <span data-translate="global.menu.entities.prizeType">Prize Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="prize-group" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-flash"></span>&nbsp;
+                    <span data-translate="global.menu.entities.prizeGroup">Prize Group</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="popularity-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-inbox"></span>&nbsp;
+                    <span data-translate="global.menu.entities.popularityType">Popularity Type</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="innovation-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-gbp"></span>&nbsp;
+                    <span data-translate="global.menu.entities.innovationType">Innovation Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="connection-level" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-glass"></span>&nbsp;
+                    <span data-translate="global.menu.entities.connectionLevel">Connection Level</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="region" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-fire"></span>&nbsp;
+                    <span data-translate="global.menu.entities.region">Region</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="word-cloud" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-blackboard"></span>&nbsp;
+                    <span data-translate="global.menu.entities.wordCloud">Word Cloud</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="law-business-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-lamp"></span>&nbsp;
+                    <span data-translate="global.menu.entities.lawBusinessType">Law Business Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="credit-card-activity-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-credit-card"></span>&nbsp;
+                    <span data-translate="global.menu.entities.creditCardActivityType">Credit Card Activity Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="network-shopping-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;
+                    <span data-translate="global.menu.entities.networkShoppingType">Network Shopping Type</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="social-media-type" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                    <span data-translate="global.menu.entities.socialMediaType">Social Media Type</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="social-media-attribute-name" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-yen"></span>&nbsp;
+                    <span data-translate="global.menu.entities.socialMediaAttributeName">Social Media Attribute Name</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="network-texi-company" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-baby-formula"></span>&nbsp;
+                    <span data-translate="global.menu.entities.networkTexiCompany">Network Texi Company</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="education-level" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-cloud-download"></span>&nbsp;
+                    <span data-translate="global.menu.entities.educationLevel">Education Level</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="ege-level" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-earphone"></span>&nbsp;
+                    <span data-translate="global.menu.entities.egeLevel">Ege Level</span>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a ui-sref="sex" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                    <span data-translate="global.menu.entities.sex">Sex</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="hobby" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-camera"></span>&nbsp;
+                    <span data-translate="global.menu.entities.hobby">Hobby</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a ui-sref="payment-tool" ng-click="vm.collapseNavbar()">
+                    <span class="glyphicon glyphicon-bishop"></span>&nbsp;
+                    <span data-translate="global.menu.entities.paymentTool">Payment Tool</span>
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+
+            </div>
+        </div>
+        <!--<hr>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-3 text-center">-->
+
+            <!--</div>-->
+            <!--<div class="col-md-3 text-center">-->
+
+            <!--</div>-->
+            <!--<div class="col-md-3 text-center">-->
+
+            <!--</div>-->
+            <!--<div class="col-md-3 text-center">-->
+
+            <!--</div>-->
+        <!--</div>-->
+        <!--<hr>-->
+    </div>
+</div>

@@ -36,6 +36,15 @@
 
         var singleChartWidth = 450;
         var singleChartHeight = 450;
+
+        $scope.totalareaConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+        };
+
         $scope.areaConfig = {
             title: "",
             subtitle: '',
@@ -170,7 +179,7 @@
         PersonAreaPercentage.loadAllTypesData({id: vm.person.id}).$promise.then(function (areas) {
 
             console.debug(areas);
-            
+
             var pageload = {
                 name: "",
                 datapoints: areas

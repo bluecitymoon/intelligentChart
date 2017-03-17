@@ -7,22 +7,22 @@ import java.io.Serializable;
  */
 public class CommonChartData implements Serializable {
 
-    private Integer x;
-    private String y;
+    private Integer y;
+    private String x;
 
-    public Integer getX() {
-        return x;
-    }
-
-    public void setX(Integer x) {
-        this.x = x;
-    }
-
-    public String getY() {
+    public Integer getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(Integer y) {
         this.y = y;
+    }
+
+    public String getX() {
+        return x;
+    }
+
+    public void setX(String x) {
+        this.x = x;
     }
 }
