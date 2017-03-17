@@ -12,6 +12,8 @@
 
 
 spring:
+    profiles:
+            include: swagger
     devtools:
         restart:
             enabled: false
@@ -22,13 +24,14 @@ spring:
         url: jdbc:mysql://localhost:3306/intelligentChart?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
-        password:
+        password: intellijgentchart
         hikari:
+            maximumPoolSize: 100
             data-source-properties:
-                cachePrepStmts: true
+                cachePrepStmts: false
                 prepStmtCacheSize: 250
                 prepStmtCacheSqlLimit: 2048
-                useServerPrepStmts: true
+                useServerPrepStmts: false
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: MYSQL
