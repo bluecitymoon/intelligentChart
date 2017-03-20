@@ -25,7 +25,7 @@
         }
 
         function loadAllByPersonId () {
-            PersonLawBusiness.loadAllByPersonId({
+            PersonNetworkDebit.loadAllByPersonId({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort(),
@@ -44,7 +44,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.personLawBusinesses = data;
+                vm.personNetworkDebits = data;
                 vm.page = pagingParams.page;
             }
 

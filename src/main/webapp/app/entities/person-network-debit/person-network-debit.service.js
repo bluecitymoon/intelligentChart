@@ -41,7 +41,7 @@
                 method: 'GET',
                 isArray: true,
                 url: 'api/person-network-debits/person/:id',
-                params: { id : '@id'}
+                params: { id : '@id', size: 10000}
             }
         });
     }

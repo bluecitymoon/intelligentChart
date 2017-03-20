@@ -25,7 +25,13 @@
                 method: 'GET',
                 isArray: true,
                 url: 'api/person-word-clouds/person/:id',
-                params: { id : '@id'}
+                params: { id : '@id', size: 1000}
+            },
+            'loadCalculatedByPersonId' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-word-clouds/person/calculated/:id',
+                params: { id : '@id', size: 1000}
             }
         });
     }

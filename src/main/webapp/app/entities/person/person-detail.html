@@ -1,6 +1,6 @@
 <div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="panel">
             <div class="text-center pad-all bord-btm">
                 <div class="pad-ver">
@@ -289,7 +289,7 @@
             </div>
             <div class="media-body">
 
-                <div ng-repeat="attribute in attributes" class="col-md-6">
+                <div ng-repeat="attribute in attributes" class="col-md-4">
                     <p class="text-lg mar-no text-bold">{{attribute.socialMediaAttributeName.name}}</p>
                     <p class="mar-no">{{attribute.attributeValue}}</p>
                 </div>
@@ -475,8 +475,430 @@
             </div>
         </div>
 
-        <!-- 贴吧热度 -->
-        <div class="panel widget" ng-repeat="tieba in tiebas">
+
+        <!-- dynamic ends -->
+        <!--</div>-->
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-word-cloud({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-blackboard"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personWordCloud"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <div id="wordsCloud">
+                    <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
+                    </word-cloud>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+
+                <a ui-sref="person-popularity({person_id:vm.person.id})"
+                   class="btn btn-block text-bold">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+                </a>
+
+            </div>
+            <div class="panel-body">
+                <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-innovation({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-connection-level({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-adjust"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personConnectionLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentage"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="totalareaConfig" data="totalAreaData"></pie-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentageCinema"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="areaConfig" data="areaData"></pie-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button type="submit"
+                        ui-sref="person-area-percentage({person_id:vm.person.id})"
+                        class="btn text-bold btn-block ">
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="areaNewMediaConfig" data="areaNewMediaData"></pie-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-region-connection({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personRegionConnection"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="outcomeShoppingConfig" data="outcomeShoppingData"></pie-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-bullhorn"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <pie-chart config="incomeShoppingConfig" data="incomeShoppingData"></pie-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-bishop"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personNetworkTexiActivity"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="networkTaxiConfig" data="networkTexiData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-income({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-adjust"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personIncome"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="incomeConfig" data="incomeData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.overviewPopularity"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <gauge-chart config="overviewPopularityConfig" data="overviewPopularityData"></gauge-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-search-count({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personSearchCount"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <area-chart config="searchCountConfig" data="searchCountData"></area-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fans-pucharsing-power({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-bullhorn"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansPucharsingPower"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <bar-chart config="fansPurchasingConfig" data="fansPuchasingPowerData"></bar-chart>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fans-hobby({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-hourglass"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansHobby"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <radar-chart config="fansHobbyConfig" data="fansHobbyData"></radar-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-payment-tool({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-btc"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanPaymentTool"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansPaymentToolConfig" data="fansPayments"></pie-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanSex"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansAgeLevelConfig" data="fansCount"></pie-chart>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansEgeLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <pie-chart config="fansAgeLevelConfig" data="fansAgeLevel"></pie-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-education"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFansEducationLevel"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+                <bar-chart config="fansEducationBackgroundConfig" data="fansEducationData"></bar-chart>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personFanDisbribution"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <map-chart config="fansDistributionConfig" data="fansDistributionData"></map-chart>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel">
+            <div class="panel-heading">
+                <button ui-sref="person-relation({person_id:vm.person.id})"
+                        class="btn text-bold btn-block">
+                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                    <span class="hidden-xs hidden-sm"
+                          data-translate="global.menu.entities.personRelation"></span>
+                </button>
+            </div>
+            <div class="panel-body">
+
+                <nvd3 options="options" data="personRelationData" class="with-3d-shadow with-transitions"></nvd3>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 贴吧热度 -->
+    <div class="col-md-4" ng-repeat="tieba in tiebas">
+
+        <div class="panel widget">
             <div class="widget-header bg-warning text-center">
                 <h4 class="mar-no pad-top">{{tieba.name}}</h4>
                 <p class="mar-btm">{{tieba.shortDescription}}</p>
@@ -499,423 +921,8 @@
                 </div>
             </div>
         </div>
-        <!-- dynamic ends -->
-        <!--</div>-->
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-word-cloud({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-blackboard"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personWordCloud"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div id="wordsCloud">
-                    <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
-                    </word-cloud>
-                </div>
-            </div>
-        </div>
 
     </div>
 
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-
-                <a ui-sref="person-popularity({person_id:vm.person.id})"
-                   class="btn btn-block text-bold">
-                    <span class="glyphicon glyphicon-comment"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
-                </a>
-
-            </div>
-            <div class="panel-body">
-                <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-innovation({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-cog"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-connection-level({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personConnectionLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentage"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="totalareaConfig" data="totalAreaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentageCinema"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="areaConfig" data="areaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="areaNewMediaConfig" data="areaNewMediaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-region-connection({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personRegionConnection"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-earphone"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="outcomeShoppingConfig" data="outcomeShoppingData"></pie-chart>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bullhorn"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="incomeShoppingConfig" data="incomeShoppingData"></pie-chart>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bishop"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personNetworkTexiActivity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="networkTaxiConfig" data="networkTexiData"></bar-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-income({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personIncome"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="incomeConfig" data="incomeData"></bar-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-floppy-disk"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.overviewPopularity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <gauge-chart config="overviewPopularityConfig" data="overviewPopularityData"></gauge-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-search-count({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-search"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personSearchCount"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <area-chart config="searchCountConfig" data="searchCountData"></area-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fans-pucharsing-power({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bullhorn"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansPucharsingPower"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="fansPurchasingConfig" data="fansPuchasingPowerData"></bar-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fans-hobby({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-hourglass"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansHobby"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <radar-chart config="fansHobbyConfig" data="fansHobbyData"></radar-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-payment-tool({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-btc"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanPaymentTool"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansPaymentToolConfig" data="fansPayments"></pie-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanSex"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansAgeLevelConfig" data="fansCount"></pie-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansEgeLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansAgeLevelConfig" data="fansAgeLevel"></pie-chart>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-education"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansEducationLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <bar-chart config="fansEducationBackgroundConfig" data="fansEducationData"></bar-chart>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanDisbribution"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <map-chart config="fansDistributionConfig" data="fansDistributionData"></map-chart>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-relation({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personRelation"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <nvd3 options="options" data="personRelationData" class="with-3d-shadow with-transitions"></nvd3>
-
-            </div>
-        </div>
-    </div>
 
 </div>

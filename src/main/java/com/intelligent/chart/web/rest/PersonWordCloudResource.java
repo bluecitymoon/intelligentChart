@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +48,48 @@ public class PersonWordCloudResource {
 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-word-clouds");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/person-word-clouds/person/calculated/{id}")
+    @Timed
+    public ResponseEntity<List<PersonWordCloud>> getCalculatedByPersonId(@PathVariable Long id, @ApiParam Pageable pageable)
+        throws URISyntaxException {
+
+        Page<PersonWordCloud> page = personWordCloudRepository.findByPerson_Id(id, pageable);
+
+        List<PersonWordCloud> words = page.getContent();
+
+        int maxCount = 0;
+        for (PersonWordCloud wordCloud: words) {
+
+            if (wordCloud.getCount() != null && wordCloud.getCount()> 0 && wordCloud.getCount() > maxCount) {
+
+                maxCount = wordCloud.getCount();
+            }
+        }
+
+        List<PersonWordCloud> personWordClouds = new ArrayList<>(words.size());
+        for (PersonWordCloud wordCloud: words) {
+
+            PersonWordCloud personWordCloud = new PersonWordCloud();
+            personWordCloud.setWordCloud(wordCloud.getWordCloud());
+            personWordCloud.setId(wordCloud.getId());
+            personWordCloud.setPerson(wordCloud.getPerson());
+
+            if (wordCloud.getCount() != null && wordCloud.getCount() > 0) {
+
+                double rate = 100.0 / maxCount;
+                int newCount = new Double(wordCloud.getCount()  * rate).intValue();
+                personWordCloud.setCount(newCount);
+            } else {
+                personWordCloud.setCount(0);
+            }
+
+            personWordClouds.add(personWordCloud);
+        }
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-word-clouds");
+        return new ResponseEntity<>(personWordClouds, headers, HttpStatus.OK);
     }
 
     /**

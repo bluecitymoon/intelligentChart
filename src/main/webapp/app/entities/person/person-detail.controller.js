@@ -34,8 +34,8 @@
             vm.person = result;
         });
 
-        var singleChartWidth = 450;
-        var singleChartHeight = 450;
+        var singleChartWidth = 300;
+        var singleChartHeight = 300;
 
         $scope.totalareaConfig = {
             title: "",
@@ -57,7 +57,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
         };
 
         $scope.connectionLevelConfig = {
@@ -100,7 +101,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
 
         };
 
@@ -108,7 +110,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
 
         };
 
@@ -116,7 +119,8 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
 
         };
 
@@ -134,7 +138,7 @@
             subtitle: '',
             height: singleChartHeight,
             width: singleChartWidth,
-            theme: 'roma'
+            theme: 'macarons'
 
         };
 
@@ -142,14 +146,16 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
         };
 
         $scope.outcomeShoppingConfig = {
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
         };
 
         $scope.incomeShoppingConfig = {
@@ -164,12 +170,14 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth
+            width: singleChartWidth,
+            theme: 'macarons'
         };
 
         $scope.wordCloud = {
             width: singleChartWidth,
-            height: singleChartHeight - 5
+            height: singleChartHeight - 5,
+            theme: 'macarons'
         };
 
         function handleError(error) {
@@ -235,7 +243,8 @@
                     {
                         indicator: []
                     }
-                ]
+                ],
+                theme: 'macarons'
             };
 
             $scope.innovationData = [
@@ -247,7 +256,8 @@
                             value: [],
                             name: ''
                         }
-                    ]
+                    ],
+                    theme: 'macarons'
                 }
             ];
 
@@ -333,7 +343,7 @@
 
             $scope.connectionRegionConfig = {
 
-                height: 450,
+                height: singleChartHeight,
                 tooltip : {
                     trigger: 'item'
                 },
@@ -349,7 +359,8 @@
                     top: 'bottom',
                     text:['高','低'],
                     calculable : true
-                }
+                },
+                theme: 'macarons'
             };
 
             $scope.connectionRegionData = [
@@ -366,7 +377,8 @@
                             show: true
                         }
                     },
-                    data: regionData
+                    data: regionData,
+                    theme: 'macarons'
                 }
             ];
 
@@ -390,7 +402,7 @@
 
             $scope.fansDistributionConfig = {
 
-                height: 450,
+                height: singleChartHeight,
                 tooltip : {
                     trigger: 'item'
                 },
@@ -407,7 +419,7 @@
                     text:['高','低'],
                     calculable : true
                 },
-                theme: 'infographic'
+                theme: 'macarons'
             };
 
             $scope.fansDistributionData = [
@@ -424,20 +436,21 @@
                             show: true
                         }
                     },
-                    data: regionData
+                    data: regionData,
+                    theme: 'macarons'
                 }
             ];
 
         }, handleError);
 
-        PersonWordCloud.loadAllByPersonId({id: vm.person.id}).$promise.then(function (words) {
+        PersonWordCloud.loadCalculatedByPersonId({id: vm.person.id}).$promise.then(function (words) {
 
             var elements = [];
             angular.forEach(words, function (word) {
 
                 elements.push({
                     text: word.wordCloud.name,
-                    size: word.count
+                    size: word.count -1
                 });
             });
 
@@ -779,8 +792,8 @@
             $scope.options = {
                 chart: {
                     type: 'forceDirectedGraph',
-                    height: 450,
-                    width: singleChartHeight,
+                    height: singleChartHeight,
+                    width: singleChartWidth,
                     color: function(d){
                         return color(d.group)
                     },
