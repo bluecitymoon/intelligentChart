@@ -184,7 +184,20 @@
             console.debug(error);
         }
 
-        PersonAreaPercentage.loadAllTypesData({id: vm.person.id}).$promise.then(function (areas) {
+        // PersonAreaPercentage.loadAllTypesData({id: vm.person.id}).$promise.then(function (areas) {
+        //
+        //     console.debug(areas);
+        //
+        //     var pageload = {
+        //         name: "",
+        //         datapoints: areas
+        //     };
+        //
+        //     $scope.totalAreaData = [pageload];
+        //
+        // }, handleError);
+
+        PersonAreaPercentage.loadAllTypesDataByMedia({id: vm.person.id}).$promise.then(function (areas) {
 
             console.debug(areas);
 
@@ -196,6 +209,8 @@
             $scope.totalAreaData = [pageload];
 
         }, handleError);
+
+
 
         PersonAreaPercentage.loadAllByPersonIdAndType({id: vm.person.id, type: 'cinema'}).$promise.then(function (areas) {
 
@@ -443,7 +458,7 @@
 
         }, handleError);
 
-        PersonWordCloud.loadCalculatedByPersonId({id: vm.person.id}).$promise.then(function (words) {
+        PersonWordCloud.loadAllByPersonId({id: vm.person.id}).$promise.then(function (words) {
 
             var elements = [];
             angular.forEach(words, function (word) {

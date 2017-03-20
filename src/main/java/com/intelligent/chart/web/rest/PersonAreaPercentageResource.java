@@ -65,6 +65,26 @@ public class PersonAreaPercentageResource {
         return new ResponseEntity<>(transformedList, HttpStatus.OK);
     }
 
+    @GetMapping("/person-area-percentages/person/total/{id}/by/media")
+    @Timed
+    public ResponseEntity<List<CommonChartData>> getTotalChartDataWithMediaType(@PathVariable Long id)
+        throws URISyntaxException {
+
+        String countSql = "SELECT sum(a.percentage) as x FROM person_area_percentage a left join media_type b on a.media_type_id = b.id where person_id = " + id + " GROUP BY a.media_type_id";
+        String nameSql = "SELECT b.name  as y FROM person_area_percentage a left join media_type b on a.media_type_id = b.id where person_id = " + id + " GROUP BY a.media_type_id";
+        List<Double> result =  entityManager.createNativeQuery(countSql).getResultList();
+        List<String> names = entityManager.createNativeQuery(nameSql).getResultList();
+        List<CommonChartData> transformedList = new ArrayList<>();
+
+        for (int i = 0; i< result.size(); i++) {
+            CommonChartData commonChartData = new CommonChartData();
+            commonChartData.setY(result.get(i).intValue());
+            commonChartData.setX(names.get(i));
+            transformedList.add(commonChartData);
+        }
+        return new ResponseEntity<>(transformedList, HttpStatus.OK);
+    }
+
     @GetMapping("/person-area-percentages/person/{id}/with/type/{type}")
     @Timed
     public ResponseEntity<List<PersonAreaPercentage>> getAllPersonAreaPercentagesByPersonIdAndType(@PathVariable Long id, @PathVariable String type, @ApiParam Pageable pageable)

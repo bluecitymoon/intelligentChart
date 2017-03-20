@@ -14,9 +14,9 @@
                     ng-model="vm.personWordCloud.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.personWordCloud.count" for="field_count">Count</label>
+            <label class="control-label" data-translate="intelligentChartApp.personWordCloud.count" for="field_count">Count</label> <span class="label label-danger">[1-99]</span>
             <input type="number" class="form-control" name="count" id="field_count"
-                    ng-model="vm.personWordCloud.count"
+                    ng-model="vm.personWordCloud.count" min="1" max="99"
                      />
         </div>
 
@@ -27,10 +27,16 @@
             </select>
         </div>
         <div class="form-group">
-            <label data-translate="intelligentChartApp.personWordCloud.wordCloud" for="field_wordCloud">Word Cloud</label>
-            <select class="form-control" id="field_wordCloud" name="wordCloud" ng-model="vm.personWordCloud.wordCloud" ng-options="wordCloud as wordCloud.name for wordCloud in vm.wordclouds track by wordCloud.id">
-                <option value=""></option>
-            </select>
+            <label data-translate="intelligentChartApp.personWordCloud.wordCloud">Word Cloud</label>
+            <ui-select ng-model="vm.personWordCloud.wordCloud">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices repeat="item in (vm.wordclouds | filter: $select.search) track by item.id">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+            </ui-select>
+
         </div>
     </div>
     <div class="modal-footer">

@@ -38,7 +38,13 @@
                 isArray: true,
                 url: 'api/person-area-percentages/person/total/:id',
                 params: { id : '@id'}
-        }
+            },
+            'loadAllTypesDataByMedia': {
+                method: 'GET',
+                isArray: true,
+                url: 'api/person-area-percentages/person/total/:id/by/media',
+                params: { id : '@id'}
+            }
         });
     }
 })();
