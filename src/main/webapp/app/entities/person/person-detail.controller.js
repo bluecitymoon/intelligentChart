@@ -30,6 +30,11 @@
             datapoints: [ {x: '人气指数', y: vm.person.popularity}]
         }];
 
+        $scope.overviewReputationData = [{
+            name: "",
+            datapoints: [ {x: '信用指数', y: vm.person.reputation}]
+        }];
+
         var unsubscribe = $rootScope.$on('intelligentChartApp:personUpdate', function (event, result) {
             vm.person = result;
         });
@@ -41,7 +46,7 @@
             title: "",
             subtitle: '',
             height: singleChartHeight,
-            width: singleChartWidth,
+            width: singleChartWidth + 20,
             theme: 'macarons'
         };
 
@@ -132,6 +137,15 @@
             theme: 'macarons'
 
         };
+        $scope.overviewReputationConfig = {
+            title: "",
+            subtitle: '',
+            height: singleChartHeight,
+            width: singleChartWidth,
+            theme: 'macarons'
+
+        };
+
 
         $scope.networkTaxiConfig = {
             title: "",
@@ -671,7 +685,7 @@
         PersonFansHobby.loadAllByPersonId({id: vm.person.id}).$promise.then(function (innovations) {
 
             $scope.fansHobbyConfig = {
-                width: singleChartWidth,
+                width: singleChartWidth + 30,
                 height: singleChartHeight,
                 polar: [
                     {

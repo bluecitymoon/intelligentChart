@@ -28,7 +28,8 @@
             "popularity": "Popularity",
             "socialGoodName": "Social Good Name",
             "reputation": "Reputation",
-            "job": "Job"
+            "job": "Job",
+            "reputationData": "reputation"
         }
     }
 }

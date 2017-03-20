@@ -2,7 +2,7 @@
     "intelligentChartApp": {
         "personFansHobby" : {
             "home": {
-                "title": "Person Fans Hobbies",
+                "title": "粉丝喜好",
                 "createLabel": "录入",
                 "createOrEditLabel": "管理",
                 "search": "Search for Person Fans Hobby"
@@ -14,11 +14,11 @@
                 "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Person Fans Hobby"
+                "title": "粉丝喜好"
             },
-            "count": "Count",
-            "person": "Person",
-            "hobby": "Hobby"
+            "count": "数量",
+            "person": "人物",
+            "hobby": "喜好"
         }
     }
 }
