@@ -75,6 +75,7 @@
                 "personWechatArticle": "微信公众号文章刊发量",
                 "personTieBa": "贴吧热度",
                 "personRelation": "人物关系",
+                "person": "人物",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

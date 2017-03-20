@@ -27,7 +27,8 @@
             "detailDescription": "详细介绍",
             "avatar": "头像",
             "popularity": "人气指数",
-            "socialGoodName": "社交美誉"
+            "socialGoodName": "社交美誉",
+            "reputation": "信用指数"
         }
     }
 }

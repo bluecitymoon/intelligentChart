@@ -45,7 +45,7 @@ public class Person implements Serializable {
     @Column(name = "support_taiwan_indepence")
     private Boolean supportTaiwanIndepence;
 
-    @Column(name = "detail", length = 20000)
+    @Column(name = "detail")
     private String detail;
 
     @Column(name = "avatar")
@@ -56,6 +56,9 @@ public class Person implements Serializable {
 
     @Column(name = "social_good_name")
     private String socialGoodName;
+
+    @Column(name = "reputation")
+    private Double reputation;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -215,6 +218,19 @@ public class Person implements Serializable {
         this.socialGoodName = socialGoodName;
     }
 
+    public Double getReputation() {
+        return reputation;
+    }
+
+    public Person reputation(Double reputation) {
+        this.reputation = reputation;
+        return this;
+    }
+
+    public void setReputation(Double reputation) {
+        this.reputation = reputation;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -275,6 +291,7 @@ public class Person implements Serializable {
             ", avatar='" + avatar + "'" +
             ", popularity='" + popularity + "'" +
             ", socialGoodName='" + socialGoodName + "'" +
+            ", reputation='" + reputation + "'" +
             '}';
     }
 }

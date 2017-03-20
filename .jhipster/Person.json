@@ -54,6 +54,10 @@
         {
             "fieldName": "socialGoodName",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "reputation",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20170210023221",
