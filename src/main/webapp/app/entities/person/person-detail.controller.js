@@ -134,7 +134,7 @@
             subtitle: '',
             height: singleChartHeight,
             width: singleChartWidth,
-            theme: 'macarons'
+            theme: 'shine'
 
         };
         $scope.overviewReputationConfig = {

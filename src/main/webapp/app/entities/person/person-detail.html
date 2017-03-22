@@ -1,947 +1,936 @@
-<div>
-
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="text-center pad-all bord-btm">
-                <div class="pad-ver">
-                    <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
-                         class="img-lg img-border img-circle" alt="Profile Picture">
-                </div>
-                <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
-                <p class="text-sm text-muted">
+<div class="col-md-4">
+    <div class="panel">
+        <div class="text-center pad-all bord-btm">
+            <div class="pad-ver">
+                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                     class="img-lg img-border img-circle" alt="Profile Picture">
+            </div>
+            <h4 class="text-lg text-overflow mar-no">{{vm.person.name}}</h4>
+            <p class="text-sm text-muted">
                         <span ng-repeat="job in vm.person.jobs">
                             <a ui-sref="job-detail({id: job.id})">{{job.name}}</a>{{$last ? '' : ', '}}
                         </span>
-                </p>
-            </div>
-            <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
-            <ul class="list-group bg-trans text-sm">
+            </p>
+        </div>
+        <p class="text-semibold text-main pad-all mar-no">详细介绍</p>
+        <ul class="list-group bg-trans text-sm">
 
 
-                <li class="row list-group-item list-item-sm">
-                    <div class="col-md-3">
-                        <b>出生地</b><i class="glyphicon glyphicon-glass"></i>
-                    </div>
-                    <div class="col-md-9">{{vm.person.birthplace}}</div>
-                </li>
-                <li class="row list-group-item list-item-sm">
-                    <div class="col-md-3">
-                        <b>生日</b><i class="glyphicon glyphicon-calendar"></i>
-                    </div>
-                    <div class="col-md-9">
-                        {{vm.person.birthday | date:'mediumDate'}}
-                    </div>
+            <li class="row list-group-item list-item-sm">
+                <div class="col-md-3">
+                    <b>出生地</b><i class="glyphicon glyphicon-glass"></i>
+                </div>
+                <div class="col-md-9">{{vm.person.birthplace}}</div>
+            </li>
+            <li class="row list-group-item list-item-sm">
+                <div class="col-md-3">
+                    <b>生日</b><i class="glyphicon glyphicon-calendar"></i>
+                </div>
+                <div class="col-md-9">
+                    {{vm.person.birthday | date:'mediumDate'}}
+                </div>
 
-                </li>
-                <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
-                    <div class="col-md-3">
-                        <b>政治面貌</b><i class="glyphicon glyphicon-road"></i>
-                    </div>
-                    <div class="col-md-9">
-                        {{vm.person.politicRole}}
-                    </div>
+            </li>
+            <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
+                <div class="col-md-3">
+                    <b>政治面貌</b><i class="glyphicon glyphicon-road"></i>
+                </div>
+                <div class="col-md-9">
+                    {{vm.person.politicRole}}
+                </div>
 
-                </li>
-                <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
-                    <div class="col-md-3">
-                        <b>社交美誉</b><i class="glyphicon glyphicon-music"></i>
-                    </div>
-                    <div class="col-md-9">
-                        {{vm.person.socialGoodName}}
-                    </div>
-                </li>
-            </ul>
-            <div class="pad-hor mar-btm row">
-                <small class="text-muted">{{vm.person.detail}}</small>
-            </div>
-
+            </li>
+            <li class="row list-group-item list-item-sm" ng-if="vm.person.politicRole">
+                <div class="col-md-3">
+                    <b>社交美誉</b><i class="glyphicon glyphicon-music"></i>
+                </div>
+                <div class="col-md-9">
+                    {{vm.person.socialGoodName}}
+                </div>
+            </li>
+        </ul>
+        <div class="pad-hor mar-btm row">
+            <small class="text-muted">{{vm.person.detail}}</small>
         </div>
 
-        <div class="panel">
-            <div class="panel-heading">
+    </div>
+</div>
 
-            </div>
-            <div class="panel-body">
-
-                <div class="timeline">
-
-                    <div class="timeline-header">
-                        <div class="timeline-header-title bg-pink">
-                            <a ui-sref="person-experience({person_id:vm.person.id})"
-                               class="text-semibold text-main pad-all mar-no"><span class="hidden-xs hidden-sm"
-                                                                                    data-translate="global.menu.entities.personExperience"></span></a>
-
-                        </div>
-                    </div>
-                    <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
-                        <div class="timeline-stat">
-
-                            <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
-                                     alt="Profile Picture">
-                            </div>
-                            <div class="timeline-time">
-                                {{exp.expYear}}
-                            </div>
-                        </div>
-                        <div class="timeline-label">{{exp.description}}</div>
-                    </div>
-                </div>
-
-            </div>
+<!-- education -->
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-education-background({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-adjust"></span>
+                <span 
+                      data-translate="global.menu.entities.personEducationBackground"></span>
+            </button>
         </div>
+        <div class="panel-body">
 
-        <div class="panel panel-trans">
-            <div class="panel-heading">
-                <button ui-sref="person-education-background({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personEducationBackground"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+            <div ng-repeat="(key, value) in personEducationBackgrounds | groupBy: 'educationBackgroundType.name'">
 
-                <div ng-repeat="(key, value) in personEducationBackgrounds | groupBy: 'educationBackgroundType.name'">
-
-                    <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
-                        <strong>{{key}}</strong>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="jh-table table table-striped">
-                            <tbody>
-                            <tr class="text-center" ng-repeat="personEducationBackground in value track by $index">
-
-                                <td>{{personEducationBackground.startDate | date:'mediumDate'}}</td>
-                                <td ng-if="personEducationBackground.endDate">至</td>
-                                <td>{{personEducationBackground.endDate | date:'mediumDate'}}</td>
-                                <td><strong>{{personEducationBackground.description}}</strong></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
+                    <strong>{{key}}</strong>
                 </div>
 
-            </div>
-        </div>
-        <!-- 法务-->
-        <div class="panel media middle" ng-repeat="lb in lawBusinesses">
-            <div class="media-left bg-primary pad-all">
-                <div style="width: 48px; height: 48px">
-                    <b>{{lb.lawBusinessType.name}}</b>
-                </div>
-            </div>
-            <div class="media-body pad-lft">
-                <p class="text-muted mar-no">{{lb.descriptions}}</p>
-            </div>
-        </div>
-
-        <!-- 获奖记录 -->
-        <div class="panel panel-trans">
-            <div class="panel-heading">
-                <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-book"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPrize"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div ng-repeat="(key, subPrizes) in prizes">
-
-                    <h4>
-                        <strong>{{key}}</strong>
-                    </h4>
-
-                    <div ng-repeat="(group, element) in subPrizes | groupBy: 'prizeGroup.name'">
-
-                        <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
-                            <strong>{{group}}</strong>
-                        </div>
-
-                        <div class="table-responsive">
-                            <table class="jh-table table table-striped">
-                                <tbody>
-                                <tr class="text-center" ng-repeat="sp in subPrizes track by $index">
-
-                                    <td>{{sp.prizeDate | date:'mediumDate'}}</td>
-                                    <td>{{sp.name}}</td>
-                                    <td><strong>{{sp.prizeLevel.name}}</strong></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 信用记录 -->
-        <!--<div class="col-md-4">-->
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-credit-card-activity({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-credit-card"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personCreditCardActivity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div class="timeline">
-
-                    <div class="timeline-entry" ng-repeat="cca in creditCardActivities | orderBy: 'createDate'">
-                        <div class="timeline-stat">
-
-                            <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
-                                     alt="Profile Picture">
-                            </div>
-                            <div class="timeline-time">
-                                {{cca.createDate}}
-                            </div>
-                        </div>
-                        <div class="timeline-label">
-                            <small>{{cca.creditCardActivityType.name}}</small>
-                            <b>{{cca.amount}}</b>元
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 网络借贷记录-->
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-dashboard"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personNetworkDebit"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div class="timeline">
-
-                    <div class="timeline-entry" ng-repeat="debits in networkDebits | orderBy: 'createDate'">
-                        <div class="timeline-stat">
-
-                            <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
-                                     alt="Profile Picture">
-                            </div>
-                            <div class="timeline-time">
-                                {{debits.createDate}}
-                            </div>
-                        </div>
-                        <div class="timeline-label">
-                            <small>借贷</small>
-                            <b>{{debits.amount}}</b>元
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 网络还贷记录-->
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-paid-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-education"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPaidNetworkDebit"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div class="timeline">
-
-                    <div class="timeline-entry" ng-repeat="debits in paidNetworkDebits | orderBy: 'createDate'">
-                        <div class="timeline-stat">
-
-                            <div class="timeline-icon">
-                                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
-                                     alt="Profile Picture">
-                            </div>
-                            <div class="timeline-time">
-                                {{debits.createDate}}
-                            </div>
-                        </div>
-                        <div class="timeline-label">
-                            <small>还贷</small>
-                            <b>{{debits.amount}}</b>元
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}"
-             ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
-            <div class="media-left pad-all">
-                <div style="width: 48px; height: 48px" class="text-lg">
-                    <b>{{socialMediaTypeName}}</b>
-                </div>
-            </div>
-            <div class="media-body">
-
-                <div ng-repeat="attribute in attributes" class="col-md-4">
-                    <p class="text-lg mar-no text-bold">{{attribute.socialMediaAttributeName.name}}</p>
-                    <p class="mar-no">{{attribute.attributeValue}}</p>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 违章记录 -->
-        <div ng-repeat="endorsement in endorsements">
-
-            <div class="panel">
-
-                <div class="panel-heading">
-                    <button ui-sref="person-endorsement({person_id:vm.person.id})"
-                            class="btn text-bold btn-block">
-                        <span class="glyphicon glyphicon-flag"></span>
-                        <span class="hidden-xs hidden-sm"
-                              data-translate="global.menu.entities.personEndorsement"></span>
-                    </button>
-                </div>
-                <div class="panel-body">
-
-                    <div class="list-group row">
-                        <div class="list-group-item col-md-3 disabled">序号</div>
-                        <div class="list-group-item col-md-3">{{endorsement.seqNumber}}</div>
-                        <div class="list-group-item col-md-3 disabled">金额</div>
-                        <div class="list-group-item col-md-3">{{endorsement.paidAmount}}</div>
-
-                    </div>
-                    <div class="list-group row">
-                        <div class="list-group-item col-md-3 disabled">时间</div>
-                        <div class="list-group-item col-md-9">{{endorsement.createDate | date:'medium'}}</div>
-
-                    </div>
-                    <div class="list-group row">
-                        <div class="list-group-item col-md-3 disabled">地址</div>
-                        <div class="list-group-item col-md-9">{{endorsement.address}}</div>
-
-                    </div>
-                    <div class="list-group row">
-                        <div class="list-group-item col-md-3 disabled">行为</div>
-                        <div class="list-group-item col-md-9">{{endorsement.behaviorDescription}}</div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- 打车记录  taxiActivities -->
-        <div class="panel">
-
-            <div class="panel-heading">
-                <button ui-sref="person-taxi-activity({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-flag"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personTaxiActivity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <div ng-repeat="activity in taxiActivities" style="margin-top: 5px">
-
-                    <b class="text-3x col-md-3">
-                        ￥{{activity.paidAmount}}
-                    </b>
-                    <div class="col-md-8 col-md-offset-1">
-                        <small>{{activity.createDate | date :'medium'}}</small>
-                        <ul>
-                            <li><b>{{activity.startPlace}}</b></li>
-                            <li><b>{{activity.destination}}</b></li>
-                        </ul>
-                    </div>
-
-                    <label class="label-mint col-md-12"></label>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- 社交热议 -->
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-media-show-up-count({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-search"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personMediaShowUpCount"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <area-chart config="searchCountConfig" data="mediaShowupData"></area-chart>
-
-                <div class="list-group">
-                    <a ui-sref="person-social-hot-discuss({person_id:vm.person.id})" class="list-group-item" ng-repeat="disscuss in hotDiscusses">
-                        <h4 class="list-group-item-heading">{{disscuss.articleTitle}}<p class="text-xs" style="float: right">{{disscuss.articleCount}}条相关</p></h4>
-                        <p class="list-group-item-text">{{disscuss.mediaName}} {{disscuss.createDate | date: 'medium'}}</p>
-                    </a>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!--<div class="panel">-->
-
-            <!--<div class="panel-heading">-->
-                <!--<button ui-sref="person-social-hot-discuss({person_id:vm.person.id})"-->
-                        <!--class="btn text-bold btn-block">-->
-                    <!--<span class="glyphicon glyphicon-user"></span>-->
-                    <!--<span class="hidden-xs hidden-sm"-->
-                          <!--data-translate="global.menu.entities.personSocialHotDiscuss"></span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="panel-body">-->
-
-                <!--<div class="list-group">-->
-                    <!--<a href="#" class="list-group-item" ng-repeat="disscuss in hotDiscusses">-->
-                        <!--<h4 class="list-group-item-heading">{{disscuss.articleTitle}}<p class="text-xs" style="float: right">{{disscuss.articleCount}}条相关</p></h4>-->
-                        <!--<p class="list-group-item-text">{{disscuss.mediaName}} {{disscuss.createDate | date: 'medium'}}</p>-->
-                    <!--</a>-->
-
-                <!--</div>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
-        <!-- 粉丝应援团建设 -->
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-support-group({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-copyright-mark"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanSupportGroup"></span>
-                </button>
-            </div>
-            <div class="panel-body">
                 <div class="table-responsive">
                     <table class="jh-table table table-striped">
-                        <thead>
-                            <th>排名</th>
-                            <th>粉丝团名称</th>
-                            <th>团长</th>
-                            <th>粉丝数量</th>
-                        </thead>
                         <tbody>
-                        <tr ng-repeat="group in fanGroups track by $index">
-                            <td>{{$index + 1}}</td>
-                            <td><b>{{group.name}}</b></td>
-                            <td>{{group.leader}}</td>
-                            <td>{{group.fansCount}}</td>
+                        <tr class="text-center" ng-repeat="personEducationBackground in value track by $index">
+
+                            <td>{{personEducationBackground.startDate | date:'mediumDate'}}</td>
+                            <td ng-if="personEducationBackground.endDate">至</td>
+                            <td>{{personEducationBackground.endDate | date:'mediumDate'}}</td>
+                            <td><strong>{{personEducationBackground.description}}</strong></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- 微信公众号文章刊发量 -->
-        <div class="panel panel-bordered-purple">
-            <div class="panel-heading">
-                <button ui-sref="person-wechat-article({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-qrcode"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personWechatArticle"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <div class="list-group">
-                    <div class="list-group-item text-center" style="border-width: 0px">
-                        <p class="text-warning text-5x text-bold">{{lastestWechatAriticle.count}}</p> <p class="list-group-item-text">比上个月增加了<b>{{lastestWechatAriticle.increadByLastMonth}}</b>人</p>
-                    </div>
-                    <div class="list-group-item text-center" style="border-width: 0px">
-                        <p class="list-group-item-text">评估时间 : {{lastestWechatAriticle.createDate | date: 'yyyy年MM月dd日'}}</p>
-                    </div>
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-baby-formula"></span>&nbsp;
+                <span data-translate="global.menu.entities.personExperience">Person Experience</span>
+            </button>
+        </div>
+        <div class="panel-body">
 
+            <div class="timeline">
+
+                <div class="timeline-header">
+                    <div class="timeline-header-title bg-pink">
+                        <a ui-sref="person-experience({person_id:vm.person.id})"
+                           class="text-semibold text-main pad-all mar-no"><span 
+                                                                                data-translate="global.menu.entities.personExperience"></span></a>
+
+                    </div>
+                </div>
+                <div class="timeline-entry" ng-repeat="exp in experiences | orderBy: 'expYear'">
+                    <div class="timeline-stat">
+
+                        <div class="timeline-icon">
+                            <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                                 alt="Profile Picture">
+                        </div>
+                        <div class="timeline-time">
+                            {{exp.expYear}}
+                        </div>
+                    </div>
+                    <div class="timeline-label">{{exp.description}}</div>
                 </div>
             </div>
+
         </div>
+    </div>
+</div>
 
+<div class="col-md-4">
 
-        <!-- dynamic ends -->
-        <!--</div>-->
+    <div class="panel">
+        <div class="panel-heading">
+
+            <a ui-sref="person-popularity({person_id:vm.person.id})"
+               class="btn btn-block text-bold">
+                <span class="glyphicon glyphicon-comment"></span>
+                <span  data-translate="global.menu.entities.personPopularity"></span>
+            </a>
+
+        </div>
+        <div class="panel-body">
+            <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
+        </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-word-cloud({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-blackboard"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personWordCloud"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+</div>
 
-                <div id="wordsCloud">
-                    <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
-                    </word-cloud>
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-connection-level({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-adjust"></span>
+                <span 
+                      data-translate="global.menu.entities.personConnectionLevel"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button type="submit"
+                    ui-sref="person-area-percentage({person_id:vm.person.id})"
+                    class="btn text-bold btn-block ">
+                <span class="glyphicon glyphicon-leaf"></span>
+                <span 
+                      data-translate="global.menu.entities.personAreaPercentage"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <pie-chart config="totalareaConfig" data="totalAreaData"></pie-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button type="submit"
+                    ui-sref="person-area-percentage({person_id:vm.person.id})"
+                    class="btn text-bold btn-block ">
+                <span class="glyphicon glyphicon-leaf"></span>
+                <span 
+                      data-translate="global.menu.entities.personAreaPercentageCinema"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <pie-chart config="areaConfig" data="areaData"></pie-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button type="submit"
+                    ui-sref="person-area-percentage({person_id:vm.person.id})"
+                    class="btn text-bold btn-block ">
+                <span class="glyphicon glyphicon-leaf"></span>
+                <span 
+                      data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <pie-chart config="areaNewMediaConfig" data="areaNewMediaData"></pie-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+
+    <!-- 获奖记录 -->
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-prize({person_id:vm.person.id})" class="btn text-bold btn-block ">
+                <span class="glyphicon glyphicon-book"></span>
+                <span  data-translate="global.menu.entities.personPrize"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <div ng-repeat="(key, subPrizes) in prizes">
+
+                <h4>
+                    <strong>{{key}}</strong>
+                </h4>
+
+                <div ng-repeat="(group, element) in subPrizes | groupBy: 'prizeGroup.name'">
+
+                    <div class="fixed-fluid text-center bg-info" style="padding: 0.5em; font-size: small">
+                        <strong>{{group}}</strong>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="jh-table table table-striped">
+                            <tbody>
+                            <tr class="text-center" ng-repeat="sp in subPrizes track by $index">
+
+                                <td>{{sp.prizeDate | date:'mediumDate'}}</td>
+                                <td>{{sp.name}}</td>
+                                <td><strong>{{sp.prizeLevel.name}}</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-income({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-adjust"></span>
+                <span 
+                      data-translate="global.menu.entities.personIncome"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <bar-chart config="incomeConfig" data="incomeData"></bar-chart>
+
+        </div>
     </div>
 
-    <div class="col-md-4">
+</div>
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button type="submit"
+                    ui-sref="person-innovation({person_id:vm.person.id})"
+                    class="btn text-bold btn-block ">
+                <span class="glyphicon glyphicon-cog"></span>
+                <span  data-translate="global.menu.entities.personInnovation"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+            <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
+        </div>
+    </div>
+</div>
 
-        <div class="panel">
-            <div class="panel-heading">
+<div class="col-md-4">
 
-                <a ui-sref="person-popularity({person_id:vm.person.id})"
-                   class="btn btn-block text-bold">
-                    <span class="glyphicon glyphicon-comment"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personPopularity"></span>
+    <div class="panel">
+        <div class="panel-heading">
+            <button class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                <span 
+                      data-translate="global.menu.entities.overviewPopularity"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <gauge-chart config="overviewPopularityConfig" data="overviewPopularityData"></gauge-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 搜索指数 -->
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-search-count({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-search"></span>
+                <span 
+                      data-translate="global.menu.entities.personSearchCount"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <area-chart config="searchCountConfig" data="searchCountData"></area-chart>
+
+        </div>
+    </div>
+
+</div>
+<!-- 社交热议 -->
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-media-show-up-count({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-search"></span>
+                <span 
+                      data-translate="global.menu.entities.personMediaShowUpCount"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <area-chart config="searchCountConfig" data="mediaShowupData"></area-chart>
+
+            <div class="list-group">
+                <a ui-sref="person-social-hot-discuss({person_id:vm.person.id})" class="list-group-item"
+                   ng-repeat="disscuss in hotDiscusses">
+                    <h4 class="list-group-item-heading">{{disscuss.articleTitle}}<p class="text-xs"
+                                                                                    style="float: right">
+                        {{disscuss.articleCount}}条相关</p></h4>
+                    <p class="list-group-item-text">{{disscuss.mediaName}} {{disscuss.createDate | date: 'medium'}}</p>
                 </a>
 
             </div>
-            <div class="panel-body">
-                <pie-chart config="popularityConfig" data="popularityData"></pie-chart>
-            </div>
-        </div>
 
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-innovation({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-cog"></span>
-                    <span class="hidden-xs hidden-sm" data-translate="global.menu.entities.personInnovation"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <radar-chart config="innovationConfig" data="innovationData"></radar-chart>
-            </div>
         </div>
     </div>
 
-    <div class="col-md-4">
+</div>
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-connection-level({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personConnectionLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="connectionLevelConfig" data="connectionLevelData"></bar-chart>
-
-            </div>
+<div class="col-md-4">
+    <!-- 微信公众号文章刊发量 -->
+    <div class="panel panel-bordered-purple">
+        <div class="panel-heading">
+            <button ui-sref="person-wechat-article({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-qrcode"></span>
+                <span 
+                      data-translate="global.menu.entities.personWechatArticle"></span>
+            </button>
         </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentage"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="totalareaConfig" data="totalAreaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentageCinema"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="areaConfig" data="areaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button type="submit"
-                        ui-sref="person-area-percentage({person_id:vm.person.id})"
-                        class="btn text-bold btn-block ">
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personAreaPercentageNewMedia"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="areaNewMediaConfig" data="areaNewMediaData"></pie-chart>
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-region-connection({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personRegionConnection"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+        <div class="panel-body">
+            <div class="list-group">
+                <div class="list-group-item text-center" style="border-width: 0px">
+                    <p class="text-warning text-5x text-bold">{{lastestWechatAriticle.count}}</p> <p class="list-group-item-text">比上个月增加了<b>{{lastestWechatAriticle.increadByLastMonth}}</b>人</p>
+                </div>
+                <div class="list-group-item text-center" style="border-width: 0px">
+                    <p class="list-group-item-text">评估时间 : {{lastestWechatAriticle.createDate | date: 'yyyy年MM月dd日'}}</p>
+                </div>
 
             </div>
         </div>
     </div>
+</div>
+<!-- 贴吧热度 -->
+<div class="col-md-4" ng-repeat="tieba in tiebas">
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-earphone"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <pie-chart config="outcomeShoppingConfig" data="outcomeShoppingData"></pie-chart>
-
+    <div class="panel widget">
+        <div class="widget-header bg-warning text-center">
+            <h4 class="mar-no pad-top">{{tieba.name}}</h4>
+            <p class="mar-btm">{{tieba.shortDescription}}</p>
+        </div>
+        <div class="widget-body">
+            <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="widget-img img-circle img-border-light">
+            <div class="list-group bg-trans mar-no">
+                <a class="list-group-item list-item-sm" href="#">
+                    <span class="label label-primary pull-right">{{tieba.userCount}}</span>
+                    贴吧用户数
+                </a>
+                <a class="list-group-item list-item-sm" href="#">
+                    <span class="label label-success pull-right">{{tieba.postCount}}</span>
+                    帖子数
+                </a>
+                <a class="list-group-item list-item-sm" href="#">
+                    <span class="label label-danger pull-right">{{tieba.rank}}</span>
+                    {{tieba.rankDescription}}
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-shopping({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bullhorn"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+</div>
 
-                <pie-chart config="incomeShoppingConfig" data="incomeShoppingData"></pie-chart>
+<div class="col-md-4">
 
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span 
+                      data-translate="global.menu.entities.personFanSex"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+            <pie-chart config="fansAgeLevelConfig" data="fansCount"></pie-chart>
         </div>
     </div>
 
-    <div class="col-md-4">
+</div>
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bishop"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personNetworkTexiActivity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+<div class="col-md-4">
 
-                <bar-chart config="networkTaxiConfig" data="networkTexiData"></bar-chart>
-
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <span 
+                      data-translate="global.menu.entities.personFansEgeLevel"></span>
+            </button>
         </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-income({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-adjust"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personIncome"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="incomeConfig" data="incomeData"></bar-chart>
-
-            </div>
+        <div class="panel-body">
+            <pie-chart config="fansAgeLevelConfig" data="fansAgeLevel"></pie-chart>
         </div>
-
     </div>
+</div>
 
-    <div class="col-md-4">
+<div class="col-md-4">
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-duplicate"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="intelligentChartApp.person.reputation"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <gauge-chart config="overviewReputationConfig" data="overviewReputationData"></gauge-chart>
-
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fan-sex({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-education"></span>
+                <span 
+                      data-translate="global.menu.entities.personFansEducationLevel"></span>
+            </button>
         </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-floppy-disk"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.overviewPopularity"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <gauge-chart config="overviewPopularityConfig" data="overviewPopularityData"></gauge-chart>
-
-            </div>
+        <div class="panel-body">
+            <bar-chart config="fansEducationBackgroundConfig" data="fansEducationData"></bar-chart>
         </div>
-
     </div>
+</div>
 
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-search-count({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-search"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personSearchCount"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <area-chart config="searchCountConfig" data="searchCountData"></area-chart>
-
-            </div>
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-gift"></span>
+                <span 
+                      data-translate="global.menu.entities.personFanDisbribution"></span>
+            </button>
         </div>
+        <div class="panel-body">
 
-    </div>
+            <map-chart config="fansDistributionConfig" data="fansDistributionData"></map-chart>
 
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fans-pucharsing-power({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-bullhorn"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansPucharsingPower"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-
-                <bar-chart config="fansPurchasingConfig" data="fansPuchasingPowerData"></bar-chart>
-
-            </div>
         </div>
-
     </div>
+</div>
 
-    <div class="col-md-4">
+<div class="col-md-4">
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fans-hobby({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-hourglass"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansHobby"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <radar-chart config="fansHobbyConfig" data="fansHobbyData"></radar-chart>
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fans-hobby({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-hourglass"></span>
+                <span 
+                      data-translate="global.menu.entities.personFansHobby"></span>
+            </button>
         </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-payment-tool({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-btc"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanPaymentTool"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansPaymentToolConfig" data="fansPayments"></pie-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanSex"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansAgeLevelConfig" data="fansCount"></pie-chart>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansEgeLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <pie-chart config="fansAgeLevelConfig" data="fansAgeLevel"></pie-chart>
-            </div>
+        <div class="panel-body">
+            <radar-chart config="fansHobbyConfig" data="fansHobbyData"></radar-chart>
         </div>
     </div>
 
-    <div class="col-md-4">
+</div>
+<div class="col-md-4">
 
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-sex({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-education"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFansEducationLevel"></span>
-                </button>
-            </div>
-            <div class="panel-body">
-                <bar-chart config="fansEducationBackgroundConfig" data="fansEducationData"></bar-chart>
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fans-pucharsing-power({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-bullhorn"></span>
+                <span 
+                      data-translate="global.menu.entities.personFansPucharsingPower"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <bar-chart config="fansPurchasingConfig" data="fansPuchasingPowerData"></bar-chart>
+
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-fan-disbribution({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-gift"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personFanDisbribution"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+</div>
 
-                <map-chart config="fansDistributionConfig" data="fansDistributionData"></map-chart>
+<div class="col-md-4">
 
-            </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-fan-payment-tool({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-btc"></span>
+                <span 
+                      data-translate="global.menu.entities.personFanPaymentTool"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+            <pie-chart config="fansPaymentToolConfig" data="fansPayments"></pie-chart>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel">
-            <div class="panel-heading">
-                <button ui-sref="person-relation({person_id:vm.person.id})"
-                        class="btn text-bold btn-block">
-                    <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                    <span class="hidden-xs hidden-sm"
-                          data-translate="global.menu.entities.personRelation"></span>
-                </button>
-            </div>
-            <div class="panel-body">
+</div>
 
-                <nvd3 options="options" data="personRelationData" class="with-3d-shadow with-transitions"></nvd3>
-
-            </div>
+<div class="col-md-4">
+<div class="panel">
+    <div class="panel-heading">
+        <button ui-sref="person-fan-support-group({person_id:vm.person.id})"
+                class="btn text-bold btn-block">
+            <span class="glyphicon glyphicon-copyright-mark"></span>
+            <span 
+                  data-translate="global.menu.entities.personFanSupportGroup"></span>
+        </button>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                <th>排名</th>
+                <th>粉丝团名称</th>
+                <th>团长</th>
+                <th>粉丝数量</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="group in fanGroups track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td><b>{{group.name}}</b></td>
+                    <td>{{group.leader}}</td>
+                    <td>{{group.fansCount}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="panel">
+    <div class="panel-heading">
+        <button ui-sref="person-credit-card-activity({person_id:vm.person.id})"
+                class="btn text-bold btn-block ">
+            <span class="glyphicon glyphicon-credit-card"></span>
+            <span 
+                  data-translate="global.menu.entities.personCreditCardActivity"></span>
+        </button>
+    </div>
+    <div class="panel-body">
 
-    <!-- 贴吧热度 -->
-    <div class="col-md-4" ng-repeat="tieba in tiebas">
+        <div class="timeline">
 
-        <div class="panel widget">
-            <div class="widget-header bg-warning text-center">
-                <h4 class="mar-no pad-top">{{tieba.name}}</h4>
-                <p class="mar-btm">{{tieba.shortDescription}}</p>
-            </div>
-            <div class="widget-body">
-                <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}" class="widget-img img-circle img-border-light">
-                <div class="list-group bg-trans mar-no">
-                    <a class="list-group-item list-item-sm" href="#">
-                        <span class="label label-primary pull-right">{{tieba.userCount}}</span>
-                        贴吧用户数
-                    </a>
-                    <a class="list-group-item list-item-sm" href="#">
-                        <span class="label label-success pull-right">{{tieba.postCount}}</span>
-                        帖子数
-                    </a>
-                    <a class="list-group-item list-item-sm" href="#">
-                        <span class="label label-danger pull-right">{{tieba.rank}}</span>
-                        {{tieba.rankDescription}}
-                    </a>
+            <div class="timeline-entry" ng-repeat="cca in creditCardActivities | orderBy: 'createDate'">
+                <div class="timeline-stat">
+
+                    <div class="timeline-icon">
+                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="timeline-time">
+                        {{cca.createDate}}
+                    </div>
+                </div>
+                <div class="timeline-label">
+                    <small>{{cca.creditCardActivityType.name}}</small>
+                    <b>{{cca.amount}}</b>元
                 </div>
             </div>
         </div>
 
     </div>
+</div>
+</div>
+<!-- 网络借贷记录-->
+<div class="col-md-4">
+<div class="panel">
+    <div class="panel-heading">
+        <button ui-sref="person-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
+            <span class="glyphicon glyphicon-dashboard"></span>
+            <span  data-translate="global.menu.entities.personNetworkDebit"></span>
+        </button>
+    </div>
+    <div class="panel-body">
 
+        <div class="timeline">
 
+            <div class="timeline-entry" ng-repeat="debits in networkDebits | orderBy: 'createDate'">
+                <div class="timeline-stat">
+
+                    <div class="timeline-icon">
+                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="timeline-time">
+                        {{debits.createDate}}
+                    </div>
+                </div>
+                <div class="timeline-label">
+                    <small>借贷</small>
+                    <b>{{debits.amount}}</b>元
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- 网络还贷记录-->
+<div class="col-md-4">
+<div class="panel">
+    <div class="panel-heading">
+        <button ui-sref="person-paid-network-debit({person_id:vm.person.id})" class="btn text-bold btn-block ">
+            <span class="glyphicon glyphicon-education"></span>
+            <span  data-translate="global.menu.entities.personPaidNetworkDebit"></span>
+        </button>
+    </div>
+    <div class="panel-body">
+
+        <div class="timeline">
+
+            <div class="timeline-entry" ng-repeat="debits in paidNetworkDebits | orderBy: 'createDate'">
+                <div class="timeline-stat">
+
+                    <div class="timeline-icon">
+                        <img src="{{vm.person.avatar || 'content/images/default-avatar.png'}}"
+                             alt="Profile Picture">
+                    </div>
+                    <div class="timeline-time">
+                        {{debits.createDate}}
+                    </div>
+                </div>
+                <div class="timeline-label">
+                    <small>还贷</small>
+                    <b>{{debits.amount}}</b>元
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="panel media middle panel-colorful panel-{{attributes[0].socialMediaType.style}}"
+     ng-repeat="(socialMediaTypeName, attributes) in socialMediaAttributes">
+    <div class="media-left pad-all">
+        <div style="width: 48px; height: 48px" class="text-lg">
+            <b>{{socialMediaTypeName}}</b>
+        </div>
+    </div>
+    <div class="media-body">
+
+        <div ng-repeat="attribute in attributes" class="col-md-4">
+            <p class="text-lg mar-no text-bold">{{attribute.socialMediaAttributeName.name}}</p>
+            <p class="mar-no">{{attribute.attributeValue}}</p>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-duplicate"></span>
+                <span 
+                      data-translate="intelligentChartApp.person.reputation"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <gauge-chart config="overviewReputationConfig" data="overviewReputationData"></gauge-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-earphone"></span>
+                <span 
+                      data-translate="global.menu.entities.personOutcomeNetworkShopping"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <pie-chart config="outcomeShoppingConfig" data="outcomeShoppingData"></pie-chart>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-network-shopping({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-bullhorn"></span>
+                <span 
+                      data-translate="global.menu.entities.personIncomeNetworkShopping"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <pie-chart config="incomeShoppingConfig" data="incomeShoppingData"></pie-chart>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-network-texi-activity({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-bishop"></span>
+                <span 
+                      data-translate="global.menu.entities.personNetworkTexiActivity"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <bar-chart config="networkTaxiConfig" data="networkTexiData"></bar-chart>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+<div class="panel">
+
+    <div class="panel-heading">
+        <button ui-sref="person-taxi-activity({person_id:vm.person.id})"
+                class="btn text-bold btn-block">
+            <span class="glyphicon glyphicon-flag"></span>
+            <span 
+                  data-translate="global.menu.entities.personTaxiActivity"></span>
+        </button>
+    </div>
+    <div class="panel-body">
+
+        <div ng-repeat="activity in taxiActivities" style="margin-top: 5px">
+
+            <b class="text-3x col-md-3">
+                ￥{{activity.paidAmount}}
+            </b>
+            <div class="col-md-8 col-md-offset-1">
+                <small>{{activity.createDate | date :'medium'}}</small>
+                <ul>
+                    <li><b>{{activity.startPlace}}</b></li>
+                    <li><b>{{activity.destination}}</b></li>
+                </ul>
+            </div>
+
+            <label class="label-mint col-md-12"></label>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- 违章记录 -->
+<div class="col-md-4" ng-repeat="endorsement in endorsements">
+
+    <div class="panel">
+
+        <div class="panel-heading">
+            <button ui-sref="person-endorsement({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-flag"></span>
+                <span 
+                      data-translate="global.menu.entities.personEndorsement"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <div class="list-group row">
+                <div class="list-group-item col-md-3 disabled">序号</div>
+                <div class="list-group-item col-md-3">{{endorsement.seqNumber}}</div>
+                <div class="list-group-item col-md-3 disabled">金额</div>
+                <div class="list-group-item col-md-3">{{endorsement.paidAmount}}</div>
+
+            </div>
+            <div class="list-group row">
+                <div class="list-group-item col-md-3 disabled">时间</div>
+                <div class="list-group-item col-md-9">{{endorsement.createDate | date:'medium'}}</div>
+
+            </div>
+            <div class="list-group row">
+                <div class="list-group-item col-md-3 disabled">地址</div>
+                <div class="list-group-item col-md-9">{{endorsement.address}}</div>
+
+            </div>
+            <div class="list-group row">
+                <div class="list-group-item col-md-3 disabled">行为</div>
+                <div class="list-group-item col-md-9">{{endorsement.behaviorDescription}}</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 法务-->
+<div class="col-md-4">
+
+    <div class="panel media middle" ng-repeat="lb in lawBusinesses">
+        <div class="media-left bg-primary pad-all">
+            <div style="width: 48px; height: 48px">
+                <b>{{lb.lawBusinessType.name}}</b>
+            </div>
+        </div>
+        <div class="media-body pad-lft">
+            <p class="text-muted mar-no">{{lb.descriptions}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-word-cloud({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-blackboard"></span>
+                <span  data-translate="global.menu.entities.personWordCloud"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <div id="wordsCloud">
+                <word-cloud words="words" width="wordCloud.width" height="wordCloud.height">
+                </word-cloud>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-region-connection({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-gift"></span>
+                <span 
+                      data-translate="global.menu.entities.personRegionConnection"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <map-chart config="connectionRegionConfig" data="connectionRegionData"></map-chart>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="panel">
+        <div class="panel-heading">
+            <button ui-sref="person-relation({person_id:vm.person.id})"
+                    class="btn text-bold btn-block">
+                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                <span 
+                      data-translate="global.menu.entities.personRelation"></span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+            <nvd3 options="options" data="personRelationData" class="with-3d-shadow with-transitions"></nvd3>
+
+        </div>
+    </div>
 </div>
