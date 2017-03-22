@@ -314,6 +314,7 @@
                 $scope.prizes = lodash.groupBy(data, function (prize) {
                     return prize.prizeType.name;
                 });
+
             }
         }, handleError);
 

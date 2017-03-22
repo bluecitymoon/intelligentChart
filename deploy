@@ -1,0 +1,8 @@
+#!/bin/sh
+mvn clean install -DskipTests=true
+scp ~/Documents/workspace/clean/intelligentChart/target/intelligent-chart-0.0.1-SNAPSHOT.war root@139.224.233.143:/server
+ssh root@139.224.233.143 "rm -rf /server/extractWar/*
+rm -rf /server/apache-tomcat-8.5.12/webapps/ROOT/* 
+unzip -qq /server/intelligent-chart-0.0.1-SNAPSHOT.war -d /server/extractWar/ 
+cp -rf /server/extractWar/* /server/apache-tomcat-8.5.12/webapps/ROOT/
+sh /server/apache-tomcat-8.5.12/bin/catalina.sh start"
