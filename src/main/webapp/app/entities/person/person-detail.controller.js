@@ -134,7 +134,7 @@
             subtitle: '',
             height: singleChartHeight,
             width: singleChartWidth,
-            theme: 'shine'
+            theme: 'infographic'
 
         };
         $scope.overviewReputationConfig = {

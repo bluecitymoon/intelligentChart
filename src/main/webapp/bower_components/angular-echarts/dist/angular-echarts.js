@@ -704,26 +704,30 @@ angular.module('angular-echarts.theme').factory('infographic', function () {
                 }
             },
             gauge: {
-                axisLine: {
-                    lineStyle: {
-                        color: [
-                                                [0.2, '#B5C334'],
-                                                [0.8, '#27727B'],
-                                                [1, '#C1232B']
-                                            ]
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                        width: 3,
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
                     }
                 },
-                axisTick: {
-                    splitNumber: 2,
-                    length: 5,
-                    lineStyle: { color: '#fff' }
+                axisLabel: {            // 坐标轴小标记
+                    textStyle: {       // 属性lineStyle控制线条样式
+                        fontWeight: 'bolder',
+                        color: '#fff',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
                 },
-                axisLabel: { textStyle: { color: '#fff' } },
-                splitLine: {
-                    length: '5%',
-                    lineStyle: { color: '#fff' }
-                },
-                title: { offsetCenter: [0, -20] }
+                axisTick: {            // 坐标轴小标记
+                    length :15,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                }
             }
         };
     echarts.registerTheme('infographic', theme);

@@ -22,28 +22,40 @@
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.personIncome.inCountrySalaryTotal" for="field_inCountrySalaryTotal">In Country Salary Total</label>
             <input type="number" class="form-control" name="inCountrySalaryTotal" id="field_inCountrySalaryTotal"
-                    ng-model="vm.personIncome.inCountrySalaryTotal"
+                    ng-model="vm.personIncome.inCountrySalaryTotal" ng-change="vm.calculateTotalInCountry()"
                      />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.personIncome.inSalaryTotal" for="inSalaryTotal">In Country Salary Total</label>
+            <input type="number" class="form-control" name="inSalaryTotal" id="inSalaryTotal" ng-change="vm.calculateTotalInCountry()"
+                   ng-model="vm.personIncome.inSalaryTotal"
+            />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.personIncome.inCountryPlusBoxTotal" for="field_inCountryPlusBoxTotal">In Country Plus Box Total</label>
             <input type="number" class="form-control" name="inCountryPlusBoxTotal" id="field_inCountryPlusBoxTotal"
-                    ng-model="vm.personIncome.inCountryPlusBoxTotal"
+                    ng-model="vm.personIncome.inCountryPlusBoxTotal" readonly
                      />
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.personIncome.outCountrySalaryTotal" for="field_outCountrySalaryTotal">Out Country Salary Total</label>
             <input type="number" class="form-control" name="outCountrySalaryTotal" id="field_outCountrySalaryTotal"
-                    ng-model="vm.personIncome.outCountrySalaryTotal"
+                    ng-model="vm.personIncome.outCountrySalaryTotal" ng-change="vm.calculateTotalOutCountry()"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.personIncome.outCountryPlusBoxTotal" for="field_outCountryPlusBoxTotal">Out Country Plus Box Total</label>
-            <input type="number" class="form-control" name="outCountryPlusBoxTotal" id="field_outCountryPlusBoxTotal"
-                    ng-model="vm.personIncome.outCountryPlusBoxTotal"
+            <label class="control-label" data-translate="intelligentChartApp.personIncome.outSalaryTotal" for="outSalaryTotal">Total Salary</label>
+            <input type="number" class="form-control" name="outSalaryTotal" id="outSalaryTotal" ng-change="vm.calculateTotalOutCountry()"
+                    ng-model="vm.personIncome.outSalaryTotal"
                      />
         </div>
 
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.personIncome.outCountryPlusBoxTotal" for="field_outCountryPlusBoxTotal">Out Country Plus Box Total</label>
+            <input type="number" class="form-control" name="outCountryPlusBoxTotal" id="field_outCountryPlusBoxTotal"
+                   ng-model="vm.personIncome.outCountryPlusBoxTotal" readonly
+            />
+        </div>
         <div class="form-group">
             <label data-translate="intelligentChartApp.personIncome.person" for="field_person">Person</label>
             <select class="form-control" id="field_person" name="person" ng-model="vm.personIncome.person" ng-options="person as person.name for person in vm.people track by person.id">

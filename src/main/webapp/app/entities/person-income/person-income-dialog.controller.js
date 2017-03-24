@@ -5,15 +5,28 @@
         .module('intelligentChartApp')
         .controller('PersonIncomeDialogController', PersonIncomeDialogController);
 
-    PersonIncomeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'PersonIncome', 'Person'];
+    PersonIncomeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'PersonIncome', 'Person', '$rootScope'];
 
-    function PersonIncomeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, PersonIncome, Person) {
+    function PersonIncomeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, PersonIncome, Person, $rootScope) {
         var vm = this;
 
         vm.personIncome = entity;
+        vm.personIncome.inSalaryTotal = vm.personIncome.inCountryPlusBoxTotal - vm.personIncome.inCountrySalaryTotal;
+        vm.personIncome.outSalaryTotal = vm.personIncome.outCountryPlusBoxTotal - vm.personIncome.outCountrySalaryTotal;
         vm.clear = clear;
         vm.save = save;
         vm.people = Person.query();
+
+        vm.calculateTotalInCountry = calculateTotalInCountry;
+        vm.calculateTotalOutCountry = calculateTotalOutCountry;
+
+        function calculateTotalOutCountry() {
+            vm.personIncome.outCountryPlusBoxTotal = vm.personIncome.outCountrySalaryTotal +  vm.personIncome.outSalaryTotal;
+        }
+
+        function calculateTotalInCountry() {
+            vm.personIncome.inCountryPlusBoxTotal = vm.personIncome.inCountrySalaryTotal +  vm.personIncome.inSalaryTotal;
+        }
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

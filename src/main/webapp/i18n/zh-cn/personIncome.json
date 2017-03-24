@@ -21,6 +21,9 @@
             "inCountryPlusBoxTotal": "国内票房分账+薪酬",
             "outCountrySalaryTotal": "国外票房分账",
             "outCountryPlusBoxTotal": "国外票房分账+薪酬",
+            "salaryTotal": "薪酬",
+            "inSalaryTotal" : "国内薪酬",
+            "outSalaryTotal" : "国外薪酬",
             "person": "人物"
         }
     }

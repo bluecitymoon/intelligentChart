@@ -14,7 +14,7 @@
         vm.clear = clear;
         vm.save = save;
         vm.people = Person.query();
-        vm.wordclouds = WordCloud.query();
+        vm.wordclouds = WordCloud.query({size: 5000});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

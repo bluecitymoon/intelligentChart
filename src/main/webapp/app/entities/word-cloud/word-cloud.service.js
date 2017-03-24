@@ -10,7 +10,7 @@
         var resourceUrl =  'api/word-clouds/:id';
 
         return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
+            'query': { method: 'GET', isArray: true, size: 10000},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
