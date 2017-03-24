@@ -25,7 +25,7 @@
             var data = 'username=' +  encodeURIComponent(credentials.username) + '&password=' +
                 encodeURIComponent(credentials.password) + '&grant_type=password&scope=read%20write&' +
                 'client_secret=my-secret-token-to-change-in-production&client_id=intelligentChartapp';
-
+//http://139.224.233.143/oauth/token
             return $http.post('oauth/token', data, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
