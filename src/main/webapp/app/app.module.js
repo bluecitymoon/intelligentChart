@@ -1,3 +1,4 @@
+var DEFAULT_HELPER_DATA_SOURCE_SIZE = 5000;
 (function() {
     'use strict';
 

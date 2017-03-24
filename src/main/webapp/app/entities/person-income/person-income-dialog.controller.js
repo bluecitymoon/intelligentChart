@@ -15,7 +15,7 @@
         vm.personIncome.outSalaryTotal = vm.personIncome.outCountryPlusBoxTotal - vm.personIncome.outCountrySalaryTotal;
         vm.clear = clear;
         vm.save = save;
-        vm.people = Person.query();
+        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
 
         vm.calculateTotalInCountry = calculateTotalInCountry;
         vm.calculateTotalOutCountry = calculateTotalOutCountry;

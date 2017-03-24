@@ -15,8 +15,8 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.educationbackgroundtypes = EducationBackgroundType.query();
-        vm.people = Person.query();
+        vm.educationbackgroundtypes = EducationBackgroundType.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

@@ -15,10 +15,10 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.prizetypes = PrizeType.query();
-        vm.prizegroups = PrizeGroup.query();
-        vm.prizelevels = PrizeLevel.query();
-        vm.people = Person.query();
+        vm.prizetypes = PrizeType.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+        vm.prizegroups = PrizeGroup.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+        vm.prizelevels = PrizeLevel.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

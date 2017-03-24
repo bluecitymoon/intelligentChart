@@ -13,7 +13,7 @@
         vm.personWordCloud = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.people = Person.query();
+        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
         vm.wordclouds = WordCloud.query({size: 5000});
 
         $timeout(function (){

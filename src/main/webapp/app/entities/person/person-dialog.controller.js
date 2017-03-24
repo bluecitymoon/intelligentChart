@@ -15,7 +15,7 @@
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
-        vm.jobs = Job.query();
+        vm.jobs = Job.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

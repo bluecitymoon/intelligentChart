@@ -13,8 +13,8 @@
         vm.personNetworkTexiActivity = entity;
         vm.clear = clear;
         vm.save = save;
-        vm.people = Person.query();
-        vm.networktexicompanies = NetworkTexiCompany.query();
+        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+        vm.networktexicompanies = NetworkTexiCompany.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
