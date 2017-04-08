@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.robot.detail.title">Robot</span> {{vm.robot.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.robot.name">Name</span></dt>
+        <dd>
+            <span>{{vm.robot.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robot.robotDescription">Robot Description</span></dt>
+        <dd>
+            <span>{{vm.robot.robotDescription}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robot.identifier">Identifier</span></dt>
+        <dd>
+            <span>{{vm.robot.identifier}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robot.lastStart">Last Start</span></dt>
+        <dd>
+            <span>{{vm.robot.lastStart | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robot.lastStop">Last Stop</span></dt>
+        <dd>
+            <span>{{vm.robot.lastStop | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robot.status">Status</span></dt>
+        <dd>
+            <span data-translate="{{'intelligentChartApp.RobotStatus.' + vm.robot.status}}">{{vm.robot.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="robot-detail.edit({id:vm.robot.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

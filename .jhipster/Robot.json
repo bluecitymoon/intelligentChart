@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "robotDescription",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "5000"
+        },
+        {
+            "fieldName": "identifier",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastStart",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "lastStop",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "RobotStatus",
+            "fieldValues": "standBy,running,locked"
+        }
+    ],
+    "changelogDate": "20170408132826",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "robot",
+    "pagination": "pagination"
+}

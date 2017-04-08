@@ -76,6 +76,7 @@
                 "personTieBa": "贴吧热度",
                 "personRelation": "人物关系",
                 "person": "人物",
+                "robot": "Robot",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

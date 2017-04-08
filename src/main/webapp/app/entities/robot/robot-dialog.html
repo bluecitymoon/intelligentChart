@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myRobotLabel" data-translate="intelligentChartApp.robot.home.createOrEditLabel">Create or edit a Robot</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.robot.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.robot.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.robot.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.robotDescription" for="field_robotDescription">Robot Description</label>
+            <input type="text" class="form-control" name="robotDescription" id="field_robotDescription"
+                    ng-model="vm.robot.robotDescription"
+                    ng-maxlength="5000" />
+            <div ng-show="editForm.robotDescription.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.robotDescription.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="5000">
+                    This field cannot be longer than 5000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.identifier" for="field_identifier">Identifier</label>
+            <input type="text" class="form-control" name="identifier" id="field_identifier"
+                    ng-model="vm.robot.identifier"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.lastStart" for="field_lastStart">Last Start</label>
+                <div class="input-group">
+                    <input id="field_lastStart" type="text" class="form-control" name="lastStart" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStart" is-open="vm.datePickerOpenStatus.lastStart"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastStart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.lastStop" for="field_lastStop">Last Stop</label>
+                <div class="input-group">
+                    <input id="field_lastStop" type="text" class="form-control" name="lastStop" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStop" is-open="vm.datePickerOpenStatus.lastStop"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastStop')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robot.status" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.robot.status" id="field_status">
+                <option value="standBy" data-translate="intelligentChartApp.RobotStatus.standBy">standBy</option>
+                <option value="running" data-translate="intelligentChartApp.RobotStatus.running">running</option>
+                <option value="locked" data-translate="intelligentChartApp.RobotStatus.locked">locked</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

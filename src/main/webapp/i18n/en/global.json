@@ -68,6 +68,7 @@
                 "personWechatArticle": "Person Wechat Article",
                 "personTieBa": "Person Tie Ba",
                 "personRelation": "Person Relation",
+                "robot": "Robot",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

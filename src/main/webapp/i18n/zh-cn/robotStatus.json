@@ -1,0 +1,10 @@
+{
+    "intelligentChartApp": {
+        "RobotStatus" : {
+            "null": "",
+            "standBy": "standBy",
+            "running": "running",
+            "locked": "locked"
+        }
+    }
+}
