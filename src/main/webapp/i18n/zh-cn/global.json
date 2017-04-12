@@ -75,8 +75,7 @@
                 "personWechatArticle": "微信公众号文章刊发量",
                 "personTieBa": "贴吧热度",
                 "personRelation": "人物关系",
-                "person": "人物",
-                "robot": "Robot",
+                "robot": "机器人",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -158,7 +157,8 @@
             "edit": "编辑",
             "open": "打开",
             "save": "保存",
-            "view": "查看"
+            "view": "查看",
+            "execution": "启动"
         },
         "detail": {
             "field": "字段",

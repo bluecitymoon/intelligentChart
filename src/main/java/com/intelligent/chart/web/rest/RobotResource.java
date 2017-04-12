@@ -31,7 +31,7 @@ import java.util.Optional;
 public class RobotResource {
 
     private final Logger log = LoggerFactory.getLogger(RobotResource.class);
-        
+
     @Inject
     private RobotService robotService;
 
@@ -105,6 +105,18 @@ public class RobotResource {
     public ResponseEntity<Robot> getRobot(@PathVariable Long id) {
         log.debug("REST request to get Robot : {}", id);
         Robot robot = robotService.findOne(id);
+        return Optional.ofNullable(robot)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/robots/start/{id}")
+    @Timed
+    public ResponseEntity<Robot> startRobot(@PathVariable Long id) {
+        log.debug("REST request to start Robot : {}", id);
+        Robot robot = robotService.start(id);
         return Optional.ofNullable(robot)
             .map(result -> new ResponseEntity<>(
                 result,

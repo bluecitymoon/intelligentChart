@@ -22,7 +22,12 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'start': {
+                method: 'GET',
+                url: 'api/robots/start/:id',
+                params: { id : '@id'}
+            }
         });
     }
 })();

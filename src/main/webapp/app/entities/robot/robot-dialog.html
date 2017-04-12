@@ -21,9 +21,10 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.robot.robotDescription" for="field_robotDescription">Robot Description</label>
-            <input type="text" class="form-control" name="robotDescription" id="field_robotDescription"
+            <textarea rows="4" type="text" class="form-control" name="robotDescription" id="field_robotDescription"
                     ng-model="vm.robot.robotDescription"
-                    ng-maxlength="5000" />
+                    ng-maxlength="5000">
+            </textarea>
             <div ng-show="editForm.robotDescription.$invalid">
                 <p class="help-block"
                     ng-show="editForm.robotDescription.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="5000">
@@ -40,7 +41,7 @@
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.robot.lastStart" for="field_lastStart">Last Start</label>
                 <div class="input-group">
-                    <input id="field_lastStart" type="text" class="form-control" name="lastStart" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStart" is-open="vm.datePickerOpenStatus.lastStart"
+                    <input readonly id="field_lastStart" type="text" class="form-control" name="lastStart" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStart" is-open="vm.datePickerOpenStatus.lastStart"
                       />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastStart')"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -50,7 +51,7 @@
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.robot.lastStop" for="field_lastStop">Last Stop</label>
                 <div class="input-group">
-                    <input id="field_lastStop" type="text" class="form-control" name="lastStop" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStop" is-open="vm.datePickerOpenStatus.lastStop"
+                    <input readonly id="field_lastStop" type="text" class="form-control" name="lastStop" datetime-picker="{{dateformat}}" ng-model="vm.robot.lastStop" is-open="vm.datePickerOpenStatus.lastStop"
                       />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastStop')"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -59,7 +60,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.robot.status" for="field_status">Status</label>
-            <select class="form-control" name="status" ng-model="vm.robot.status" id="field_status">
+            <select readonly class="form-control" name="status" ng-model="vm.robot.status" id="field_status">
                 <option value="standBy" data-translate="intelligentChartApp.RobotStatus.standBy">standBy</option>
                 <option value="running" data-translate="intelligentChartApp.RobotStatus.running">running</option>
                 <option value="locked" data-translate="intelligentChartApp.RobotStatus.locked">locked</option>

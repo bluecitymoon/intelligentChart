@@ -20,7 +20,7 @@ public interface RobotService {
 
     /**
      *  Get all the robots.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +40,6 @@ public interface RobotService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Robot start(Long id);
 }

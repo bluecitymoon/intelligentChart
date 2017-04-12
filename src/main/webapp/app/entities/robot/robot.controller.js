@@ -43,6 +43,21 @@
             }
         }
 
+        vm.robotRunning = false;
+
+        vm.startRobot = function (robot) {
+
+            vm.robotRunning = true;
+            Robot.start({id: robot.id}).$promise.then(function (data) {
+
+                vm.robotRunning = false;
+                
+            }, function (error) {
+
+                vm.robotRunning = false;
+            })
+        };
+
         function loadPage(page) {
             vm.page = page;
             vm.transition();

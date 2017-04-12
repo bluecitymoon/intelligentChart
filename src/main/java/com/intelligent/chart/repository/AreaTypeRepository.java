@@ -12,4 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface AreaTypeRepository extends JpaRepository<AreaType,Long> {
 
+    AreaType findByName(String name);
+
 }

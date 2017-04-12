@@ -2,26 +2,26 @@
     "intelligentChartApp": {
         "robot" : {
             "home": {
-                "title": "Robots",
-                "createLabel": "Create a new Robot",
-                "createOrEditLabel": "Create or edit a Robot",
+                "title": "机器人🤖",
+                "createLabel": "创建一个机器人",
+                "createOrEditLabel": "管理机器人",
                 "search": "Search for Robot"
             },
-            "created": "A new Robot is created with identifier {{ param }}",
-            "updated": "A Robot is updated with identifier {{ param }}",
-            "deleted": "A Robot is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Robot {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Robot"
+                "title": "机器人"
             },
-            "name": "Name",
-            "robotDescription": "Robot Description",
-            "identifier": "Identifier",
-            "lastStart": "Last Start",
-            "lastStop": "Last Stop",
-            "status": "Status"
+            "name": "名称",
+            "robotDescription": "描述",
+            "identifier": "识别码",
+            "lastStart": "上次启动时间",
+            "lastStop": "上次结束时间",
+            "status": "状态"
         }
     }
 }
