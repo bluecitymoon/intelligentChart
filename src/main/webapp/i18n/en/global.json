@@ -70,6 +70,7 @@
                 "personRelation": "Person Relation",
                 "robot": "Robot",
                 "doubleMovieSubject": "Double Movie Subject",
+                "doubanMovieTag": "Douban Movie Tag",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

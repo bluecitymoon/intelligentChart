@@ -1,0 +1,15 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170412083222",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "douban_movie_tag",
+    "pagination": "pagination"
+}

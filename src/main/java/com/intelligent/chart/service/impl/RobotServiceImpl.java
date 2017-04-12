@@ -2,11 +2,14 @@ package com.intelligent.chart.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intelligent.chart.domain.AreaType;
+import com.intelligent.chart.domain.DoubanMovieTag;
 import com.intelligent.chart.repository.AreaTypeRepository;
+import com.intelligent.chart.repository.DoubanMovieTagRepository;
 import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.domain.Robot;
 import com.intelligent.chart.repository.RobotRepository;
 import com.intelligent.chart.service.dto.DoubanTags;
+import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +36,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private AreaTypeRepository areaTypeRepository;
+
+    @Inject
+    private DoubanMovieTagRepository doubanMovieTagRepository;
 
     /**
      * Save a robot.
@@ -99,11 +105,17 @@ public class RobotServiceImpl implements RobotService{
                     for (String tag: tags.getTags()) {
 
                         AreaType existedType = areaTypeRepository.findByName(tag);
+                        DoubanMovieTag doubanMovieTag = doubanMovieTagRepository.findByName(tag);
 
                         if (existedType == null) {
 
                             AreaType newAreaType = AreaType.builder().name(tag).build();
                             areaTypeRepository.save(newAreaType);
+                        }
+
+                        if (doubanMovieTag == null) {
+                            DoubanMovieTag doubanMovieTagEntity = DoubanMovieTag.builder().name(tag).build();
+                            doubanMovieTagRepository.save(doubanMovieTagEntity);
                         }
                     }
 
@@ -113,9 +125,16 @@ public class RobotServiceImpl implements RobotService{
                 break;
             case "movie_links":
 
-                String movieUrl = "https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=0";
+//                String movieUrl = "https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=0";
                 int pageLimit = 100;
                 int pageStart = 0;
+
+                List<DoubanMovieTag> doubanMovieTags = doubanMovieTagRepository.findAll();
+
+                for (DoubanMovieTag doubanMovieTag: doubanMovieTags) {
+                    DoubanUtil.grabSinglePageSubjectsWithTag(pageStart, pageLimit, doubanMovieTag.getName());
+
+                }
 
                 break;
             default:
