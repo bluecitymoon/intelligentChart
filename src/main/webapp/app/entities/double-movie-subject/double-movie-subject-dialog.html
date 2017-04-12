@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDoubleMovieSubjectLabel" data-translate="intelligentChartApp.doubleMovieSubject.home.createOrEditLabel">Create or edit a Double Movie Subject</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.doubleMovieSubject.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.doubleMovieSubject.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.doubleMovieSubject.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="vm.doubleMovieSubject.title"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.doubleMovieSubject.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.doubleMovieSubject.url"
+                    ng-maxlength="3000" />
+            <div ng-show="editForm.url.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.url.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="3000">
+                    This field cannot be longer than 3000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.doubleMovieSubject.cover" for="field_cover">Cover</label>
+            <input type="text" class="form-control" name="cover" id="field_cover"
+                    ng-model="vm.doubleMovieSubject.cover"
+                    ng-maxlength="3000" />
+            <div ng-show="editForm.cover.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cover.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="3000">
+                    This field cannot be longer than 3000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.doubleMovieSubject.rate" for="field_rate">Rate</label>
+            <input type="text" class="form-control" name="rate" id="field_rate"
+                    ng-model="vm.doubleMovieSubject.rate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.doubleMovieSubject.doubanId" for="field_doubanId">Douban Id</label>
+            <input type="text" class="form-control" name="doubanId" id="field_doubanId"
+                    ng-model="vm.doubleMovieSubject.doubanId"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -69,6 +69,7 @@
                 "personTieBa": "Person Tie Ba",
                 "personRelation": "Person Relation",
                 "robot": "Robot",
+                "doubleMovieSubject": "Double Movie Subject",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

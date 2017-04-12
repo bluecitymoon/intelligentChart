@@ -1,0 +1,26 @@
+{
+    "intelligentChartApp": {
+        "doubleMovieSubject" : {
+            "home": {
+                "title": "Double Movie Subjects",
+                "createLabel": "Create a new Double Movie Subject",
+                "createOrEditLabel": "Create or edit a Double Movie Subject",
+                "search": "Search for Double Movie Subject"
+            },
+            "created": "A new Double Movie Subject is created with identifier {{ param }}",
+            "updated": "A Double Movie Subject is updated with identifier {{ param }}",
+            "deleted": "A Double Movie Subject is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Double Movie Subject {{ id }}?"
+            },
+            "detail": {
+                "title": "Double Movie Subject"
+            },
+            "title": "Title",
+            "url": "Url",
+            "cover": "Cover",
+            "rate": "Rate",
+            "doubanId": "Douban Id"
+        }
+    }
+}

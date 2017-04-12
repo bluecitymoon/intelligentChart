@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.doubleMovieSubject.detail.title">Double Movie Subject</span> {{vm.doubleMovieSubject.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.doubleMovieSubject.title">Title</span></dt>
+        <dd>
+            <span>{{vm.doubleMovieSubject.title}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.doubleMovieSubject.url">Url</span></dt>
+        <dd>
+            <span>{{vm.doubleMovieSubject.url}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.doubleMovieSubject.cover">Cover</span></dt>
+        <dd>
+            <span>{{vm.doubleMovieSubject.cover}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.doubleMovieSubject.rate">Rate</span></dt>
+        <dd>
+            <span>{{vm.doubleMovieSubject.rate}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.doubleMovieSubject.doubanId">Douban Id</span></dt>
+        <dd>
+            <span>{{vm.doubleMovieSubject.doubanId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="double-movie-subject-detail.edit({id:vm.doubleMovieSubject.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

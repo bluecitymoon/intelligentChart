@@ -158,5 +158,7 @@
 
     <cache alias="com.intelligent.chart.domain.Robot" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.DoubleMovieSubject" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
