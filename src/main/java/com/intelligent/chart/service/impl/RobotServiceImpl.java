@@ -114,6 +114,9 @@ public class RobotServiceImpl implements RobotService{
             case "movie_links":
 
                 String movieUrl = "https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=0";
+                int pageLimit = 100;
+                int pageStart = 0;
+
                 break;
             default:
                 break;
