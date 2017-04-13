@@ -12,4 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface DoubleMovieSubjectRepository extends JpaRepository<DoubleMovieSubject,Long> {
 
+    DoubleMovieSubject findByDoubanId(String doubanId);
 }

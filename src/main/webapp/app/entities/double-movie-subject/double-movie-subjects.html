@@ -1,38 +1,41 @@
-<div>
-    <h2 data-translate="intelligentChartApp.doubleMovieSubject.home.title">Double Movie Subjects</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="double-movie-subject.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="intelligentChartApp.doubleMovieSubject.home.createLabel">
+<div class="panel">
+
+    <div class="panel-body">
+        <h2 data-translate="intelligentChartApp.doubleMovieSubject.home.title">Double Movie Subjects</h2>
+        <jhi-alert></jhi-alert>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 no-padding-left">
+                    <button class="btn btn-primary" ui-sref="double-movie-subject.new" >
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span  data-translate="intelligentChartApp.doubleMovieSubject.home.createLabel">
                         Create new Double Movie Subject
                     </span>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
+        <br/>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="title"><span data-translate="intelligentChartApp.doubleMovieSubject.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cover"></th>
                     <th jh-sort-by="url"><span data-translate="intelligentChartApp.doubleMovieSubject.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="cover"><span data-translate="intelligentChartApp.doubleMovieSubject.cover">Cover</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="rate"><span data-translate="intelligentChartApp.doubleMovieSubject.rate">Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="doubanId"><span data-translate="intelligentChartApp.doubleMovieSubject.doubanId">Douban Id</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat="doubleMovieSubject in vm.doubleMovieSubjects track by doubleMovieSubject.id">
                     <td><a ui-sref="double-movie-subject-detail({id:doubleMovieSubject.id})">{{doubleMovieSubject.id}}</a></td>
-                    <td>{{doubleMovieSubject.title}}</td>
-                    <td>{{doubleMovieSubject.url}}</td>
-                    <td>{{doubleMovieSubject.cover}}</td>
+                    <td><b>{{doubleMovieSubject.title}}</b></td>
+
+                    <td><img src="{{doubleMovieSubject.cover}}" class="img-lg img-circle img-border mar-btm" style="border-radius: 0"></td>
+                    <td><a href="{{doubleMovieSubject.url}}" target="_blank">{{doubleMovieSubject.url}}</a></td>
                     <td>{{doubleMovieSubject.rate}}</td>
                     <td>{{doubleMovieSubject.doubanId}}</td>
                     <td class="text-right">
@@ -43,12 +46,12 @@
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
                             </button>
-                            <button type="submit"
-                                    ui-sref="double-movie-subject.edit({id:doubleMovieSubject.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
-                            </button>
+                            <!--<button type="submit"-->
+                                    <!--ui-sref="double-movie-subject.edit({id:doubleMovieSubject.id})"-->
+                                    <!--class="btn btn-primary btn-sm">-->
+                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                <!--<span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>-->
+                            <!--</button>-->
                             <button type="submit"
                                     ui-sref="double-movie-subject.delete({id:doubleMovieSubject.id})"
                                     class="btn btn-danger btn-sm">
@@ -58,11 +61,12 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </div>
 </div>

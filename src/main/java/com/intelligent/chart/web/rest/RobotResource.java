@@ -113,7 +113,6 @@ public class RobotResource {
     }
 
     @GetMapping("/robots/start/{id}")
-    @Timed
     public ResponseEntity<Robot> startRobot(@PathVariable Long id) {
         log.debug("REST request to start Robot : {}", id);
         Robot robot = robotService.start(id);

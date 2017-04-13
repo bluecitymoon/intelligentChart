@@ -1,9 +1,6 @@
 package com.intelligent.chart.service.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Data
+@ToString
+@EqualsAndHashCode
 public class DoubanMovieSubjects {
 
     private List<DoubanMovieSubject> subjects;

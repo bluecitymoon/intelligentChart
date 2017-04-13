@@ -2,24 +2,24 @@
     "intelligentChartApp": {
         "doubleMovieSubject" : {
             "home": {
-                "title": "Double Movie Subjects",
-                "createLabel": "Create a new Double Movie Subject",
-                "createOrEditLabel": "Create or edit a Double Movie Subject",
+                "title": "豆瓣电影链接",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Double Movie Subject"
             },
-            "created": "A new Double Movie Subject is created with identifier {{ param }}",
-            "updated": "A Double Movie Subject is updated with identifier {{ param }}",
-            "deleted": "A Double Movie Subject is deleted with identifier {{ param }}",
+            "created": "数据已创建",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Double Movie Subject {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Double Movie Subject"
+                "title": "电影链接"
             },
-            "title": "Title",
-            "url": "Url",
-            "cover": "Cover",
-            "rate": "Rate",
+            "title": "标题",
+            "url": "地址",
+            "cover": "封面",
+            "rate": "评分",
             "doubanId": "Douban Id"
         }
     }

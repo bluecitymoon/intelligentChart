@@ -51,7 +51,7 @@
             Robot.start({id: robot.id}).$promise.then(function (data) {
 
                 vm.robotRunning = false;
-                
+
             }, function (error) {
 
                 vm.robotRunning = false;
