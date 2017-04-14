@@ -1,6 +1,8 @@
 package com.intelligent.chart.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.intelligent.chart.domain.AreaType;
 import com.intelligent.chart.domain.DoubanMovieTag;
 import com.intelligent.chart.domain.DoubleMovieSubject;
@@ -13,9 +15,14 @@ import com.intelligent.chart.repository.RobotRepository;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import com.intelligent.chart.service.dto.DoubanMovieSubjects;
 import com.intelligent.chart.service.dto.DoubanTags;
+import com.intelligent.chart.service.util.DetailedLinkUtil;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.service.util.RandomUtil;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -25,6 +32,10 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URLEncoder;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadFactory;
@@ -104,6 +115,8 @@ public class RobotServiceImpl implements RobotService{
 
         Robot robot = findOne(id);
 
+        robot.setLastStart(ZonedDateTime.now());
+
         switch (robot.getIdentifier()) {
             case "movie_tag":
                 grabDoubanMovieTag();
@@ -126,11 +139,42 @@ public class RobotServiceImpl implements RobotService{
 
                 break;
 
+            case "all_tags_from_page":
+
+                grabAllTags();
+
+                break;
+
+            case "test_links_in_single_detailed_category":
+
+                break;
+            case "test_single_one_page_links":
+
+                DetailedLinkUtil.grabSinglePage(0, "爱情").forEach(a -> System.out.println(a));
+
+                break;
+
+            case "all_links":
+
+                doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
+
+                break;
+
             default:
                 break;
         }
 
+        robot.setLastStop(ZonedDateTime.now());
+
+        robotRepository.save(robot);
+
         return robot;
+    }
+
+    private void grabAllTags() {
+
+        DoubanUtil.grabAllTags().forEach(this::saveOrUpdateTags);
+
     }
 
     private void grabDoubanMovieLink() {
@@ -202,23 +246,101 @@ public class RobotServiceImpl implements RobotService{
 
             for (String tag: tags.getTags()) {
 
-                AreaType existedType = areaTypeRepository.findByName(tag);
-                DoubanMovieTag doubanMovieTag = doubanMovieTagRepository.findByName(tag);
+                saveOrUpdateTags(tag);
 
-                if (existedType == null) {
-
-                    AreaType newAreaType = AreaType.builder().name(tag).build();
-                    areaTypeRepository.save(newAreaType);
-                }
-
-                if (doubanMovieTag == null) {
-                    DoubanMovieTag doubanMovieTagEntity = DoubanMovieTag.builder().name(tag).build();
-                    doubanMovieTagRepository.save(doubanMovieTagEntity);
-                }
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void saveOrUpdateTags(String tag) {
+
+        AreaType existedType = areaTypeRepository.findByName(tag);
+        DoubanMovieTag doubanMovieTag = doubanMovieTagRepository.findByName(tag);
+
+        if (existedType == null) {
+
+            AreaType newAreaType = AreaType.builder().name(tag).build();
+            areaTypeRepository.save(newAreaType);
+        }
+
+        if (doubanMovieTag == null) {
+            DoubanMovieTag doubanMovieTagEntity = DoubanMovieTag.builder().name(tag).build();
+            doubanMovieTagRepository.save(doubanMovieTagEntity);
+        }
+    }
+
+
+
+    /*
+        get all movie links
+     */
+    private void getAllMovieLinks() {
+
+    }
+
+    private void grabMovieLinksInSingleCategory(DoubanMovieTag tag) {
+
+        int pageNumber = 0;
+
+        while (true) {
+
+            List<DoubanMovieSubject> onePageLinks = grabSinglePage(pageNumber, tag.getName());
+
+            if (onePageLinks == null || onePageLinks.isEmpty()) {
+                break;
+            }
+            if (onePageLinks.size() < 20) {
+                break;
+            }
+
+            pageNumber ++;
+
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private List<DoubanMovieSubject> grabSinglePage(int pageNumber, String category) {
+
+        List<DoubanMovieSubject> subjects = Lists.newArrayList();
+
+        try {
+            String url = "https://movie.douban.com/tag/" + URLEncoder.encode(category, "UTF-8") + "?start=" + 20 * pageNumber + "&type=T";
+            String content = HttpUtils.newWebClient().getPage(url).getWebResponse().getContentAsString();
+
+            Document document = Jsoup.parse(content);
+            Elements movieLinks = document.getElementsByClass("nbg");
+
+            movieLinks.forEach(element -> {
+
+                String href = element.attr("href");
+                List<String> linkElements = Splitter.on("/").omitEmptyStrings().splitToList(href);
+
+                DoubanMovieSubject doubanMovieSubject = DoubanMovieSubject.builder()
+                    .url(href)
+                    .title(element.attr("title"))
+                    .id(linkElements.get(linkElements.size() - 1))
+                    .build();
+
+                Element imgElement = element.getElementsByTag("img").first();
+                doubanMovieSubject.setCover(imgElement.attr("src"));
+
+                subjects.add(doubanMovieSubject);
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return subjects;
     }
 }
