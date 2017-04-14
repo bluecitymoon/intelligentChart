@@ -1,0 +1,11 @@
+{
+    "intelligentChartApp": {
+        "RobotLogLevel" : {
+            "null": "",
+            "error": "error",
+            "success": "success",
+            "skipedByExisted": "skipedByExisted",
+            "replaced": "replaced"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "robot",
+            "otherEntityName": "robot",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "level",
+            "fieldType": "RobotLogLevel",
+            "fieldValues": "error,success,skipedByExisted,replaced"
+        },
+        {
+            "fieldName": "logContent",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "20000"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170414093144",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "robot_log",
+    "pagination": "pagination"
+}

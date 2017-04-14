@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.robotLog.detail.title">Robot Log</span> {{vm.robotLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.robotLog.level">Level</span></dt>
+        <dd>
+            <span data-translate="{{'intelligentChartApp.RobotLogLevel.' + vm.robotLog.level}}">{{vm.robotLog.level}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotLog.logContent">Log Content</span></dt>
+        <dd>
+            <span>{{vm.robotLog.logContent}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotLog.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.robotLog.createDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotLog.robot">Robot</span></dt>
+        <dd>
+            <a ui-sref="robot-detail({id:vm.robotLog.robot.id})">{{vm.robotLog.robot.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="robot-log-detail.edit({id:vm.robotLog.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,63 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myRobotLogLabel" data-translate="intelligentChartApp.robotLog.home.createOrEditLabel">Create or edit a Robot Log</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.robotLog.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.robotLog.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robotLog.level" for="field_level">Level</label>
+            <select class="form-control" name="level" ng-model="vm.robotLog.level" id="field_level">
+                <option value="error" data-translate="intelligentChartApp.RobotLogLevel.error">error</option>
+                <option value="success" data-translate="intelligentChartApp.RobotLogLevel.success">success</option>
+                <option value="skipedByExisted" data-translate="intelligentChartApp.RobotLogLevel.skipedByExisted">skipedByExisted</option>
+                <option value="replaced" data-translate="intelligentChartApp.RobotLogLevel.replaced">replaced</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robotLog.logContent" for="field_logContent">Log Content</label>
+            <input type="text" class="form-control" name="logContent" id="field_logContent"
+                    ng-model="vm.robotLog.logContent"
+                    ng-maxlength="20000" />
+            <div ng-show="editForm.logContent.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.logContent.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="20000">
+                    This field cannot be longer than 20000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.robotLog.createDate" for="field_createDate">Create Date</label>
+                <div class="input-group">
+                    <input id="field_createDate" type="text" class="form-control" name="createDate" datetime-picker="{{dateformat}}" ng-model="vm.robotLog.createDate" is-open="vm.datePickerOpenStatus.createDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.robotLog.robot" for="field_robot">Robot</label>
+            <select class="form-control" id="field_robot" name="robot" ng-model="vm.robotLog.robot" ng-options="robot as robot.name for robot in vm.robots track by robot.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
