@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.robotMovieSubjectFailPage.detail.title">Robot Movie Subject Fail Page</span> {{vm.robotMovieSubjectFailPage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.robotMovieSubjectFailPage.tag">Tag</span></dt>
+        <dd>
+            <span>{{vm.robotMovieSubjectFailPage.tag}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotMovieSubjectFailPage.pageNumber">Page Number</span></dt>
+        <dd>
+            <span>{{vm.robotMovieSubjectFailPage.pageNumber}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotMovieSubjectFailPage.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.robotMovieSubjectFailPage.createDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.robotMovieSubjectFailPage.reason">Reason</span></dt>
+        <dd>
+            <span>{{vm.robotMovieSubjectFailPage.reason}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="robot-movie-subject-fail-page-detail.edit({id:vm.robotMovieSubjectFailPage.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

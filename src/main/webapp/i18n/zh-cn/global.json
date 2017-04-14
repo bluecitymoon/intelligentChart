@@ -78,6 +78,7 @@
                 "robot": "机器人",
                 "doubleMovieSubject": "Double Movie Subject",
                 "doubanMovieTag": "Douban Movie Tag",
+                "robotMovieSubjectFailPage": "Robot Movie Subject Fail Page",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

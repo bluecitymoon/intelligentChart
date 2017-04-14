@@ -3,15 +3,9 @@ package com.intelligent.chart.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
-import com.intelligent.chart.domain.AreaType;
-import com.intelligent.chart.domain.DoubanMovieTag;
-import com.intelligent.chart.domain.DoubleMovieSubject;
-import com.intelligent.chart.repository.AreaTypeRepository;
-import com.intelligent.chart.repository.DoubanMovieTagRepository;
-import com.intelligent.chart.repository.DoubleMovieSubjectRepository;
+import com.intelligent.chart.domain.*;
+import com.intelligent.chart.repository.*;
 import com.intelligent.chart.service.RobotService;
-import com.intelligent.chart.domain.Robot;
-import com.intelligent.chart.repository.RobotRepository;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import com.intelligent.chart.service.dto.DoubanMovieSubjects;
 import com.intelligent.chart.service.dto.DoubanTags;
@@ -19,6 +13,7 @@ import com.intelligent.chart.service.util.DetailedLinkUtil;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.service.util.RandomUtil;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -61,6 +56,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private DoubleMovieSubjectRepository doubleMovieSubjectRepository;
+
+    @Inject
+    private RobotMovieSubjectFailPageRepository robotMovieSubjectFailPageRepository;
 
     /**
      * Save a robot.
@@ -199,23 +197,7 @@ public class RobotServiceImpl implements RobotService{
             if (doubanMovieSubjects.getSubjects() == null) {
                 break;
             }
-            doubanMovieSubjects.getSubjects().forEach( doubanMovieSubject -> {
-
-                DoubleMovieSubject existedObject = doubleMovieSubjectRepository.findByDoubanId(doubanMovieSubject.getId());
-                if (existedObject == null) {
-
-                    DoubleMovieSubject doubleMovieSubject = DoubleMovieSubject.builder()
-                        .cover(doubanMovieSubject.getCover())
-                        .doubanId(doubanMovieSubject.getId())
-                        .rate(doubanMovieSubject.getRate())
-                        .url(doubanMovieSubject.getUrl())
-                        .title(doubanMovieSubject.getTitle())
-                        .build();
-
-                    doubleMovieSubjectRepository.save(doubleMovieSubject);
-                }
-
-            });
+            doubanMovieSubjects.getSubjects().forEach(this::saveNewMovieLink);
 
             pageNumber ++;
 
@@ -235,6 +217,22 @@ public class RobotServiceImpl implements RobotService{
         }
     }
 
+    private void saveNewMovieLink(DoubanMovieSubject doubanMovieSubject) {
+
+        DoubleMovieSubject existedObject = doubleMovieSubjectRepository.findByDoubanId(doubanMovieSubject.getId());
+        if (existedObject == null) {
+
+            DoubleMovieSubject doubleMovieSubject = DoubleMovieSubject.builder()
+                .cover(doubanMovieSubject.getCover())
+                .doubanId(doubanMovieSubject.getId())
+                .rate(doubanMovieSubject.getRate())
+                .url(doubanMovieSubject.getUrl())
+                .title(doubanMovieSubject.getTitle())
+                .build();
+
+            doubleMovieSubjectRepository.save(doubleMovieSubject);
+        }
+    }
     private void grabDoubanMovieTag() {
 
         String url = "https://movie.douban.com/j/search_tags?type=movie";
@@ -270,15 +268,6 @@ public class RobotServiceImpl implements RobotService{
             DoubanMovieTag doubanMovieTagEntity = DoubanMovieTag.builder().name(tag).build();
             doubanMovieTagRepository.save(doubanMovieTagEntity);
         }
-    }
-
-
-
-    /*
-        get all movie links
-     */
-    private void getAllMovieLinks() {
-
     }
 
     private void grabMovieLinksInSingleCategory(DoubanMovieTag tag) {
@@ -333,14 +322,26 @@ public class RobotServiceImpl implements RobotService{
                 doubanMovieSubject.setCover(imgElement.attr("src"));
 
                 subjects.add(doubanMovieSubject);
+
+                saveNewMovieLink(doubanMovieSubject);
             });
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
         } catch (IOException e) {
-            e.printStackTrace();
+            handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
+        } catch (Exception unexpectedException) {
+            handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(unexpectedException));
         }
+        //log last grab step print.
+
         return subjects;
+    }
+
+    private void handleGrabMovieSubjectError(String tag, int pageNumber, String reason) {
+
+        RobotMovieSubjectFailPage robotMovieSubjectFailPage = RobotMovieSubjectFailPage.builder().pageNumber(pageNumber).tag(tag).reason(reason).build();
+        robotMovieSubjectFailPageRepository.save(robotMovieSubjectFailPage);
     }
 }

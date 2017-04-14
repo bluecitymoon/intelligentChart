@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "robotMovieSubjectFailPage" : {
+            "home": {
+                "title": "Robot Movie Subject Fail Pages",
+                "createLabel": "Create a new Robot Movie Subject Fail Page",
+                "createOrEditLabel": "Create or edit a Robot Movie Subject Fail Page",
+                "search": "Search for Robot Movie Subject Fail Page"
+            },
+            "created": "A new Robot Movie Subject Fail Page is created with identifier {{ param }}",
+            "updated": "A Robot Movie Subject Fail Page is updated with identifier {{ param }}",
+            "deleted": "A Robot Movie Subject Fail Page is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Robot Movie Subject Fail Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Robot Movie Subject Fail Page"
+            },
+            "tag": "Tag",
+            "pageNumber": "Page Number",
+            "createDate": "Create Date",
+            "reason": "Reason"
+        }
+    }
+}

@@ -10,7 +10,7 @@ public class HttpUtils {
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.getOptions().setTimeout(15000);
+        webClient.getOptions().setTimeout(0);
         webClient.getOptions().setJavaScriptEnabled(false);
 
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
