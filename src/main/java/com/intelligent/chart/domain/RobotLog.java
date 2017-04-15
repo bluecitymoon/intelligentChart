@@ -1,5 +1,6 @@
 package com.intelligent.chart.domain;
 
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -17,6 +18,12 @@ import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 @Entity
 @Table(name = "robot_log")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Data
+@Builder
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class RobotLog implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -39,8 +39,8 @@ public class RobotMovieSubjectFailPage implements Serializable {
     @Column(name = "create_date")
     private ZonedDateTime createDate;
 
-    @Size(max = 10000)
-    @Column(name = "reason", length = 10000)
+    @Size(max = 20000)
+    @Column(name = "reason", length = 20000)
     private String reason;
 
     public Long getId() {

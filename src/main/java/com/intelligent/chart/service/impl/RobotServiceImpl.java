@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.intelligent.chart.domain.*;
+import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
 import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
@@ -20,6 +21,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +43,7 @@ import static com.intelligent.chart.service.util.DoubanUtil.grabSinglePageSubjec
  * Service Implementation for managing Robot.
  */
 @Service
+@Scope("prototype")
 public class RobotServiceImpl implements RobotService{
 
     private final Logger log = LoggerFactory.getLogger(RobotServiceImpl.class);
@@ -60,6 +63,10 @@ public class RobotServiceImpl implements RobotService{
     @Inject
     private RobotMovieSubjectFailPageRepository robotMovieSubjectFailPageRepository;
 
+    private Robot robot;
+
+    @Inject
+    private RobotLogRepository robotLogRepository;
     /**
      * Save a robot.
      *
@@ -111,7 +118,7 @@ public class RobotServiceImpl implements RobotService{
     @Override
     public Robot start(Long id) {
 
-        Robot robot = findOne(id);
+        robot = findOne(id);
 
         robot.setLastStart(ZonedDateTime.now());
 
@@ -148,7 +155,7 @@ public class RobotServiceImpl implements RobotService{
                 break;
             case "test_single_one_page_links":
 
-                DetailedLinkUtil.grabSinglePage(0, "爱情").forEach(a -> System.out.println(a));
+                grabMovieLinksInSingleCategory(doubanMovieTagRepository.findByName("爱情"));
 
                 break;
 
@@ -288,7 +295,7 @@ public class RobotServiceImpl implements RobotService{
             pageNumber ++;
 
             try {
-                Thread.sleep(4000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -300,7 +307,9 @@ public class RobotServiceImpl implements RobotService{
 
         List<DoubanMovieSubject> subjects = Lists.newArrayList();
 
+        RobotLog log = RobotLog.builder().createDate(ZonedDateTime.now()).robot(robot).level(RobotLogLevel.success).build();
         try {
+
             String url = "https://movie.douban.com/tag/" + URLEncoder.encode(category, "UTF-8") + "?start=" + 20 * pageNumber + "&type=T";
             String content = HttpUtils.newWebClient().getPage(url).getWebResponse().getContentAsString();
 
@@ -324,24 +333,102 @@ public class RobotServiceImpl implements RobotService{
                 subjects.add(doubanMovieSubject);
 
                 saveNewMovieLink(doubanMovieSubject);
+
             });
+
+            log.setLogContent(url + " saved successfully with tag = " + category + " and page number is " + pageNumber);
+
         } catch (UnsupportedEncodingException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
+
+            String reason = ExceptionUtils.getStackTrace(e);
+            if (reason.length() > 20000) {
+                reason = reason.substring(0, 19999);
+            }
+            log.setLevel(RobotLogLevel.error);
+            log.setLogContent(reason);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            //to death!
+           return grabSinglePage(pageNumber, category);
+
         } catch (MalformedURLException e) {
+
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
+            String reason = ExceptionUtils.getStackTrace(e);
+            if (reason.length() > 20000) {
+                reason = reason.substring(0, 19999);
+            }
+            log.setLevel(RobotLogLevel.error);
+            log.setLogContent(reason);
+
+            //to death!
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            //to death!
+            return grabSinglePage(pageNumber, category);
         } catch (IOException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
+
+            String reason = ExceptionUtils.getStackTrace(e);
+            if (reason.length() > 20000) {
+                reason = reason.substring(0, 19999);
+            }
+            log.setLevel(RobotLogLevel.error);
+            log.setLogContent(reason);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            //to death!
+            return grabSinglePage(pageNumber, category);
+
         } catch (Exception unexpectedException) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(unexpectedException));
+
+            String reason = ExceptionUtils.getStackTrace(unexpectedException);
+            if (reason.length() > 20000) {
+                reason = reason.substring(0, 19999);
+            }
+            log.setLevel(RobotLogLevel.error);
+            log.setLogContent(reason);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+            //to death!
+            return grabSinglePage(pageNumber, category);
+
         }
-        //log last grab step print.
+        //log last grab step print.O
+
+        robotLogRepository.save(log);
 
         return subjects;
     }
 
     private void handleGrabMovieSubjectError(String tag, int pageNumber, String reason) {
 
-        RobotMovieSubjectFailPage robotMovieSubjectFailPage = RobotMovieSubjectFailPage.builder().pageNumber(pageNumber).tag(tag).reason(reason).build();
+        if (reason.length() > 20000) {
+            reason = reason.substring(0, 19999);
+        }
+        RobotMovieSubjectFailPage robotMovieSubjectFailPage = RobotMovieSubjectFailPage.builder().pageNumber(pageNumber).tag(tag).reason(reason).createDate(ZonedDateTime.now()).build();
         robotMovieSubjectFailPageRepository.save(robotMovieSubjectFailPage);
     }
+
 }
