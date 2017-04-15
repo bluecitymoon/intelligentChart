@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "tag",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pageNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170415105325",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "robot_movie_subject_success_page",
+    "pagination": "pagination"
+}

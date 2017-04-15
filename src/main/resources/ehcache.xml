@@ -166,5 +166,7 @@
 
     <cache alias="com.intelligent.chart.domain.RobotLog" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.RobotMovieSubjectSuccessPage" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>
