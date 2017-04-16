@@ -63,6 +63,9 @@ public class RobotServiceImpl implements RobotService{
     @Inject
     private RobotMovieSubjectFailPageRepository robotMovieSubjectFailPageRepository;
 
+    @Inject
+    private RobotMovieSubjectSuccessPageRepository robotMovieSubjectSuccessPageRepository;
+
     private Robot robot;
 
     @Inject
@@ -212,11 +215,9 @@ public class RobotServiceImpl implements RobotService{
                 break;
             }
 
-            Long randomWaitTime = new Random(3000).nextLong();
-
             try {
 
-                Thread.sleep(3000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -283,6 +284,12 @@ public class RobotServiceImpl implements RobotService{
 
         while (true) {
 
+            RobotMovieSubjectSuccessPage existedSuccessPage = robotMovieSubjectSuccessPageRepository.findByPageNumberAndTag(pageNumber, tag.getName());
+
+            if (existedSuccessPage != null) {
+                pageNumber ++;
+                continue;
+            }
             List<DoubanMovieSubject> onePageLinks = grabSinglePage(pageNumber, tag.getName());
 
             if (onePageLinks == null || onePageLinks.isEmpty()) {
@@ -295,12 +302,17 @@ public class RobotServiceImpl implements RobotService{
             pageNumber ++;
 
             try {
-                Thread.sleep(10000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
+    }
+
+    private long generateRandomReasonableWaitMiliSeconds() {
+
+        return 10000 + new Random().nextInt(30000);
     }
 
     private List<DoubanMovieSubject> grabSinglePage(int pageNumber, String category) {
@@ -338,6 +350,14 @@ public class RobotServiceImpl implements RobotService{
 
             log.setLogContent(url + " saved successfully with tag = " + category + " and page number is " + pageNumber);
 
+            RobotMovieSubjectSuccessPage robotMovieSubjectSuccessPage = RobotMovieSubjectSuccessPage.builder()
+                .pageNumber(pageNumber)
+                .tag(category)
+                .createDate(ZonedDateTime.now())
+                .build();
+
+            robotMovieSubjectSuccessPageRepository.save(robotMovieSubjectSuccessPage);
+
         } catch (UnsupportedEncodingException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
 
@@ -349,7 +369,7 @@ public class RobotServiceImpl implements RobotService{
             log.setLogContent(reason);
 
             try {
-                Thread.sleep(10000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -369,7 +389,7 @@ public class RobotServiceImpl implements RobotService{
 
             //to death!
             try {
-                Thread.sleep(10000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -387,7 +407,7 @@ public class RobotServiceImpl implements RobotService{
             log.setLogContent(reason);
 
             try {
-                Thread.sleep(10000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -406,7 +426,7 @@ public class RobotServiceImpl implements RobotService{
             log.setLogContent(reason);
 
             try {
-                Thread.sleep(10000);
+                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }

@@ -1,5 +1,9 @@
 package com.intelligent.chart.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +18,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "robot_movie_subject_success_page")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class RobotMovieSubjectSuccessPage implements Serializable {
 
     private static final long serialVersionUID = 1L;
