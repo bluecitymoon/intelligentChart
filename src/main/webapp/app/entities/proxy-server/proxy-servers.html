@@ -1,0 +1,84 @@
+<div>
+    <h2 data-translate="intelligentChartApp.proxyServer.home.title">Proxy Servers</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="proxy-server.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.proxyServer.home.createLabel">
+                        Create new Proxy Server
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="intelligentChartApp.proxyServer.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="port"><span data-translate="intelligentChartApp.proxyServer.port">Port</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="category"><span data-translate="intelligentChartApp.proxyServer.category">Category</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="anonymousLevel"><span data-translate="intelligentChartApp.proxyServer.anonymousLevel">Anonymous Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="httpType"><span data-translate="intelligentChartApp.proxyServer.httpType">Http Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location"><span data-translate="intelligentChartApp.proxyServer.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="responseSecond"><span data-translate="intelligentChartApp.proxyServer.responseSecond">Response Second</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastValidationDate"><span data-translate="intelligentChartApp.proxyServer.lastValidationDate">Last Validation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalSuccessCount"><span data-translate="intelligentChartApp.proxyServer.totalSuccessCount">Total Success Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalFailCount"><span data-translate="intelligentChartApp.proxyServer.totalFailCount">Total Fail Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastSuccessDate"><span data-translate="intelligentChartApp.proxyServer.lastSuccessDate">Last Success Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lastFailDate"><span data-translate="intelligentChartApp.proxyServer.lastFailDate">Last Fail Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createDate"><span data-translate="intelligentChartApp.proxyServer.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="proxyServer in vm.proxyServers track by proxyServer.id">
+                    <td><a ui-sref="proxy-server-detail({id:proxyServer.id})">{{proxyServer.id}}</a></td>
+                    <td>{{proxyServer.address}}</td>
+                    <td>{{proxyServer.port}}</td>
+                    <td data-translate="{{'intelligentChartApp.ProxyServerCategory.' + proxyServer.category}}">{{proxyServer.category}}</td>
+                    <td>{{proxyServer.anonymousLevel}}</td>
+                    <td>{{proxyServer.httpType}}</td>
+                    <td>{{proxyServer.location}}</td>
+                    <td>{{proxyServer.responseSecond}}</td>
+                    <td>{{proxyServer.lastValidationDate | date:'medium'}}</td>
+                    <td>{{proxyServer.totalSuccessCount}}</td>
+                    <td>{{proxyServer.totalFailCount}}</td>
+                    <td>{{proxyServer.lastSuccessDate | date:'medium'}}</td>
+                    <td>{{proxyServer.lastFailDate | date:'medium'}}</td>
+                    <td>{{proxyServer.createDate | date:'medium'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="proxy-server-detail({id:proxyServer.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="proxy-server.edit({id:proxyServer.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="proxy-server.delete({id:proxyServer.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

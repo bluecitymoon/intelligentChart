@@ -81,6 +81,7 @@
                 "robotMovieSubjectFailPage": "Robot Movie Subject Fail Page",
                 "robotLog": "Robot Log",
                 "robotMovieSubjectSuccessPage": "Robot Movie Subject Success Page",
+                "proxyServer": "Proxy Server",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

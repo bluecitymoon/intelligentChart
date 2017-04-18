@@ -1,0 +1,34 @@
+{
+    "intelligentChartApp": {
+        "proxyServer" : {
+            "home": {
+                "title": "Proxy Servers",
+                "createLabel": "Create a new Proxy Server",
+                "createOrEditLabel": "Create or edit a Proxy Server",
+                "search": "Search for Proxy Server"
+            },
+            "created": "A new Proxy Server is created with identifier {{ param }}",
+            "updated": "A Proxy Server is updated with identifier {{ param }}",
+            "deleted": "A Proxy Server is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Proxy Server {{ id }}?"
+            },
+            "detail": {
+                "title": "Proxy Server"
+            },
+            "address": "Address",
+            "port": "Port",
+            "category": "Category",
+            "anonymousLevel": "Anonymous Level",
+            "httpType": "Http Type",
+            "location": "Location",
+            "responseSecond": "Response Second",
+            "lastValidationDate": "Last Validation Date",
+            "totalSuccessCount": "Total Success Count",
+            "totalFailCount": "Total Fail Count",
+            "lastSuccessDate": "Last Success Date",
+            "lastFailDate": "Last Fail Date",
+            "createDate": "Create Date"
+        }
+    }
+}

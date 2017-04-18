@@ -1,0 +1,64 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "port",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "ProxyServerCategory",
+            "fieldValues": "inCountryVisible,inCountryAnonymous,outCountryVisible,outCountryAnonymous"
+        },
+        {
+            "fieldName": "anonymousLevel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "httpType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responseSecond",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "lastValidationDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "totalSuccessCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "totalFailCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "lastSuccessDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "lastFailDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170418055407",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "proxy_server",
+    "pagination": "pagination"
+}

@@ -18,7 +18,7 @@ public class HttpUtils {
         BrowserVersion browserVersion = browserVersions[new Random().nextInt(browserVersions.length)];
 
         log.debug("Create new browser with " + browserVersion.toString());
-        WebClient webClient = new WebClient(browserVersion);
+        WebClient webClient = new WebClient(browserVersion, "202.153.228.130", 8080);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setTimeout(30000);
@@ -29,9 +29,19 @@ public class HttpUtils {
         return webClient;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(new Random().nextInt(10));
-//    }
+    public static WebClient newNormalWebClient() {
+
+        WebClient webClient = new WebClient(BrowserVersion.CHROME);
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setTimeout(30000);
+        webClient.getOptions().setJavaScriptEnabled(false);
+
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+
+        return webClient;
+    }
+
 }
 
 

@@ -1,0 +1,11 @@
+{
+    "intelligentChartApp": {
+        "ProxyServerCategory" : {
+            "null": "",
+            "inCountryVisible": "inCountryVisible",
+            "inCountryAnonymous": "inCountryAnonymous",
+            "outCountryVisible": "outCountryVisible",
+            "outCountryAnonymous": "outCountryAnonymous"
+        }
+    }
+}

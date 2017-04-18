@@ -1,0 +1,123 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myProxyServerLabel" data-translate="intelligentChartApp.proxyServer.home.createOrEditLabel">Create or edit a Proxy Server</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.proxyServer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.proxyServer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.proxyServer.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.port" for="field_port">Port</label>
+            <input type="number" class="form-control" name="port" id="field_port"
+                    ng-model="vm.proxyServer.port"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.category" for="field_category">Category</label>
+            <select class="form-control" name="category" ng-model="vm.proxyServer.category" id="field_category">
+                <option value="inCountryVisible" data-translate="intelligentChartApp.ProxyServerCategory.inCountryVisible">inCountryVisible</option>
+                <option value="inCountryAnonymous" data-translate="intelligentChartApp.ProxyServerCategory.inCountryAnonymous">inCountryAnonymous</option>
+                <option value="outCountryVisible" data-translate="intelligentChartApp.ProxyServerCategory.outCountryVisible">outCountryVisible</option>
+                <option value="outCountryAnonymous" data-translate="intelligentChartApp.ProxyServerCategory.outCountryAnonymous">outCountryAnonymous</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.anonymousLevel" for="field_anonymousLevel">Anonymous Level</label>
+            <input type="text" class="form-control" name="anonymousLevel" id="field_anonymousLevel"
+                    ng-model="vm.proxyServer.anonymousLevel"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.httpType" for="field_httpType">Http Type</label>
+            <input type="text" class="form-control" name="httpType" id="field_httpType"
+                    ng-model="vm.proxyServer.httpType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                    ng-model="vm.proxyServer.location"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.responseSecond" for="field_responseSecond">Response Second</label>
+            <input type="number" class="form-control" name="responseSecond" id="field_responseSecond"
+                    ng-model="vm.proxyServer.responseSecond"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.lastValidationDate" for="field_lastValidationDate">Last Validation Date</label>
+                <div class="input-group">
+                    <input id="field_lastValidationDate" type="text" class="form-control" name="lastValidationDate" datetime-picker="{{dateformat}}" ng-model="vm.proxyServer.lastValidationDate" is-open="vm.datePickerOpenStatus.lastValidationDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastValidationDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.totalSuccessCount" for="field_totalSuccessCount">Total Success Count</label>
+            <input type="number" class="form-control" name="totalSuccessCount" id="field_totalSuccessCount"
+                    ng-model="vm.proxyServer.totalSuccessCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.totalFailCount" for="field_totalFailCount">Total Fail Count</label>
+            <input type="number" class="form-control" name="totalFailCount" id="field_totalFailCount"
+                    ng-model="vm.proxyServer.totalFailCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.lastSuccessDate" for="field_lastSuccessDate">Last Success Date</label>
+                <div class="input-group">
+                    <input id="field_lastSuccessDate" type="text" class="form-control" name="lastSuccessDate" datetime-picker="{{dateformat}}" ng-model="vm.proxyServer.lastSuccessDate" is-open="vm.datePickerOpenStatus.lastSuccessDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastSuccessDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.lastFailDate" for="field_lastFailDate">Last Fail Date</label>
+                <div class="input-group">
+                    <input id="field_lastFailDate" type="text" class="form-control" name="lastFailDate" datetime-picker="{{dateformat}}" ng-model="vm.proxyServer.lastFailDate" is-open="vm.datePickerOpenStatus.lastFailDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('lastFailDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.proxyServer.createDate" for="field_createDate">Create Date</label>
+                <div class="input-group">
+                    <input id="field_createDate" type="text" class="form-control" name="createDate" datetime-picker="{{dateformat}}" ng-model="vm.proxyServer.createDate" is-open="vm.datePickerOpenStatus.createDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

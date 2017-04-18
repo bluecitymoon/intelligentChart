@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
+import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import com.intelligent.chart.service.dto.DoubanMovieSubjects;
@@ -70,6 +71,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private RobotLogRepository robotLogRepository;
+
+    @Inject
+    private ProxyServerService proxyServerService;
     /**
      * Save a robot.
      *
@@ -166,6 +170,11 @@ public class RobotServiceImpl implements RobotService{
 
                 doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
 
+                break;
+
+            case "all_proxy_server":
+
+                proxyServerService.grabProxyServers();
                 break;
 
             default:

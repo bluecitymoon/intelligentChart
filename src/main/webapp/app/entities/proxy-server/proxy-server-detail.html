@@ -1,0 +1,71 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.proxyServer.detail.title">Proxy Server</span> {{vm.proxyServer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.proxyServer.address">Address</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.address}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.port">Port</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.port}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.category">Category</span></dt>
+        <dd>
+            <span data-translate="{{'intelligentChartApp.ProxyServerCategory.' + vm.proxyServer.category}}">{{vm.proxyServer.category}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.anonymousLevel">Anonymous Level</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.anonymousLevel}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.httpType">Http Type</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.httpType}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.location">Location</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.location}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.responseSecond">Response Second</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.responseSecond}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.lastValidationDate">Last Validation Date</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.lastValidationDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.totalSuccessCount">Total Success Count</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.totalSuccessCount}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.totalFailCount">Total Fail Count</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.totalFailCount}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.lastSuccessDate">Last Success Date</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.lastSuccessDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.lastFailDate">Last Fail Date</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.lastFailDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.proxyServer.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.proxyServer.createDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="proxy-server-detail.edit({id:vm.proxyServer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
