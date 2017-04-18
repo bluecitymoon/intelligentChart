@@ -2,6 +2,7 @@ package com.intelligent.chart.service.impl;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.google.common.collect.Lists;
+import com.intelligent.chart.IntelligentChartApp;
 import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
 import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.domain.ProxyServer;
@@ -20,12 +21,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Service Implementation for managing ProxyServer.
@@ -37,6 +40,9 @@ public class ProxyServerServiceImpl implements ProxyServerService{
 
     @Inject
     private ProxyServerRepository proxyServerRepository;
+
+    @Inject
+    private EntityManager entityManager;
 
     /**
      * Save a proxyServer.
@@ -99,6 +105,52 @@ public class ProxyServerServiceImpl implements ProxyServerService{
 
             }
         }
+
+    }
+
+    @Override
+    public ProxyServer findRandomMostValuableProxyServer() {
+
+        Integer minId =  entityManager.createNativeQuery("select min(id) from proxy_server").getFirstResult();
+        Integer maxId = entityManager.createNativeQuery("select max(id) from proxy_server").getFirstResult();
+
+        Integer randomId = new Random().nextInt(26858);
+
+        ProxyServer proxyServer = findOne(Long.valueOf(randomId) + 1);
+
+        if (proxyServer == null) {
+            return findRandomMostValuableProxyServer();
+        }
+
+        return proxyServer;
+    }
+
+    @Override
+    public void increaseSuccessCount(ProxyServer proxyServer) {
+
+        if (proxyServer.getTotalSuccessCount() == null || proxyServer.getTotalSuccessCount() == 0) {
+            proxyServer.setTotalSuccessCount(1);
+        } else {
+            proxyServer.setTotalSuccessCount(proxyServer.getTotalSuccessCount() + 1);
+        }
+
+        proxyServer.setLastSuccessDate(ZonedDateTime.now());
+
+        save(proxyServer);
+    }
+
+    @Override
+    public void increaseFailCount(ProxyServer proxyServer) {
+
+        if (proxyServer.getTotalFailCount() == null || proxyServer.getTotalFailCount() == 0) {
+            proxyServer.setTotalFailCount(1);
+        } else {
+            proxyServer.setTotalFailCount(proxyServer.getTotalFailCount() + 1);
+        }
+
+        proxyServer.setLastFailDate(ZonedDateTime.now());
+
+        save(proxyServer);
 
     }
 

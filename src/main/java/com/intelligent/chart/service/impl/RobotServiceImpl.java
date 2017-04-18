@@ -74,6 +74,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private ProxyServerService proxyServerService;
+
+    private ProxyServer lastGoodProxyServer;
+
     /**
      * Save a robot.
      *
@@ -321,10 +324,12 @@ public class RobotServiceImpl implements RobotService{
 
     private long generateRandomReasonableWaitMiliSeconds() {
 
-        return 10000 + new Random().nextInt(30000);
+        return 1 + new Random().nextInt(1000);
     }
 
     private List<DoubanMovieSubject> grabSinglePage(int pageNumber, String category) {
+
+        ProxyServer proxyServer = lastGoodProxyServer == null? proxyServerService.findRandomMostValuableProxyServer(): lastGoodProxyServer;
 
         List<DoubanMovieSubject> subjects = Lists.newArrayList();
 
@@ -332,7 +337,9 @@ public class RobotServiceImpl implements RobotService{
         try {
 
             String url = "https://movie.douban.com/tag/" + URLEncoder.encode(category, "UTF-8") + "?start=" + 20 * pageNumber + "&type=T";
-            String content = HttpUtils.newWebClient().getPage(url).getWebResponse().getContentAsString();
+
+
+            String content = HttpUtils.newWebClientWithRandomProxyServer(proxyServer).getPage(url).getWebResponse().getContentAsString();
 
             Document document = Jsoup.parse(content);
             Elements movieLinks = document.getElementsByClass("nbg");
@@ -367,6 +374,10 @@ public class RobotServiceImpl implements RobotService{
 
             robotMovieSubjectSuccessPageRepository.save(robotMovieSubjectSuccessPage);
 
+            proxyServerService.increaseSuccessCount(proxyServer);
+
+            lastGoodProxyServer = proxyServer;
+
         } catch (UnsupportedEncodingException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
 
@@ -377,12 +388,15 @@ public class RobotServiceImpl implements RobotService{
             log.setLevel(RobotLogLevel.error);
             log.setLogContent(reason);
 
-            try {
-                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
 
+            proxyServerService.increaseFailCount(proxyServer);
+
+            lastGoodProxyServer = null;
             //to death!
            return grabSinglePage(pageNumber, category);
 
@@ -396,13 +410,14 @@ public class RobotServiceImpl implements RobotService{
             log.setLevel(RobotLogLevel.error);
             log.setLogContent(reason);
 
-            //to death!
-            try {
-                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
+//            //to death!
+//            try {
+//                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
+            proxyServerService.increaseFailCount(proxyServer);
+            lastGoodProxyServer = null;
             //to death!
             return grabSinglePage(pageNumber, category);
         } catch (IOException e) {
@@ -415,12 +430,13 @@ public class RobotServiceImpl implements RobotService{
             log.setLevel(RobotLogLevel.error);
             log.setLogContent(reason);
 
-            try {
-                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
+//            try {
+//                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
+            proxyServerService.increaseFailCount(proxyServer);
+            lastGoodProxyServer = null;
             //to death!
             return grabSinglePage(pageNumber, category);
 
@@ -434,12 +450,13 @@ public class RobotServiceImpl implements RobotService{
             log.setLevel(RobotLogLevel.error);
             log.setLogContent(reason);
 
-            try {
-                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-
+//            try {
+//                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
+//            } catch (InterruptedException e1) {
+//                e1.printStackTrace();
+//            }
+            proxyServerService.increaseFailCount(proxyServer);
+            lastGoodProxyServer = null;
             //to death!
             return grabSinglePage(pageNumber, category);
 

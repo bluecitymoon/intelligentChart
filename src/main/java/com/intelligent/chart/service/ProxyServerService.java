@@ -42,4 +42,10 @@ public interface ProxyServerService {
     void delete(Long id);
 
     void grabProxyServers();
+
+    ProxyServer findRandomMostValuableProxyServer();
+
+    void increaseSuccessCount(ProxyServer proxyServer);
+
+    void increaseFailCount(ProxyServer proxyServer);
 }
