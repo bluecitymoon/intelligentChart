@@ -32,6 +32,9 @@ public class DoubanMovieTag implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "max_page_count")
+    private Integer maxPageCount;
+
     public Long getId() {
         return id;
     }
@@ -51,6 +54,19 @@ public class DoubanMovieTag implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getMaxPageCount() {
+        return maxPageCount;
+    }
+
+    public DoubanMovieTag maxPageCount(Integer maxPageCount) {
+        this.maxPageCount = maxPageCount;
+        return this;
+    }
+
+    public void setMaxPageCount(Integer maxPageCount) {
+        this.maxPageCount = maxPageCount;
     }
 
     @Override
@@ -78,6 +94,7 @@ public class DoubanMovieTag implements Serializable {
         return "DoubanMovieTag{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", maxPageCount='" + maxPageCount + "'" +
             '}';
     }
 }

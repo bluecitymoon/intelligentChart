@@ -16,7 +16,8 @@
             "detail": {
                 "title": "Douban Movie Tag"
             },
-            "name": "Name"
+            "name": "Name",
+            "maxPageCount": "Max Page Count"
         }
     }
 }

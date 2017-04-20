@@ -125,6 +125,7 @@
                         entity: function () {
                             return {
                                 name: null,
+                                maxPageCount: null,
                                 id: null
                             };
                         }

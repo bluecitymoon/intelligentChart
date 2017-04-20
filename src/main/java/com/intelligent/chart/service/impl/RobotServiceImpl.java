@@ -330,13 +330,17 @@ public class RobotServiceImpl implements RobotService{
             }
             List<DoubanMovieSubject> onePageLinks = grabSinglePage(pageNumber, tag.getName());
 
+            /*
             if (onePageLinks == null || onePageLinks.isEmpty()) {
                 break;
             }
             if (onePageLinks.size() < 20) {
                 break;
             }
-
+*/
+            if (pageNumber > 392) {
+                break;
+            }
             pageNumber ++;
 
 //            try {

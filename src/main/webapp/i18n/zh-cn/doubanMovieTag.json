@@ -7,16 +7,17 @@
                 "createOrEditLabel": "Create or edit a Douban Movie Tag",
                 "search": "Search for Douban Movie Tag"
             },
-            "created": "数据已创建",
-            "updated": "数据已更新",
-            "deleted": "数据已删除",
+            "created": "A new Douban Movie Tag is created with identifier {{ param }}",
+            "updated": "A Douban Movie Tag is updated with identifier {{ param }}",
+            "deleted": "A Douban Movie Tag is deleted with identifier {{ param }}",
             "delete": {
-                "question": "你确定删除这条数据?"
+                "question": "Are you sure you want to delete Douban Movie Tag {{ id }}?"
             },
             "detail": {
                 "title": "Douban Movie Tag"
             },
-            "name": "Name"
+            "name": "Name",
+            "maxPageCount": "Max Page Count"
         }
     }
 }

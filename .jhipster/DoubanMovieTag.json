@@ -5,6 +5,10 @@
         {
             "fieldName": "name",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "maxPageCount",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170412083222",

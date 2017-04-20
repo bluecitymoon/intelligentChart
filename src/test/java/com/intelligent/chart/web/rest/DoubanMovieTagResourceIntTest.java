@@ -41,6 +41,9 @@ public class DoubanMovieTagResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_MAX_PAGE_COUNT = 1;
+    private static final Integer UPDATED_MAX_PAGE_COUNT = 2;
+
     @Inject
     private DoubanMovieTagRepository doubanMovieTagRepository;
 
@@ -78,7 +81,8 @@ public class DoubanMovieTagResourceIntTest {
      */
     public static DoubanMovieTag createEntity(EntityManager em) {
         DoubanMovieTag doubanMovieTag = new DoubanMovieTag()
-                .name(DEFAULT_NAME);
+                .name(DEFAULT_NAME)
+                .maxPageCount(DEFAULT_MAX_PAGE_COUNT);
         return doubanMovieTag;
     }
 
@@ -104,6 +108,7 @@ public class DoubanMovieTagResourceIntTest {
         assertThat(doubanMovieTagList).hasSize(databaseSizeBeforeCreate + 1);
         DoubanMovieTag testDoubanMovieTag = doubanMovieTagList.get(doubanMovieTagList.size() - 1);
         assertThat(testDoubanMovieTag.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testDoubanMovieTag.getMaxPageCount()).isEqualTo(DEFAULT_MAX_PAGE_COUNT);
     }
 
     @Test
@@ -137,7 +142,8 @@ public class DoubanMovieTagResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(doubanMovieTag.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].maxPageCount").value(hasItem(DEFAULT_MAX_PAGE_COUNT)));
     }
 
     @Test
@@ -151,7 +157,8 @@ public class DoubanMovieTagResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(doubanMovieTag.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.maxPageCount").value(DEFAULT_MAX_PAGE_COUNT));
     }
 
     @Test
@@ -173,7 +180,8 @@ public class DoubanMovieTagResourceIntTest {
         // Update the doubanMovieTag
         DoubanMovieTag updatedDoubanMovieTag = doubanMovieTagRepository.findOne(doubanMovieTag.getId());
         updatedDoubanMovieTag
-                .name(UPDATED_NAME);
+                .name(UPDATED_NAME)
+                .maxPageCount(UPDATED_MAX_PAGE_COUNT);
 
         restDoubanMovieTagMockMvc.perform(put("/api/douban-movie-tags")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -185,6 +193,7 @@ public class DoubanMovieTagResourceIntTest {
         assertThat(doubanMovieTagList).hasSize(databaseSizeBeforeUpdate);
         DoubanMovieTag testDoubanMovieTag = doubanMovieTagList.get(doubanMovieTagList.size() - 1);
         assertThat(testDoubanMovieTag.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testDoubanMovieTag.getMaxPageCount()).isEqualTo(UPDATED_MAX_PAGE_COUNT);
     }
 
     @Test

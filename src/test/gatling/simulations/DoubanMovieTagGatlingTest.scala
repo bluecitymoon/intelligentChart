@@ -80,7 +80,7 @@ class DoubanMovieTagGatlingTest extends Simulation {
             .exec(http("Create new doubanMovieTag")
             .post("/api/douban-movie-tags")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "maxPageCount":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_doubanMovieTag_url"))).exitHereIfFailed
             .pause(10)
