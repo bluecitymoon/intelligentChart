@@ -16,7 +16,7 @@ public class ProxyServerPool {
 
     private static LinkedList<ProxyServer> proxyServers = Lists.newLinkedList();
 
-    public void push(ProxyServer proxyServer) { proxyServers.push(proxyServer);}
+    public synchronized void push(ProxyServer proxyServer) { proxyServers.push(proxyServer);}
 
     public synchronized ProxyServer pull() {
         ProxyServer proxyServer = proxyServers.pollLast();
@@ -25,7 +25,7 @@ public class ProxyServerPool {
         return proxyServer;
     }
 
-    private LinkedList<ProxyServer> getProxyServers() {
+    private synchronized LinkedList<ProxyServer> getProxyServers() {
         return proxyServers;
     }
 

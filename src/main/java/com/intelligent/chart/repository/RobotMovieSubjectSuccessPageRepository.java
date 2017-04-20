@@ -12,6 +12,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface RobotMovieSubjectSuccessPageRepository extends JpaRepository<RobotMovieSubjectSuccessPage,Long> {
 
-    RobotMovieSubjectSuccessPage findByPageNumberAndTag(int pageNumber, String tag);
+    List<RobotMovieSubjectSuccessPage> findByPageNumberAndTag(int pageNumber, String tag);
 
 }

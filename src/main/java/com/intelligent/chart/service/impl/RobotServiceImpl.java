@@ -8,6 +8,7 @@ import com.intelligent.chart.config.pool.ProxyServerPool;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
+import com.intelligent.chart.service.DoubanMovieTagService;
 import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
@@ -17,6 +18,7 @@ import com.intelligent.chart.service.util.DetailedLinkUtil;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.service.util.RandomUtil;
+import com.intelligent.chart.vo.MoviePageIndex;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -62,6 +64,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private DoubanMovieTagRepository doubanMovieTagRepository;
+
+    @Inject
+    private DoubanMovieTagService doubanMovieTagService;
 
     @Inject
     private DoubleMovieSubjectRepository doubleMovieSubjectRepository;
@@ -181,17 +186,57 @@ public class RobotServiceImpl implements RobotService{
 
 
 
+                List<MoviePageIndex> targetPagesPool = Lists.newArrayList();
                 List<DoubanMovieTag> tags = doubanMovieTagRepository.findAll();
-                ExecutorService executorService = Executors.newFixedThreadPool(tags.size());
 
-                for (final DoubanMovieTag doubanMovieTag: tags) {
+                for (DoubanMovieTag tag : tags) {
+
+                    for (int i = 1; i <= tag.getMaxPageCount(); i++) {
+                        List<RobotMovieSubjectSuccessPage> subjectSuccessPage = robotMovieSubjectSuccessPageRepository.findByPageNumberAndTag(i, tag.getName());
+                        if (subjectSuccessPage == null || subjectSuccessPage.size() == 0) {
+
+                            MoviePageIndex index = MoviePageIndex.builder().pageNumber(i).tag(tag.getName()).build();
+                            targetPagesPool.add(index);
+                        }
+                    }
+
+                }
+
+                log.info("There are " + targetPagesPool.size() + " pages to go ...");
+                for (int i = 1; i <= 3; i ++) {
+                    log.info("Start in " + i);
+
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                List<List<MoviePageIndex>> partitions = Lists.partition(targetPagesPool, 100);
+
+                ExecutorService executorService = Executors.newFixedThreadPool(100);
+
+                for (final List<MoviePageIndex> targets: partitions) {
+
                     executorService.execute(new Runnable() {
                         @Override
                         public void run() {
-                            grabMovieLinksInSingleCategory(doubanMovieTag);
+
+                            grabPages(targets);
                         }
                     });
+
                 }
+
+//                for (final DoubanMovieTag doubanMovieTag: tags) {
+//                    executorService.execute(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            grabMovieLinksInSingleCategory(doubanMovieTag);
+//                        }
+//                    });
+//                }
                // doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
 
                 break;
@@ -206,6 +251,9 @@ public class RobotServiceImpl implements RobotService{
                 proxyServerService.checkReachable();
                 break;
 
+            case "get_category_max_count":
+                doubanMovieTagService.getAllMaxCount();
+                break;
             default:
                 break;
         }
@@ -316,15 +364,22 @@ public class RobotServiceImpl implements RobotService{
         }
     }
 
+    private  void grabPages(List<MoviePageIndex> targets) {
+
+        for (MoviePageIndex target : targets) {
+            grabSinglePage(target.getPageNumber(), target.getTag());
+        }
+    }
+
     private void grabMovieLinksInSingleCategory(DoubanMovieTag tag) {
 
         int pageNumber = 0;
 
         while (true) {
 
-            RobotMovieSubjectSuccessPage existedSuccessPage = robotMovieSubjectSuccessPageRepository.findByPageNumberAndTag(pageNumber, tag.getName());
+            List<RobotMovieSubjectSuccessPage> existedSuccessPage = robotMovieSubjectSuccessPageRepository.findByPageNumberAndTag(pageNumber, tag.getName());
 
-            if (existedSuccessPage != null) {
+            if (existedSuccessPage != null && existedSuccessPage.size() > 0) {
                 pageNumber ++;
                 continue;
             }
@@ -374,6 +429,9 @@ public class RobotServiceImpl implements RobotService{
             WebResponse response = HttpUtils.newWebClientWithRandomProxyServer(proxyServer).getPage(url).getWebResponse();
 
             if (response.getStatusCode() != 200) {
+
+                this.log.info("Get page " + pageNumber + " with category " + category + " failed with code " + response.getStatusCode() + " -> retrying");
+
                 return grabSinglePage(pageNumber, category);
             }
 
@@ -413,8 +471,6 @@ public class RobotServiceImpl implements RobotService{
             robotMovieSubjectSuccessPageRepository.save(robotMovieSubjectSuccessPage);
 
             proxyServerService.increaseSuccessCount(proxyServer);
-
-            lastGoodProxyServer = proxyServer;
 
             this.log.info("Getting page " + pageNumber + " with category " + category + " successfully");
 

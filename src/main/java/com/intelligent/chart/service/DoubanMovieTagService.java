@@ -20,7 +20,7 @@ public interface DoubanMovieTagService {
 
     /**
      *  Get all the doubanMovieTags.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +40,6 @@ public interface DoubanMovieTagService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    void getAllMaxCount();
 }

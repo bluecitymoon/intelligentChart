@@ -86,6 +86,7 @@
     <include file="classpath:config/liquibase/changelog/20170415105325_added_entity_RobotMovieSubjectSuccessPage.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170418055407_added_entity_ProxyServer.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170418094311_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170420063935_changelog.xml" relativeToChangelogFile="false"/>
 
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
