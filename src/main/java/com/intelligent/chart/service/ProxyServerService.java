@@ -45,7 +45,11 @@ public interface ProxyServerService {
 
     ProxyServer findRandomMostValuableProxyServer();
 
+    ProxyServer findOneReachableProxyServer();
+
     void increaseSuccessCount(ProxyServer proxyServer);
 
     void increaseFailCount(ProxyServer proxyServer);
+
+    void checkReachable();
 }

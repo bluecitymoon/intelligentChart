@@ -29,6 +29,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Service Implementation for managing ProxyServer.
@@ -122,7 +124,29 @@ public class ProxyServerServiceImpl implements ProxyServerService{
             return findRandomMostValuableProxyServer();
         }
 
+        if (!proxyServer.isIsReachable()) {
+            return findRandomMostValuableProxyServer();
+        }
+
         return proxyServer;
+    }
+
+    @Override
+    public ProxyServer findOneReachableProxyServer() {
+
+        ProxyServer server = proxyServerRepository.findTop1ByIsReachableTrueOrderByLastSuccessDateAscTotalFailCountAscTotalSuccessCountDesc();
+
+        if (server == null) {
+
+            List<ProxyServer> reachabeServers = proxyServerRepository.findByIsReachableTrue();
+
+            int randomServer = new Random().nextInt(reachabeServers.size());
+            return reachabeServers.get(randomServer);
+
+        } else {
+            return server;
+        }
+
     }
 
     @Override
@@ -152,6 +176,37 @@ public class ProxyServerServiceImpl implements ProxyServerService{
 
         save(proxyServer);
 
+    }
+
+    @Override
+    public void checkReachable() {
+
+        List<ProxyServer> allServers = proxyServerRepository.findAll();
+        List<List<ProxyServer>> partitionServers = Lists.partition(allServers, 200);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(200);
+
+        for (final List<ProxyServer> servers: partitionServers) {
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    servers.forEach(proxyServer -> {
+                        boolean isReachable = HttpUtils.isReachable(proxyServer.getAddress());
+
+                        proxyServer.setIsReachable(isReachable);
+
+                        save(proxyServer);
+                    });
+                }
+            });
+        }
+//        proxyServerRepository.findAll().forEach(proxyServer -> {
+//            boolean isReachable = HttpUtils.isReachable(proxyServer.getAddress());
+//
+//            proxyServer.setIsReachable(isReachable);
+//
+//            save(proxyServer);
+//        });
     }
 
     private void grabSinglePage(int page, String url, WebClient webClient, DateTimeFormatter formatter) {

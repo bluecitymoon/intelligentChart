@@ -17,7 +17,7 @@ spring:
         include: swagger
     devtools:
         restart:
-            enabled: true
+            enabled: false
         livereload:
             enabled: false # we use gulp + BrowserSync for livereload
     jackson:
@@ -37,7 +37,7 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
         database: MYSQL
-        show-sql: true
+        show-sql: false
         properties:
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false

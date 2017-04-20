@@ -72,6 +72,9 @@ public class ProxyServer implements Serializable {
     @Column(name = "create_date")
     private ZonedDateTime createDate;
 
+    @Column(name = "is_reachable")
+    private Boolean isReachable;
+
     public Long getId() {
         return id;
     }
@@ -249,6 +252,19 @@ public class ProxyServer implements Serializable {
         this.createDate = createDate;
     }
 
+    public Boolean isIsReachable() {
+        return isReachable;
+    }
+
+    public ProxyServer isReachable(Boolean isReachable) {
+        this.isReachable = isReachable;
+        return this;
+    }
+
+    public void setIsReachable(Boolean isReachable) {
+        this.isReachable = isReachable;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -286,6 +302,7 @@ public class ProxyServer implements Serializable {
             ", lastSuccessDate='" + lastSuccessDate + "'" +
             ", lastFailDate='" + lastFailDate + "'" +
             ", createDate='" + createDate + "'" +
+            ", isReachable='" + isReachable + "'" +
             '}';
     }
 }

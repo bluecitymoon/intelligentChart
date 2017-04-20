@@ -1,8 +1,10 @@
 package com.intelligent.chart.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gargoylesoftware.htmlunit.WebResponse;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.intelligent.chart.config.pool.ProxyServerPool;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
@@ -36,7 +38,10 @@ import java.net.URLEncoder;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 import static com.intelligent.chart.service.util.DoubanUtil.grabSinglePageSubjectsWithTag;
 
@@ -66,6 +71,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private RobotMovieSubjectSuccessPageRepository robotMovieSubjectSuccessPageRepository;
+
+    @Inject
+    private ProxyServerPool proxyServerPool;
 
     private Robot robot;
 
@@ -171,13 +179,31 @@ public class RobotServiceImpl implements RobotService{
 
             case "all_links":
 
-                doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
+
+
+                List<DoubanMovieTag> tags = doubanMovieTagRepository.findAll();
+                ExecutorService executorService = Executors.newFixedThreadPool(tags.size());
+
+                for (final DoubanMovieTag doubanMovieTag: tags) {
+                    executorService.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            grabMovieLinksInSingleCategory(doubanMovieTag);
+                        }
+                    });
+                }
+               // doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
 
                 break;
 
             case "all_proxy_server":
 
                 proxyServerService.grabProxyServers();
+                break;
+
+            case "proxy_server_reachable_checker":
+
+                proxyServerService.checkReachable();
                 break;
 
             default:
@@ -313,11 +339,11 @@ public class RobotServiceImpl implements RobotService{
 
             pageNumber ++;
 
-            try {
-                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(generateRandomReasonableWaitMiliSeconds());
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
 
     }
@@ -329,7 +355,11 @@ public class RobotServiceImpl implements RobotService{
 
     private List<DoubanMovieSubject> grabSinglePage(int pageNumber, String category) {
 
-        ProxyServer proxyServer = lastGoodProxyServer == null? proxyServerService.findRandomMostValuableProxyServer(): lastGoodProxyServer;
+        log.info("Start to get page " + pageNumber + " with category " + category);
+
+       // ProxyServer proxyServer = lastGoodProxyServer == null? proxyServerService.findOneReachableProxyServer(): lastGoodProxyServer;
+        //ProxyServer proxyServer = proxyServerService.findOneReachableProxyServer();
+        ProxyServer proxyServer = proxyServerPool.pull();
 
         List<DoubanMovieSubject> subjects = Lists.newArrayList();
 
@@ -337,9 +367,13 @@ public class RobotServiceImpl implements RobotService{
         try {
 
             String url = "https://movie.douban.com/tag/" + URLEncoder.encode(category, "UTF-8") + "?start=" + 20 * pageNumber + "&type=T";
+            WebResponse response = HttpUtils.newWebClientWithRandomProxyServer(proxyServer).getPage(url).getWebResponse();
 
+            if (response.getStatusCode() != 200) {
+                return grabSinglePage(pageNumber, category);
+            }
 
-            String content = HttpUtils.newWebClientWithRandomProxyServer(proxyServer).getPage(url).getWebResponse().getContentAsString();
+            String content = response.getContentAsString();
 
             Document document = Jsoup.parse(content);
             Elements movieLinks = document.getElementsByClass("nbg");
@@ -378,6 +412,8 @@ public class RobotServiceImpl implements RobotService{
 
             lastGoodProxyServer = proxyServer;
 
+            this.log.info("Getting page " + pageNumber + " with category " + category + " successfully");
+
         } catch (UnsupportedEncodingException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
 
@@ -396,7 +432,9 @@ public class RobotServiceImpl implements RobotService{
 
             proxyServerService.increaseFailCount(proxyServer);
 
-            lastGoodProxyServer = null;
+            robotLogRepository.save(log);
+
+            this.log.info("Getting page " + pageNumber + " with category " + category + "failed: " + e.getMessage());
             //to death!
            return grabSinglePage(pageNumber, category);
 
@@ -417,8 +455,10 @@ public class RobotServiceImpl implements RobotService{
 //                e1.printStackTrace();
 //            }
             proxyServerService.increaseFailCount(proxyServer);
-            lastGoodProxyServer = null;
+            robotLogRepository.save(log);
             //to death!
+
+            this.log.info("Getting page " + pageNumber + " with category " + category + "failed: " + e.getMessage());
             return grabSinglePage(pageNumber, category);
         } catch (IOException e) {
             handleGrabMovieSubjectError(category, pageNumber, ExceptionUtils.getStackTrace(e));
@@ -436,7 +476,9 @@ public class RobotServiceImpl implements RobotService{
 //                e1.printStackTrace();
 //            }
             proxyServerService.increaseFailCount(proxyServer);
-            lastGoodProxyServer = null;
+            robotLogRepository.save(log);
+
+            this.log.info("Getting page " + pageNumber + " with category " + category + "failed: " + e.getMessage());
             //to death!
             return grabSinglePage(pageNumber, category);
 
@@ -456,7 +498,9 @@ public class RobotServiceImpl implements RobotService{
 //                e1.printStackTrace();
 //            }
             proxyServerService.increaseFailCount(proxyServer);
-            lastGoodProxyServer = null;
+            robotLogRepository.save(log);
+
+            this.log.info("Getting page " + pageNumber + " with category " + category + "failed: " + unexpectedException.getMessage());
             //to death!
             return grabSinglePage(pageNumber, category);
 
@@ -465,6 +509,11 @@ public class RobotServiceImpl implements RobotService{
 
         robotLogRepository.save(log);
 
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return subjects;
     }
 

@@ -54,6 +54,10 @@
         {
             "fieldName": "createDate",
             "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "isReachable",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170418055407",

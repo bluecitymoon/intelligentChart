@@ -74,7 +74,6 @@
     <include file="classpath:config/liquibase/changelog/20170312021549_added_entity_PersonFanSupportGroup.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170313083744_added_entity_PersonFanDisbribution.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170314085134_changelog.xml" relativeToChangelogFile="false"/>
-
     <include file="classpath:config/liquibase/changelog/20170314092029_added_entity_PersonWechatArticle.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170315032537_added_entity_PersonTieBa.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170316020145_added_entity_PersonRelation.xml" relativeToChangelogFile="false"/>
@@ -86,6 +85,8 @@
     <include file="classpath:config/liquibase/changelog/20170414093144_added_entity_RobotLog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415105325_added_entity_RobotMovieSubjectSuccessPage.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170418055407_added_entity_ProxyServer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170418094311_changelog.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>

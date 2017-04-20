@@ -14,4 +14,12 @@ public interface ProxyServerRepository extends JpaRepository<ProxyServer,Long> {
 
     ProxyServer findByAddress(String address);
 
+    ProxyServer findTop1ByIsReachableTrueOrderByLastSuccessDateAscTotalFailCountAscTotalSuccessCountDesc();
+
+    List<ProxyServer> findByIsReachableTrue();
+
+    List<ProxyServer> findByIsReachableIsNull();
+
+    List<ProxyServer> findByIsReachableTrueOrderByTotalFailCountAscTotalSuccessCountAsc();
+
 }

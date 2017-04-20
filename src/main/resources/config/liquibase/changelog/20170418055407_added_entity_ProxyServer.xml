@@ -76,6 +76,10 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="is_reachable" type="bit">
+                <constraints nullable="true" />
+            </column>
+            
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="proxy_server" columnName="last_validation_date" columnDataType="datetime"/>
