@@ -88,18 +88,6 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="intelligentChartApp.movie.movDescription" for="field_movDescription">Mov Description</label>
-            <input type="text" class="form-control" name="movDescription" id="field_movDescription"
-                    ng-model="vm.movie.movDescription"
-                    ng-maxlength="20000" />
-            <div ng-show="editForm.movDescription.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.movDescription.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="20000">
-                    This field cannot be longer than 20000 characters.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" data-translate="intelligentChartApp.movie.createDate" for="field_createDate">Create Date</label>
                 <div class="input-group">
                     <input id="field_createDate" type="text" class="form-control" name="createDate" datetime-picker="{{dateformat}}" ng-model="vm.movie.createDate" is-open="vm.datePickerOpenStatus.createDate"
@@ -108,6 +96,11 @@
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createDate')"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.description" for="field_description">Description</label>
+                <textarea class="form-control" name="description" id="field_description"
+                    ng-model="vm.movie.description"  ></textarea>
         </div>
 
     </div>

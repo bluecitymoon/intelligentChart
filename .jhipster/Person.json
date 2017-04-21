@@ -58,6 +58,14 @@
         {
             "fieldName": "reputation",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "doubanId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "grabed",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20170210023221",

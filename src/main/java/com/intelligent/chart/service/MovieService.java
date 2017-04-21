@@ -1,6 +1,8 @@
 package com.intelligent.chart.service;
 
+import com.gargoylesoftware.htmlunit.WebClient;
 import com.intelligent.chart.domain.Movie;
+import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -20,7 +22,7 @@ public interface MovieService {
 
     /**
      *  Get all the movies.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +42,6 @@ public interface MovieService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Movie grabSingleMovieWithUrl(DoubanMovieSubject doubanMovieSubject, WebClient client);
 }

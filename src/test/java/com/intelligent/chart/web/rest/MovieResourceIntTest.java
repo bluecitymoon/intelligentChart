@@ -19,6 +19,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -68,11 +69,11 @@ public class MovieResourceIntTest {
     private static final String DEFAULT_TERM = "AAAAAAAAAA";
     private static final String UPDATED_TERM = "BBBBBBBBBB";
 
-    private static final String DEFAULT_MOV_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_MOV_DESCRIPTION = "BBBBBBBBBB";
-
     private static final ZonedDateTime DEFAULT_CREATE_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATE_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     @Inject
     private MovieRepository movieRepository;
@@ -119,8 +120,8 @@ public class MovieResourceIntTest {
                 .language(DEFAULT_LANGUAGE)
                 .runDate(DEFAULT_RUN_DATE)
                 .term(DEFAULT_TERM)
-                .movDescription(DEFAULT_MOV_DESCRIPTION)
-                .createDate(DEFAULT_CREATE_DATE);
+                .createDate(DEFAULT_CREATE_DATE)
+                .description(DEFAULT_DESCRIPTION);
         return movie;
     }
 
@@ -153,8 +154,8 @@ public class MovieResourceIntTest {
         assertThat(testMovie.getLanguage()).isEqualTo(DEFAULT_LANGUAGE);
         assertThat(testMovie.getRunDate()).isEqualTo(DEFAULT_RUN_DATE);
         assertThat(testMovie.getTerm()).isEqualTo(DEFAULT_TERM);
-        assertThat(testMovie.getMovDescription()).isEqualTo(DEFAULT_MOV_DESCRIPTION);
         assertThat(testMovie.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
+        assertThat(testMovie.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
 
     @Test
@@ -214,8 +215,8 @@ public class MovieResourceIntTest {
             .andExpect(jsonPath("$.[*].language").value(hasItem(DEFAULT_LANGUAGE.toString())))
             .andExpect(jsonPath("$.[*].runDate").value(hasItem(DEFAULT_RUN_DATE.toString())))
             .andExpect(jsonPath("$.[*].term").value(hasItem(DEFAULT_TERM.toString())))
-            .andExpect(jsonPath("$.[*].movDescription").value(hasItem(DEFAULT_MOV_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].createDate").value(hasItem(sameInstant(DEFAULT_CREATE_DATE))));
+            .andExpect(jsonPath("$.[*].createDate").value(hasItem(sameInstant(DEFAULT_CREATE_DATE))))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test
@@ -237,8 +238,8 @@ public class MovieResourceIntTest {
             .andExpect(jsonPath("$.language").value(DEFAULT_LANGUAGE.toString()))
             .andExpect(jsonPath("$.runDate").value(DEFAULT_RUN_DATE.toString()))
             .andExpect(jsonPath("$.term").value(DEFAULT_TERM.toString()))
-            .andExpect(jsonPath("$.movDescription").value(DEFAULT_MOV_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.createDate").value(sameInstant(DEFAULT_CREATE_DATE)));
+            .andExpect(jsonPath("$.createDate").value(sameInstant(DEFAULT_CREATE_DATE)))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -268,8 +269,8 @@ public class MovieResourceIntTest {
                 .language(UPDATED_LANGUAGE)
                 .runDate(UPDATED_RUN_DATE)
                 .term(UPDATED_TERM)
-                .movDescription(UPDATED_MOV_DESCRIPTION)
-                .createDate(UPDATED_CREATE_DATE);
+                .createDate(UPDATED_CREATE_DATE)
+                .description(UPDATED_DESCRIPTION);
 
         restMovieMockMvc.perform(put("/api/movies")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -288,8 +289,8 @@ public class MovieResourceIntTest {
         assertThat(testMovie.getLanguage()).isEqualTo(UPDATED_LANGUAGE);
         assertThat(testMovie.getRunDate()).isEqualTo(UPDATED_RUN_DATE);
         assertThat(testMovie.getTerm()).isEqualTo(UPDATED_TERM);
-        assertThat(testMovie.getMovDescription()).isEqualTo(UPDATED_MOV_DESCRIPTION);
         assertThat(testMovie.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
+        assertThat(testMovie.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
 
     @Test

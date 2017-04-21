@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "movieSuccessLog" : {
+            "home": {
+                "title": "Movie Success Logs",
+                "createLabel": "Create a new Movie Success Log",
+                "createOrEditLabel": "Create or edit a Movie Success Log",
+                "search": "Search for Movie Success Log"
+            },
+            "created": "A new Movie Success Log is created with identifier {{ param }}",
+            "updated": "A Movie Success Log is updated with identifier {{ param }}",
+            "deleted": "A Movie Success Log is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Movie Success Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Movie Success Log"
+            },
+            "movieId": "Movie Id",
+            "name": "Name",
+            "doubanId": "Douban Id",
+            "createDate": "Create Date"
+        }
+    }
+}

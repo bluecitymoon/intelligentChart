@@ -27,8 +27,8 @@
                     <th jh-sort-by="language"><span data-translate="intelligentChartApp.movie.language">Language</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="runDate"><span data-translate="intelligentChartApp.movie.runDate">Run Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="term"><span data-translate="intelligentChartApp.movie.term">Term</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="movDescription"><span data-translate="intelligentChartApp.movie.movDescription">Mov Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createDate"><span data-translate="intelligentChartApp.movie.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span data-translate="intelligentChartApp.movie.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -43,8 +43,8 @@
                     <td>{{movie.language}}</td>
                         <td>{{movie.runDate | date:'mediumDate'}}</td>
                     <td>{{movie.term}}</td>
-                    <td>{{movie.movDescription}}</td>
                     <td>{{movie.createDate | date:'medium'}}</td>
+                    <td>{{movie.description}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

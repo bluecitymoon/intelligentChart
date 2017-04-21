@@ -1,5 +1,9 @@
 package com.intelligent.chart.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,6 +20,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "movie")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,12 +60,18 @@ public class Movie implements Serializable {
     @Column(name = "term")
     private String term;
 
-    @Size(max = 20000)
-    @Column(name = "mov_description", length = 20000)
-    private String movDescription;
-
     @Column(name = "create_date")
     private ZonedDateTime createDate;
+
+    @Lob
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "douban_id")
+    private Long doubanId;
+
+    @Column(name = "rate_people_count")
+    private Long ratePeopleCount;
 
     public Long getId() {
         return id;
@@ -171,19 +185,6 @@ public class Movie implements Serializable {
         this.term = term;
     }
 
-    public String getMovDescription() {
-        return movDescription;
-    }
-
-    public Movie movDescription(String movDescription) {
-        this.movDescription = movDescription;
-        return this;
-    }
-
-    public void setMovDescription(String movDescription) {
-        this.movDescription = movDescription;
-    }
-
     public ZonedDateTime getCreateDate() {
         return createDate;
     }
@@ -197,40 +198,19 @@ public class Movie implements Serializable {
         this.createDate = createDate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Movie movie = (Movie) o;
-        if (movie.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, movie.id);
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public Movie description(String description) {
+        this.description = description;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", doubanUrl='" + doubanUrl + "'" +
-            ", rate='" + rate + "'" +
-            ", coverUrl='" + coverUrl + "'" +
-            ", area='" + area + "'" +
-            ", language='" + language + "'" +
-            ", runDate='" + runDate + "'" +
-            ", term='" + term + "'" +
-            ", movDescription='" + movDescription + "'" +
-            ", createDate='" + createDate + "'" +
-            '}';
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+
+
 }

@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface MovieRepository extends JpaRepository<Movie,Long> {
 
+    Movie findByDoubanId(Long doubanId);
+
+//    boolean existsByDoubanId(Long doubanId);
 }

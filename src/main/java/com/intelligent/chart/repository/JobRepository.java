@@ -12,4 +12,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface JobRepository extends JpaRepository<Job,Long> {
 
+    Job findByName(String name);
 }

@@ -17,11 +17,10 @@ import java.util.List;
  * Service Implementation for managing Job.
  */
 @Service
-@Transactional
 public class JobServiceImpl implements JobService{
 
     private final Logger log = LoggerFactory.getLogger(JobServiceImpl.class);
-    
+
     @Inject
     private JobRepository jobRepository;
 
@@ -39,11 +38,10 @@ public class JobServiceImpl implements JobService{
 
     /**
      *  Get all the jobs.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
     public Page<Job> findAll(Pageable pageable) {
         log.debug("Request to get all Jobs");
         Page<Job> result = jobRepository.findAll(pageable);
@@ -56,7 +54,6 @@ public class JobServiceImpl implements JobService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
     public Job findOne(Long id) {
         log.debug("Request to get Job : {}", id);
         Job job = jobRepository.findOne(id);
@@ -71,5 +68,18 @@ public class JobServiceImpl implements JobService{
     public void delete(Long id) {
         log.debug("Request to delete Job : {}", id);
         jobRepository.delete(id);
+    }
+
+    public Job findOrCreateJob(String name) {
+
+        Job existedJob = jobRepository.findByName(name);
+
+        if (existedJob == null) {
+            Job job = Job.builder().name(name).build();
+
+            return save(job);
+        }
+
+        return existedJob;
     }
 }

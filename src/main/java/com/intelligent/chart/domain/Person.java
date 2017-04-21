@@ -1,5 +1,9 @@
 package com.intelligent.chart.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,6 +20,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "person")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +67,12 @@ public class Person implements Serializable {
 
     @Column(name = "reputation")
     private Double reputation;
+
+    @Column(name = "douban_id")
+    private Long doubanId;
+
+    @Column(name = "grabed")
+    private Boolean grabed;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -231,6 +245,32 @@ public class Person implements Serializable {
         this.reputation = reputation;
     }
 
+    public Long getDoubanId() {
+        return doubanId;
+    }
+
+    public Person doubanId(Long doubanId) {
+        this.doubanId = doubanId;
+        return this;
+    }
+
+    public void setDoubanId(Long doubanId) {
+        this.doubanId = doubanId;
+    }
+
+    public Boolean isGrabed() {
+        return grabed;
+    }
+
+    public Person grabed(Boolean grabed) {
+        this.grabed = grabed;
+        return this;
+    }
+
+    public void setGrabed(Boolean grabed) {
+        this.grabed = grabed;
+    }
+
     public Set<Job> getJobs() {
         return jobs;
     }
@@ -292,6 +332,8 @@ public class Person implements Serializable {
             ", popularity='" + popularity + "'" +
             ", socialGoodName='" + socialGoodName + "'" +
             ", reputation='" + reputation + "'" +
+            ", doubanId='" + doubanId + "'" +
+            ", grabed='" + grabed + "'" +
             '}';
     }
 }

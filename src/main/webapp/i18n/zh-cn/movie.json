@@ -24,8 +24,8 @@
             "language": "Language",
             "runDate": "Run Date",
             "term": "Term",
-            "movDescription": "Mov Description",
-            "createDate": "Create Date"
+            "createDate": "Create Date",
+            "description": "Description"
         }
     }
 }

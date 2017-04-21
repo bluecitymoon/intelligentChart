@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Movie entity.
+ * Performance test for the MovieSuccessLog entity.
  */
-class MovieGatlingTest extends Simulation {
+class MovieSuccessLogGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -48,7 +48,7 @@ class MovieGatlingTest extends Simulation {
         "Authorization" -> "Bearer ${access_token}"
     )
 
-    val scn = scenario("Test the Movie entity")
+    val scn = scenario("Test the MovieSuccessLog entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -72,26 +72,26 @@ class MovieGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all movies")
-            .get("/api/movies")
+            exec(http("Get all movieSuccessLogs")
+            .get("/api/movie-success-logs")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new movie")
-            .post("/api/movies")
+            .exec(http("Create new movieSuccessLog")
+            .post("/api/movie-success-logs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "doubanUrl":"SAMPLE_TEXT", "rate":null, "coverUrl":"SAMPLE_TEXT", "area":"SAMPLE_TEXT", "language":"SAMPLE_TEXT", "runDate":"2020-01-01T00:00:00.000Z", "term":"SAMPLE_TEXT", "createDate":"2020-01-01T00:00:00.000Z", "description":null}""")).asJSON
+            .body(StringBody("""{"id":null, "movieId":null, "name":"SAMPLE_TEXT", "doubanId":"SAMPLE_TEXT", "createDate":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_movie_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_movieSuccessLog_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created movie")
-                .get("${new_movie_url}")
+                exec(http("Get created movieSuccessLog")
+                .get("${new_movieSuccessLog_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created movie")
-            .delete("${new_movie_url}")
+            .exec(http("Delete created movieSuccessLog")
+            .delete("${new_movieSuccessLog_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

@@ -3,11 +3,11 @@
 
     angular
         .module('intelligentChartApp')
-        .controller('MovieController', MovieController);
+        .controller('MovieSuccessLogController', MovieSuccessLogController);
 
-    MovieController.$inject = ['$scope', '$state', 'DataUtils', 'Movie', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
+    MovieSuccessLogController.$inject = ['$scope', '$state', 'MovieSuccessLog', 'ParseLinks', 'AlertService', 'paginationConstants', 'pagingParams'];
 
-    function MovieController ($scope, $state, DataUtils, Movie, ParseLinks, AlertService, paginationConstants, pagingParams) {
+    function MovieSuccessLogController ($scope, $state, MovieSuccessLog, ParseLinks, AlertService, paginationConstants, pagingParams) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -15,13 +15,11 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 
         function loadAll () {
-            Movie.query({
+            MovieSuccessLog.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
                 sort: sort()
@@ -37,7 +35,7 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.movies = data;
+                vm.movieSuccessLogs = data;
                 vm.page = pagingParams.page;
             }
             function onError(error) {

@@ -19,4 +19,6 @@ public interface PersonRepository extends JpaRepository<Person,Long> {
     @Query("select person from Person person left join fetch person.jobs where person.id =:id")
     Person findOneWithEagerRelationships(@Param("id") Long id);
 
+    Person findByDoubanId(Long doubanId);
+
 }

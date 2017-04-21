@@ -48,16 +48,13 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "movDescription",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "maxlength"
-            ],
-            "fieldValidateRulesMaxlength": "20000"
-        },
-        {
             "fieldName": "createDate",
             "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         }
     ],
     "changelogDate": "20170421021808",

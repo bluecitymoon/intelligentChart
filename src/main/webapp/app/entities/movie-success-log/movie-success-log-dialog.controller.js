@@ -3,19 +3,17 @@
 
     angular
         .module('intelligentChartApp')
-        .controller('MovieDialogController', MovieDialogController);
+        .controller('MovieSuccessLogDialogController', MovieSuccessLogDialogController);
 
-    MovieDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Movie'];
+    MovieSuccessLogDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'MovieSuccessLog'];
 
-    function MovieDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Movie) {
+    function MovieSuccessLogDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, MovieSuccessLog) {
         var vm = this;
 
-        vm.movie = entity;
+        vm.movieSuccessLog = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
         vm.save = save;
 
         $timeout(function (){
@@ -28,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.movie.id !== null) {
-                Movie.update(vm.movie, onSaveSuccess, onSaveError);
+            if (vm.movieSuccessLog.id !== null) {
+                MovieSuccessLog.update(vm.movieSuccessLog, onSaveSuccess, onSaveError);
             } else {
-                Movie.save(vm.movie, onSaveSuccess, onSaveError);
+                MovieSuccessLog.save(vm.movieSuccessLog, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('intelligentChartApp:movieUpdate', result);
+            $scope.$emit('intelligentChartApp:movieSuccessLogUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }
@@ -45,7 +43,6 @@
             vm.isSaving = false;
         }
 
-        vm.datePickerOpenStatus.runDate = false;
         vm.datePickerOpenStatus.createDate = false;
 
         function openCalendar (date) {

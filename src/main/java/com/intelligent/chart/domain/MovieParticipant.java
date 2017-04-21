@@ -1,5 +1,9 @@
 package com.intelligent.chart.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +18,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "movie_participant")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MovieParticipant implements Serializable {
 
     private static final long serialVersionUID = 1L;

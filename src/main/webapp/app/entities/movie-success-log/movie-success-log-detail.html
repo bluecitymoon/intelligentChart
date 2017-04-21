@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.movieSuccessLog.detail.title">Movie Success Log</span> {{vm.movieSuccessLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.movieSuccessLog.movieId">Movie Id</span></dt>
+        <dd>
+            <span>{{vm.movieSuccessLog.movieId}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movieSuccessLog.name">Name</span></dt>
+        <dd>
+            <span>{{vm.movieSuccessLog.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movieSuccessLog.doubanId">Douban Id</span></dt>
+        <dd>
+            <span>{{vm.movieSuccessLog.doubanId}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movieSuccessLog.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.movieSuccessLog.createDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="movie-success-log-detail.edit({id:vm.movieSuccessLog.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

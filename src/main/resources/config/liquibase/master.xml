@@ -87,10 +87,14 @@
     <include file="classpath:config/liquibase/changelog/20170418055407_added_entity_ProxyServer.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170418094311_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170420063935_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421031150_changelog.xml" relativeToChangelogFile="false"/>
 
     <include file="classpath:config/liquibase/changelog/20170421021808_added_entity_Movie.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170421022149_added_entity_MovieParticipant.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170421022515_added_entity_MovieCategory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421064916_added_entity_MovieSuccessLog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421090740_changelog.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
