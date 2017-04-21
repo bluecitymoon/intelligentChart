@@ -82,6 +82,9 @@
                 "robotLog": "Robot Log",
                 "robotMovieSubjectSuccessPage": "Robot Movie Subject Success Page",
                 "proxyServer": "Proxy Server",
+                "movie": "Movie",
+                "movieParticipant": "Movie Participant",
+                "movieCategory": "Movie Category",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

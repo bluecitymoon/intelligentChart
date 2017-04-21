@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.movie.detail.title">Movie</span> {{vm.movie.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.movie.name">Name</span></dt>
+        <dd>
+            <span>{{vm.movie.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.doubanUrl">Douban Url</span></dt>
+        <dd>
+            <span>{{vm.movie.doubanUrl}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.rate">Rate</span></dt>
+        <dd>
+            <span>{{vm.movie.rate}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.coverUrl">Cover Url</span></dt>
+        <dd>
+            <span>{{vm.movie.coverUrl}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.area">Area</span></dt>
+        <dd>
+            <span>{{vm.movie.area}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.language">Language</span></dt>
+        <dd>
+            <span>{{vm.movie.language}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.runDate">Run Date</span></dt>
+        <dd>
+            <span>{{vm.movie.runDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.term">Term</span></dt>
+        <dd>
+            <span>{{vm.movie.term}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.movDescription">Mov Description</span></dt>
+        <dd>
+            <span>{{vm.movie.movDescription}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.movie.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{vm.movie.createDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="movie-detail.edit({id:vm.movie.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

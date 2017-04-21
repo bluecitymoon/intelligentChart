@@ -14,10 +14,8 @@ import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import com.intelligent.chart.service.dto.DoubanMovieSubjects;
 import com.intelligent.chart.service.dto.DoubanTags;
-import com.intelligent.chart.service.util.DetailedLinkUtil;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
-import com.intelligent.chart.service.util.RandomUtil;
 import com.intelligent.chart.vo.MoviePageIndex;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
@@ -38,14 +36,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.time.ZonedDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-
-import static com.intelligent.chart.service.util.DoubanUtil.grabSinglePageSubjectsWithTag;
 
 /**
  * Service Implementation for managing Robot.
@@ -184,8 +180,6 @@ public class RobotServiceImpl implements RobotService{
 
             case "all_links":
 
-
-
                 List<MoviePageIndex> targetPagesPool = Lists.newArrayList();
                 List<DoubanMovieTag> tags = doubanMovieTagRepository.findAll();
 
@@ -199,10 +193,12 @@ public class RobotServiceImpl implements RobotService{
                             targetPagesPool.add(index);
                         }
                     }
-
                 }
 
+                Collections.shuffle(targetPagesPool);
+
                 log.info("There are " + targetPagesPool.size() + " pages to go ...");
+
                 for (int i = 1; i <= 3; i ++) {
                     log.info("Start in " + i);
 
@@ -217,6 +213,7 @@ public class RobotServiceImpl implements RobotService{
 
                 ExecutorService executorService = Executors.newFixedThreadPool(100);
 
+
                 for (final List<MoviePageIndex> targets: partitions) {
 
                     executorService.execute(new Runnable() {
@@ -226,18 +223,7 @@ public class RobotServiceImpl implements RobotService{
                             grabPages(targets);
                         }
                     });
-
                 }
-
-//                for (final DoubanMovieTag doubanMovieTag: tags) {
-//                    executorService.execute(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            grabMovieLinksInSingleCategory(doubanMovieTag);
-//                        }
-//                    });
-//                }
-               // doubanMovieTagRepository.findAll().forEach(this::grabMovieLinksInSingleCategory);
 
                 break;
 
@@ -254,6 +240,11 @@ public class RobotServiceImpl implements RobotService{
             case "get_category_max_count":
                 doubanMovieTagService.getAllMaxCount();
                 break;
+
+            case "get_movies":
+
+                break;
+
             default:
                 break;
         }
@@ -414,6 +405,8 @@ public class RobotServiceImpl implements RobotService{
 
     private List<DoubanMovieSubject> grabSinglePage(int pageNumber, String category) {
 
+        waitSomewhile();
+
         log.info("Start to get page " + pageNumber + " with category " + category);
 
        // ProxyServer proxyServer = lastGoodProxyServer == null? proxyServerService.findOneReachableProxyServer(): lastGoodProxyServer;
@@ -569,12 +562,16 @@ public class RobotServiceImpl implements RobotService{
 
         robotLogRepository.save(log);
 
+        waitSomewhile();
+        return subjects;
+    }
+
+    private void waitSomewhile() {
         try {
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return subjects;
     }
 
     private void handleGrabMovieSubjectError(String tag, int pageNumber, String reason) {

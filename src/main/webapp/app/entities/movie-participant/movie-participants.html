@@ -1,0 +1,72 @@
+<div>
+    <h2 data-translate="intelligentChartApp.movieParticipant.home.title">Movie Participants</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="movie-participant.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.movieParticipant.home.createLabel">
+                        Create new Movie Participant
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createDate"><span data-translate="intelligentChartApp.movieParticipant.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="movie.name"><span data-translate="intelligentChartApp.movieParticipant.movie">Movie</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.movieParticipant.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="job.name"><span data-translate="intelligentChartApp.movieParticipant.job">Job</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movieParticipant in vm.movieParticipants track by movieParticipant.id">
+                    <td><a ui-sref="movie-participant-detail({id:movieParticipant.id})">{{movieParticipant.id}}</a></td>
+                    <td>{{movieParticipant.createDate | date:'medium'}}</td>
+                    <td>
+                        <a ui-sref="movie-detail({id:movieParticipant.movie.id})">{{movieParticipant.movie.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="person-detail({id:movieParticipant.person.id})">{{movieParticipant.person.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="job-detail({id:movieParticipant.job.id})">{{movieParticipant.job.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="movie-participant-detail({id:movieParticipant.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie-participant.edit({id:movieParticipant.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="movie-participant.delete({id:movieParticipant.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

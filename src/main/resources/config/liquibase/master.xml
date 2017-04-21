@@ -88,6 +88,9 @@
     <include file="classpath:config/liquibase/changelog/20170418094311_changelog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170420063935_changelog.xml" relativeToChangelogFile="false"/>
 
+    <include file="classpath:config/liquibase/changelog/20170421021808_added_entity_Movie.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421022149_added_entity_MovieParticipant.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421022515_added_entity_MovieCategory.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -126,5 +129,7 @@
     <include file="classpath:config/liquibase/changelog/20170315032537_added_entity_constraints_PersonTieBa.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170316020145_added_entity_constraints_PersonRelation.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170414093144_added_entity_constraints_RobotLog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421022149_added_entity_constraints_MovieParticipant.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170421022515_added_entity_constraints_MovieCategory.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

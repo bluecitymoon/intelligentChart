@@ -170,5 +170,11 @@
 
     <cache alias="com.intelligent.chart.domain.ProxyServer" uses-template="simple"/>
 
+    <cache alias="com.intelligent.chart.domain.Movie" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.MovieParticipant" uses-template="simple"/>
+
+    <cache alias="com.intelligent.chart.domain.MovieCategory" uses-template="simple"/>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </config>

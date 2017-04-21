@@ -1,0 +1,25 @@
+{
+    "intelligentChartApp": {
+        "movieParticipant" : {
+            "home": {
+                "title": "Movie Participants",
+                "createLabel": "Create a new Movie Participant",
+                "createOrEditLabel": "Create or edit a Movie Participant",
+                "search": "Search for Movie Participant"
+            },
+            "created": "A new Movie Participant is created with identifier {{ param }}",
+            "updated": "A Movie Participant is updated with identifier {{ param }}",
+            "deleted": "A Movie Participant is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Movie Participant {{ id }}?"
+            },
+            "detail": {
+                "title": "Movie Participant"
+            },
+            "createDate": "Create Date",
+            "movie": "Movie",
+            "person": "Person",
+            "job": "Job"
+        }
+    }
+}

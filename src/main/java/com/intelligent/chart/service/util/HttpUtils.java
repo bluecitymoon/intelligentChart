@@ -46,6 +46,7 @@ public class HttpUtils {
 
     public static WebClient newWebClientWithRandomProxyServer(ProxyServer proxyServer) {
 
+
         BrowserVersion[] browserVersions = {BrowserVersion.CHROME, BrowserVersion.FIREFOX_17, BrowserVersion.INTERNET_EXPLORER_8,
             BrowserVersion.INTERNET_EXPLORER_9, BrowserVersion.INTERNET_EXPLORER_10, BrowserVersion.INTERNET_EXPLORER_7, BrowserVersion.CHROME_16};
         BrowserVersion browserVersion = browserVersions[new Random().nextInt(browserVersions.length)];
@@ -58,6 +59,7 @@ public class HttpUtils {
         webClient.getOptions().setJavaScriptEnabled(false);
 
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+
 
         return webClient;
     }

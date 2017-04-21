@@ -1,0 +1,122 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMovieLabel" data-translate="intelligentChartApp.movie.home.createOrEditLabel">Create or edit a Movie</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.movie.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.movie.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.movie.name"
+                    required ng-maxlength="500" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="500">
+                    This field cannot be longer than 500 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.doubanUrl" for="field_doubanUrl">Douban Url</label>
+            <input type="text" class="form-control" name="doubanUrl" id="field_doubanUrl"
+                    ng-model="vm.movie.doubanUrl"
+                    ng-maxlength="2000" />
+            <div ng-show="editForm.doubanUrl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.doubanUrl.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="2000">
+                    This field cannot be longer than 2000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.rate" for="field_rate">Rate</label>
+            <input type="number" class="form-control" name="rate" id="field_rate"
+                    ng-model="vm.movie.rate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.coverUrl" for="field_coverUrl">Cover Url</label>
+            <input type="text" class="form-control" name="coverUrl" id="field_coverUrl"
+                    ng-model="vm.movie.coverUrl"
+                    ng-maxlength="2000" />
+            <div ng-show="editForm.coverUrl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.coverUrl.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="2000">
+                    This field cannot be longer than 2000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.area" for="field_area">Area</label>
+            <input type="text" class="form-control" name="area" id="field_area"
+                    ng-model="vm.movie.area"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.language" for="field_language">Language</label>
+            <input type="text" class="form-control" name="language" id="field_language"
+                    ng-model="vm.movie.language"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.runDate" for="field_runDate">Run Date</label>
+                <div class="input-group">
+                    <input id="field_runDate" type="text" class="form-control" name="runDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.movie.runDate" is-open="vm.datePickerOpenStatus.runDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('runDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.term" for="field_term">Term</label>
+            <input type="text" class="form-control" name="term" id="field_term"
+                    ng-model="vm.movie.term"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.movDescription" for="field_movDescription">Mov Description</label>
+            <input type="text" class="form-control" name="movDescription" id="field_movDescription"
+                    ng-model="vm.movie.movDescription"
+                    ng-maxlength="20000" />
+            <div ng-show="editForm.movDescription.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.movDescription.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="20000">
+                    This field cannot be longer than 20000 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.movie.createDate" for="field_createDate">Create Date</label>
+                <div class="input-group">
+                    <input id="field_createDate" type="text" class="form-control" name="createDate" datetime-picker="{{dateformat}}" ng-model="vm.movie.createDate" is-open="vm.datePickerOpenStatus.createDate"
+                      />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "movie",
+            "otherEntityName": "movie",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "areaType",
+            "otherEntityName": "areaType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170421022515",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "movie_category",
+    "pagination": "pagination"
+}

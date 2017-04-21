@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "movieCategory" : {
+            "home": {
+                "title": "Movie Categories",
+                "createLabel": "Create a new Movie Category",
+                "createOrEditLabel": "Create or edit a Movie Category",
+                "search": "Search for Movie Category"
+            },
+            "created": "A new Movie Category is created with identifier {{ param }}",
+            "updated": "A Movie Category is updated with identifier {{ param }}",
+            "deleted": "A Movie Category is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Movie Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Movie Category"
+            },
+            "movie": "Movie",
+            "areaType": "Area Type"
+        }
+    }
+}
