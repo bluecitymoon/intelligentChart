@@ -1,14 +1,18 @@
 package com.intelligent.chart.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
+import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.google.common.io.Files;
 import com.intelligent.chart.config.pool.ProxyServerPool;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
 import com.intelligent.chart.service.DoubanMovieTagService;
+import com.intelligent.chart.service.MovieService;
 import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.service.RobotService;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
@@ -31,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -73,9 +78,6 @@ public class RobotServiceImpl implements RobotService{
     @Inject
     private RobotMovieSubjectSuccessPageRepository robotMovieSubjectSuccessPageRepository;
 
-    @Inject
-    private ProxyServerPool proxyServerPool;
-
     private Robot robot;
 
     @Inject
@@ -85,6 +87,12 @@ public class RobotServiceImpl implements RobotService{
     private ProxyServerService proxyServerService;
 
     private ProxyServer lastGoodProxyServer;
+
+    @Inject
+    private MovieService movieService;
+
+    @Inject
+    private ProxyServerPool proxyServerPool;
 
     /**
      * Save a robot.
@@ -242,6 +250,25 @@ public class RobotServiceImpl implements RobotService{
                 break;
 
             case "get_movies":
+
+                break;
+
+            case "test_get_singleMovie":
+
+                //WebClient webClient = HttpUtils.newWebClientWithRandomProxyServer(proxyServerPool.pull());
+
+                try {
+                    String testHtml = Files.toString(new File("/Users/Jerry/Documents/workspace/clean/intelligentChart/src/main/resources/pages/movie-single-page.html"), Charsets.UTF_8);
+                    DoubleMovieSubject testSubject = doubleMovieSubjectRepository.findOne(101L);
+
+                    Document document = Jsoup.parse(testHtml);
+                    Movie testMovie = movieService.parseMovie(document, testSubject);
+
+                    log.info(testMovie.toString());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 break;
 

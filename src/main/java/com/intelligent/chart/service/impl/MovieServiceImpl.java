@@ -26,6 +26,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie grabSingleMovieWithUrl(DoubanMovieSubject doubanMovieSubject, WebClient client) {
+    public Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient client) {
 
         List<String> urlElements = Splitter.on("/").omitEmptyStrings().splitToList(doubanMovieSubject.getUrl());
         String doubanSubjectId = urlElements.get(urlElements.size() - 1);
@@ -100,7 +101,8 @@ public class MovieServiceImpl implements MovieService {
         }
 
         log.info("Start to grab " + doubanMovieSubject.getTitle());
-
+        Document document = null;
+        Movie savedMovie = null;
         try {
             WebResponse response = client.getPage(doubanMovieSubject.getUrl()).getWebResponse();
 
@@ -112,11 +114,11 @@ public class MovieServiceImpl implements MovieService {
 
             String html = response.getContentAsString();
 
-            Document document = Jsoup.parse(html);
+            document = Jsoup.parse(html);
 
             Movie movie = parseMovie(document, doubanMovieSubject);
 
-            Movie savedMovie = movieRepository.save(movie);
+            savedMovie = movieRepository.save(movie);
 
             parseAndSaveDirector(savedMovie, document);
 
@@ -124,7 +126,7 @@ public class MovieServiceImpl implements MovieService {
 
             parseAndSaveActors(savedMovie, document);
 
-            parseAndSaveAwards(savedMovie, document);
+           // parseAndSaveAwards(savedMovie, document);
 
 
         } catch (IOException e) {
@@ -133,9 +135,19 @@ public class MovieServiceImpl implements MovieService {
             e.printStackTrace();
         }
 
-        return null;
+        return savedMovie;
     }
 
+    private void tryLuckyMovieLink(Document document) {
+
+        Element recommedationArea = document.getElementById("recommendations");
+
+        if (recommedationArea != null) {
+
+
+        }
+
+    }
     private void parseAndSaveAwards(Movie savedMovie, Document document) {
 
         Elements awards = document.getElementsByClass("award");
@@ -212,9 +224,14 @@ public class MovieServiceImpl implements MovieService {
 
     }
 
-    private Movie parseMovie(Document document, DoubanMovieSubject doubanMovieSubject) {
+    public Movie parseMovie(Document document, DoubleMovieSubject doubanMovieSubject) {
 
-        Movie movie = Movie.builder().build();
+        Movie movie = Movie.builder()
+            .coverUrl(doubanMovieSubject.getCover())
+            .doubanUrl(doubanMovieSubject.getUrl())
+            .doubanId(Long.valueOf(doubanMovieSubject.getDoubanId()))
+            .createDate(ZonedDateTime.now())
+            .build();
 
         String name = getFirstByPropertyValue(document, "v:itemreviewed");
         if (name != "") {
@@ -227,6 +244,10 @@ public class MovieServiceImpl implements MovieService {
 
         String showUpdate = getFirstByPropertyValue(document, "v:initialReleaseDate");
         try {
+
+            if (showUpdate.contains("(")) {
+                showUpdate = showUpdate.substring(0, showUpdate.indexOf("("));
+            }
             movie.setRunDate(LocalDate.parse(showUpdate, formatter));
 
         } catch (Exception e) {
@@ -236,28 +257,39 @@ public class MovieServiceImpl implements MovieService {
         String runtime = getFirstByPropertyValue(document, "v:runtime");
         movie.setTerm(runtime);
 
-        Elements plElements = document.getElementsByClass("pl");
+        Element infoElement = document.getElementById("info");
 
-        String location = "", language = "";
-        for (Element plElement : plElements) {
+        String infoText = infoElement.text();
+        try {
 
-            switch (plElement.text()) {
+            int startIndex = infoText.indexOf("制片国家/地区:") + "制片国家/地区:".length();
+            int endIndex = infoText.indexOf("语言:");
+            String locationText = infoText.substring(startIndex, endIndex);
 
-                case "制片国家/地区:":
+            movie.setArea(locationText.trim());
 
-                    location = plElement.nextElementSibling().text();
+        }catch (Exception e) {
 
-                    break;
+            movie.setArea("");
 
-                case "语言:":
-
-                    language = plElement.nextElementSibling().text();
-                    break;
-            }
+            e.printStackTrace();
         }
 
-        movie.setLanguage(language);
-        movie.setArea(location);
+        try {
+
+            int lngStartIndx = infoText.indexOf("语言:") + "语言:".length();
+            int lngEndIndex = infoText.indexOf("上映日期: ");
+            String languagText = infoText.substring(lngStartIndx, lngEndIndex);
+
+            movie.setLanguage(languagText.trim());
+
+        } catch (Exception e) {
+
+            movie.setLanguage("");
+
+            e.printStackTrace();
+        }
+
 
         String description = getFirstByPropertyValue(document, "v:summary");
         movie.setDescription(description);
