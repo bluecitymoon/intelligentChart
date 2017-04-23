@@ -1,13 +1,14 @@
 package com.intelligent.chart.service;
 
-import com.gargoylesoftware.htmlunit.WebClient;
 import com.intelligent.chart.domain.DoubleMovieSubject;
 import com.intelligent.chart.domain.Movie;
-import com.intelligent.chart.service.dto.DoubanMovieSubject;
+import com.intelligent.chart.domain.ProxyServer;
+import com.intelligent.chart.vo.TimestapWebclient;
 import org.jsoup.nodes.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service Interface for managing Movie.
@@ -45,7 +46,11 @@ public interface MovieService {
      */
     void delete(Long id);
 
-    Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient client);
+    Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client);
 
     Movie parseMovie(Document document, DoubleMovieSubject doubanMovieSubject);
+
+    List<Movie> findTopOneHundredMovies();
+
+    void grabMovies(List<DoubleMovieSubject> links);
 }

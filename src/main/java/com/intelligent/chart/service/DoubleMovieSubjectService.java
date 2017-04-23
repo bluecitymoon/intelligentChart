@@ -1,6 +1,7 @@
 package com.intelligent.chart.service;
 
 import com.intelligent.chart.domain.DoubleMovieSubject;
+import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -20,7 +21,7 @@ public interface DoubleMovieSubjectService {
 
     /**
      *  Get all the doubleMovieSubjects.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +41,5 @@ public interface DoubleMovieSubjectService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
 }

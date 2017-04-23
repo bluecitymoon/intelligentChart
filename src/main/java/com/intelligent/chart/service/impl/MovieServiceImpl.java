@@ -1,8 +1,8 @@
 package com.intelligent.chart.service.impl;
 
-import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.google.common.base.Splitter;
+import com.intelligent.chart.config.pool.ProxyServerPool;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.repository.MovieParticipantRepository;
 import com.intelligent.chart.repository.PersonRepository;
@@ -10,7 +10,7 @@ import com.intelligent.chart.service.JobService;
 import com.intelligent.chart.service.MovieService;
 import com.intelligent.chart.repository.MovieRepository;
 import com.intelligent.chart.service.MovieSuccessLogService;
-import com.intelligent.chart.service.dto.DoubanMovieSubject;
+import com.intelligent.chart.vo.TimestapWebclient;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,7 +29,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
+import java.util.Map;
 
 
 @Service
@@ -52,10 +52,13 @@ public class MovieServiceImpl implements MovieService {
     @Inject
     private JobService jobService;
 
+    @Inject
+    private ProxyServerPool proxyServerPool;
+
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault());
 
-    public Movie save(Movie movie) {
+    public synchronized Movie save(Movie movie) {
         log.debug("Request to save Movie : {}", movie);
         Movie result = movieRepository.save(movie);
         return result;
@@ -79,7 +82,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient client) {
+    public Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client) {
 
         List<String> urlElements = Splitter.on("/").omitEmptyStrings().splitToList(doubanMovieSubject.getUrl());
         String doubanSubjectId = urlElements.get(urlElements.size() - 1);
@@ -104,7 +107,7 @@ public class MovieServiceImpl implements MovieService {
         Document document = null;
         Movie savedMovie = null;
         try {
-            WebResponse response = client.getPage(doubanMovieSubject.getUrl()).getWebResponse();
+            WebResponse response = client.getValue().getWebClient().getPage(doubanMovieSubject.getUrl()).getWebResponse();
 
             if (response.getStatusCode() != 200) {
 
@@ -126,8 +129,7 @@ public class MovieServiceImpl implements MovieService {
 
             parseAndSaveActors(savedMovie, document);
 
-           // parseAndSaveAwards(savedMovie, document);
-
+            proxyServerPool.pushNiceWebclient(client.getKey(), client.getValue().getWebClient());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -231,16 +233,8 @@ public class MovieServiceImpl implements MovieService {
             .doubanUrl(doubanMovieSubject.getUrl())
             .doubanId(Long.valueOf(doubanMovieSubject.getDoubanId()))
             .createDate(ZonedDateTime.now())
+            .name(doubanMovieSubject.getTitle())
             .build();
-
-        String name = getFirstByPropertyValue(document, "v:itemreviewed");
-        if (name != "") {
-            movie.setName(name);
-
-            log.info("parsed name = " + movie.getName());
-        } else {
-            movie.setName(doubanMovieSubject.getTitle());
-        }
 
         String showUpdate = getFirstByPropertyValue(document, "v:initialReleaseDate");
         try {
@@ -308,6 +302,26 @@ public class MovieServiceImpl implements MovieService {
         }
 
         return movie;
+
+    }
+
+    @Override
+    public synchronized List<Movie> findTopOneHundredMovies() {
+        return null;
+    }
+
+    @Override
+    public void grabMovies(List<DoubleMovieSubject> links) {
+
+        if (links == null || links.isEmpty()) return;
+
+        links.forEach(link -> {
+
+            Map.Entry<ProxyServer, TimestapWebclient> entry = proxyServerPool.newWebclientFromProxyServer();
+
+            grabSingleMovieWithUrl(link, entry);
+
+        });
 
     }
 

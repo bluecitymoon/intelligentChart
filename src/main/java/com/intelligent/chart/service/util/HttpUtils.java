@@ -51,7 +51,6 @@ public class HttpUtils {
             BrowserVersion.INTERNET_EXPLORER_9, BrowserVersion.INTERNET_EXPLORER_10, BrowserVersion.INTERNET_EXPLORER_7, BrowserVersion.CHROME_16};
         BrowserVersion browserVersion = browserVersions[new Random().nextInt(browserVersions.length)];
 
-        log.debug("Create new browser with " + browserVersion.toString());
         WebClient webClient = new WebClient(browserVersion, proxyServer.getAddress(), proxyServer.getPort());
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
@@ -59,7 +58,6 @@ public class HttpUtils {
         webClient.getOptions().setJavaScriptEnabled(false);
 
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-
 
         return webClient;
     }

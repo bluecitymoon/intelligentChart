@@ -5,6 +5,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
+import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 import com.intelligent.chart.config.pool.ProxyServerPool;
@@ -21,6 +22,7 @@ import com.intelligent.chart.service.dto.DoubanTags;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.vo.MoviePageIndex;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -41,12 +43,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.time.ZonedDateTime;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing Robot.
@@ -93,6 +95,9 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private ProxyServerPool proxyServerPool;
+
+    @Inject
+    private MovieSuccessLogRepository movieSuccessLogRepository;
 
     /**
      * Save a robot.
@@ -250,6 +255,45 @@ public class RobotServiceImpl implements RobotService{
                 break;
 
             case "get_movies":
+
+                List<DoubleMovieSubject> targetLinks = doubleMovieSubjectRepository.findAll().stream().filter(new Predicate<DoubleMovieSubject>() {
+                    @Override
+                    public boolean test(DoubleMovieSubject doubleMovieSubject) {
+
+                        try {
+
+                            return movieSuccessLogRepository.findByDoubanId(doubleMovieSubject.getDoubanId()) == null;
+                        } catch (Exception e) {
+                            return false;
+                        }
+
+                    }
+                }).collect(Collectors.toList());
+
+                log.info("There are " + targetLinks.size() + " movies to go ...");
+
+                for (int i = 1; i <= 3; i ++) {
+                    log.info("Start in " + i);
+
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                ExecutorService executorPool = Executors.newFixedThreadPool(200);
+                Lists.partition(targetLinks, 200).forEach(links -> {
+
+                    executorPool.execute(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            movieService.grabMovies(links);
+                        }
+                    });
+                });
+
 
                 break;
 
