@@ -2,11 +2,10 @@ package com.intelligent.chart.service.impl;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.google.common.collect.Lists;
-import com.intelligent.chart.IntelligentChartApp;
-import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
-import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.domain.ProxyServer;
+import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
 import com.intelligent.chart.repository.ProxyServerRepository;
+import com.intelligent.chart.service.ProxyServerService;
 import com.intelligent.chart.service.util.HttpUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
@@ -17,13 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -101,7 +98,7 @@ public class ProxyServerServiceImpl implements ProxyServerService{
 
         for (String url: urls) {
 
-            for (int i = 1; i < 700; i++) {
+            for (int i = 1; i < 50; i++) {
 
                 grabSinglePage(i, url, webClient, formatter);
 

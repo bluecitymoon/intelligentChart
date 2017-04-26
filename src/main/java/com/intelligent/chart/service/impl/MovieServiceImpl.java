@@ -1,5 +1,6 @@
 package com.intelligent.chart.service.impl;
 
+import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.google.common.base.Splitter;
 import com.intelligent.chart.config.pool.ProxyServerPool;
@@ -10,6 +11,7 @@ import com.intelligent.chart.service.JobService;
 import com.intelligent.chart.service.MovieService;
 import com.intelligent.chart.repository.MovieRepository;
 import com.intelligent.chart.service.MovieSuccessLogService;
+import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.vo.TimestapWebclient;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.jsoup.Jsoup;
@@ -30,6 +32,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 @Service
@@ -82,7 +85,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client) {
+    public WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client, WebClient lastSuccessWebclient) {
 
         List<String> urlElements = Splitter.on("/").omitEmptyStrings().splitToList(doubanMovieSubject.getUrl());
         String doubanSubjectId = urlElements.get(urlElements.size() - 1);
@@ -106,15 +109,28 @@ public class MovieServiceImpl implements MovieService {
         log.info("Start to grab " + doubanMovieSubject.getTitle());
         Document document = null;
         Movie savedMovie = null;
+
+        WebClient webClient = null;
         try {
-            WebResponse response = client.getValue().getWebClient().getPage(doubanMovieSubject.getUrl()).getWebResponse();
+
+//            if (lastSuccessWebclient == null) {
+//
+//                ProxyServer proxyServer = proxyServerPool.pull();
+//                webClient = HttpUtils.newWebClientWithRandomProxyServer(proxyServer);
+//            } else {
+//                webClient = lastSuccessWebclient;
+//            }
+
+        //    WebResponse response = client.getValue().getWebClient().getPage(doubanMovieSubject.getUrl()).getWebResponse();
+            WebResponse response = webClient.getPage(doubanMovieSubject.getUrl()).getWebResponse();
 
             if (response.getStatusCode() != 200) {
 
-                log.info("Grab " + doubanMovieSubject.getTitle() + " failed by code " + response.getStatusCode());
+                log.info("Grab " + doubanMovieSubject.getTitle() + " failed by code " + response.getStatusCode() + " retrying");
                 return null;
             }
 
+            log.info("Get response successfully  and start to parse and save relationships");
             String html = response.getContentAsString();
 
             document = Jsoup.parse(html);
@@ -129,15 +145,32 @@ public class MovieServiceImpl implements MovieService {
 
             parseAndSaveActors(savedMovie, document);
 
-            proxyServerPool.pushNiceWebclient(client.getKey(), client.getValue().getWebClient());
+           // proxyServerPool.pushNiceWebclient(client.getKey(), client.getValue().getWebClient());
+
+            log.info("Save movie " + savedMovie.getName() + "successfully");
+
+            MovieSuccessLog successLog = MovieSuccessLog.builder().createDate(ZonedDateTime.now()).doubanId(doubanMovieSubject.getDoubanId()).
+                movieId(savedMovie.getId()).name(doubanMovieSubject.getTitle()).build();
+
+            movieSuccessLogService.save(successLog);
+
+            return webClient;
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info("Grab " + doubanMovieSubject.getTitle() + " failed by exception " + e.getMessage() + " retrying");
+
         } catch (Exception e) {
-            e.printStackTrace();
+
+            log.info("Grab " + doubanMovieSubject.getTitle() + " failed by exception " + e.getMessage() + " retrying");
+
         }
 
-        return savedMovie;
+        return null;
+    }
+
+    @Override
+    public WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient webClient) {
+        return null;
     }
 
     private void tryLuckyMovieLink(Document document) {
@@ -315,14 +348,26 @@ public class MovieServiceImpl implements MovieService {
 
         if (links == null || links.isEmpty()) return;
 
-        links.forEach(link -> {
+        WebClient lastSuccessWebclient = null;
+        for (DoubleMovieSubject link : links) {
 
-            Map.Entry<ProxyServer, TimestapWebclient> entry = proxyServerPool.newWebclientFromProxyServer();
+            WebClient goodWebclient = grabSingleMovieWithUrl(link, proxyServerPool.newWebclientFromProxyServer(), null);
 
-            grabSingleMovieWithUrl(link, entry);
+            if (lastSuccessWebclient == null) {
+                Map.Entry<ProxyServer, TimestapWebclient> entry = proxyServerPool.newWebclientFromProxyServer();
 
-        });
+                lastSuccessWebclient = grabSingleMovieWithUrl(link, entry, null);
+            } else {
 
+                grabSingleMovieWithUrl(link, null, lastSuccessWebclient);
+
+                try {
+                    TimeUnit.SECONDS.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private String getFirstByPropertyValue(Document document, String value) {

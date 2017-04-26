@@ -3,8 +3,11 @@ package com.intelligent.chart.config.pool;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.google.common.collect.Lists;
 import com.intelligent.chart.domain.ProxyServer;
+import com.intelligent.chart.service.impl.MovieServiceImpl;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.vo.TimestapWebclient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -18,8 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Scope("singleton")
 @Component
 public class ProxyServerPool {
+    private final static Logger log = LoggerFactory.getLogger(ProxyServerPool.class);
 
-    public static final Long vistInterval = 1000 * 30L;
+    public static final Long vistInterval = 1000 * 5L;
     private static LinkedList<ProxyServer> proxyServers = Lists.newLinkedList();
 
     private static ConcurrentHashMap<ProxyServer, TimestapWebclient> webClientConcurrentHashMap = new ConcurrentHashMap<>();
@@ -43,11 +47,41 @@ public class ProxyServerPool {
 
     public Map.Entry<ProxyServer, TimestapWebclient> newWebclientFromProxyServer() {
 
+//        for (Map.Entry<ProxyServer, TimestapWebclient> action : webClientConcurrentHashMap.entrySet()) {
+//
+//            if (action.getValue().getLastSuccessTimestamp() - System.currentTimeMillis() > vistInterval) {
+//
+//                log.info("Found visiable web client from pool : " + action.getKey().getAddress());
+//                return action;
+//            }
+//        }
+
         ProxyServer proxyServer = pull();
 
-        TimestapWebclient timestapWebclient = getVisiableTimestapWebclient(proxyServer);
+     //   TimestapWebclient timestapWebclient = getVisiableTimestapWebclient(proxyServer);
 
-        if (timestapWebclient != null) {
+//        if (timestapWebclient != null) {
+//
+//            return new Map.Entry<ProxyServer, TimestapWebclient>() {
+//                @Override
+//                public ProxyServer getKey() {
+//                    return proxyServer;
+//                }
+//
+//                @Override
+//                public TimestapWebclient getValue() {
+//
+//                    log.info("Using existed proxy server " + proxyServer.getAddress() + " and existed web client.");
+//
+//                    return timestapWebclient;
+//                }
+//
+//                @Override
+//                public TimestapWebclient setValue(TimestapWebclient value) {
+//                    return null;
+//                }
+//            };
+//        } else {
 
             return new Map.Entry<ProxyServer, TimestapWebclient>() {
                 @Override
@@ -57,24 +91,8 @@ public class ProxyServerPool {
 
                 @Override
                 public TimestapWebclient getValue() {
-                    return timestapWebclient;
-                }
 
-                @Override
-                public TimestapWebclient setValue(TimestapWebclient value) {
-                    return null;
-                }
-            };
-        } else {
-
-            return new Map.Entry<ProxyServer, TimestapWebclient>() {
-                @Override
-                public ProxyServer getKey() {
-                    return proxyServer;
-                }
-
-                @Override
-                public TimestapWebclient getValue() {
+                    log.info("Using new proxy server " + proxyServer.getAddress() + " and created new web client.");
 
                     TimestapWebclient t = TimestapWebclient.builder().lastSuccessTimestamp(System.currentTimeMillis()).
                         webClient(HttpUtils.newWebClientWithRandomProxyServer(proxyServer)).build();
@@ -86,7 +104,7 @@ public class ProxyServerPool {
                     return null;
                 }
             };
-        }
+      //  }
     }
 
     private synchronized LinkedList<ProxyServer> getProxyServers() {
@@ -102,6 +120,9 @@ public class ProxyServerPool {
 
         TimestapWebclient timestapWebclient = webClientConcurrentHashMap.get(proxyServer);
 
+        if (timestapWebclient == null) {
+            return null;
+        }
         if (timestapWebclient.getLastSuccessTimestamp() - System.currentTimeMillis() > vistInterval) {
             return timestapWebclient;
         }

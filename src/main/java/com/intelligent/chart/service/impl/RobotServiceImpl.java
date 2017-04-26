@@ -3,9 +3,10 @@ package com.intelligent.chart.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
+import com.gargoylesoftware.htmlunit.util.Cookie;
+import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 import com.intelligent.chart.config.pool.ProxyServerPool;
@@ -22,7 +23,6 @@ import com.intelligent.chart.service.dto.DoubanTags;
 import com.intelligent.chart.service.util.DoubanUtil;
 import com.intelligent.chart.service.util.HttpUtils;
 import com.intelligent.chart.vo.MoviePageIndex;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,8 +33,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -42,8 +42,12 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.time.ZonedDateTime;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -314,6 +318,60 @@ public class RobotServiceImpl implements RobotService{
                     e.printStackTrace();
                 }
 
+                break;
+
+            case "test_get_single_movie_online":
+
+                WebClient webClient = HttpUtils.newNormalWebClient();
+
+                Set<Cookie> cookies = webClient.getCookieManager().getCookies();
+
+                log.info("before: ");
+                cookies.forEach(e -> {
+                    log.info(e.toString());
+
+                    try {
+                        Files.write(e.getName()+ ":" + e.getValue(), new File("before.txt"), Charset.defaultCharset());
+
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                });
+
+                try {
+                    WebResponse response = webClient.getPage("https://movie.douban.com/subject/26260853/?from=showing").getWebResponse();
+                    List<NameValuePair> headers = response.getResponseHeaders();
+                    cookies = webClient.getCookieManager().getCookies();
+
+                    log.info("after: ");
+                    cookies.forEach(e -> {
+                        log.info(e.toString());
+
+                        try {
+                            Files.append(e.getName()+ ":" + e.getValue(), new File("after.txt"), Charset.defaultCharset());
+
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    });
+
+                    log.info("response headers are: ");
+
+                    for (NameValuePair header : headers) {
+
+                        log.info(header.toString());
+
+                        try {
+                            Files.append(header.getName()+ ":" + header.getValue(), new File("response.txt"), Charset.defaultCharset());
+
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
 
             default:

@@ -1,5 +1,6 @@
 package com.intelligent.chart.service;
 
+import com.gargoylesoftware.htmlunit.WebClient;
 import com.intelligent.chart.domain.DoubleMovieSubject;
 import com.intelligent.chart.domain.Movie;
 import com.intelligent.chart.domain.ProxyServer;
@@ -46,7 +47,9 @@ public interface MovieService {
      */
     void delete(Long id);
 
-    Movie grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client);
+    WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client, WebClient knownWebclient);
+
+    WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient webClient);
 
     Movie parseMovie(Document document, DoubleMovieSubject doubanMovieSubject);
 

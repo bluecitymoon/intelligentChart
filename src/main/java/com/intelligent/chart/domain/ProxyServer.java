@@ -1,9 +1,6 @@
 package com.intelligent.chart.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -24,6 +21,8 @@ import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = {"id", "address", "port"})
+@ToString
 public class ProxyServer implements Serializable {
 
     private static final long serialVersionUID = 1L;
