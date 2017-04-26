@@ -1,0 +1,30 @@
+{
+    "intelligentChartApp": {
+        "webClientCookie" : {
+            "home": {
+                "title": "Web Client Cookies",
+                "createLabel": "Create a new Web Client Cookie",
+                "createOrEditLabel": "Create or edit a Web Client Cookie",
+                "search": "Search for Web Client Cookie"
+            },
+            "created": "A new Web Client Cookie is created with identifier {{ param }}",
+            "updated": "A Web Client Cookie is updated with identifier {{ param }}",
+            "deleted": "A Web Client Cookie is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Web Client Cookie {{ id }}?"
+            },
+            "detail": {
+                "title": "Web Client Cookie"
+            },
+            "name": "Name",
+            "value": "Value",
+            "domain": "Domain",
+            "path": "Path",
+            "secure": "Secure",
+            "httpOnly": "Http Only",
+            "expires": "Expires",
+            "website": "Website",
+            "proxyServer": "Proxy Server"
+        }
+    }
+}

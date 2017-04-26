@@ -1,0 +1,52 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "website",
+            "otherEntityName": "website",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "proxyServer",
+            "otherEntityName": "proxyServer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "address"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "domain",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "path",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "secure",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "httpOnly",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "expires",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170426060153",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "web_client_cookie",
+    "pagination": "pagination"
+}

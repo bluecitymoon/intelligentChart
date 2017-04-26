@@ -1,0 +1,80 @@
+<div>
+    <h2 data-translate="intelligentChartApp.webClientCookie.home.title">Web Client Cookies</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="web-client-cookie.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="intelligentChartApp.webClientCookie.home.createLabel">
+                        Create new Web Client Cookie
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.webClientCookie.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="value"><span data-translate="intelligentChartApp.webClientCookie.value">Value</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="domain"><span data-translate="intelligentChartApp.webClientCookie.domain">Domain</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="path"><span data-translate="intelligentChartApp.webClientCookie.path">Path</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="secure"><span data-translate="intelligentChartApp.webClientCookie.secure">Secure</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="httpOnly"><span data-translate="intelligentChartApp.webClientCookie.httpOnly">Http Only</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="expires"><span data-translate="intelligentChartApp.webClientCookie.expires">Expires</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="website.name"><span data-translate="intelligentChartApp.webClientCookie.website">Website</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="proxyServer.address"><span data-translate="intelligentChartApp.webClientCookie.proxyServer">Proxy Server</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="webClientCookie in vm.webClientCookies track by webClientCookie.id">
+                    <td><a ui-sref="web-client-cookie-detail({id:webClientCookie.id})">{{webClientCookie.id}}</a></td>
+                    <td>{{webClientCookie.name}}</td>
+                    <td>{{webClientCookie.value}}</td>
+                    <td>{{webClientCookie.domain}}</td>
+                    <td>{{webClientCookie.path}}</td>
+                    <td>{{webClientCookie.secure}}</td>
+                    <td>{{webClientCookie.httpOnly}}</td>
+                        <td>{{webClientCookie.expires | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="website-detail({id:webClientCookie.website.id})">{{webClientCookie.website.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="proxy-server-detail({id:webClientCookie.proxyServer.id})">{{webClientCookie.proxyServer.address}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="web-client-cookie-detail({id:webClientCookie.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="web-client-cookie.edit({id:webClientCookie.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="web-client-cookie.delete({id:webClientCookie.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

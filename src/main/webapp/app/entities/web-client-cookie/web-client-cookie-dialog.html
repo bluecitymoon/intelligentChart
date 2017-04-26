@@ -1,0 +1,84 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myWebClientCookieLabel" data-translate="intelligentChartApp.webClientCookie.home.createOrEditLabel">Create or edit a Web Client Cookie</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.webClientCookie.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.webClientCookie.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.webClientCookie.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.value" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                    ng-model="vm.webClientCookie.value"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.domain" for="field_domain">Domain</label>
+            <input type="text" class="form-control" name="domain" id="field_domain"
+                    ng-model="vm.webClientCookie.domain"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.path" for="field_path">Path</label>
+            <input type="text" class="form-control" name="path" id="field_path"
+                    ng-model="vm.webClientCookie.path"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.secure" for="field_secure">Secure</label>
+            <input type="checkbox" class="form-control" name="secure" id="field_secure"
+                    ng-model="vm.webClientCookie.secure"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.httpOnly" for="field_httpOnly">Http Only</label>
+            <input type="checkbox" class="form-control" name="httpOnly" id="field_httpOnly"
+                    ng-model="vm.webClientCookie.httpOnly"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="intelligentChartApp.webClientCookie.expires" for="field_expires">Expires</label>
+                <div class="input-group">
+                    <input id="field_expires" type="text" class="form-control" name="expires" uib-datepicker-popup="{{dateformat}}" ng-model="vm.webClientCookie.expires" is-open="vm.datePickerOpenStatus.expires"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expires')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.webClientCookie.website" for="field_website">Website</label>
+            <select class="form-control" id="field_website" name="website" ng-model="vm.webClientCookie.website" ng-options="website as website.name for website in vm.websites track by website.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="intelligentChartApp.webClientCookie.proxyServer" for="field_proxyServer">Proxy Server</label>
+            <select class="form-control" id="field_proxyServer" name="proxyServer" ng-model="vm.webClientCookie.proxyServer" ng-options="proxyServer as proxyServer.address for proxyServer in vm.proxyservers track by proxyServer.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

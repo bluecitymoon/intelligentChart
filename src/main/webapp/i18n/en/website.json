@@ -1,0 +1,23 @@
+{
+    "intelligentChartApp": {
+        "website" : {
+            "home": {
+                "title": "Websites",
+                "createLabel": "Create a new Website",
+                "createOrEditLabel": "Create or edit a Website",
+                "search": "Search for Website"
+            },
+            "created": "A new Website is created with identifier {{ param }}",
+            "updated": "A Website is updated with identifier {{ param }}",
+            "deleted": "A Website is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Website {{ id }}?"
+            },
+            "detail": {
+                "title": "Website"
+            },
+            "name": "Name",
+            "url": "Url"
+        }
+    }
+}

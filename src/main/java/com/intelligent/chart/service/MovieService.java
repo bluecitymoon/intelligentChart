@@ -49,7 +49,7 @@ public interface MovieService {
 
     WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, Map.Entry<ProxyServer, TimestapWebclient> client, WebClient knownWebclient);
 
-    WebClient grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient webClient);
+    void grabSingleMovieWithUrl(DoubleMovieSubject doubanMovieSubject, WebClient webClient);
 
     Movie parseMovie(Document document, DoubleMovieSubject doubanMovieSubject);
 

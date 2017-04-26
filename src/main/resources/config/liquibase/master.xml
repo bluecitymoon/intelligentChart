@@ -95,6 +95,8 @@
     <include file="classpath:config/liquibase/changelog/20170421064916_added_entity_MovieSuccessLog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170421090740_changelog.xml" relativeToChangelogFile="false"/>
 
+    <include file="classpath:config/liquibase/changelog/20170426055148_added_entity_Website.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170426060153_added_entity_WebClientCookie.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170123015849_added_entity_constraints_ChartMenu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170116081301_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
@@ -135,5 +137,6 @@
     <include file="classpath:config/liquibase/changelog/20170414093144_added_entity_constraints_RobotLog.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170421022149_added_entity_constraints_MovieParticipant.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170421022515_added_entity_constraints_MovieCategory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170426060153_added_entity_constraints_WebClientCookie.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

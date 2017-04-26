@@ -286,8 +286,9 @@ public class RobotServiceImpl implements RobotService{
                     }
                 }
 
-                ExecutorService executorPool = Executors.newFixedThreadPool(200);
-                Lists.partition(targetLinks, 200).forEach(links -> {
+                int threadCount = 100;
+                ExecutorService executorPool = Executors.newFixedThreadPool(threadCount);
+                Lists.partition(targetLinks, threadCount).forEach(links -> {
 
                     executorPool.execute(new Runnable() {
                         @Override
@@ -372,6 +373,10 @@ public class RobotServiceImpl implements RobotService{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
+
+            case "test_get_movie_single_thread" :
+
                 break;
 
             default:

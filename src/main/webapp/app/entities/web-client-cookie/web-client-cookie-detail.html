@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span data-translate="intelligentChartApp.webClientCookie.detail.title">Web Client Cookie</span> {{vm.webClientCookie.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="intelligentChartApp.webClientCookie.name">Name</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.name}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.value">Value</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.value}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.domain">Domain</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.domain}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.path">Path</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.path}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.secure">Secure</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.secure}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.httpOnly">Http Only</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.httpOnly}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.expires">Expires</span></dt>
+        <dd>
+            <span>{{vm.webClientCookie.expires | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.website">Website</span></dt>
+        <dd>
+            <a ui-sref="website-detail({id:vm.webClientCookie.website.id})">{{vm.webClientCookie.website.name}}</a>
+        </dd>
+        <dt><span data-translate="intelligentChartApp.webClientCookie.proxyServer">Proxy Server</span></dt>
+        <dd>
+            <a ui-sref="proxy-server-detail({id:vm.webClientCookie.proxyServer.id})">{{vm.webClientCookie.proxyServer.address}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="web-client-cookie-detail.edit({id:vm.webClientCookie.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

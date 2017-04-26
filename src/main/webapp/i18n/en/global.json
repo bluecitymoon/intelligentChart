@@ -79,6 +79,8 @@
                 "movieParticipant": "Movie Participant",
                 "movieCategory": "Movie Category",
                 "movieSuccessLog": "Movie Success Log",
+                "website": "Website",
+                "webClientCookie": "Web Client Cookie",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
