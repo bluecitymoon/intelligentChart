@@ -1,5 +1,6 @@
 package com.intelligent.chart.domain;
 
+import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -8,8 +9,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
-
-import com.intelligent.chart.domain.enumeration.ProxyServerCategory;
 
 /**
  * A ProxyServer.
@@ -73,6 +72,9 @@ public class ProxyServer implements Serializable {
 
     @Column(name = "is_reachable")
     private Boolean isReachable;
+
+    @Column(name = "is_blocked")
+    private Boolean isBlocked;
 
     public Long getId() {
         return id;

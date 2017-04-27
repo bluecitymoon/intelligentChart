@@ -180,7 +180,7 @@ public class MovieServiceImpl implements MovieService {
         Document document = null;
         Movie savedMovie = null;
 
-        ProxyServer proxyServer = null;
+        ProxyServer proxyServer = proxyServerRepository.findByAddress(webClient.getOptions().getProxyConfig().getProxyHost());
         try {
 
             WebResponse response = webClient.getPage(doubanMovieSubject.getUrl()).getWebResponse();
@@ -188,6 +188,12 @@ public class MovieServiceImpl implements MovieService {
             if (response.getStatusCode() != 200) {
 
                 log.info("Grab " + doubanMovieSubject.getTitle() + " failed by code " + response.getStatusCode() + " retrying");
+
+                if (response.getStatusCode() == org.springframework.http.HttpStatus.BAD_GATEWAY.value()) {
+
+                    proxyServer.setIsBlocked(true);
+                    proxyServerService.save(proxyServer);
+                }
 
                 //use another webclient and try again
                 webClient = proxyServerPool.retrieveWebclient(getDoubanWebsite());
@@ -246,7 +252,6 @@ public class MovieServiceImpl implements MovieService {
             movieSuccessLogService.save(successLog);
 
             try {
-                proxyServer = proxyServerRepository.findByAddress(webClient.getOptions().getProxyConfig().getProxyHost());
                 webClientCookieService.saveCookies(proxyServer, webClient.getCookieManager().getCookies(), getDoubanWebsite());
 
                 proxyServerService.increaseSuccessCount(proxyServer);
@@ -260,12 +265,17 @@ public class MovieServiceImpl implements MovieService {
 
 
             try {
-                proxyServer = proxyServerRepository.findByAddress(webClient.getOptions().getProxyConfig().getProxyHost());
 
                 proxyServerService.increaseFailCount(proxyServer);
 
             } catch (Exception a) {
                 log.info("save failed count failed " + a.getMessage());
+            }
+
+            if (e.getMessage() != null && e.getMessage().contains("Connection refused")) {
+
+                proxyServer.setIsBlocked(true);
+                proxyServerService.save(proxyServer);
             }
 
             //use another webclient and try again
@@ -280,12 +290,17 @@ public class MovieServiceImpl implements MovieService {
             log.info("Grab " + doubanMovieSubject.getTitle() + " failed by exception " + e.getMessage() + " retrying");
 
             try {
-                proxyServer = proxyServerRepository.findByAddress(webClient.getOptions().getProxyConfig().getProxyHost());
 
                 proxyServerService.increaseFailCount(proxyServer);
 
             } catch (Exception a) {
                 log.info("save failed count failed " + a.getMessage());
+            }
+
+            if (e.getMessage() != null && e.getMessage().contains("Connection refused")) {
+
+                proxyServer.setIsBlocked(true);
+                proxyServerService.save(proxyServer);
             }
 
             //use another webclient and try again

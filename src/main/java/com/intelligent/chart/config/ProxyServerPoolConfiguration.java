@@ -22,7 +22,7 @@ public class ProxyServerPoolConfiguration {
     public ProxyServerPool createServerPool() {
         ProxyServerPool proxyServerPool = new ProxyServerPool();
 
-        proxyServerRepository.findByIsReachableTrueOrderByTotalFailCountAscTotalSuccessCountAsc().forEach(e -> proxyServerPool.push(e));
+        proxyServerRepository.findByIsReachableTrueAndIsBlockedFalseOrderByTotalFailCountAscTotalSuccessCountAsc().forEach(e -> proxyServerPool.push(e));
 
         return proxyServerPool;
     }

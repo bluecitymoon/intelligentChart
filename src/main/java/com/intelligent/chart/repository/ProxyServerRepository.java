@@ -20,6 +20,6 @@ public interface ProxyServerRepository extends JpaRepository<ProxyServer,Long> {
 
     List<ProxyServer> findByIsReachableIsNull();
 
-    List<ProxyServer> findByIsReachableTrueOrderByTotalFailCountAscTotalSuccessCountAsc();
+    List<ProxyServer> findByIsReachableTrueAndIsBlockedFalseOrderByTotalFailCountAscTotalSuccessCountAsc();
 
 }
