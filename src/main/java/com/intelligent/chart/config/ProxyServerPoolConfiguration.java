@@ -32,17 +32,17 @@ public class ProxyServerPoolConfiguration {
     public ProxyServerPool createServerPool() {
         ProxyServerPool proxyServerPool = new ProxyServerPool();
 
-       // proxyServerRepository.findByIsReachableTrueAndIsBlockedFalseOrderByTotalFailCountAscTotalSuccessCountAsc().forEach(e -> proxyServerPool.push(e));
+        proxyServerRepository.findByIsReachableTrueAndIsBlockedFalseOrderByTotalFailCountAscTotalSuccessCountAsc().forEach(e -> proxyServerPool.push(e));
 
-        webClientCookieRepository.findAll().forEach(e -> {
-
-            ProxyServer proxyServer = e.getProxyServer();
-
-            if (!proxyServer.getIsBlocked() && !proxyServerPool.getProxyServers().contains(proxyServer)) {
-
-                proxyServerPool.push(e.getProxyServer());
-            }
-        });
+//        webClientCookieRepository.findAll().forEach(e -> {
+//
+//            ProxyServer proxyServer = e.getProxyServer();
+//
+//            if (!proxyServer.getIsBlocked() && !proxyServerPool.getProxyServers().contains(proxyServer)) {
+//
+//                proxyServerPool.push(e.getProxyServer());
+//            }
+//        });
 
         log.info("loaded " + proxyServerPool.getProxyServers().size() + " proxy servers.");
 

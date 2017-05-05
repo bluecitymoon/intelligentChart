@@ -4,21 +4,21 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.google.common.base.Splitter;
 import com.intelligent.chart.config.pool.ProxyServerPool;
-import com.intelligent.chart.domain.Job;
-import com.intelligent.chart.domain.Person;
-import com.intelligent.chart.domain.ProxyServer;
-import com.intelligent.chart.domain.Website;
+import com.intelligent.chart.domain.*;
+import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.JobRepository;
 import com.intelligent.chart.repository.PersonRepository;
 import com.intelligent.chart.repository.ProxyServerRepository;
 import com.intelligent.chart.repository.WebsiteRepository;
 import com.intelligent.chart.service.PersonService;
 import com.intelligent.chart.service.ProxyServerService;
+import com.intelligent.chart.service.RobotLogService;
 import com.intelligent.chart.service.WebClientCookieService;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
@@ -68,6 +69,9 @@ public class PersonServiceImpl implements PersonService{
     @Inject
     private PersonService personService;
 
+    @Inject
+    private RobotLogService robotLogService;
+
     /**
      * Save a person.
      *
@@ -103,9 +107,15 @@ public class PersonServiceImpl implements PersonService{
 
         Document document = Jsoup.parse(html);
 
-        String infoContent = document.getElementsByClass("article").first().text();
+        Elements personDetailElement = document.getElementsByClass("article");
 
-        Element avatarImage = document.getElementsByClass("article").first().getElementsByClass("nbg").first();
+        if (personDetailElement == null || personDetailElement.isEmpty()) {
+            return null;
+        }
+
+        String infoContent = personDetailElement.first().text();
+
+        Element avatarImage = personDetailElement.first().getElementsByClass("nbg").first();
         String avatar = null;
         if (avatarImage != null) {
 
@@ -152,16 +162,27 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public Person parseAndUpdatePerson(String html, Person person) {
 
-        Person parsedPerson = parsePerson(html);
+        try {
 
-        String[] ignoreProperties = {"id", "name", "doubanId", "jobs", "grabed"};
-        BeanUtils.copyProperties(parsedPerson, person, ignoreProperties);
+            Person parsedPerson = parsePerson(html);
 
-       // parseAndSavePersonJobs(html, person);
+            String[] ignoreProperties = {"id", "name", "doubanId", "jobs", "grabed"};
+            BeanUtils.copyProperties(parsedPerson, person, ignoreProperties);
 
-        person.setGrabed(true);
+            // parseAndSavePersonJobs(html, person);
 
-        return save(person);
+            person.setGrabed(true);
+
+            return save(person);
+
+        } catch (Exception e) {
+            log.info("Parsing person failed douban id = " + person.getDoubanId() + " " + e.getMessage());
+
+            RobotLog robotLog = RobotLog.builder().createDate(ZonedDateTime.now()).level(RobotLogLevel.error).logContent("Parsing person failed douban id = " + person.getDoubanId()).build();
+            robotLogService.save(robotLog);
+        }
+
+        return null;
     }
 
     private void parseAndSavePersonJobs(String html, Person savedPerson) {
@@ -207,7 +228,8 @@ public class PersonServiceImpl implements PersonService{
             }
 
             WebClient webClient = proxyServerPool.retrieveWebclient(website);
-            grabSinglePerson(webClient, person);
+
+            grabSinglePerson(webClient, person, 0);
 
             try {
                 TimeUnit.MILLISECONDS.sleep(1000);
@@ -219,7 +241,11 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public void grabSinglePerson(WebClient webClient, Person target) {
+    public void grabSinglePerson(WebClient webClient, Person target, int tryCount) {
+
+        if (tryCount > 10) {
+            return;
+        }
 
         try {
             TimeUnit.MILLISECONDS.sleep(1000);
@@ -248,19 +274,21 @@ public class PersonServiceImpl implements PersonService{
 
                     log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
 
-                    proxyServerPool.getProxyServers().remove(proxyServer);
+                   // proxyServerPool.getProxyServers().remove(proxyServer);
                 }
 
                 //use another webclient and try again
                 webClient = proxyServerPool.retrieveWebclient(getDoubanWebsite());
-                grabSinglePerson(webClient, target);
+                grabSinglePerson(webClient, target, tryCount+1);
 
                 return;
             }
 
-            parseAndUpdatePerson(response.getContentAsString(), target);
+            Person person = parseAndUpdatePerson(response.getContentAsString(), target);
 
-         //   parseAndSavePersonJobs(response.getContentAsString(), target);
+            if (person == null) {
+                log.info("Parsing person " + target.getName() + " failed. Updating cookies.");
+            }
 
             try {
                 log.info("Grab person " + target.getName() + " successfully. Updating cookies.");
@@ -286,15 +314,16 @@ public class PersonServiceImpl implements PersonService{
 
                 log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
 
-                proxyServerPool.getProxyServers().remove(proxyServer);
+              //  proxyServerPool.getProxyServers().remove(proxyServer);
             }
             //use another webclient and try again
             webClient = proxyServerPool.retrieveWebclient(getDoubanWebsite());
-            grabSinglePerson(webClient, target);
+            grabSinglePerson(webClient, target, tryCount+1);
 
         } catch (Exception e) {
 
             if (e.getMessage() !=null && e.getMessage().contains("Connection refused")) {
+
                 proxyServer.setIsBlocked(true);
                 proxyServerService.save(proxyServer);
 
@@ -302,7 +331,7 @@ public class PersonServiceImpl implements PersonService{
 
                 log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
 
-                proxyServerPool.getProxyServers().remove(proxyServer);
+              //  proxyServerPool.getProxyServers().remove(proxyServer);
 
             }
 
@@ -312,7 +341,7 @@ public class PersonServiceImpl implements PersonService{
 
             //use another webclient and try again
             webClient = proxyServerPool.retrieveWebclient(getDoubanWebsite());
-            grabSinglePerson(webClient, target);
+            grabSinglePerson(webClient, target, tryCount+1);
         }
 
     }

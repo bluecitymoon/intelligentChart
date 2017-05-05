@@ -321,7 +321,7 @@ public class RobotServiceImpl implements RobotService{
                     }
                 }
 
-                int p_threadCount = 50;
+                int p_threadCount = 100;
                 ExecutorService peopleExecutorPool = Executors.newFixedThreadPool(p_threadCount);
                 Lists.partition(people, p_threadCount).forEach(personList -> {
 

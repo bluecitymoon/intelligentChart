@@ -199,13 +199,7 @@ public class ProxyServerServiceImpl implements ProxyServerService{
                 }
             });
         }
-//        proxyServerRepository.findAll().forEach(proxyServer -> {
-//            boolean isReachable = HttpUtils.isReachable(proxyServer.getAddress());
-//
-//            proxyServer.setIsReachable(isReachable);
-//
-//            save(proxyServer);
-//        });
+
     }
 
     private void grabSinglePage(int page, String url, WebClient webClient, DateTimeFormatter formatter) {

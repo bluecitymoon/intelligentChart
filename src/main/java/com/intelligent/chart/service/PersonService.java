@@ -50,7 +50,7 @@ public interface PersonService {
 
     void grabPerson(List<Person> personList);
 
-    void grabSinglePerson(WebClient webClient, Person target);
+    void grabSinglePerson(WebClient webClient, Person target, int tryCount);
 
     void addPersonJob(Person person, Job job);
 
