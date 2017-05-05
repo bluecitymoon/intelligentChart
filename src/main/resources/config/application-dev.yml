@@ -27,7 +27,7 @@ spring:
         url: jdbc:mysql://localhost:3306/intelligentChart?useUnicode=true&characterEncoding=utf8&useSSL=false&verifyServerCertificate=false
         name:
         username: root
-        password: intellijgentchart
+        password: root
         hikari:
             data-source-properties:
                 cachePrepStmts: true

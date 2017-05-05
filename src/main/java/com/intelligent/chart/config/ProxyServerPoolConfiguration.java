@@ -1,6 +1,7 @@
 package com.intelligent.chart.config;
 
 import com.intelligent.chart.config.pool.ProxyServerPool;
+import com.intelligent.chart.domain.ProxyServer;
 import com.intelligent.chart.repository.ProxyServerRepository;
 import com.intelligent.chart.repository.WebClientCookieRepository;
 import org.slf4j.Logger;
@@ -35,7 +36,9 @@ public class ProxyServerPoolConfiguration {
 
         webClientCookieRepository.findAll().forEach(e -> {
 
-            if (!proxyServerPool.getProxyServers().contains(e.getProxyServer())) {
+            ProxyServer proxyServer = e.getProxyServer();
+
+            if (!proxyServer.getIsBlocked() && !proxyServerPool.getProxyServers().contains(proxyServer)) {
 
                 proxyServerPool.push(e.getProxyServer());
             }

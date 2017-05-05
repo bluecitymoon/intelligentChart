@@ -241,9 +241,14 @@ public class PersonServiceImpl implements PersonService{
 
                 log.info("Grab " + target.getName() + " failed by code " + response.getStatusCode() + " retrying");
 
-                if (response.getStatusCode() == org.springframework.http.HttpStatus.BAD_GATEWAY.value()) {
+                if (response.getStatusCode() == org.springframework.http.HttpStatus.BAD_GATEWAY.value() || response.getStatusCode() == 403) {
+
                     proxyServer.setIsBlocked(true);
                     proxyServerService.save(proxyServer);
+
+                    log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
+
+                    proxyServerPool.getProxyServers().remove(proxyServer);
                 }
 
                 //use another webclient and try again
@@ -278,6 +283,10 @@ public class PersonServiceImpl implements PersonService{
                 proxyServerService.save(proxyServer);
 
                 webClientCookieService.removeCookies(proxyServer, getDoubanWebsite());
+
+                log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
+
+                proxyServerPool.getProxyServers().remove(proxyServer);
             }
             //use another webclient and try again
             webClient = proxyServerPool.retrieveWebclient(getDoubanWebsite());
@@ -290,6 +299,10 @@ public class PersonServiceImpl implements PersonService{
                 proxyServerService.save(proxyServer);
 
                 webClientCookieService.removeCookies(proxyServer, getDoubanWebsite());
+
+                log.info(proxyServer.getAddress() + " is blocked. There are " + proxyServerPool.getProxyServers().size() + " proxy servers living.");
+
+                proxyServerPool.getProxyServers().remove(proxyServer);
 
             }
 
