@@ -68,11 +68,7 @@ public class WebClientCookieServiceImpl implements WebClientCookieService{
 
         log.info("Refresh cookie for " + proxyServer.getAddress());
 
-        List<WebClientCookie> existedCookies = webClientCookieRepository.findByWebsiteAndProxyServer(website, proxyServer);
-
-        if (existedCookies != null && !existedCookies.isEmpty()) {
-            webClientCookieRepository.delete(existedCookies);
-        }
+        removeCookies(proxyServer, website);
 
         for (Cookie cookie : cookies) {
 
@@ -91,6 +87,16 @@ public class WebClientCookieServiceImpl implements WebClientCookieService{
             save(webClientCookie);
         }
 
+    }
+
+    @Override
+    public void removeCookies(ProxyServer proxyServer, Website website) {
+
+        List<WebClientCookie> existedCookies = webClientCookieRepository.findByWebsiteAndProxyServer(website, proxyServer);
+
+        if (existedCookies != null && !existedCookies.isEmpty()) {
+            webClientCookieRepository.delete(existedCookies);
+        }
     }
 
     @Override

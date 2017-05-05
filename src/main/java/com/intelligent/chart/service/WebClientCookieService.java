@@ -47,5 +47,7 @@ public interface WebClientCookieService {
 
     void saveCookies(ProxyServer proxyServer, Set<Cookie> cookies, Website website);
 
+    void removeCookies(ProxyServer proxyServer, Website website);
+
     Set<Cookie> getCookiesByServerAndWebsite(ProxyServer proxyServer, Website website);
 }

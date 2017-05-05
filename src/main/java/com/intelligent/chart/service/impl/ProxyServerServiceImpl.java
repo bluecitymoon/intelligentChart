@@ -190,6 +190,8 @@ public class ProxyServerServiceImpl implements ProxyServerService{
                     servers.forEach(proxyServer -> {
                         boolean isReachable = HttpUtils.isReachable(proxyServer.getAddress());
 
+                        log.info(proxyServer.getAddress() + " reachable is " + isReachable);
+
                         proxyServer.setIsReachable(isReachable);
 
                         save(proxyServer);

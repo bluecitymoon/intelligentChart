@@ -21,4 +21,6 @@ public interface PersonRepository extends JpaRepository<Person,Long> {
 
     Person findByDoubanId(Long doubanId);
 
+    List<Person> findByGrabedFalse();
+
 }

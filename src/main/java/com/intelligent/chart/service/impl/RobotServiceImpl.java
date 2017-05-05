@@ -13,10 +13,7 @@ import com.intelligent.chart.config.pool.ProxyServerPool;
 import com.intelligent.chart.domain.*;
 import com.intelligent.chart.domain.enumeration.RobotLogLevel;
 import com.intelligent.chart.repository.*;
-import com.intelligent.chart.service.DoubanMovieTagService;
-import com.intelligent.chart.service.MovieService;
-import com.intelligent.chart.service.ProxyServerService;
-import com.intelligent.chart.service.RobotService;
+import com.intelligent.chart.service.*;
 import com.intelligent.chart.service.dto.DoubanMovieSubject;
 import com.intelligent.chart.service.dto.DoubanMovieSubjects;
 import com.intelligent.chart.service.dto.DoubanTags;
@@ -102,6 +99,12 @@ public class RobotServiceImpl implements RobotService{
 
     @Inject
     private MovieSuccessLogRepository movieSuccessLogRepository;
+
+    @Inject
+    private PersonRepository personRepository;
+
+    @Inject
+    private PersonService personService;
 
     /**
      * Save a robot.
@@ -286,7 +289,7 @@ public class RobotServiceImpl implements RobotService{
                     }
                 }
 
-                int threadCount = 100;
+                int threadCount = 150;
                 ExecutorService executorPool = Executors.newFixedThreadPool(threadCount);
                 Lists.partition(targetLinks, threadCount).forEach(links -> {
 
@@ -299,6 +302,37 @@ public class RobotServiceImpl implements RobotService{
                     });
                 });
 
+
+                break;
+
+            case "get_person_list":
+
+                List<Person> people = personService.findAllTargetPerson();
+
+                log.info("There are " + people.size() + " people to go ...");
+
+                for (int i = 1; i <= 3; i ++) {
+                    log.info("Start in " + i);
+
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                int p_threadCount = 100;
+                ExecutorService peopleExecutorPool = Executors.newFixedThreadPool(p_threadCount);
+                Lists.partition(people, p_threadCount).forEach(personList -> {
+
+                    peopleExecutorPool.execute(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            personService.grabPerson(personList);
+                        }
+                    });
+                });
 
                 break;
 
@@ -321,7 +355,7 @@ public class RobotServiceImpl implements RobotService{
 
                 break;
 
-            case "test_get_single_movie_online":
+            case "test_get_single_movie_online" :
 
                 WebClient webClient = HttpUtils.newNormalWebClient();
 

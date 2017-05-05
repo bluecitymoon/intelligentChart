@@ -83,14 +83,13 @@ public class ProxyServerPool {
 
     }
 
-    private synchronized LinkedList<ProxyServer> getProxyServers() {
+    public synchronized LinkedList<ProxyServer> getProxyServers() {
         return proxyServers;
     }
 
 
     @Deprecated
     private synchronized WebClient getWebclientByProxyServer(ProxyServer proxyServer) {
-
 
         return null;
     }
@@ -127,5 +126,4 @@ public class ProxyServerPool {
 
         return null;
     }
-
 }

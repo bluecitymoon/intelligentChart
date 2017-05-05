@@ -1,8 +1,11 @@
 package com.intelligent.chart.service;
 
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.intelligent.chart.domain.Job;
 import com.intelligent.chart.domain.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 /**
@@ -20,7 +23,7 @@ public interface PersonService {
 
     /**
      *  Get all the people.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +43,16 @@ public interface PersonService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    Person parsePerson(String html);
+
+    Person parseAndUpdatePerson(String html, Person person);
+
+    void grabPerson(List<Person> personList);
+
+    void grabSinglePerson(WebClient webClient, Person target);
+
+    void addPersonJob(Person person, Job job);
+
+    List<Person> findAllTargetPerson();
 }
