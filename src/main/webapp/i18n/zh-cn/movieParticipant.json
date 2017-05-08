@@ -2,24 +2,24 @@
     "intelligentChartApp": {
         "movieParticipant" : {
             "home": {
-                "title": "Movie Participants",
-                "createLabel": "Create a new Movie Participant",
-                "createOrEditLabel": "Create or edit a Movie Participant",
+                "title": "影视参与人员",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理",
                 "search": "Search for Movie Participant"
             },
-            "created": "A new Movie Participant is created with identifier {{ param }}",
-            "updated": "A Movie Participant is updated with identifier {{ param }}",
-            "deleted": "A Movie Participant is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Movie Participant {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Movie Participant"
+                "title": "影视参与人员"
             },
-            "createDate": "Create Date",
-            "movie": "Movie",
-            "person": "Person",
-            "job": "Job"
+            "createDate": "创建时间",
+            "movie": "影视",
+            "person": "人物",
+            "job": "职责"
         }
     }
 }

@@ -1,50 +1,72 @@
-<div>
-    <h2 data-translate="intelligentChartApp.movie.home.title">Movies</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+<div class="panel">
+    <div class="panel-body">
+
+        <jhi-alert></jhi-alert>
+
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="movie.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span  data-translate="intelligentChartApp.movie.home.createLabel">
-                        Create new Movie
-                    </span>
-                </button>
+            <div class="col-md-4">
+                <h2 data-translate="intelligentChartApp.movie.home.title">Movies</h2>
+            </div>
+            <div class="col-md-8">
+                <h3 style="float: right" ng-if="vm.queryCount"> 共有数据{{vm.queryCount}}条</h3>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 no-padding-left">
+                    <button class="btn btn-primary" ui-sref="movie.new">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span data-translate="intelligentChartApp.movie.home.createLabel">
+                        Create new Movie
+                    </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.movie.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="doubanUrl"><span data-translate="intelligentChartApp.movie.doubanUrl">Douban Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="rate"><span data-translate="intelligentChartApp.movie.rate">Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="coverUrl"><span data-translate="intelligentChartApp.movie.coverUrl">Cover Url</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="area"><span data-translate="intelligentChartApp.movie.area">Area</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="language"><span data-translate="intelligentChartApp.movie.language">Language</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="runDate"><span data-translate="intelligentChartApp.movie.runDate">Run Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="term"><span data-translate="intelligentChartApp.movie.term">Term</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createDate"><span data-translate="intelligentChartApp.movie.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span data-translate="intelligentChartApp.movie.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="intelligentChartApp.movie.name">Name</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+
+                    <!--<th jh-sort-by="doubanUrl"><span data-translate="intelligentChartApp.movie.doubanUrl">Douban Url</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="rate"><span data-translate="intelligentChartApp.movie.rate">Rate</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="area"><span data-translate="intelligentChartApp.movie.area">Area</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="language"><span data-translate="intelligentChartApp.movie.language">Language</span>
+                        <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="runDate"><span data-translate="intelligentChartApp.movie.runDate">Run Date</span>
+                        <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="term"><span data-translate="intelligentChartApp.movie.term">Term</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createDate"><span
+                            data-translate="intelligentChartApp.movie.createDate">Create Date</span> <span
+                            class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="description"><span data-translate="intelligentChartApp.movie.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat="movie in vm.movies track by movie.id">
                     <td><a ui-sref="movie-detail({id:movie.id})">{{movie.id}}</a></td>
                     <td>{{movie.name}}</td>
-                    <td>{{movie.doubanUrl}}</td>
+                    <!--<td>{{movie.doubanUrl}}</td>-->
+                    <td><img src="{{movie.coverUrl}}" class="img-lg img-circle img-border mar-btm"
+                             style="border-radius: 0"></td>
                     <td>{{movie.rate}}</td>
-                    <td>{{movie.coverUrl}}</td>
                     <td>{{movie.area}}</td>
                     <td>{{movie.language}}</td>
-                        <td>{{movie.runDate | date:'mediumDate'}}</td>
+                    <td>{{movie.runDate | date:'mediumDate'}}</td>
                     <td>{{movie.term}}</td>
                     <td>{{movie.createDate | date:'medium'}}</td>
-                    <td>{{movie.description}}</td>
+                    <!--<td>{{movie.description}}</td>-->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -68,11 +90,13 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+            <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+                            ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+        </div>
     </div>
 </div>

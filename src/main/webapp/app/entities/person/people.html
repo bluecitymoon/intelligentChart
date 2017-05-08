@@ -1,7 +1,15 @@
 <div class="panel">
     <div class="panel-body">
-        <h2 data-translate="intelligentChartApp.person.home.title">People</h2>
         <jhi-alert></jhi-alert>
+        <div class="row">
+            <div class="col-md-4">
+                <h2 data-translate="intelligentChartApp.person.home.title">People</h2>
+            </div>
+            <div class="col-md-8">
+                <h3 style="float: right" ng-if="vm.queryCount"> 共有数据{{vm.queryCount}}条</h3>
+            </div>
+        </div>
+
         <div class="container-fluid row text-right">
             <button class="btn btn-primary" ui-sref="person.new" >
                 <span class="glyphicon glyphicon-plus"></span>

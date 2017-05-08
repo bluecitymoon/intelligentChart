@@ -1,4 +1,5 @@
-<div>
+<div class="panel">
+    <div class="panel-body">
     <h2 data-translate="intelligentChartApp.movieParticipant.home.title">Movie Participants</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
@@ -19,7 +20,7 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createDate"><span data-translate="intelligentChartApp.movieParticipant.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="createDate"><span data-translate="intelligentChartApp.movieParticipant.createDate">Create Date</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="movie.name"><span data-translate="intelligentChartApp.movieParticipant.movie">Movie</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="person.name"><span data-translate="intelligentChartApp.movieParticipant.person">Person</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="job.name"><span data-translate="intelligentChartApp.movieParticipant.job">Job</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -29,7 +30,7 @@
             <tbody>
                 <tr ng-repeat="movieParticipant in vm.movieParticipants track by movieParticipant.id">
                     <td><a ui-sref="movie-participant-detail({id:movieParticipant.id})">{{movieParticipant.id}}</a></td>
-                    <td>{{movieParticipant.createDate | date:'medium'}}</td>
+                    <!--<td>{{movieParticipant.createDate | date:'medium'}}</td>-->
                     <td>
                         <a ui-sref="movie-detail({id:movieParticipant.movie.id})">{{movieParticipant.movie.name}}</a>
                     </td>
@@ -69,4 +70,5 @@
         <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
         <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
+</div>
 </div>

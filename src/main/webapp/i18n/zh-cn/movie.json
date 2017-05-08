@@ -2,30 +2,30 @@
     "intelligentChartApp": {
         "movie" : {
             "home": {
-                "title": "Movies",
-                "createLabel": "Create a new Movie",
-                "createOrEditLabel": "Create or edit a Movie",
+                "title": "影视",
+                "createLabel": "录入",
+                "createOrEditLabel": "管理影视数据",
                 "search": "Search for Movie"
             },
-            "created": "A new Movie is created with identifier {{ param }}",
-            "updated": "A Movie is updated with identifier {{ param }}",
-            "deleted": "A Movie is deleted with identifier {{ param }}",
+            "created": "数据已录入",
+            "updated": "数据已更新",
+            "deleted": "数据已删除",
             "delete": {
-                "question": "Are you sure you want to delete Movie {{ id }}?"
+                "question": "你确定删除这条数据?"
             },
             "detail": {
-                "title": "Movie"
+                "title": "影视"
             },
-            "name": "Name",
+            "name": "名称",
             "doubanUrl": "Douban Url",
-            "rate": "Rate",
-            "coverUrl": "Cover Url",
-            "area": "Area",
-            "language": "Language",
-            "runDate": "Run Date",
-            "term": "Term",
-            "createDate": "Create Date",
-            "description": "Description"
+            "rate": "评分",
+            "coverUrl": "封面 Url",
+            "area": "区域",
+            "language": "语言",
+            "runDate": "上映时间",
+            "term": "时长",
+            "createDate": "录入时间",
+            "description": "描述"
         }
     }
 }
