@@ -45,8 +45,18 @@ public class PersonExperienceResource {
 
         Page<PersonExperience> page = personExperienceRepository.findByPerson_Id(id, pageable);
 
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-connection-levels");
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/person-experiences");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/person-experiences/person/all/{id}")
+    @Timed
+    public ResponseEntity<List<PersonExperience>> getAllPersonAreaPercentagesByPersonIdWithoutPagination(@PathVariable Long id)
+        throws URISyntaxException {
+
+        List<PersonExperience> page = personExperienceRepository.findByPerson_Id(id);
+
+        return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
     /**

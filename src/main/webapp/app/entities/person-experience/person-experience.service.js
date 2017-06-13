@@ -24,7 +24,7 @@
             'loadAllByPersonId' : {
                 method: 'GET',
                 isArray: true,
-                url: 'api/person-experiences/person/:id',
+                url: 'api/person-experiences/person/all/:id',
                 params: { id : '@id'}
             }
         });
