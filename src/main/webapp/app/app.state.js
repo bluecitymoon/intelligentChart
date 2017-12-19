@@ -1,4 +1,5 @@
 var jquery = $.noConflict();
+var selectedPerson = null;
 (function() {
     'use strict';
 

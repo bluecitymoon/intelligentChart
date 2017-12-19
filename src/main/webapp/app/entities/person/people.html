@@ -1,6 +1,20 @@
 <div class="panel">
     <div class="panel-body">
+        <div class="row">
+            <div class="input-group mar-btm">
+                <input type="text" placeholder="输入姓名关键字搜索" class="form-control" ng-model="vm.keywordToSearch">
+                <span class="input-group-btn">
+					  <button class="btn btn-mint" type="button" ng-click="vm.searchPerson()">搜索</button>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-body">
         <jhi-alert></jhi-alert>
+
+
         <div class="row">
             <div class="col-md-4">
                 <h2 data-translate="intelligentChartApp.person.home.title">People</h2>

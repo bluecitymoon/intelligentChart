@@ -36,6 +36,12 @@
                     copy.birthday = DateUtils.convertLocalDateToServer(copy.birthday);
                     return angular.toJson(copy);
                 }
+            },
+            'loadAllByPersonName' : {
+                method: 'GET',
+                isArray: true,
+                url: 'api/people/name/:name',
+                params: { name : '@name'}
             }
         });
     }

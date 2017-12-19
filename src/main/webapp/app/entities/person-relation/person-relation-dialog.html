@@ -16,15 +16,33 @@
 
         <div class="form-group">
             <label data-translate="intelligentChartApp.personRelation.thePerson" for="field_thePerson">The Person</label>
-            <select class="form-control" id="field_thePerson" name="thePerson" ng-model="vm.personRelation.thePerson" ng-options="person as person.name for person in vm.people track by person.id">
-                <option value=""></option>
-            </select>
+            <!--<select class="form-control" id="field_thePerson" name="thePerson" ng-model="vm.personRelation.thePerson" ng-options="person as person.name for person in vm.people track by person.id">-->
+                <!--<option value=""></option>-->
+            <!--</select>-->
+
+            <ui-select ng-model="vm.personRelation.thePerson"> 
+                <ui-select-match>  {{$item.name}} </ui-select-match>
+                 
+                <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
+                        ng-bind="item.name"></span> 
+                </ui-select-choices>
+                 
+            </ui-select>
         </div>
         <div class="form-group">
             <label data-translate="intelligentChartApp.personRelation.hasRelationWith" for="field_hasRelationWith">Has Relation With</label>
-            <select class="form-control" id="field_hasRelationWith" name="hasRelationWith" ng-model="vm.personRelation.hasRelationWith" ng-options="person as person.name for person in vm.people track by person.id">
-                <option value=""></option>
-            </select>
+            <!--<select class="form-control" id="field_hasRelationWith" name="hasRelationWith" ng-model="vm.personRelation.hasRelationWith" ng-options="person as person.name for person in vm.people track by person.id">-->
+                <!--<option value=""></option>-->
+            <!--</select>-->
+
+            <ui-select ng-model="vm.personRelation.hasRelationWith"> 
+                <ui-select-match>  {{$item.name}} </ui-select-match>
+                 
+                <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
+                        ng-bind="item.name"></span> 
+                </ui-select-choices>
+                 
+            </ui-select>
         </div>
     </div>
     <div class="modal-footer">

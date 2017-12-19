@@ -22,9 +22,17 @@
 
         <div class="form-group">
             <label data-translate="intelligentChartApp.personConnectionLevel.person" for="field_person">Person</label>
-            <select class="form-control" id="field_person" name="person" ng-model="vm.personConnectionLevel.person" ng-options="person as person.name for person in vm.people track by person.id">
-                <option value=""></option>
-            </select>
+            <!--<select class="form-control" id="field_person" name="person" ng-model="vm.personConnectionLevel.person" ng-options="person as person.name for person in vm.people track by person.id">-->
+                <!--<option value=""></option>-->
+            <!--</select>-->
+            <ui-select ng-model="vm.personConnectionLevel.person">
+                <ui-select-match>
+                    {{$item.name}}
+                </ui-select-match>
+                <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+            </ui-select>
         </div>
         <div class="form-group">
             <label data-translate="intelligentChartApp.personConnectionLevel.connectionLevel" for="field_connectionLevel">Connection Level</label>

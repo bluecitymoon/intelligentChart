@@ -2,6 +2,8 @@ package com.intelligent.chart.repository;
 
 import com.intelligent.chart.domain.Person;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
@@ -23,4 +25,5 @@ public interface PersonRepository extends JpaRepository<Person,Long> {
 
     List<Person> findByGrabedFalse();
 
+    Page<Person> findByNameContaining(String name, Pageable pageable);
 }

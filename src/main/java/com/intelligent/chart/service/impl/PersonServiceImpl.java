@@ -363,6 +363,11 @@ public class PersonServiceImpl implements PersonService{
         return personRepository.findByGrabedFalse();
     }
 
+    @Override
+    public Page<Person> findByNameContaining(String name, Pageable pageable) {
+        return personRepository.findByNameContaining(name, pageable);
+    }
+
     private Website getDoubanWebsite() {
 
         return websiteRepository.findByName("豆瓣电影");

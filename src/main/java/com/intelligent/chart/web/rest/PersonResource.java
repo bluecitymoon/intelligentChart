@@ -7,6 +7,7 @@ import com.intelligent.chart.web.rest.util.HeaderUtil;
 import com.intelligent.chart.web.rest.util.PaginationUtil;
 
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -30,7 +31,7 @@ import java.util.Optional;
 public class PersonResource {
 
     private final Logger log = LoggerFactory.getLogger(PersonResource.class);
-        
+
     @Inject
     private PersonService personService;
 
@@ -90,6 +91,30 @@ public class PersonResource {
         log.debug("REST request to get a page of People");
         Page<Person> page = personService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/people");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * GET  /people : get all the people.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of people in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/people/name/{name}")
+    @Timed
+    public ResponseEntity<List<Person>> getAllPeopleByName(@ApiParam Pageable pageable, @PathVariable String name)
+        throws URISyntaxException {
+
+        Page<Person> page = null;
+        if (StringUtils.isEmpty(name)) {
+            page = personService.findAll(pageable);
+        } else  {
+            page = personService.findByNameContaining(name, pageable);
+        }
+
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/people");
+
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

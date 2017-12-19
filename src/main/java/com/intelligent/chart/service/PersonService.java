@@ -55,4 +55,6 @@ public interface PersonService {
     void addPersonJob(Person person, Job job);
 
     List<Person> findAllTargetPerson();
+
+    Page<Person> findByNameContaining(String name, Pageable pageable);
 }
