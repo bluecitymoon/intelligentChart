@@ -62,7 +62,7 @@
 
             <ui-select ng-model="vm.personEndorsement.person">
                 <ui-select-match>
-                    {{$item.name}}
+                    {{$select.selected.name}}
                 </ui-select-match>
                 <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">
                     <span ng-bind="item.name"></span>

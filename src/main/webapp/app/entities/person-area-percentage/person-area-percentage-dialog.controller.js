@@ -26,6 +26,7 @@
         }
 
         function save () {
+            console.debug(vm.personAreaPercentage.person);
             vm.isSaving = true;
             if (vm.personAreaPercentage.id !== null) {
                 PersonAreaPercentage.update(vm.personAreaPercentage, onSaveSuccess, onSaveError);

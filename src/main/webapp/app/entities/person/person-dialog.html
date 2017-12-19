@@ -95,7 +95,7 @@
             <!--<select class="form-control" id="field_job" multiple name="job" ng-model="vm.person.jobs" ng-options="job as job.name for job in vm.jobs track by job.id"></select>-->
             <ui-select multiple ng-model="vm.person.jobs">
                 <ui-select-match>
-                    {{$item.name}}
+                    {{$select.selected.name}}
                 </ui-select-match>
                 <ui-select-choices repeat="item in (vm.jobs | filter: $select.search) track by item.id">
                     <span ng-bind="item.name"></span>
