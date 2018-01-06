@@ -29,7 +29,7 @@
             <ui-select ng-model="vm.personWordCloud.person"> 
                 <ui-select-match>  {{$select.selected.name}} </ui-select-match>
                  
-                <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
+                <ui-select-choices refresh="vm.searchPersonWithKeyword($select.search)" refresh-delay="0" repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
                         ng-bind="item.name"></span> 
                 </ui-select-choices>
                  
@@ -41,7 +41,7 @@
                 <ui-select-match>
                     <span ng-bind="$select.selected.name"></span>
                 </ui-select-match>
-                <ui-select-choices repeat="item in (vm.wordclouds | filter: $select.search) track by item.id">
+                <ui-select-choices refresh="vm.searchPersonWithKeyword($select.search)" refresh-delay="0" repeat="item in (vm.wordclouds | filter: $select.search) track by item.id">
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
             </ui-select>

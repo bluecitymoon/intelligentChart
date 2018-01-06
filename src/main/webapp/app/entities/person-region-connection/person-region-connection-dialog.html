@@ -29,7 +29,7 @@
             <ui-select ng-model="vm.personRegionConnection.person"> 
                 <ui-select-match>  {{$select.selected.name}} </ui-select-match>
                  
-                <ui-select-choices repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
+                <ui-select-choices refresh="vm.searchPersonWithKeyword($select.search)" refresh-delay="0" repeat="item in (vm.people | filter: $select.search) track by item.id">  <span
                         ng-bind="item.name"></span> 
                 </ui-select-choices>
                  

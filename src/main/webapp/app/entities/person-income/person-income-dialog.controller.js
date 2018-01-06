@@ -15,7 +15,27 @@
         vm.personIncome.outSalaryTotal = vm.personIncome.outCountryPlusBoxTotal - vm.personIncome.outCountrySalaryTotal;
         vm.clear = clear;
         vm.save = save;
-        vm.people = Person.query({size: DEFAULT_HELPER_DATA_SOURCE_SIZE});
+                vm.people = [];
+        vm.searchPersonWithKeyword = searchPersonWithKeyword;
+        function searchPersonWithKeyword(keyword) {
+
+            if (keyword) {
+
+                Person.loadAllByPersonName({
+                    page: 0,
+                    size: 10,
+                    name: keyword
+                }, onSuccess, onError);
+            }
+
+            function onSuccess(data) {
+                vm.people = data;
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+        
 
         vm.calculateTotalInCountry = calculateTotalInCountry;
         vm.calculateTotalOutCountry = calculateTotalOutCountry;
